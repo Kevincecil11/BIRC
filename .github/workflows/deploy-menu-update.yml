@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish Conference page, speaker move, and menu alignment.
+# Publish the styled Exhibition page and its three linked sections.

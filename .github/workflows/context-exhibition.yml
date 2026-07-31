@@ -1,0 +1,64 @@
+name: Update context for Exhibition
+
+on:
+  push:
+    paths:
+      - '.github/workflows/context-exhibition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update living context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md'); s=p.read_text()
+          old='''### `exhibition.html`
+
+Not created yet. It will be linked from the Exhibition hamburger item and must contain this flow:
+
+1. Why exhibit
+2. Exhibitor profile
+3. Space rental
+
+The submenu links are already prepared as:
+
+- `exhibition.html#why-exhibit`
+- `exhibition.html#exhibitor-profile`
+- `exhibition.html#space-rental`
+
+Do not fabricate the Exhibition page content. Wait for the user's supplied file or content.'''
+          new='''### `exhibition.html`
+
+A separate Exhibition page built from the user-supplied Exhibition content and styled with `design.md`. All supplied content is preserved.
+
+Current flow and linked anchors:
+
+1. Why exhibit: `exhibition.html#why-exhibit`
+2. Exhibitor profile: `exhibition.html#exhibitor-profile`
+3. Space rental: `exhibition.html#space-rental`
+
+The page includes the BIRC 2026 exhibition introduction, 20.19 MMT export statistic, six event inclusions, the Agri-Export Revolution statement, eleven interactive exhibitor profiles, the full Who Can Exhibit ecosystem list, floor-plan guidance, booth packages, and prospectus action.
+
+The Exhibitor Profile area uses horizontal category controls plus expandable detail rows. The Space Rental section retains placeholder prices `$X,XXX` and `On request` exactly as supplied; replace only when approved pricing is provided.'''
+          if old not in s: raise SystemExit('Planned Exhibition block not found')
+          s=s.replace(old,new)
+          s=s.replace('1. Receive Exhibition page content and create `exhibition.html`.\n2. Receive Agenda and Schedule content', '1. Receive Agenda and Schedule content')
+          s=s.replace('3. Receive Workshops content', '2. Receive Workshops content').replace('4. Receive Learning Academy content', '3. Receive Learning Academy content').replace('5. Replace remaining logos', '4. Replace remaining logos')
+          s=s.replace('- Exhibition page and all its content\n','')
+          s=s.replace('Last updated: 2026-07-31','Last updated: 2026-07-31 (Exhibition page added)')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add context.md
+          git commit -m 'Document Exhibition page in project context'
+          git push

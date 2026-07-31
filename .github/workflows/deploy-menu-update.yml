@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish Exhibition submenu across homepage and About page.
+# Publish Conference page, speaker move, and menu alignment.

@@ -37,3 +37,5 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+# Redeployed after enabling public Pages on 2026-07-31.

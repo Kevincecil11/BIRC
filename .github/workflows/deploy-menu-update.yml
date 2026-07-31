@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish hash-based section-only Exhibition views.
+# Publish consistent black surfaces across all Exhibition views.

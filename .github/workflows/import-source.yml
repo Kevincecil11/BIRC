@@ -1,0 +1,26 @@
+name: Import approved BIRC source
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-source.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download approved standalone source
+        run: |
+          curl --fail --location --retry 3 'https://run.clickup.ai/90161376302/abd63d2c-24f7-413b-8626-03c1f65ae03f/birc-2026-final-v5-standalone.html' --output index.html
+      - name: Commit source of truth
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Add BIRC standalone source of truth'
+          git push

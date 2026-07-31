@@ -298,3 +298,8 @@ Expected next steps:
 When starting work in a new chat, use this instruction:
 
 > Read `context.md`, then `design.md`, then inspect the current target file. Treat repository `main` as the source of truth. Preserve supplied content, keep navigation synchronized across pages, update `context.md` with every structural decision, and verify GitHub Pages after publishing.
+
+
+## Exhibition display rule
+
+Exhibition is a hash-driven single-section experience. Selecting a submenu or section switcher item shows only that section and hides the other two. The default view is Why exhibit. Do not return it to one long scrolling page unless explicitly requested.

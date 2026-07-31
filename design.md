@@ -47,7 +47,7 @@ Use these exact colors. Do not substitute generic black, white, beige, green, or
   --birc-linen: #faf0e6;
   --birc-gold: #ebb341;
   --birc-gold-deep: #c98e25;
-  --birc-moss: #566746;
+  --birc-editorial-grey: #2b2b27;
   --birc-dark-muted: #aba49c;
   --birc-light-muted: #6d6862;
   --birc-dark-line: #35332e;
@@ -62,7 +62,7 @@ Use these exact colors. Do not substitute generic black, white, beige, green, or
 - `--birc-linen`: light sections, primary text on dark, and warm neutral space.
 - `--birc-gold`: primary CTA, focus rings, dates, active progress, and rare high-priority emphasis.
 - `--birc-gold-deep`: labels and accents on linen where the brighter gold lacks contrast.
-- `--birc-moss`: large editorial background words and agricultural narrative accents only.
+- `--birc-editorial-grey`: large background words, oversized programme numbers, and quiet editorial narrative accents only.
 - Muted colors: secondary copy and metadata.
 - Line colors: dividers and structure, never decorative boxes around everything.
 
@@ -70,7 +70,7 @@ Use these exact colors. Do not substitute generic black, white, beige, green, or
 
 - Dark and linen sections should alternate to create rhythm.
 - Gold should remain scarce and purposeful, roughly 10% of the visual weight.
-- Moss is not a second CTA color. Use it only for editorial storytelling.
+- Editorial grey is not a second CTA color. Use it only for oversized background typography and quiet narrative accents.
 - Never use pure `#000000` or `#ffffff`.
 - Never use gradient text.
 
@@ -228,7 +228,7 @@ Do not use identical padding for every section. Alternate compact, immersive, an
 ### Why BIRC
 
 - Use four full-width editorial panels.
-- Large words `INDIA`, `TRADE`, `365`, and `ONE` use exact moss `#566746`.
+- Large words `INDIA`, `TRADE`, `365`, and `ONE` use exact editorial grey `#2b2b27`.
 - Odd panels enter from right to left; even panels enter from left to right.
 - The large word settles behind the readable foreground copy.
 - Keep the descriptive copy high contrast and unobstructed.

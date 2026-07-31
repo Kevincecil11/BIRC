@@ -1,0 +1,53 @@
+name: Update editorial grey
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-editorial-grey.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update homepage and About page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ('index.html', 'about.html'):
+              p = Path(name)
+              s = p.read_text()
+              s = s.replace('--m:#566746', '--m:#2b2b27')
+              s = s.replace('#566746', '#2b2b27')
+              if name == 'index.html':
+                  s = s.replace('.day-num{font:600 76px/.8 Poppins;color:var(--j2);', '.day-num{font:600 76px/.8 Poppins;color:var(--m);')
+              p.write_text(s)
+          PY
+      - name: Update design system
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('design.md')
+          s = p.read_text()
+          replacements = {
+            '--birc-moss: #566746;': '--birc-editorial-grey: #2b2b27;',
+            '`--birc-moss`: large editorial background words and agricultural narrative accents only.': '`--birc-editorial-grey`: large background words, oversized programme numbers, and quiet editorial narrative accents only.',
+            'Moss is not a second CTA color. Use it only for editorial storytelling.': 'Editorial grey is not a second CTA color. Use it only for oversized background typography and quiet narrative accents.',
+            'Large words `INDIA`, `TRADE`, `365`, and `ONE` use exact moss `#566746`.': 'Large words `INDIA`, `TRADE`, `365`, and `ONE` use exact editorial grey `#2b2b27`.',
+          }
+          for old, new in replacements.items():
+              s = s.replace(old, new)
+          s = s.replace('moss green', 'editorial grey').replace('Moss green', 'Editorial grey')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html design.md
+          git commit -m 'Use brighter editorial grey across BIRC'
+          git push

@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish editorial grey update across index, About, and design system.
+# Publish Exhibition submenu across homepage and About page.

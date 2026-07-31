@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish About page and linked main navigation.
+# Publish editorial grey update across index, About, and design system.

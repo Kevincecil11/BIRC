@@ -1,0 +1,47 @@
+name: Update Exhibition menu
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-exhibition-menu.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update menus on all current pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          nav = '''<nav class="drawer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="index.html#programme">Conference</a><div class="menu-group"><button class="menu-parent" type="button" aria-expanded="false">Exhibition <small>⌄</small></button><div class="submenu"><a href="exhibition.html#why-exhibit"><span>01</span>Why exhibit</a><a href="exhibition.html#exhibitor-profile"><span>02</span>Exhibitor profile</a><a href="exhibition.html#space-rental"><span>03</span>Space rental</a></div></div><a href="index.html#zones">Experience</a><a href="index.html#pathways">Partnership <small>⌄</small></a><a href="index.html#visit">Plan Visit <small>⌄</small></a><a href="#contact">Contact</a></nav>'''
+
+          css = '''.drawer-nav .menu-parent{width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px 0;border:0;border-bottom:1px solid var(--dl);background:none;color:var(--l);font:600 28px/1.2 Poppins,sans-serif;letter-spacing:-.05em;text-align:left}.drawer-nav .menu-parent small{transition:transform .3s var(--e)}.drawer-nav .menu-parent[aria-expanded="true"] small{transform:rotate(180deg)}.submenu{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .25s}.submenu>div{overflow:hidden}.submenu.open{grid-template-rows:1fr;opacity:1}.submenu a{padding:12px 0 12px 18px!important;font:500 14px/1.25 Poppins,sans-serif!important;letter-spacing:-.02em!important;color:var(--dm)!important}.submenu a span{color:var(--g);font:600 9px Poppins,sans-serif;letter-spacing:.12em}.submenu a:last-child{border-bottom:1px solid var(--dl)}'''
+
+          js = '''const exhibitionMenu=document.querySelector('.menu-parent');const exhibitionSubmenu=document.querySelector('.submenu');if(exhibitionMenu&&exhibitionSubmenu){const submenuInner=document.createElement('div');while(exhibitionSubmenu.firstChild)submenuInner.appendChild(exhibitionSubmenu.firstChild);exhibitionSubmenu.appendChild(submenuInner);exhibitionMenu.addEventListener('click',()=>{const open=exhibitionMenu.getAttribute('aria-expanded')==='true';exhibitionMenu.setAttribute('aria-expanded',String(!open));exhibitionSubmenu.classList.toggle('open',!open)})}'''
+
+          for name in ('index.html','about.html'):
+              p=Path(name)
+              s=p.read_text()
+              s,count=re.subn(r'<nav(?: class="drawer-nav")?>[\s\S]*?</nav>',nav,s,count=1)
+              if count!=1: raise SystemExit(f'Navigation not found in {name}')
+              if '.drawer-nav .menu-parent{' not in s:
+                  s=s.replace('</style>',css+'</style>',1)
+              marker="const drawer="
+              if js not in s:
+                  s=s.replace(marker,js+marker,1)
+              p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html
+          git commit -m 'Add Exhibition submenu across BIRC pages'
+          git push

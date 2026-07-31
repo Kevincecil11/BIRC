@@ -1,0 +1,44 @@
+name: Move speakers to Conference
+
+on:
+  push:
+    paths:
+      - '.github/workflows/move-speakers.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update homepage and About navigation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for name in ('index.html','about.html'):
+              p=Path(name); s=p.read_text()
+              s=s.replace('<a href="index.html#programme">Conference</a>','<a href="conference.html">Conference</a>')
+              s=s.replace('<a href="#programme">Conference</a>','<a href="conference.html">Conference</a>')
+              # Submenu copy left, number right.
+              s=s.replace('<a href="exhibition.html#why-exhibit"><span>01</span>Why exhibit</a>','<a href="exhibition.html#why-exhibit">Why exhibit <span>01</span></a>')
+              s=s.replace('<a href="exhibition.html#exhibitor-profile"><span>02</span>Exhibitor profile</a>','<a href="exhibition.html#exhibitor-profile">Exhibitor profile <span>02</span></a>')
+              s=s.replace('<a href="exhibition.html#space-rental"><span>03</span>Space rental</a>','<a href="exhibition.html#space-rental">Space rental <span>03</span></a>')
+              if '.submenu a span{order:2' not in s:
+                  s=s.replace('.submenu a span{color:', '.submenu a span{order:2;color:')
+              if name=='index.html':
+                  pattern=r'<section class="dark pad"><header class="head"><span class="eye">Voices of authority</span>[\s\S]*?</section>(?=<section class="dark pad" style="padding-left:0;padding-right:0">)'
+                  s,count=re.subn(pattern,'',s,count=1)
+                  if count!=1: raise SystemExit('Homepage speaker section not found')
+              p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html
+          git commit -m 'Move speakers from Home to Conference and update menus'
+          git push

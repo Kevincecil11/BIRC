@@ -1,0 +1,67 @@
+name: Split Exhibition into section views
+
+on:
+  push:
+    paths:
+      - '.github/workflows/split-exhibition-views.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add hash-based Exhibition views
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('exhibition.html')
+          s=p.read_text()
+
+          css='''.exhibition-view{display:none}.exhibition-view.active{display:block}.view-switcher{position:sticky;top:72px;z-index:40;display:grid;grid-template-columns:repeat(3,1fr);background:var(--j);border-block:1px solid var(--dl)}.view-switcher a{min-height:54px;padding:10px 7px;display:grid;place-items:center;text-align:center;color:var(--dm);font:600 8px/1.35 Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;border-right:1px solid var(--dl)}.view-switcher a:last-child{border-right:0}.view-switcher a.active{background:var(--g);color:var(--j)}.section-intro{padding:104px var(--p) 44px}.section-intro .eye{color:var(--g)}.section-intro p{color:var(--dm);margin:18px 0 0}.hero.view-hidden,.location.view-hidden{display:none}'''
+          s=s.replace('</style></head>',css+'</style></head>',1)
+
+          switcher='''<nav class="view-switcher" aria-label="Exhibition sections"><a href="#why-exhibit" data-view-link="why-exhibit">Why exhibit</a><a href="#exhibitor-profile" data-view-link="exhibitor-profile">Exhibitor profile</a><a href="#space-rental" data-view-link="space-rental">Space rental</a></nav>'''
+          s=s.replace('</section><div class="location">Hall 4, 5, Ground Floor · 18,000 sqm</div><section class="includes dark" id="why-exhibit">','</section><div class="location">Hall 4, 5, Ground Floor · 18,000 sqm</div>'+switcher+'<div class="exhibition-view" data-view="why-exhibit"><section class="includes dark" id="why-exhibit">',1)
+          s=s.replace('</section><section class="movement light pad">','</section><section class="movement light pad">',1)
+          s=s.replace('</section><section class="profiles light" id="exhibitor-profile">','</section></div><div class="exhibition-view" data-view="exhibitor-profile"><section class="profiles light" id="exhibitor-profile">',1)
+          s=s.replace('</section><section class="ecosystem dark">','</section><section class="ecosystem dark">',1)
+          s=s.replace('</section><section class="rental light" id="space-rental">','</section></div><div class="exhibition-view" data-view="space-rental"><section class="rental light" id="space-rental">',1)
+          s=s.replace('</section></main><footer','</section></div></main><footer',1)
+
+          js='''
+function setExhibitionView(){
+  const valid=['why-exhibit','exhibitor-profile','space-rental'];
+  const view=valid.includes(location.hash.slice(1))?location.hash.slice(1):'why-exhibit';
+  document.querySelectorAll('.exhibition-view').forEach(x=>x.classList.toggle('active',x.dataset.view===view));
+  document.querySelectorAll('[data-view-link]').forEach(x=>{const active=x.dataset.viewLink===view;x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')});
+  document.querySelector('.hero').classList.add('view-hidden');
+  document.querySelector('.location').classList.add('view-hidden');
+  requestAnimationFrame(()=>scrollTo({top:0,behavior:'instant'}));
+}
+addEventListener('hashchange',setExhibitionView);
+setExhibitionView();
+'''
+          s=s.replace('</script></body></html>',js+'</script></body></html>',1)
+          p.write_text(s)
+          PY
+      - name: Update context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          anchor='The Exhibitor Profile area uses horizontal category controls plus expandable detail rows. The Space Rental section retains placeholder prices `$X,XXX` and `On request` exactly as supplied; replace only when approved pricing is provided.'
+          replacement=anchor+'\n\nExhibition is a hash-driven single-section experience. Selecting a submenu or section switcher item shows only that section and hides the other two. The default view is Why exhibit. Do not return it to one long scrolling page unless explicitly requested.'
+          if anchor not in s: raise SystemExit('Exhibition context anchor not found')
+          p.write_text(s.replace(anchor,replacement,1))
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exhibition.html context.md
+          git commit -m 'Show one Exhibition section at a time'
+          git push

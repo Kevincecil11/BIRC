@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Force publish corrected positioning and lighter overlay for the rice world map.
+# Publish the detailed nine-zone Experience page and submenu links.

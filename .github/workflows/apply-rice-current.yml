@@ -1,0 +1,60 @@
+name: Apply geometric Rice Current
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-rice-current.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace 3D grains with geometric Rice Current
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html');s=p.read_text()
+
+          css='''/* Geometric Rice Current */.rice-current{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}.rice-current svg{width:100%;height:100%;display:block}.rice-current .current-band{transform-origin:center;animation:currentDrift 10s var(--e) infinite alternate}.rice-current .current-band:nth-child(2){animation-delay:-3s;animation-duration:13s}.rice-current .current-band:nth-child(3){animation-delay:-6s;animation-duration:15s}.rice-current .current-grain{fill:var(--l);opacity:.42}.rice-current .current-grain.gold{fill:var(--g);opacity:.72}.final:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 50% 45%,#0d0d0b99 0 32%,#0d0d0be0 68%,#0d0d0b 100%);pointer-events:none}.final>*:not(.rice-current){position:relative;z-index:2}@keyframes currentDrift{to{transform:translate3d(18px,-8px,0)}}@media(prefers-reduced-motion:reduce){.rice-current .current-band{animation:none}}'''
+          if '/* Geometric Rice Current */' not in s:s=s.replace('</style></head>',css+'</style></head>',1)
+
+          grains=[]
+          # Three disciplined flowing bands built from flat 2D grain ellipses.
+          for band,(y0,amp,step) in enumerate([(170,54,34),(360,72,31),(610,62,36)]):
+              items=[]
+              for i,x in enumerate(range(-20,560,step)):
+                  import math
+                  y=y0+math.sin((i+band*.7)*.58)*amp
+                  rot=math.cos((i+band*.7)*.58)*32
+                  cls='current-grain gold' if (i+band)%4==0 else 'current-grain'
+                  items.append(f'<ellipse class="{cls}" cx="{x}" cy="{y:.1f}" rx="13" ry="3.7" transform="rotate({rot:.1f} {x} {y:.1f})"/>')
+              grains.append(f'<g class="current-band">{"".join(items)}</g>')
+          svg='<div class="rice-current" aria-hidden="true"><svg viewBox="0 0 520 820" preserveAspectRatio="xMidYMid slice">'+''.join(grains)+'</svg></div>'
+          s,count=re.subn(r'<div class="rice">[\s\S]*?</div>(?=<span class="eye">Early bird closes 31 July</span>)',svg,s,count=1)
+          if count!=1: raise SystemExit('Existing rice background not found')
+          p.write_text(s)
+          PY
+      - name: Update context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          s=s.replace('Use a restrained 3D rice-grain field in the background.','Use the approved 2D geometric Rice Current in the background: three flowing bands of flat linen and gold rice marks with a protected central reading area.')
+          s=s.replace('Final registration CTA uses restrained animated 3D rice grains behind the content.','Final registration CTA uses the approved animated 2D geometric Rice Current behind the content, not 3D grains.')
+          note='The selected final CTA background is concept 2 from the second concept round, “Rice Current.” It is implemented as inline SVG/CSS so it stays sharp, lightweight, and editable.'
+          if note not in s:s=s.replace('### Homepage gallery scale',note+'\n\n### Homepage gallery scale')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html context.md
+          git commit -m 'Use geometric Rice Current in final CTA'
+          git push

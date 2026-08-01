@@ -1,0 +1,53 @@
+name: Apply rice world-map background
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-rice-world-map.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add supplied artwork
+        run: |
+          mkdir -p assets
+          curl --fail --location --retry 3 'https://t90161376302.p.clickup-attachments.com/t90161376302/0e8b81eb-ccf6-4203-af5d-b00d6a1b8a9a/rice-world-map.png?view=open' --output assets/rice-world-map.png
+          test "$(sha256sum assets/rice-world-map.png | cut -d' ' -f1)" = '0a95c5fee9a312abeb3d1a716255be9d92b41210a4dabc2d635d366870c6fbe8'
+      - name: Replace geometric current with image background
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html');s=p.read_text()
+          css='''/* Approved rice world-map artwork */.rice-world-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(180deg,#0d0d0b55 0%,#0d0d0b22 34%,#0d0d0baa 100%),url('assets/rice-world-map.png');background-size:cover;background-position:center 43%;background-repeat:no-repeat;pointer-events:none}.final:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 50% 46%,#0d0d0b88 0 30%,#0d0d0bc4 66%,#0d0d0bea 100%);pointer-events:none}.final>*:not(.rice-world-bg){position:relative;z-index:2}'''
+          if '/* Approved rice world-map artwork */' not in s:s=s.replace('</style></head>',css+'</style></head>',1)
+          replacement='<div class="rice-world-bg" aria-hidden="true"></div>'
+          s,count=re.subn(r'<div class="rice-current"[\s\S]*?</svg></div>(?=<span class="eye">Early bird closes 31 July</span>)',replacement,s,count=1)
+          if count!=1: raise SystemExit('Rice Current markup not found')
+          p.write_text(s)
+          PY
+      - name: Update context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          s=s.replace('Use the approved 2D geometric Rice Current in the background: three flowing bands of flat linen and gold rice marks with a protected central reading area.','Use the supplied rice world-map artwork as a full-bleed background with a dark readability overlay.')
+          s=s.replace('Final registration CTA uses the approved animated 2D geometric Rice Current behind the content, not 3D grains.','Final registration CTA uses the supplied rice world-map image at `assets/rice-world-map.png`, replacing both the original 3D grains and the temporary Rice Current.')
+          old='The selected final CTA background is concept 2 from the second concept round, “Rice Current.” It is implemented as inline SVG/CSS so it stays sharp, lightweight, and editable.'
+          new='The approved final CTA background is the supplied rice-grain world map stored at `assets/rice-world-map.png`. Preserve the full-bleed crop and dark readability overlay.'
+          s=s.replace(old,new)
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html context.md assets/rice-world-map.png
+          git commit -m 'Use supplied rice world map in final CTA'
+          git push

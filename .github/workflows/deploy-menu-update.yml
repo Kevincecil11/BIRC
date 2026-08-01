@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish consistent black surfaces across all Exhibition views.
+# Publish Knowledge Sessions and their differentiators above Experience.

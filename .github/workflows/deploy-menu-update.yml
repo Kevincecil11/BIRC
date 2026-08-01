@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish quick-action dock, larger gallery, and positive year-round statement.
+# Publish the approved 2D geometric Rice Current in the registration CTA.

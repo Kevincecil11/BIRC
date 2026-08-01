@@ -203,6 +203,15 @@ The drawer footer includes:
 
 Their final URLs have not yet been supplied. Do not invent them.
 
+
+### Homepage quick-action dock
+
+The homepage has one floating circular `+` button to avoid clutter. Tapping it reveals four stacked actions: Book your stand, Register to visit, Login, and WhatsApp. Tapping outside, choosing an action, or pressing Escape closes it. Final Login and WhatsApp destination URLs are still pending and must not be invented.
+
+### Homepage gallery scale
+
+BIRC in pictures image/video placeholders are intentionally 20% larger than the earlier gallery dimensions. Preserve this scale unless explicitly changed.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

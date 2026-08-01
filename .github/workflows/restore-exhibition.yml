@@ -1,0 +1,24 @@
+name: Restore Exhibition page
+on:
+  push:
+    paths: ['.github/workflows/restore-exhibition.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore previous Exhibition implementation
+        run: |
+          git show c249daec0798f4c86115ab0ed9cf7077de279f22:exhibition.html > exhibition.html
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add exhibition.html
+          git commit -m 'Restore Exhibition page before latest iteration'
+          git push

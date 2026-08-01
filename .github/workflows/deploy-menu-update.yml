@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish the approved 2D geometric Rice Current in the registration CTA.
+# Publish the supplied rice world-map image in the registration CTA.

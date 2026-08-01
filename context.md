@@ -107,6 +107,11 @@ Content originated from the user-provided About HTML. Preserve that approved con
 
 A separate Partnership page built from the user-supplied sponsorship content and styled with `design.md`. Partnership is one direct hamburger link with no submenu. The page preserves all supplied sponsorship tiers, prices, GST notes, package benefits, promotional visibility, special opportunities, and partner logo placeholders. Keep the detailed accordion content intact unless approved replacements are supplied.
 
+
+### `plan-visit.html`
+
+Dedicated Plan Visit page built from supplied content and `design.md`. Sections and submenu anchors: Venue & Location (`#venue`), Hotels (`#hotels`), How to Reach (`#travel`), and FAQs (`#faqs`). Travel includes Metro, Airport, Railway, Bus, and Car/Taxi tabs. All current site menus expose this four-item Plan Visit submenu.
+
 ### `experience.html`
 
 A dedicated detailed Experience page containing all nine approved zones in this order:
@@ -202,7 +207,7 @@ Current top-level order:
 - Exhibition: expandable submenu
 - Experience: direct link to `experience.html`; no dropdown or numbered submenu
 - Partnership: `partnership.html`, direct link with no dropdown
-- Plan Visit: `index.html#visit`
+- Plan Visit: expandable four-item submenu linking into `plan-visit.html`
 - Contact: current page footer contact anchor
 
 ### Dropdown rules
@@ -243,6 +248,8 @@ Experience visual panels must remain full-bleed across the mobile canvas with ze
 Experience page styling must match the rest of BIRC: dark hero, linen content body, ink visual panels, gold accents, dark CTA/footer. Keep the immersive abstract zone visuals from the original version, but no numeric rail and no nine-item hamburger submenu.
 
 Partnership card rule: Sponsorship Package cards and Special Opportunity cards must use the exact same linen background, one-pixel ink border, shadow-free surface, black action bar, expanded divider, and keyboard focus treatment.
+
+Partnership styling: Sponsorship Packages and Special Opportunities both use the cream section background and black one-pixel card frames; the first highlighted card in each group uses a gold outer outline. Do not make the Sponsorship Packages section black.
 
 ## 7. Design decisions that must persist
 

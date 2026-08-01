@@ -207,7 +207,7 @@ Current top-level order:
 - Exhibition: expandable submenu
 - Experience: direct link to `experience.html`; no dropdown or numbered submenu
 - Partnership: `partnership.html`, direct link with no dropdown
-- Plan Visit: expandable four-item submenu linking into `plan-visit.html`
+- Plan Visit: one direct link to `plan-visit.html`; no dropdown
 - Contact: current page footer contact anchor
 
 ### Dropdown rules
@@ -249,7 +249,11 @@ Experience page styling must match the rest of BIRC: dark hero, linen content bo
 
 Partnership card rule: Sponsorship Package cards and Special Opportunity cards must use the exact same linen background, one-pixel ink border, shadow-free surface, black action bar, expanded divider, and keyboard focus treatment.
 
-Partnership styling: Sponsorship Packages and Special Opportunities both use the cream section background and black one-pixel card frames; the first highlighted card in each group uses a gold outer outline. Do not make the Sponsorship Packages section black.
+Partnership styling: Sponsorship Packages and Special Opportunities both use the cream section background and black one-pixel card frames. No card is highlighted by default; the gold outer outline appears only while that card is opened to view benefits. Do not make the Sponsorship Packages section black.
+
+Canonical menu rule: every page uses the same top-level order and styling. Only Exhibition has a dropdown. About, Conference, Experience, Partnership, and Plan Visit are direct links.
+
+Exhibition profile rule: do not show the separate horizontal Rice Millers / Exporters / Traders selector bar. Use the expandable profile list only. Part 1, Part 2, and Part 3 eyebrow labels use the same gold treatment.
 
 ## 7. Design decisions that must persist
 

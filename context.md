@@ -1,6 +1,6 @@
 # BIRC Project Context
 
-Last updated: 2026-07-31
+Last updated: 2026-08-01
 
 This is the living handoff file for the BIRC website. Read this file first whenever the repository is opened in a new chat, coding session, or by a new contributor. Keep it accurate whenever pages, navigation, content, styling rules, deployment, or project decisions change.
 
@@ -58,17 +58,29 @@ Current homepage sections include:
 4. Purpose statement
 5. Three participation pathways: Attend, Exhibit, Sponsor
 6. BIRC statistics
-7. Experience Zones carousel
-8. October 23, 24, 25 date composition
-9. Three-day programme timeline
-10. Industry leader quotes
-11. Why BIRC
-12. Impressions gallery
-13. Plan your visit 2 x 2 grid
-14. Final registration CTA with 3D rice-grain background
-15. Footer and sticky registration CTA
+7. Knowledge Sessions: 9 sessions across Day 1 and Day 2
+8. What Makes the Knowledge Sessions Different: 9 expandable differentiators
+9. Experience Zones carousel
+10. October 23, 24, 25 date composition
+11. Three-day programme timeline
+12. Industry leader quotes
+13. Why BIRC
+14. Impressions gallery
+15. Plan your visit 2 x 2 grid
+16. Final registration CTA with 3D rice-grain background
+17. Footer and sticky registration CTA
 
 The Speakers section was removed from the homepage and moved to `conference.html`.
+
+
+### Homepage Knowledge Sessions
+
+Two sections sit immediately above Experience Zones in `index.html`:
+
+1. `#knowledge-sessions`: all nine Knowledge Sessions across Friday 23 October and Saturday 24 October.
+2. `#knowledge-difference`: the EY report note plus nine expandable reasons the BIRC 2026 sessions are different.
+
+The copy was extracted from two user-supplied images on 2026-08-01 and must remain unchanged unless revised source content is supplied. The differentiators use a one-open-at-a-time accordion.
 
 ### `about.html`
 

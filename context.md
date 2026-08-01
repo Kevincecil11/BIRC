@@ -208,6 +208,8 @@ Their final URLs have not yet been supplied. Do not invent them.
 
 The homepage has one floating circular `+` button to avoid clutter. Tapping it reveals four stacked actions: Book your stand, Register to visit, Login, and WhatsApp. Tapping outside, choosing an action, or pressing Escape closes it. Final Login and WhatsApp destination URLs are still pending and must not be invented.
 
+The selected final CTA background is concept 2 from the second concept round, “Rice Current.” It is implemented as inline SVG/CSS so it stays sharp, lightweight, and editable.
+
 ### Homepage gallery scale
 
 BIRC in pictures image/video placeholders are intentionally 20% larger than the earlier gallery dimensions. Preserve this scale unless explicitly changed.
@@ -227,7 +229,7 @@ Follow `design.md` for full details. Important current decisions:
 - Participation cards are vertically stacked with matching dimensions.
 - Speakers use symmetrical 3:4 portrait rectangles with no staggered offsets.
 - Plan your visit uses an image-free 2 x 2 grid.
-- Final registration CTA uses restrained animated 3D rice grains behind the content.
+- Final registration CTA uses the approved animated 2D geometric Rice Current behind the content, not 3D grains.
 - Motion must be purposeful and reduced-motion-safe.
 
 ## 8. Content handling rules

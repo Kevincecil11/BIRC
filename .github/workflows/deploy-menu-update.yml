@@ -19,7 +19,7 @@ jobs:
   publish:
     environment:
       name: github-pages
-      url: ${{ steps.pages.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish Conference exactly as it was before the latest iteration.
+# Publish Exhibition exactly as it was before the latest iteration.

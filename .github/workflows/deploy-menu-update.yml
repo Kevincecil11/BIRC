@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish Partnership page and edge-to-edge Experience visuals.
+# Publish matching backgrounds and borders for Partnership card groups.

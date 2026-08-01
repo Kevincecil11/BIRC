@@ -28,7 +28,7 @@ jobs:
         with:
           path: .
       - name: Publish current main branch
-        id: pages
+        id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish canonical menus, direct Plan Visit link, Partnership open states, and Exhibition cleanup.
+# Publish Conference exactly as it was before the latest iteration.

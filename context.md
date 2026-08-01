@@ -116,7 +116,7 @@ A dedicated detailed Experience page containing all nine approved zones in this 
 8. Rice Mirror
 9. Beyond the Bowl
 
-Each zone has its own anchor, abstract visual treatment, and the approved homepage description. The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The page alternates linen, ink, and occasional gold editorial surfaces so it does not read as one long black page. Do not invent longer zone claims without supplied content.
+Each zone has its own anchor, abstract visual treatment, and the approved homepage description. The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The approved layout uses a dark cinematic hero, then a consistent linen editorial body where every zone retains its earlier immersive abstract visual inside a large ink panel, followed by dark closing CTA and footer. Do not alternate random section colors. Do not invent longer zone claims without supplied content.
 
 ### `conference.html`
 
@@ -232,6 +232,8 @@ The approved final CTA background is the supplied rice-grain world map stored at
 BIRC in pictures image/video placeholders are intentionally 20% larger than the earlier gallery dimensions. Preserve this scale unless explicitly changed.
 
 Experience navigation must remain a single direct link. Do not add the nine zones as hamburger submenus or restore a numbered 1–9 rail.
+
+Experience page styling must match the rest of BIRC: dark hero, linen content body, ink visual panels, gold accents, dark CTA/footer. Keep the immersive abstract zone visuals from the original version, but no numeric rail and no nine-item hamburger submenu.
 
 ## 7. Design decisions that must persist
 

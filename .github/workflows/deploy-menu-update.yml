@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish Knowledge Sessions and their differentiators above Experience.
+# Publish quick-action dock, larger gallery, and positive year-round statement.

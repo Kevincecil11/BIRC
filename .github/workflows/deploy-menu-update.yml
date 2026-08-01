@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish the detailed nine-zone Experience page and submenu links.
+# Publish the redesigned Experience page with direct navigation and color rhythm.

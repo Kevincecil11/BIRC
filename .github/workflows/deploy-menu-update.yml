@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish the redesigned Experience page with direct navigation and color rhythm.
+# Publish dark hero, linen body, ink zone visuals, and direct Experience navigation.

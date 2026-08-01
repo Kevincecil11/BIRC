@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish Plan Visit page, synced submenus, Partnership frames, and Exhibition cleanup.
+# Publish canonical menus, direct Plan Visit link, Partnership open states, and Exhibition cleanup.

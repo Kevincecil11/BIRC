@@ -1,0 +1,55 @@
+name: Link Experience page
+
+on:
+  push:
+    paths:
+      - '.github/workflows/link-experience.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Experience submenu to current pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          pages=['index.html','about.html','conference.html','exhibition.html']
+          group='''<div class="experience-menu-group"><button class="experience-menu-parent" type="button" aria-expanded="false">Experience <small>⌄</small></button><div class="experience-submenu"><div><a href="experience.html#rice-route-map">The Rice Route Map <span>01</span></a><a href="experience.html#seed-cloud">Seed Cloud <span>02</span></a><a href="experience.html#rice-archive">The Rice Archive <span>03</span></a><a href="experience.html#rice-through-time">Rice Through Time <span>04</span></a><a href="experience.html#world-eats-rice">How the World Eats Rice <span>05</span></a><a href="experience.html#hands-of-rice">Hands of Rice <span>06</span></a><a href="experience.html#world-within">The World Within <span>07</span></a><a href="experience.html#rice-mirror">Rice Mirror <span>08</span></a><a href="experience.html#beyond-bowl">Beyond the Bowl <span>09</span></a></div></div></div>'''
+          css='''.experience-menu-parent{width:100%;display:flex;justify-content:space-between;padding:14px 0;border:0;border-bottom:1px solid var(--dl);background:none;color:var(--l);font:600 27px/1.2 Poppins,sans-serif;letter-spacing:-.05em;text-align:left}.experience-submenu{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .25s}.experience-submenu>div{overflow:hidden}.experience-submenu.open{grid-template-rows:1fr;opacity:1}.experience-submenu a{display:flex!important;justify-content:space-between;padding:10px 0 10px 18px!important;border-bottom:1px solid var(--dl);color:var(--dm)!important;font:500 12px/1.25 Poppins,sans-serif!important;letter-spacing:-.01em!important}.experience-submenu a span{order:2;color:var(--g);font:600 9px Poppins,sans-serif}.experience-menu-parent small{transition:transform .3s var(--e)}.experience-menu-parent[aria-expanded="true"] small{transform:rotate(180deg)}'''
+          js="""const experienceParent=document.querySelector('.experience-menu-parent'),experienceSub=document.querySelector('.experience-submenu');if(experienceParent&&experienceSub)experienceParent.addEventListener('click',()=>{const open=experienceParent.getAttribute('aria-expanded')==='true';experienceParent.setAttribute('aria-expanded',String(!open));experienceSub.classList.toggle('open',!open)});"""
+          for name in pages:
+              p=Path(name);s=p.read_text()
+              patterns=[r'<a href="index\.html#zones">Experience</a>',r'<a href="#zones">Experience</a>',r'<a href="experience\.html">Experience</a>']
+              changed=False
+              for pat in patterns:
+                  s,n=re.subn(pat,group,s,count=1)
+                  if n:changed=True;break
+              if not changed:raise SystemExit(f'Experience link not found in {name}')
+              if '.experience-menu-parent{' not in s:s=s.replace('</style>',css+'</style>',1)
+              if 'const experienceParent=' not in s:s=s.replace('</script></body></html>',js+'</script></body></html>',1)
+              p.write_text(s)
+          PY
+      - name: Update context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          block='''\n### `experience.html`\n\nA dedicated detailed Experience page containing all nine approved zones in this order:\n\n1. The Rice Route Map\n2. Seed Cloud\n3. The Rice Archive\n4. Rice Through Time\n5. How the World Eats Rice\n6. Hands of Rice\n7. The World Within\n8. Rice Mirror\n9. Beyond the Bowl\n\nEach zone has its own anchor, abstract visual treatment, and the approved homepage description. A sticky number rail tracks the active zone. Experience is now an expandable hamburger submenu across all pages, linking directly to each zone. Do not invent longer zone claims without supplied content.\n'''
+          if '### `experience.html`' not in s:s=s.replace('### `conference.html`',block+'\n### `conference.html`')
+          s=s.replace('- Experience: `index.html#zones`','- Experience: expandable submenu linking to the nine anchors in `experience.html`')
+          s=s.replace('Last updated: 2026-08-01','Last updated: 2026-08-01 (detailed Experience page added)')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html conference.html exhibition.html context.md
+          git commit -m 'Link Experience submenu across BIRC pages'
+          git push

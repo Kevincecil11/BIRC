@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish the supplied rice world-map image in the registration CTA.
+# Publish corrected positioning and lighter overlay for the rice world map.

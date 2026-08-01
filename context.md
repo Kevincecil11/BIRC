@@ -1,6 +1,6 @@
 # BIRC Project Context
 
-Last updated: 2026-08-01 (detailed Experience page added)
+Last updated: 2026-08-01 (Partnership added; Experience made full-bleed) (detailed Experience page added)
 
 This is the living handoff file for the BIRC website. Read this file first whenever the repository is opened in a new chat, coding session, or by a new contributor. Keep it accurate whenever pages, navigation, content, styling rules, deployment, or project decisions change.
 
@@ -102,6 +102,11 @@ Current flow:
 Content originated from the user-provided About HTML. Preserve that approved content unless the user supplies replacements.
 
 
+
+### `partnership.html`
+
+A separate Partnership page built from the user-supplied sponsorship content and styled with `design.md`. Partnership is one direct hamburger link with no submenu. The page preserves all supplied sponsorship tiers, prices, GST notes, package benefits, promotional visibility, special opportunities, and partner logo placeholders. Keep the detailed accordion content intact unless approved replacements are supplied.
+
 ### `experience.html`
 
 A dedicated detailed Experience page containing all nine approved zones in this order:
@@ -116,7 +121,7 @@ A dedicated detailed Experience page containing all nine approved zones in this 
 8. Rice Mirror
 9. Beyond the Bowl
 
-Each zone has its own anchor, abstract visual treatment, and the approved homepage description. The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The approved layout uses a dark cinematic hero, then a consistent linen editorial body where every zone retains its earlier immersive abstract visual inside a large ink panel, followed by dark closing CTA and footer. Do not alternate random section colors. Do not invent longer zone claims without supplied content.
+Each zone has its own anchor, abstract visual treatment, and the approved homepage description. The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The approved layout uses a dark cinematic hero, then a consistent linen editorial body where every zone retains its immersive abstract visual inside a full-bleed ink panel, followed by dark closing CTA and footer. Zone visuals touch both edges of the 520px canvas; do not add left or right gutters around them. Do not invent longer zone claims without supplied content.
 
 ### `conference.html`
 
@@ -196,7 +201,7 @@ Current top-level order:
 - Conference: `conference.html`
 - Exhibition: expandable submenu
 - Experience: direct link to `experience.html`; no dropdown or numbered submenu
-- Partnership: currently points to the homepage participation area until a dedicated page is created
+- Partnership: `partnership.html`, direct link with no dropdown
 - Plan Visit: `index.html#visit`
 - Contact: current page footer contact anchor
 
@@ -232,6 +237,8 @@ The approved final CTA background is the supplied rice-grain world map stored at
 BIRC in pictures image/video placeholders are intentionally 20% larger than the earlier gallery dimensions. Preserve this scale unless explicitly changed.
 
 Experience navigation must remain a single direct link. Do not add the nine zones as hamburger submenus or restore a numbered 1–9 rail.
+
+Experience visual panels must remain full-bleed across the mobile canvas with zero left/right spacing. Text keeps 22px padding above or below the visual.
 
 Experience page styling must match the rest of BIRC: dark hero, linen content body, ink visual panels, gold accents, dark CTA/footer. Keep the immersive abstract zone visuals from the original version, but no numeric rail and no nine-item hamburger submenu.
 

@@ -1,6 +1,6 @@
 # BIRC Project Context
 
-Last updated: 2026-08-01
+Last updated: 2026-08-01 (detailed Experience page added)
 
 This is the living handoff file for the BIRC website. Read this file first whenever the repository is opened in a new chat, coding session, or by a new contributor. Keep it accurate whenever pages, navigation, content, styling rules, deployment, or project decisions change.
 
@@ -101,6 +101,23 @@ Current flow:
 
 Content originated from the user-provided About HTML. Preserve that approved content unless the user supplies replacements.
 
+
+### `experience.html`
+
+A dedicated detailed Experience page containing all nine approved zones in this order:
+
+1. The Rice Route Map
+2. Seed Cloud
+3. The Rice Archive
+4. Rice Through Time
+5. How the World Eats Rice
+6. Hands of Rice
+7. The World Within
+8. Rice Mirror
+9. Beyond the Bowl
+
+Each zone has its own anchor, abstract visual treatment, and the approved homepage description. A sticky number rail tracks the active zone. Experience is now an expandable hamburger submenu across all pages, linking directly to each zone. Do not invent longer zone claims without supplied content.
+
 ### `conference.html`
 
 A separate Conference page linked from the hamburger menu.
@@ -178,7 +195,7 @@ Current top-level order:
 - About: `about.html`
 - Conference: `conference.html`
 - Exhibition: expandable submenu
-- Experience: `index.html#zones`
+- Experience: expandable submenu linking to the nine anchors in `experience.html`
 - Partnership: currently points to the homepage participation area until a dedicated page is created
 - Plan Visit: `index.html#visit`
 - Contact: current page footer contact anchor

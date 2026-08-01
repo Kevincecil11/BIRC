@@ -242,6 +242,8 @@ Experience visual panels must remain full-bleed across the mobile canvas with ze
 
 Experience page styling must match the rest of BIRC: dark hero, linen content body, ink visual panels, gold accents, dark CTA/footer. Keep the immersive abstract zone visuals from the original version, but no numeric rail and no nine-item hamburger submenu.
 
+Partnership card rule: Sponsorship Package cards and Special Opportunity cards must use the exact same linen background, one-pixel ink border, shadow-free surface, black action bar, expanded divider, and keyboard focus treatment.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

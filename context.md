@@ -116,7 +116,7 @@ A dedicated detailed Experience page containing all nine approved zones in this 
 8. Rice Mirror
 9. Beyond the Bowl
 
-Each zone has its own anchor, abstract visual treatment, and the approved homepage description. A sticky number rail tracks the active zone. Experience is now an expandable hamburger submenu across all pages, linking directly to each zone. Do not invent longer zone claims without supplied content.
+Each zone has its own anchor, abstract visual treatment, and the approved homepage description. The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The page alternates linen, ink, and occasional gold editorial surfaces so it does not read as one long black page. Do not invent longer zone claims without supplied content.
 
 ### `conference.html`
 
@@ -195,7 +195,7 @@ Current top-level order:
 - About: `about.html`
 - Conference: `conference.html`
 - Exhibition: expandable submenu
-- Experience: expandable submenu linking to the nine anchors in `experience.html`
+- Experience: direct link to `experience.html`; no dropdown or numbered submenu
 - Partnership: currently points to the homepage participation area until a dedicated page is created
 - Plan Visit: `index.html#visit`
 - Contact: current page footer contact anchor
@@ -230,6 +230,8 @@ The approved final CTA background is the supplied rice-grain world map stored at
 ### Homepage gallery scale
 
 BIRC in pictures image/video placeholders are intentionally 20% larger than the earlier gallery dimensions. Preserve this scale unless explicitly changed.
+
+Experience navigation must remain a single direct link. Do not add the nine zones as hamburger submenus or restore a numbered 1–9 rail.
 
 ## 7. Design decisions that must persist
 

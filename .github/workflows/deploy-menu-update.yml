@@ -31,4 +31,4 @@ jobs:
         id: pages
         uses: actions/deploy-pages@v4
 
-# Publish corrected positioning and lighter overlay for the rice world map.
+# Force publish corrected positioning and lighter overlay for the rice world map.

@@ -1,0 +1,68 @@
+name: Redesign Experience page
+
+on:
+  push:
+    paths:
+      - '.github/workflows/redesign-experience.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Redesign Experience and remove zone menus
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          # All site menus: Experience becomes one direct link, never a dropdown.
+          for name in ('index.html','about.html','conference.html','exhibition.html'):
+              p=Path(name);s=p.read_text()
+              s,n=re.subn(r'<div class="experience-menu-group">[\s\S]*?</div></div></div>', '<a href="experience.html">Experience</a>', s, count=1)
+              if n!=1:
+                  # Support pages that still have a plain Experience link.
+                  s=s.replace('<a href="index.html#zones">Experience</a>','<a href="experience.html">Experience</a>',1)
+              p.write_text(s)
+
+          p=Path('experience.html');s=p.read_text()
+          # Drawer: no Experience submenu.
+          s,n=re.subn(r'<div><button class="menu-parent"[^>]*>Experience[\s\S]*?</div></div></div>', '<a href="experience.html">Experience</a>', s, count=1)
+          if n!=1: raise SystemExit('Experience drawer submenu not found')
+          # Remove sticky 1-9 rail.
+          s,n=re.subn(r'<nav class="zone-nav"[\s\S]*?</nav>', '', s, count=1)
+          if n!=1: raise SystemExit('Zone rail not found')
+          # Remove numeric labels while preserving installation captions.
+          s=re.sub(r'<div class="zone-meta"><span>\d+</span><span>(.*?)</span></div>', r'<div class="zone-kicker">\1</div>', s)
+          s=s.replace('<div class="hero-foot"><span>09 zones</span><span>Field to future</span></div>','<div class="hero-foot"><span>Immersive worlds</span><span>Field to future</span></div>')
+          # Remove obsolete active rail JS and Experience submenu JS.
+          s=re.sub(r"const parent=document\.querySelector\('\.menu-parent'\),sub=document\.querySelector\('\.submenu'\);parent\.onclick=[\s\S]*?sub\.classList\.toggle\('open',!open\)\};",'',s,count=1)
+          s=re.sub(r"const zoneLinks=\[\.\.\.document\.querySelectorAll\('\.zone-nav a'\)\],zones=\[\.\.\.document\.querySelectorAll\('\.zone'\)\];const zo=[\s\S]*?zones\.forEach\(z=>zo\.observe\(z\)\);",'',s,count=1)
+
+          css='''/* Experience redesign: editorial light/dark rhythm */.page{background:var(--l)}.bar{background:var(--j);border-bottom:1px solid var(--dl)}.hero{min-height:88svh;background:var(--l);color:var(--j);padding-top:130px}.hero:before{background:radial-gradient(circle at 78% 22%,#ebb34142,transparent 29%),repeating-linear-gradient(116deg,transparent 0 31px,#0d0d0b09 31px 32px)}.hero .eye{color:var(--g2)}.hero .lead,.hero-foot{color:var(--lm)}.hero-foot{border-color:var(--ll)}.zone{min-height:0;padding:88px var(--p);border:0;display:grid;gap:30px}.zone:nth-of-type(odd){background:var(--l);color:var(--j)}.zone:nth-of-type(even){background:var(--j);color:var(--l)}.zone:nth-of-type(3n){background:var(--g);color:var(--j)}.zone-kicker{font:600 9px/1.3 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--g2)}.zone:nth-of-type(even) .zone-kicker{color:var(--g)}.zone:nth-of-type(3n) .zone-kicker{color:var(--j)}.visual{height:360px;margin:0;border:0;background:var(--j);position:relative}.zone:nth-of-type(even) .visual{background:var(--j2);border:1px solid var(--dl)}.zone:nth-of-type(3n) .visual{background:var(--j)}.zone-copy{margin:0}.zone h2{max-width:12ch;margin:0 0 14px;font-size:clamp(38px,11vw,54px)}.zone p{font-size:15px}.zone:nth-of-type(odd) p{color:var(--lm)}.zone:nth-of-type(even) p{color:var(--dm)}.zone:nth-of-type(3n) p{color:#3c3428}.zone:nth-of-type(even) .zone-copy{text-align:right}.zone:nth-of-type(even) .zone-copy h2,.zone:nth-of-type(even) .zone-copy p{margin-left:auto}.zone:nth-of-type(odd) .visual{transform:translateX(18px)}.zone:nth-of-type(even) .visual{transform:translateX(-18px)}.zone:nth-of-type(3n) .visual{transform:none}.cta{background:var(--l);color:var(--j)}.cta .eye{color:var(--g2)}.footer{background:var(--j);color:var(--l)}@media(max-width:360px){.zone:nth-of-type(odd) .visual,.zone:nth-of-type(even) .visual{transform:none}}'''
+          if '/* Experience redesign: editorial light/dark rhythm */' not in s:
+              s=s.replace('</style></head>',css+'</style></head>',1)
+          p.write_text(s)
+          PY
+      - name: Update context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          s=s.replace('A sticky number rail tracks the active zone. Experience is now an expandable hamburger submenu across all pages, linking directly to each zone.','The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The page alternates linen, ink, and occasional gold editorial surfaces so it does not read as one long black page.')
+          s=s.replace('- Experience: expandable submenu linking to the nine anchors in `experience.html`','- Experience: direct link to `experience.html`; no dropdown or numbered submenu')
+          rule='Experience navigation must remain a single direct link. Do not add the nine zones as hamburger submenus or restore a numbered 1–9 rail.'
+          if rule not in s:s=s.replace('## 7. Design decisions that must persist',rule+'\n\n## 7. Design decisions that must persist')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html conference.html exhibition.html experience.html context.md
+          git commit -m 'Redesign Experience with editorial color rhythm'
+          git push

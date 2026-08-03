@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish Contact page, working enquiry form, and synchronized Contact links.
+# Publish official contact details, routed form, and dated ivory logo across BIRC.

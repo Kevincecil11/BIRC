@@ -28,7 +28,7 @@ The visual direction is cinematic, editorial, premium, precise, and easy to unde
 - GitHub Pages site: `https://kevincecil11.github.io/BIRC/`
 - Pages is deployed through GitHub Actions workflows in `.github/workflows/`.
 - The repository is public so GitHub Pages can deploy under the current GitHub plan.
-- Official logo asset: `https://ik.imagekit.io/18ab23oqaj/birc-mark-white-solid.png`
+- Official logo asset: `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`
 
 ### Deployment caution
 
@@ -43,6 +43,8 @@ If a Pages update does not appear:
 5. Verify the live URL after the run succeeds.
 
 Do not assume a commit is live until the Pages URL is checked.
+
+The official dated ivory BIRC logo is used on every current HTML page: `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`.
 
 ## 4. Current source files
 
@@ -111,7 +113,7 @@ A separate Partnership page built from the user-supplied sponsorship content and
 
 ### `contact.html`
 
-Dedicated Contact page based on the mobile `birc.in/contact` structure and BIRC `design.md`. Approved visible copy includes “We’d love to hear from you,” “Contact Us,” “Questions about BIRC 2026? Our team is here to help,” “Get in touch,” and “You Have Questions. We Have Answers.” The page routes users toward Visit, Exhibition, Partnership, or Conference and includes a working enquiry form that opens the user’s email client with a prefilled subject/body. No phone number or destination email was invented because none was supplied. Contact is a direct hamburger link on all current pages.
+Dedicated Contact page based on the mobile `birc.in/contact` structure and BIRC `design.md`. Approved visible copy includes “We’d love to hear from you,” “Contact Us,” “Questions about BIRC 2026? Our team is here to help,” “Get in touch,” and “You Have Questions. We Have Answers.” The page routes users toward Visit, Exhibition, Partnership, or Conference and includes a working enquiry form that opens the user’s email client with a prefilled subject/body. Official source details are now included: 73 LGF, World Trade Center, Barakhamba Avenue, Connaught Place, New Delhi 110001; Mon–Sun 09:00–18:00 local; booking@birc.in; visit@birc.in; +91-7303093821. The enquiry form routes Visiting enquiries to visit@birc.in and other enquiries to booking@birc.in. Contact is a direct hamburger link on all current pages.
 
 ### `plan-visit.html`
 

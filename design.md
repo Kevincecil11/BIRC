@@ -32,9 +32,9 @@ Avoid obvious rice-industry clichés such as green farm photography everywhere, 
 
 - Main implementation: `index.html`
 - Design rules: `design.md`
-- Official logo: `https://ik.imagekit.io/18ab23oqaj/birc-mark-white-solid.png`
+- Official logo: `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`
 - The logo must use `object-fit: contain` and must never be stretched, recolored, redrawn, or replaced with plain text.
-- Recommended mobile logo width: `112px` to `124px`.
+- Recommended mobile width for the dated ivory logo: `150px` to `164px`; preserve its intrinsic aspect ratio.
 
 ## 4. Color system
 

@@ -1,6 +1,6 @@
 # BIRC Project Context
 
-Last updated: 2026-08-01 (Partnership added; Experience made full-bleed) (detailed Experience page added)
+Last updated: 2026-08-03 (Partnership added; Experience made full-bleed) (detailed Experience page added)
 
 This is the living handoff file for the BIRC website. Read this file first whenever the repository is opened in a new chat, coding session, or by a new contributor. Keep it accurate whenever pages, navigation, content, styling rules, deployment, or project decisions change.
 
@@ -108,6 +108,11 @@ Content originated from the user-provided About HTML. Preserve that approved con
 A separate Partnership page built from the user-supplied sponsorship content and styled with `design.md`. Partnership is one direct hamburger link with no submenu. The page preserves all supplied sponsorship tiers, prices, GST notes, package benefits, promotional visibility, special opportunities, and partner logo placeholders. Keep the detailed accordion content intact unless approved replacements are supplied.
 
 
+
+### `contact.html`
+
+Dedicated Contact page based on the mobile `birc.in/contact` structure and BIRC `design.md`. Approved visible copy includes “We’d love to hear from you,” “Contact Us,” “Questions about BIRC 2026? Our team is here to help,” “Get in touch,” and “You Have Questions. We Have Answers.” The page routes users toward Visit, Exhibition, Partnership, or Conference and includes a working enquiry form that opens the user’s email client with a prefilled subject/body. No phone number or destination email was invented because none was supplied. Contact is a direct hamburger link on all current pages.
+
 ### `plan-visit.html`
 
 Dedicated Plan Visit page built from supplied content and `design.md`. Sections and submenu anchors: Venue & Location (`#venue`), Hotels (`#hotels`), How to Reach (`#travel`), and FAQs (`#faqs`). Travel includes Metro, Airport, Railway, Bus, and Car/Taxi tabs. All current site menus expose this four-item Plan Visit submenu.
@@ -208,7 +213,7 @@ Current top-level order:
 - Experience: direct link to `experience.html`; no dropdown or numbered submenu
 - Partnership: `partnership.html`, direct link with no dropdown
 - Plan Visit: one direct link to `plan-visit.html`; no dropdown
-- Contact: current page footer contact anchor
+- Contact: direct link to `contact.html`
 
 ### Dropdown rules
 

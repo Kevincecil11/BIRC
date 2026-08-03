@@ -1,0 +1,66 @@
+name: Apply official Contact content
+on:
+  push:
+    paths: ['.github/workflows/apply-contact-source.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Contact content, form, and dated logo
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          logo='https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png'
+          html_pages=['index.html','about.html','conference.html','exhibition.html','experience.html','partnership.html','plan-visit.html','contact.html']
+          for name in html_pages:
+              p=Path(name);s=p.read_text()
+              s=s.replace('https://ik.imagekit.io/18ab23oqaj/birc-mark-white-solid.png',logo)
+              # Dated mark needs more horizontal room but must retain aspect.
+              if '.logo{width:122px' in s:s=s.replace('.logo{width:122px','.logo{width:158px')
+              if '.site-logo{width:122px' in s:s=s.replace('.site-logo{width:122px','.site-logo{width:158px')
+              p.write_text(s)
+
+          p=Path('contact.html');s=p.read_text()
+          # Add official contact panel styles.
+          css='''.official-contact{padding:96px var(--p);background:var(--l);color:var(--j)}.contact-stack{display:grid;gap:12px}.contact-row{padding:22px;background:var(--j);color:var(--l);border:1px solid var(--dl)}.contact-row small{display:block;color:var(--g);font:600 9px Poppins;letter-spacing:.14em;text-transform:uppercase;margin-bottom:11px}.contact-row h3{font:600 20px Poppins;letter-spacing:-.035em;margin:0 0 9px}.contact-row p,.contact-row address{color:var(--dm);font-size:14px;font-style:normal;margin:0}.contact-row a{color:var(--l);text-decoration:none}.contact-row .hours{display:block;color:var(--dm);font-size:12px;margin-top:8px}.follow-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.follow-links a{min-width:42px;height:42px;border:1px solid var(--dl);display:grid;place-items:center;font:600 10px Poppins}.contact-form-note{color:var(--dm);font-size:12px;margin-top:10px}'''
+          if '/* Official Contact details */' not in s:s=s.replace('</style></head>','<style>/* Official Contact details */'+css+'</style></head>',1)
+          panel='''<section class="official-contact"><header class="head"><span class="eye">Contact details</span><h2 class="section-title">Reach the BIRC team.</h2></header><div class="contact-stack"><article class="contact-row"><small>Location</small><h3>World Trade Center</h3><address>73 LGF, World Trade Center, Barakhamba Avenue, Connaught Place, New Delhi 110001</address><span class="hours">Mon–Sun · 09:00–18:00 (local)</span></article><article class="contact-row"><small>Email</small><h3>Write to us</h3><p><a href="mailto:booking@birc.in">booking@birc.in</a><br><a href="mailto:visit@birc.in">visit@birc.in</a></p></article><article class="contact-row"><small>Contact</small><h3>Call the team</h3><p><a href="tel:+917303093821">+91-7303093821</a></p></article><article class="contact-row"><small>Follow Us</small><h3>BIRC social channels</h3><div class="follow-links"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="LinkedIn">IN</a><a href="#" aria-label="Facebook">FB</a><a href="#" aria-label="X">X</a></div></article></div></section>'''
+          marker='<section class="form-section">'
+          if marker not in s:raise SystemExit('Contact form marker not found')
+          if 'class="official-contact"' not in s:s=s.replace(marker,panel+marker,1)
+          # Real email routing: booking for exhibit/partner, visit for visit, booking fallback.
+          old="location.href=`mailto:?subject=${subject}&body=${body}`"
+          new="const topic=String(data.get('subject')||'');const recipient=topic.includes('Visiting')?'visit@birc.in':'booking@birc.in';location.href=`mailto:${recipient}?subject=${subject}&body=${body}`"
+          if old in s:s=s.replace(old,new,1)
+          # Follow screenshot language more closely.
+          s=s.replace('Tell us what you need.','Tell Us What You Need')
+          p.write_text(s)
+
+          # Update design system.
+          p=Path('design.md');s=p.read_text()
+          s=s.replace('https://ik.imagekit.io/18ab23oqaj/birc-mark-white-solid.png',logo)
+          s=s.replace('Recommended mobile logo width: `112px` to `124px`.','Recommended mobile width for the dated ivory logo: `150px` to `164px`; preserve its intrinsic aspect ratio.')
+          p.write_text(s)
+
+          # Update context.
+          p=Path('context.md');s=p.read_text()
+          s=s.replace('https://ik.imagekit.io/18ab23oqaj/birc-mark-white-solid.png',logo)
+          old='No phone number or destination email was invented because none was supplied.'
+          new='Official source details are now included: 73 LGF, World Trade Center, Barakhamba Avenue, Connaught Place, New Delhi 110001; Mon–Sun 09:00–18:00 local; booking@birc.in; visit@birc.in; +91-7303093821. The enquiry form routes Visiting enquiries to visit@birc.in and other enquiries to booking@birc.in.'
+          s=s.replace(old,new)
+          note='The official dated ivory BIRC logo is used on every current HTML page: `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`.'
+          if note not in s:s=s.replace('## 4. Current source files',note+'\n\n## 4. Current source files')
+          p.write_text(s)
+          PY
+      - name: Commit ten updated files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html about.html conference.html exhibition.html experience.html partnership.html plan-visit.html contact.html context.md design.md
+          git commit -m 'Apply official Contact content and dated ivory logo'
+          git push

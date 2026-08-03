@@ -1,0 +1,40 @@
+name: Refine Contact social section
+on:
+  push:
+    paths: ['.github/workflows/refine-contact-socials.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Contact page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('contact.html');s=p.read_text()
+          s=s.replace('<span class="eye">Contact details</span>','')
+          icons='''<div class="follow-links"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.8" r="1" class="fill"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="4" height="12"/><circle cx="5" cy="5" r="2" class="fill"/><path d="M11 21V9h4v2c1-1.5 2.5-2.5 4.5-2.2 2.1.4 2.5 2.2 2.5 4.5V21h-4v-6.6c0-1.6-.5-2.4-1.7-2.4-1.4 0-2.3 1-2.3 3V21z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.6 1.6-1.6H18V3.8c-.5-.1-1.5-.2-2.5-.2-2.5 0-4.3 1.6-4.3 4.5V10H8.5v3h2.7v8z"/></svg></a><a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l6.4 8.6L4.3 20H7l4.7-5.6L16 20h4L13.5 11 19.2 4h-2.7l-4.3 5.2L8.3 4z"/></svg></a></div>'''
+          import re
+          s,n=re.subn(r'<div class="follow-links">[\s\S]*?</div>',icons,s,count=1)
+          if n!=1:raise SystemExit('Social links block not found')
+          css='''.follow-links a{min-width:46px!important;width:46px;height:46px!important}.follow-links svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.follow-links svg path,.follow-links svg rect{fill:none}.follow-links svg .fill{fill:currentColor;stroke:none}.follow-links a:nth-child(2) svg path,.follow-links a:nth-child(2) svg rect,.follow-links a:nth-child(3) svg path,.follow-links a:nth-child(4) svg path{fill:currentColor;stroke:none}.official-contact .head{margin-bottom:32px}'''
+          if '.follow-links svg{' not in s:s=s.replace('</style></head>',css+'</style></head>',1)
+          p.write_text(s)
+          PY
+      - name: Update context and commit
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          note='Contact social controls use inline SVG icons for Instagram, LinkedIn, Facebook, and X; do not revert them to text initials. The official contact block begins directly with “Reach the BIRC team.” and has no “Contact details” eyebrow.'
+          if note not in s:s=s.replace('## 7. Design decisions that must persist',note+'\n\n## 7. Design decisions that must persist')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add contact.html context.md
+          git commit -m 'Use social icons and simplify Contact heading'
+          git push

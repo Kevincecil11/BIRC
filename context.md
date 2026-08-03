@@ -262,6 +262,8 @@ Canonical menu rule: every page uses the same top-level order and styling. Only 
 
 Exhibition profile rule: do not show the separate horizontal Rice Millers / Exporters / Traders selector bar. Use the expandable profile list only. Part 1, Part 2, and Part 3 eyebrow labels use the same gold treatment.
 
+Contact social controls use inline SVG icons for Instagram, LinkedIn, Facebook, and X; do not revert them to text initials. The official contact block begins directly with “Reach the BIRC team.” and has no “Contact details” eyebrow.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

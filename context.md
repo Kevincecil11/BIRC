@@ -108,7 +108,7 @@ Content originated from the user-provided About HTML. Preserve that approved con
 
 ### `creators.html`
 
-Influencers landing page with three anchored sections: Content Creators (`#content-creators`), Rice Masterchef (`#rice-masterchef`), and Artists (`#artists`). Content Creators is implemented from approved mobile screenshots, including access outcomes, scoring factors, eligibility, application flow, form fields, and FAQ questions. Rice Masterchef is implemented from six approved mobile screenshots, including competition proposition, three participation benefits, ₹1,00,000 prize, Media Byte, On-Stage Recognition, creator access tiers, and application form. Artists remains reserved for approved Rice Art Showcase content. Influencers appears immediately above Partnership as a three-item hamburger submenu across all current pages.
+Influencers is three separate pages: Content Creators (`creators.html`), Rice Masterchef (`rice-masterchef.html`), and Artists / Rice Art Showcase (`artists.html`). Content Creators is implemented from approved mobile screenshots, including access outcomes, scoring factors, eligibility, application flow, form fields, and FAQ questions. Rice Masterchef is implemented from six approved mobile screenshots, including competition proposition, three participation benefits, ₹1,00,000 prize, Media Byte, On-Stage Recognition, creator access tiers, and application form. Artists is implemented from ten approved Rice Art Showcase screenshots, including material manifesto, eight pathways, ₹1,00,000 prize, recognition, and application form. Influencers appears immediately above Partnership as a three-item hamburger submenu across all current pages.
 
 ### `partnership.html`
 
@@ -270,6 +270,8 @@ Exhibition profile rule: do not show the separate horizontal Rice Millers / Expo
 Contact social controls use inline SVG icons for Instagram, LinkedIn, Facebook, and X; do not revert them to text initials. The official contact block begins directly with “Reach the BIRC team.” and has no “Contact details” eyebrow.
 
 Visible event date ranges use `23-24-25`, never `23–25` or `23-25`. Influencers sits directly above Partnership and contains exactly Content Creators, Rice Masterchef, and Artists.
+
+Influencer pages must never use navy or blue. Use only the exact design.md ink, raised ink, linen, gold, editorial grey, and muted tokens. Each Influencers submenu item opens its own separate HTML page.
 
 ## 7. Design decisions that must persist
 

@@ -273,6 +273,8 @@ Visible event date ranges use `23-24-25`, never `23–25` or `23-25`. Influencer
 
 Influencer pages must never use navy or blue. Use only the exact design.md ink, raised ink, linen, gold, editorial grey, and muted tokens. Each Influencers submenu item opens its own separate HTML page.
 
+Influencer pages have a zero-blue rule: use `#0d0d0b` ink and `#191916` raised ink for every dark surface. Source-site navy values such as `#17354c`, `#18334b`, and `#0f253a` are forbidden.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

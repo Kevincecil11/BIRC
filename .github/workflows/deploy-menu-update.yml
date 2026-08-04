@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish the Rice Masterchef competition inside creators.html.
+# Publish separate Content Creators, Rice Masterchef, and Artists pages using only design.md colors.

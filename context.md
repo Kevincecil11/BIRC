@@ -105,6 +105,11 @@ Content originated from the user-provided About HTML. Preserve that approved con
 
 
 
+
+### `creators.html`
+
+Influencers landing page with three anchored sections: Content Creators (`#content-creators`), Rice Masterchef (`#rice-masterchef`), and Artists (`#artists`). Content Creators is implemented from approved mobile screenshots, including access outcomes, scoring factors, eligibility, application flow, form fields, and FAQ questions. Rice Masterchef must be built only after screenshots are supplied. Artists remains reserved for approved Rice Art Showcase content. Influencers appears immediately above Partnership as a three-item hamburger submenu across all current pages.
+
 ### `partnership.html`
 
 A separate Partnership page built from the user-supplied sponsorship content and styled with `design.md`. Partnership is one direct hamburger link with no submenu. The page preserves all supplied sponsorship tiers, prices, GST notes, package benefits, promotional visibility, special opportunities, and partner logo placeholders. Keep the detailed accordion content intact unless approved replacements are supplied.
@@ -264,6 +269,8 @@ Exhibition profile rule: do not show the separate horizontal Rice Millers / Expo
 
 Contact social controls use inline SVG icons for Instagram, LinkedIn, Facebook, and X; do not revert them to text initials. The official contact block begins directly with “Reach the BIRC team.” and has no “Contact details” eyebrow.
 
+Visible event date ranges use `23-24-25`, never `23–25` or `23-25`. Influencers sits directly above Partnership and contains exactly Content Creators, Rice Masterchef, and Artists.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:
@@ -316,7 +323,7 @@ Do not present placeholders as verified facts. Replace them only with supplied a
 
 Approved recurring facts currently include:
 
-- Event dates: 23–25 October 2026
+- Event dates: 23-24-25 October 2026
 - Venue: Bharat Mandapam, Halls 4 and 5, New Delhi
 - 30,000+ participants
 - 120+ countries

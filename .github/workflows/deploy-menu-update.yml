@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish Content Creators, Influencers submenu, and 23-24-25 date formatting.
+# Publish the Rice Masterchef competition inside creators.html.

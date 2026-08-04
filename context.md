@@ -108,7 +108,7 @@ Content originated from the user-provided About HTML. Preserve that approved con
 
 ### `creators.html`
 
-Influencers landing page with three anchored sections: Content Creators (`#content-creators`), Rice Masterchef (`#rice-masterchef`), and Artists (`#artists`). Content Creators is implemented from approved mobile screenshots, including access outcomes, scoring factors, eligibility, application flow, form fields, and FAQ questions. Rice Masterchef must be built only after screenshots are supplied. Artists remains reserved for approved Rice Art Showcase content. Influencers appears immediately above Partnership as a three-item hamburger submenu across all current pages.
+Influencers landing page with three anchored sections: Content Creators (`#content-creators`), Rice Masterchef (`#rice-masterchef`), and Artists (`#artists`). Content Creators is implemented from approved mobile screenshots, including access outcomes, scoring factors, eligibility, application flow, form fields, and FAQ questions. Rice Masterchef is implemented from six approved mobile screenshots, including competition proposition, three participation benefits, ₹1,00,000 prize, Media Byte, On-Stage Recognition, creator access tiers, and application form. Artists remains reserved for approved Rice Art Showcase content. Influencers appears immediately above Partnership as a three-item hamburger submenu across all current pages.
 
 ### `partnership.html`
 

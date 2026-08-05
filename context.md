@@ -277,6 +277,8 @@ Influencer pages have a zero-blue rule: use `#0d0d0b` ink and `#191916` raised i
 
 Content Creators scoring factors are displayed as five bullet rows, not a matrix. The VIP Creator Pass must always use high-contrast linen heading text on raised ink. In Artists, the four “Tiny Material. Infinite Expression.” tiles are an equal 2 x 2 grid with identical dimensions.
 
+Homepage Register actions open an accessible native dialog with exactly three choices: Register as Visitor (`https://birc.in/register/visitor`), Register as Exhibitor (`https://birc.in/register/exhibitor`), and Register as Buyer (`https://birc.in/register/buyer`). The dialog also links registered users to `https://birc.in/login`. Preserve this chooser instead of sending generic Register buttons directly to one role.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

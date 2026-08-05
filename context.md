@@ -275,6 +275,8 @@ Influencer pages must never use navy or blue. Use only the exact design.md ink, 
 
 Influencer pages have a zero-blue rule: use `#0d0d0b` ink and `#191916` raised ink for every dark surface. Source-site navy values such as `#17354c`, `#18334b`, and `#0f253a` are forbidden.
 
+Content Creators scoring factors are displayed as five bullet rows, not a matrix. The VIP Creator Pass must always use high-contrast linen heading text on raised ink. In Artists, the four “Tiny Material. Infinite Expression.” tiles are an equal 2 x 2 grid with identical dimensions.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

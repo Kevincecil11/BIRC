@@ -279,6 +279,8 @@ Content Creators scoring factors are displayed as five bullet rows, not a matrix
 
 Homepage Register actions open an accessible native dialog with exactly three choices: Register as Visitor (`https://birc.in/register/visitor`), Register as Exhibitor (`https://birc.in/register/exhibitor`), and Register as Buyer (`https://birc.in/register/buyer`). The dialog also links registered users to `https://birc.in/login`. Preserve this chooser instead of sending generic Register buttons directly to one role.
 
+Registration uses one shared minimal two-step page at `register.html?type=visitor|exhibitor|buyer`. Step 1 is identical for all roles: name, company, mobile/country code, WhatsApp match, country, email, remember me. Step 2 is identical: multi-select Industry Type plus declaration. Only the title and submission routing differ by role. Homepage chooser links to these local forms.
+
 ## 7. Design decisions that must persist
 
 Follow `design.md` for full details. Important current decisions:

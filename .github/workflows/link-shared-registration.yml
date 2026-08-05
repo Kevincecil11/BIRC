@@ -1,0 +1,29 @@
+name: Link shared registration forms
+on:
+  push:
+    paths: ['.github/workflows/link-shared-registration.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link forms and document architecture
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html');s=p.read_text()
+          s=s.replace('https://birc.in/register/visitor','register.html?type=visitor').replace('https://birc.in/register/exhibitor','register.html?type=exhibitor').replace('https://birc.in/register/buyer','register.html?type=buyer')
+          p.write_text(s)
+          p=Path('context.md');s=p.read_text()
+          note='Registration uses one shared minimal two-step page at `register.html?type=visitor|exhibitor|buyer`. Step 1 is identical for all roles: name, company, mobile/country code, WhatsApp match, country, email, remember me. Step 2 is identical: multi-select Industry Type plus declaration. Only the title and submission routing differ by role. Homepage chooser links to these local forms.'
+          if note not in s:s=s.replace('## 7. Design decisions that must persist',note+'\n\n## 7. Design decisions that must persist')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html context.md
+          git commit -m 'Link registration chooser to shared forms'
+          git push

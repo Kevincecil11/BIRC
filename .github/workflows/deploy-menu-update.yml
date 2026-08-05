@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish shared minimal two-step Visitor, Exhibitor, and Buyer forms.
+# Publish the wired registration chooser and all three role forms, 2026-08-05.

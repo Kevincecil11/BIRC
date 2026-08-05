@@ -1,0 +1,52 @@
+name: Fix Creator and Artist layouts
+on:
+  push:
+    paths: ['.github/workflows/fix-creator-artist-layout.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix Content Creators page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('creators.html');s=p.read_text()
+          # Replace the 2x2 score matrix with a readable bullet list.
+          old='''<div class="score-grid"><div class="score-item">Content Quality & Originality</div><div class="score-item">Audience Relevance</div><div class="score-item">Follower Strength</div><div class="score-item">Engagement & Average Views</div><div class="score-item">Consistency & Professionalism</div></div>'''
+          new='''<ul class="score-bullets"><li>Content Quality &amp; Originality</li><li>Audience Relevance</li><li>Follower Strength</li><li>Engagement &amp; Average Views</li><li>Consistency &amp; Professionalism</li></ul>'''
+          if old not in s: raise SystemExit('Creator score grid not found')
+          s=s.replace(old,new,1)
+          css='''/* Creator pass and score readability */.score-bullets{list-style:none;padding:0;margin:0;border-top:1px solid var(--ll)}.score-bullets li{position:relative;padding:18px 12px 18px 34px;border-bottom:1px solid var(--ll);font:600 12px/1.4 Poppins,sans-serif;text-transform:uppercase}.score-bullets li:before{content:"";position:absolute;left:2px;top:23px;width:13px;height:6px;background:var(--g2);transform:rotate(-18deg) skewX(-10deg)}.pass.vip{background:var(--j2)!important;color:var(--l)!important;border-color:var(--dl)!important}.pass.vip h3,.pass.vip strong,.pass.vip small{color:var(--l)!important}.pass.vip strong,.pass.vip small{color:var(--g)!important}.pass.vip p{color:var(--dm)!important}'''
+          if '/* Creator pass and score readability */' not in s:s=s.replace('</style></head>',css+'</style></head>',1)
+          # Remove stale Masterchef form binding from the separate Creator page.
+          s=re.sub(r'masterForm\.onsubmit=[\s\S]*?</script>', '</script>', s, count=1)
+          p.write_text(s)
+          PY
+      - name: Equalize Rice Art expression tiles
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('artists.html');s=p.read_text()
+          css='''/* Equal four-part expression grid */.art-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:210px!important;align-items:stretch}.art-tile,.art-tile.wide{grid-column:auto!important;min-height:0!important;height:210px!important;width:100%!important}.art-tile span{max-width:14ch}'''
+          if '/* Equal four-part expression grid */' not in s:s=s.replace('</style></head>',css+'</style></head>',1)
+          p.write_text(s)
+          PY
+      - name: Update context and commit
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          note='Content Creators scoring factors are displayed as five bullet rows, not a matrix. The VIP Creator Pass must always use high-contrast linen heading text on raised ink. In Artists, the four “Tiny Material. Infinite Expression.” tiles are an equal 2 x 2 grid with identical dimensions.'
+          if note not in s:s=s.replace('## 7. Design decisions that must persist',note+'\n\n## 7. Design decisions that must persist')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add creators.html artists.html context.md
+          git commit -m 'Fix Creator VIP visibility and equalize art tiles'
+          git push

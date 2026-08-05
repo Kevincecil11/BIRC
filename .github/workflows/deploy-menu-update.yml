@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish Influencer pages with zero blue: ink, raised ink, linen, gold, and grey only.
+# Publish visible VIP pass, bullet score factors, and equal Rice Art expression tiles.

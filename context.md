@@ -395,3 +395,4 @@ When starting work in a new chat, use this instruction:
 Exhibition is a hash-driven single-section experience. Selecting a submenu or section switcher item shows only that section and hides the other two. The default view is Why exhibit. Do not return it to one long scrolling page unless explicitly requested.
 
 All three Exhibition views use the same black/ink background system. Do not switch Exhibitor Profile or Space Rental back to linen; only gold, linen text, muted grey, and editorial grey may vary within the dark surfaces.
+- Registration flow: every homepage registration CTA opens a native chooser for Visitor, Exhibitor, or Buyer; each choice routes to `register.html?type=<role>`.

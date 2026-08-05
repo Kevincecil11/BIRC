@@ -1,0 +1,39 @@
+name: Add registration type chooser
+on:
+  push:
+    paths: ['.github/workflows/add-registration-chooser.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add accessible registration chooser to homepage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html');s=p.read_text()
+          css='''/* Registration chooser */.registration-dialog{width:min(calc(100% - 28px),480px);max-height:calc(100svh - 28px);padding:0;border:1px solid var(--ll);background:var(--l);color:var(--j);box-shadow:0 24px 70px #0009}.registration-dialog::backdrop{background:#0d0d0bd1}.registration-head{position:relative;padding:30px 22px 24px;text-align:center;border-bottom:1px solid var(--ll)}.registration-head .eye{color:var(--g2)}.registration-head h2{font:600 25px/1.05 Poppins,sans-serif;letter-spacing:-.045em;margin:17px 0 9px}.registration-head p{color:var(--lm);font-size:13px;margin:0}.registration-close{position:absolute;right:12px;top:12px;width:40px;height:40px;border:1px solid var(--ll);border-radius:50%;background:transparent;color:var(--j);font-size:22px}.registration-options{display:grid;gap:10px;padding:18px 14px}.registration-option{min-height:92px;padding:15px 14px;display:grid;grid-template-columns:42px 1fr 20px;gap:12px;align-items:center;border:1px solid var(--ll);color:var(--j);background:var(--l);transition:transform .18s var(--e),background .18s}.registration-option:hover,.registration-option:focus-visible{background:#f2e6d8;transform:translateY(-1px)}.registration-icon{width:42px;height:42px;display:grid;place-items:center;background:var(--j);color:var(--g);font-size:18px}.registration-option:nth-child(n+2) .registration-icon{background:var(--m);color:var(--l)}.registration-option strong{display:block;font:600 14px Poppins,sans-serif;margin-bottom:4px}.registration-option small{display:block;color:var(--lm);font-size:11px;line-height:1.45}.registration-arrow{color:var(--g2);font-size:20px}.registration-login{padding:5px 18px 24px;text-align:center;color:var(--lm);font-size:12px}.registration-login a{color:var(--j);font-weight:600;text-decoration:underline;text-underline-offset:3px}body.registration-open{overflow:hidden}@media(prefers-reduced-motion:reduce){.registration-option{transition:none}}'''
+          if '/* Registration chooser */' not in s:s=s.replace('</style></head>',css+'</style></head>',1)
+          modal='''<dialog class="registration-dialog" id="registrationDialog" aria-labelledby="registrationTitle"><header class="registration-head"><button class="registration-close" id="registrationClose" aria-label="Close registration options">×</button><span class="eye">Registration</span><h2 id="registrationTitle">Register for BIRC 2026</h2><p>Choose your registration type to get started.</p></header><div class="registration-options"><a class="registration-option" href="https://birc.in/register/visitor"><span class="registration-icon" aria-hidden="true">♙</span><span><strong>Register as Visitor</strong><small>Attend BIRC 2026 as a visitor to explore exhibitions, attend sessions, and network with industry leaders.</small></span><span class="registration-arrow">→</span></a><a class="registration-option" href="https://birc.in/register/exhibitor"><span class="registration-icon" aria-hidden="true">▣</span><span><strong>Register as Exhibitor</strong><small>Showcase your products and services at Asia's largest rice industry event. Book your exhibition space now.</small></span><span class="registration-arrow">→</span></a><a class="registration-option" href="https://birc.in/register/buyer"><span class="registration-icon" aria-hidden="true">▢</span><span><strong>Register as Buyer</strong><small>Connect with top rice exporters and manufacturers. Register as a buyer to explore business opportunities.</small></span><span class="registration-arrow">→</span></a></div><p class="registration-login">Already registered? <a href="https://birc.in/login">Login here</a></p></dialog>'''
+          if 'id="registrationDialog"' not in s:s=s.replace('</body>',modal+'</body>',1)
+          js="""const registrationDialog=document.getElementById('registrationDialog'),registrationClose=document.getElementById('registrationClose');function openRegistration(event){if(event)event.preventDefault();registrationDialog.showModal();document.body.classList.add('registration-open')}function closeRegistration(){registrationDialog.close();document.body.classList.remove('registration-open')}document.querySelectorAll('a[href="#register"],a[href="#registration"]').forEach(a=>a.addEventListener('click',openRegistration));registrationClose.addEventListener('click',closeRegistration);registrationDialog.addEventListener('click',e=>{if(e.target===registrationDialog)closeRegistration()});registrationDialog.addEventListener('close',()=>document.body.classList.remove('registration-open'));"""
+          if 'const registrationDialog=' not in s:s=s.replace('</script></body>',js+'</script></body>',1)
+          p.write_text(s)
+          PY
+      - name: Update context and commit
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('context.md');s=p.read_text()
+          note='Homepage Register actions open an accessible native dialog with exactly three choices: Register as Visitor (`https://birc.in/register/visitor`), Register as Exhibitor (`https://birc.in/register/exhibitor`), and Register as Buyer (`https://birc.in/register/buyer`). The dialog also links registered users to `https://birc.in/login`. Preserve this chooser instead of sending generic Register buttons directly to one role.'
+          if note not in s:s=s.replace('## 7. Design decisions that must persist',note+'\n\n## 7. Design decisions that must persist')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html context.md
+          git commit -m 'Add Visitor Exhibitor Buyer registration chooser'
+          git push

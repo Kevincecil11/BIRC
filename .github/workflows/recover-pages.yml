@@ -1,0 +1,36 @@
+name: Recover and publish BIRC Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/recover-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+  pages: write
+  id-token: write
+
+jobs:
+  recover-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel stale Pages workflow runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          for workflow in deploy-pages.yml deploy-menu-update.yml; do
+            gh api "repos/$REPO/actions/workflows/$workflow/runs?status=queued&per_page=100" --jq '.workflow_runs[].id' 2>/dev/null | xargs -r -n1 -I{} gh api -X POST "repos/$REPO/actions/runs/{}/cancel" || true
+            gh api "repos/$REPO/actions/workflows/$workflow/runs?status=in_progress&per_page=100" --jq '.workflow_runs[].id' 2>/dev/null | xargs -r -n1 -I{} gh api -X POST "repos/$REPO/actions/runs/{}/cancel" || true
+          done
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Publish current main branch
+        id: deployment
+        uses: actions/deploy-pages@v4

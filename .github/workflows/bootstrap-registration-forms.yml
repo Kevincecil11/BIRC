@@ -1,0 +1,23 @@
+name: Run shared registration form build
+on:
+  push:
+    paths: ['.github/workflows/bootstrap-registration-forms.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Trigger prepared registration workflow
+        run: |
+          git show 42d8399b0e5b5ca4b3dcd53c63dbbf9e50acc927:.github/workflows/add-registration-forms.yml > .github/workflows/add-registration-forms.yml
+          printf '\n# Triggered by bootstrap.\n' >> .github/workflows/add-registration-forms.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/add-registration-forms.yml
+          git commit -m 'Trigger shared registration form workflow'
+          git push

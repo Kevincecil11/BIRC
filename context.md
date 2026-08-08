@@ -436,3 +436,5 @@ The mobile Content Creators, Rice Masterchef, and Artists pages were checked aga
 - Desktop pages now exist for Content Creators, Rice Masterchef, Artists, Partnership, Plan Visit, and Contact.
 - All desktop navigation links route to desktop-specific pages.
 - Mobile source pages remain unchanged.
+
+- 2026-08-08 desktop polish: Masterchef now runs on the Creators desktop system (class aliases + shared layer); Artists apply section and FAQ recoloured for the gold backdrop; Plan Visit venue/hotel/travel blocks gridded; Partnership unwrapped from the mobile card into a full-width desktop grid; Contact enquiry form rebuilt in the Creators form style on desktop-contact.html and mobile contact.html; all copy left-aligned on desktop.

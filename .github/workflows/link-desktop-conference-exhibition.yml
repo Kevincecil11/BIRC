@@ -1,0 +1,26 @@
+name: Link desktop Conference and Exhibition
+on:
+  push:
+    paths: ['.github/workflows/link-desktop-conference-exhibition.yml']
+permissions:
+  contents: write
+jobs:
+  link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ['desktop.html','desktop-about.html']:
+              p=Path(name); h=p.read_text(); h=h.replace('href="conference.html">Conference</a>','href="desktop-conference.html">Conference</a>'); h=h.replace('href="exhibition.html">Exhibition</a>','href="desktop-exhibition.html">Exhibition</a>'); p.write_text(h)
+          p=Path('desktop-exhibition.html'); h=p.read_text(); h=h.replace("scrollTo(0,document.querySelector('.subnav').offsetTop-var(--nav))","scrollTo(0,document.querySelector('.subnav').offsetTop-76)"); p.write_text(h)
+          p=Path('context.md'); c=p.read_text(); note='''\n## Desktop Conference and Exhibition pages\n\n- `desktop-conference.html` is the desktop Conference experience, preserving approved speakers and honest placeholders for Agenda, Workshops, and Learning Academy.\n- `desktop-exhibition.html` is the desktop Exhibition experience with hash-driven Why Exhibit, Exhibitor Profile, and Space Rental views.\n- Mobile `conference.html` and `exhibition.html` remain unchanged.\n''';
+          if '## Desktop Conference and Exhibition pages' not in c:p.write_text(c.rstrip()+note)
+          PY
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html desktop-about.html desktop-exhibition.html context.md
+          git commit -m "Wire desktop Conference and Exhibition navigation"
+          git push

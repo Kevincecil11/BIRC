@@ -18,47 +18,47 @@ jobs:
         run: |
           python3 - <<'PY'
           import re, os
-          from bs4 import BeautifulSoup
           files = ['desktop-rice-masterchef.html','desktop-partnership.html','desktop-plan-visit.html','desktop-contact.html','desktop-artists.html','contact.html']
           out = []
           for f in files:
               if not os.path.exists(f):
                   out.append('MISSING %s' % f); continue
               raw = open(f, encoding='utf-8').read()
-              soup = BeautifulSoup(raw, 'html.parser')
+              body = raw.split('<body', 1)[-1]
               out.append('='*70)
-              out.append('FILE %s  bytes=%d' % (f, len(raw)))
-              main = soup.find('main') or soup.body
-              for sec in main.find_all(['section'], recursive=True):
-                  cls = ' '.join(sec.get('class') or [])
-                  sid = sec.get('id') or ''
-                  h = sec.find(['h1','h2','h3'])
-                  out.append('  SECTION .%s #%s :: %s' % (cls, sid, (h.get_text(' ', strip=True)[:70] if h else '')))
-                  kids = []
-                  for d in sec.find_all(True, recursive=True):
-                      c = ' '.join(d.get('class') or [])
-                      if c:
-                          kids.append(c)
-                  seen = []
-                  for c in kids:
-                      if c not in seen:
-                          seen.append(c)
-                  out.append('      classes: ' + ' | '.join(seen[:26]))
-              out.append('  FORMS:')
-              for form in main.find_all('form'):
-                  out.append('    form id=%s class=%s' % (form.get('id'), ' '.join(form.get('class') or [])))
-                  for lab in form.find_all(['label']):
-                      out.append('      label: ' + lab.get_text(' ', strip=True)[:50])
-                  for inp in form.find_all(['input','select','textarea']):
-                      out.append('      %s name=%s type=%s' % (inp.name, inp.get('name'), inp.get('type')))
-              styles = soup.find_all('style')
-              out.append('  STYLE BLOCKS: %d  ids=%s' % (len(styles), [s.get('id') for s in styles]))
-              last = styles[-1].get_text() if styles else ''
-              out.append('  LAST STYLE (%d chars):' % len(last))
-              out.append('  ' + last[:2600].replace('\n',' '))
+              out.append('FILE %s bytes=%d' % (f, len(raw)))
+              # sections in order
+              for m in re.finditer(r'<section([^>]*)>', body):
+                  attrs = m.group(1)
+                  cls = re.search(r'class="([^"]*)"', attrs)
+                  sid = re.search(r'id="([^"]*)"', attrs)
+                  start = m.end()
+                  chunk = body[start:start+5200]
+                  h = re.search(r'<h[123][^>]*>(.*?)</h[123]>', chunk, re.S)
+                  htxt = re.sub(r'<[^>]+>', '', h.group(1)).strip()[:80] if h else ''
+                  inner_cls = []
+                  for c in re.findall(r'class="([^"]*)"', chunk):
+                      if c not in inner_cls:
+                          inner_cls.append(c)
+                  out.append('  SEC .%s #%s :: %s' % (cls.group(1) if cls else '', sid.group(1) if sid else '', htxt))
+                  out.append('     inner: ' + ' | '.join(inner_cls[:24]))
+              # forms
+              for fm in re.finditer(r'<form([^>]*)>(.*?)</form>', body, re.S):
+                  out.append('  FORM' + fm.group(1))
+                  inner = fm.group(2)
+                  for lm in re.finditer(r'<label[^>]*>(.*?)</label>', inner, re.S):
+                      out.append('     label: ' + re.sub(r'<[^>]+>', '', lm.group(1)).strip()[:60])
+                  for im in re.finditer(r'<(input|select|textarea)([^>]*)>', inner):
+                      out.append('     %s %s' % (im.group(1), im.group(2).strip()[:110]))
+              # style blocks
+              styles = re.findall(r'<style[^>]*>(.*?)</style>', raw, re.S)
+              out.append('  STYLE BLOCKS: %d  sizes=%s' % (len(styles), [len(s) for s in styles]))
+              if styles:
+                  out.append('  LAST STYLE FULL:')
+                  out.append('  ' + styles[-1].replace('\n', ' ')[:3000])
           os.makedirs('audit', exist_ok=True)
-          open('audit/outline.txt','w',encoding='utf-8').write('\n'.join(out))
-          print('\n'.join(out)[:500])
+          open('audit/outline.txt', 'w', encoding='utf-8').write('\n'.join(out))
+          print('done', len(out))
           PY
       - name: Commit outline
         run: |

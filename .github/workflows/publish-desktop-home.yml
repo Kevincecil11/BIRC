@@ -30,8 +30,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy refined desktop homepage
+      - name: Deploy desktop homepage controls
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Register CTA, Voices, and Why BIRC refinement, 2026-08-08.
+# Mobile view, floating countdown, and quick actions, 2026-08-08.

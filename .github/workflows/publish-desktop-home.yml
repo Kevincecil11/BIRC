@@ -11,6 +11,7 @@ on:
       - 'desktop-exhibition.html'
       - 'desktop-exhibitor-profile.html'
       - 'desktop-space-rental.html'
+      - 'desktop-experience.html'
       - 'index.html'
   workflow_dispatch:
 
@@ -35,8 +36,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy latest desktop alignment
+      - name: Deploy desktop Experience page
         id: deployment
         uses: actions/deploy-pages@v4
 
-# About story, Conference headings, and Exhibition nav alignment, 2026-08-08.
+# Desktop Experience page, 2026-08-08.

@@ -18,52 +18,55 @@ jobs:
         run: |
           python3 - <<'PY'
           import re, os
-          files = ['desktop-rice-masterchef.html','desktop-partnership.html','desktop-plan-visit.html','desktop-contact.html','desktop-artists.html','contact.html']
           out = []
-          for f in files:
-              if not os.path.exists(f):
-                  out.append('MISSING %s' % f); continue
-              raw = open(f, encoding='utf-8').read()
-              body = raw.split('<body', 1)[-1]
-              out.append('='*70)
-              out.append('FILE %s bytes=%d' % (f, len(raw)))
-              # sections in order
-              for m in re.finditer(r'<section([^>]*)>', body):
-                  attrs = m.group(1)
-                  cls = re.search(r'class="([^"]*)"', attrs)
-                  sid = re.search(r'id="([^"]*)"', attrs)
-                  start = m.end()
-                  chunk = body[start:start+5200]
-                  h = re.search(r'<h[123][^>]*>(.*?)</h[123]>', chunk, re.S)
-                  htxt = re.sub(r'<[^>]+>', '', h.group(1)).strip()[:80] if h else ''
-                  inner_cls = []
-                  for c in re.findall(r'class="([^"]*)"', chunk):
-                      if c not in inner_cls:
-                          inner_cls.append(c)
-                  out.append('  SEC .%s #%s :: %s' % (cls.group(1) if cls else '', sid.group(1) if sid else '', htxt))
-                  out.append('     inner: ' + ' | '.join(inner_cls[:24]))
-              # forms
-              for fm in re.finditer(r'<form([^>]*)>(.*?)</form>', body, re.S):
-                  out.append('  FORM' + fm.group(1))
-                  inner = fm.group(2)
-                  for lm in re.finditer(r'<label[^>]*>(.*?)</label>', inner, re.S):
-                      out.append('     label: ' + re.sub(r'<[^>]+>', '', lm.group(1)).strip()[:60])
-                  for im in re.finditer(r'<(input|select|textarea)([^>]*)>', inner):
-                      out.append('     %s %s' % (im.group(1), im.group(2).strip()[:110]))
-              # style blocks
-              styles = re.findall(r'<style[^>]*>(.*?)</style>', raw, re.S)
-              out.append('  STYLE BLOCKS: %d  sizes=%s' % (len(styles), [len(s) for s in styles]))
-              if styles:
-                  out.append('  LAST STYLE FULL:')
-                  out.append('  ' + styles[-1].replace('\n', ' ')[:3000])
+          f = 'desktop-partnership.html'
+          raw = open(f, encoding='utf-8').read()
+          body = raw.split('<body', 1)[-1]
+          out.append('FILE %s bytes=%d' % (f, len(raw)))
+          out.append('--- ALL CLASSES IN ORDER (first occurrence) ---')
+          seen = []
+          for c in re.findall(r'class="([^"]*)"', body):
+              if c not in seen:
+                  seen.append(c)
+          out.append('\n'.join(seen))
+          out.append('--- TOP LEVEL MAIN CHILDREN ---')
+          m = re.search(r'<main[^>]*>', body)
+          if m:
+              depth = 0
+              i = m.end()
+              tags = re.compile(r'<(/?)(\w+)([^>]*)>')
+              for t in tags.finditer(body, i):
+                  close, name, attrs = t.group(1), t.group(2), t.group(3)
+                  if name in ('br','img','input','meta','link','source','hr'):
+                      continue
+                  if close:
+                      depth -= 1
+                      if depth < 0:
+                          break
+                  else:
+                      if depth <= 1:
+                          cl = re.search(r'class="([^"]*)"', attrs)
+                          idd = re.search(r'id="([^"]*)"', attrs)
+                          chunk = body[t.end():t.end()+900]
+                          h = re.search(r'<h[1234][^>]*>(.*?)</h[1234]>', chunk, re.S)
+                          htxt = re.sub(r'<[^>]+>', '', h.group(1)).strip()[:70] if h else ''
+                          out.append('%s<%s> .%s #%s :: %s' % ('  '*depth, name, cl.group(1) if cl else '', idd.group(1) if idd else '', htxt))
+                      depth += 1
+          out.append('--- HEADINGS ---')
+          for hm in re.finditer(r'<(h[1234])[^>]*>(.*?)</\1>', body, re.S):
+              out.append('  ' + hm.group(1) + ': ' + re.sub(r'<[^>]+>', '', hm.group(2)).strip()[:80])
+          styles = re.findall(r'<style[^>]*>(.*?)</style>', raw, re.S)
+          out.append('--- STYLE BLOCK SIZES: %s' % [len(s) for s in styles])
+          out.append('--- STYLE 1 (page base) ---')
+          out.append(styles[0].replace('\n', ' ')[:5800])
           os.makedirs('audit', exist_ok=True)
-          open('audit/outline.txt', 'w', encoding='utf-8').write('\n'.join(out))
-          print('done', len(out))
+          open('audit/partnership.txt','w',encoding='utf-8').write('\n'.join(out))
+          print('ok')
           PY
       - name: Commit outline
         run: |
           git config user.name 'birc-bot'
           git config user.email 'birc-bot@users.noreply.github.com'
-          git add audit/outline.txt
-          git commit -m 'Outline desktop pages for redesign' || echo 'no changes'
+          git add audit/partnership.txt
+          git commit -m 'Outline partnership structure' || echo 'no changes'
           git push

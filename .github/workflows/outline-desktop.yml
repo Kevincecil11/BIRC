@@ -18,23 +18,20 @@ jobs:
         run: |
           cat >> context.md <<'MD'
 
-## Desktop refine pass (2026-08-08)
+## Plan Visit + Contact rebuilt from scratch (2026-08-08, later)
 
-- desktop-partnership.html rebuilt from scratch. The old page was the 375px .dv-card wireframe stretched to desktop with inline styles and no semantic structure. Replaced with a standalone desktop document: fixed masthead, left-aligned hero with a spec list, a 5-tier master/detail (left rail of tiers, right benefit panel, gold outline on the selected tier), Special Opportunities as a varied grid with Gala Dinner as a wide feature plus a gold enquiry panel, partner marquee, shared desktop footer. All tier and special-opportunity copy and pricing preserved verbatim from partnership.html.
-- All brittle body-main-nth-child colour patches removed from every desktop page. They caused the wrong-colour form text. Replaced by one clean style id=desk-refine sheet per page, appended last, scoped to min-width 900px.
-- Left alignment is now a standing desktop rule. Section headings, eyebrows, leads, lists, forms and FAQ blocks are left-aligned with margin-left 0. Nothing on desktop is centre-aligned any more, including forms and FAQ stacks that were previously margin auto.
-- desktop-rice-masterchef.html now follows the Creators pattern: 130px section rhythm, two-column moment/winner/content lists, two-up pass cards, 760px stat row, left-aligned two-column application form. The prize block border-left stripe was replaced with a full gold border panel.
-- Shared gold form treatment applied to .apply (Creators), #apply.apply (Artists), .master-apply (Masterchef) and section.form-section (Contact): gold section background, linen form panel with hairline border, uppercase Poppins labels, light inputs with deep-gold focus ring, ink submit button, small doc-note. Two-column field grid, textarea fields span full width, submit left-aligned and auto-width.
-- desktop-artists.html: application form colours fixed through the shared treatment, and .artist-faq is now explicitly linen with ink text instead of inheriting the dark page background with dark text.
-- desktop-plan-visit.html: two-column venue grid, three-up hotel list, inline travel tabs, two-column travel panels, 360px map.
-- desktop-contact.html: three-up route cards, two-column contact stack, inline social links, Creators-style form.
-- Mobile view buttons fixed. Every desktop page Mobile view control now points at its own mobile file instead of back at the desktop page.
-- Mobile files were not modified in this pass. contact.html already carries the Creators-style gold form section from the earlier pass.
+- Root cause of the broken grid lines: both pages carried FOUR competing stylesheets (mobile base, an anonymous desktop block, #dt-polish, #desk-refine). The mobile border rules (.venue-row:last-child{border:0}, .route:nth-child(odd){border-right}, .route:nth-child(n+3){border-bottom:0}, container border-block) survived every override and drew half-finished lines around cells. Adding more overrides could never fix it.
+- Both desktop-plan-visit.html and desktop-contact.html are now standalone single-stylesheet documents. No mobile CSS, no override layers. Same shared desktop system as desktop-partnership.html: --sh 1320px shell, --side gutter, 76px masthead, left-aligned heads, 132px section rhythm.
+- STANDING RULE for connected grids: never rely on per-cell borders. Use gap:1px with the line colour as the grid background and the surface colour on each cell (.mesh.light uses --ll lines on --l cells, .mesh.dark uses --dl lines on --j2 cells). Every cell shares a hairline, nothing dangles, and orphan cells are impossible to see.
+- Plan Visit: venue stats are a connected 2x2. Hotels are a 3-up where the third cell is an honest "full list coming" panel so the row is never orphaned. Travel is now a sticky left tab rail with the panel on the right and route rows in connected 2-up grids; every panel was padded to an even cell count.
+- Plan Visit fares: the metro fare figures were removed (both instances of the airport one and the New Delhi Railway one) because a fare-less row next to a fare row read as unfinished. The taxi estimate was kept as it is genuinely useful.
+- Contact: the four route cards are now a connected 2x2 instead of a 3-up with an orphan fourth. Official details is a 3-up of fully bordered ink panels plus a full-width social row. The enquiry form keeps the gold section with linen panel, two-column fields, full-width message and left-aligned ink submit.
+- Mobile files untouched. plan-visit.html on mobile still carries the metro fare figures.
 MD
       - name: Commit
         run: |
           git config user.name 'birc-bot'
           git config user.email 'birc-bot@users.noreply.github.com'
           git add context.md
-          git commit -m 'Log desktop refine decisions' || echo 'no changes'
+          git commit -m 'Log plan visit and contact rebuilds' || echo 'no changes'
           git push

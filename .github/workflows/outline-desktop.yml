@@ -1,0 +1,69 @@
+name: Outline desktop pages
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/outline-desktop.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  outline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build outline
+        run: |
+          python3 - <<'PY'
+          import re, os
+          from bs4 import BeautifulSoup
+          files = ['desktop-rice-masterchef.html','desktop-partnership.html','desktop-plan-visit.html','desktop-contact.html','desktop-artists.html','contact.html']
+          out = []
+          for f in files:
+              if not os.path.exists(f):
+                  out.append('MISSING %s' % f); continue
+              raw = open(f, encoding='utf-8').read()
+              soup = BeautifulSoup(raw, 'html.parser')
+              out.append('='*70)
+              out.append('FILE %s  bytes=%d' % (f, len(raw)))
+              main = soup.find('main') or soup.body
+              for sec in main.find_all(['section'], recursive=True):
+                  cls = ' '.join(sec.get('class') or [])
+                  sid = sec.get('id') or ''
+                  h = sec.find(['h1','h2','h3'])
+                  out.append('  SECTION .%s #%s :: %s' % (cls, sid, (h.get_text(' ', strip=True)[:70] if h else '')))
+                  kids = []
+                  for d in sec.find_all(True, recursive=True):
+                      c = ' '.join(d.get('class') or [])
+                      if c:
+                          kids.append(c)
+                  seen = []
+                  for c in kids:
+                      if c not in seen:
+                          seen.append(c)
+                  out.append('      classes: ' + ' | '.join(seen[:26]))
+              out.append('  FORMS:')
+              for form in main.find_all('form'):
+                  out.append('    form id=%s class=%s' % (form.get('id'), ' '.join(form.get('class') or [])))
+                  for lab in form.find_all(['label']):
+                      out.append('      label: ' + lab.get_text(' ', strip=True)[:50])
+                  for inp in form.find_all(['input','select','textarea']):
+                      out.append('      %s name=%s type=%s' % (inp.name, inp.get('name'), inp.get('type')))
+              styles = soup.find_all('style')
+              out.append('  STYLE BLOCKS: %d  ids=%s' % (len(styles), [s.get('id') for s in styles]))
+              last = styles[-1].get_text() if styles else ''
+              out.append('  LAST STYLE (%d chars):' % len(last))
+              out.append('  ' + last[:2600].replace('\n',' '))
+          os.makedirs('audit', exist_ok=True)
+          open('audit/outline.txt','w',encoding='utf-8').write('\n'.join(out))
+          print('\n'.join(out)[:500])
+          PY
+      - name: Commit outline
+        run: |
+          git config user.name 'birc-bot'
+          git config user.email 'birc-bot@users.noreply.github.com'
+          git add audit/outline.txt
+          git commit -m 'Outline desktop pages for redesign' || echo 'no changes'
+          git push

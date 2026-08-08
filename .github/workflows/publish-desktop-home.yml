@@ -30,8 +30,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy balanced desktop homepage
+      - name: Deploy rebuilt desktop homepage
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Desktop composition v3, published 2026-08-08.
+# Purpose-built desktop homepage, published 2026-08-08.

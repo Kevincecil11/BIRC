@@ -1,0 +1,38 @@
+BUTTON: ×
+A: Home
+A: About
+A: Conference
+BUTTON: Exhibition ⌄
+A: Why exhibit 01
+A: Exhibitor profile 02
+A: Space rental 03
+A: Experience
+BUTTON: Influencers ⌄
+A: Content Creators 01
+A: Rice Masterchef 02
+A: Artists 03
+A: Partnership
+A: Plan Visit
+A: Contact
+A: Instagram
+A: LinkedIn
+P: Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+SUMMARY: PT Platinum Sponsor ₹50,00,000 $57,480 · + GST
+SUMMARY: DI Diamond Sponsor ₹30,00,000 $34,490 · + GST
+SUMMARY: GO Gold Sponsor ₹20,00,000 $23,000 · + GST
+SUMMARY: SI Silver Sponsor ₹10,00,000 $11,500 · + GST
+SUMMARY: BR Bronze Sponsor ₹5,00,000 $5,750 · + GST
+SUMMARY: ✦ Gala Dinner Sponsor ₹20,00,000 Host dinner for 500 guests incl. exhibitors, govt officials, exporters, foreign delegates
+SUMMARY: ✦ Transport Sponsor ₹15,00,000 Logo on 150+ Innova cabs for wide publicity during exhibition
+SUMMARY: ✦ Lunch Sponsor ₹10,00,000 Exclusive branding at lunch area/food court (October 30 & 31)
+SUMMARY: ✦ Exhibition Entry Gates ₹10,00,000 2 LED gates for exhibition entry in foyer area
+SUMMARY: ✦ Exhibitors'/Buyer Kit ₹10,00,000 2000 kits distributed to VIPs, delegates, media & exhibitors
+SUMMARY: ✦ Registration Counter ₹8,00,000 Logo on registration counters at exhibition entrance
+H4: Explore BIRC
+A: Home
+A: About
+A: Conference
+A: Exhibition
+A: Experience
+A: Partnership
+P: © 2026 Bharat International Rice Conference Privacy · Terms · Code of Conduct

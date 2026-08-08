@@ -1,0 +1,274 @@
+<header#desktopMast.desktop-mast> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+  <div.desktop-shell> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+    <a> 
+      <img> 
+    <nav> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+      <a> Home
+      <a> About
+      <a> Conference
+      <div.desktop-ex> Exhibition ▾ Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <button> Exhibition ▾
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <a> Experience
+      <div.desktop-inf> Influencers ▾ Content Creators 01 Rice Masterchef 02 Artists 03
+        <button> Influencers ▾
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+      <a> Partnership
+      <a> Plan Visit
+      <a> Contact
+    <div.desktop-tools> Mobile view Register ↗
+      <a.mobile-switch> Mobile view
+      <a.desktop-register> Register ↗
+<header.bar> 
+  <a> 
+    <img.logo> 
+  <button#openMenu.menu> 
+    <i> 
+    <i> 
+<aside#drawer.drawer> × Home About Conference Exhibition Experience Influencers ⌄ Content Cr
+  <div.drawer-top> ×
+    <img.logo> 
+    <button#closeMenu.x> ×
+  <nav> Home About Conference Exhibition Experience Influencers ⌄ Content Crea
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <div> Influencers ⌄ Content Creators 01 Rice Masterchef 02 Artists 03
+      <button.nav-parent> Influencers ⌄
+        <small> ⌄
+      <div.nav-sub.open> Content Creators 01 Rice Masterchef 02 Artists 03
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+    <a> Partnership
+    <a> Plan Visit
+    <a> Contact
+  <div.drawer-social> Instagram · LinkedIn
+    <a> Instagram
+    <span> ·
+    <a> LinkedIn
+  <p> Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+    <br> 
+<main.page> BIRC 2026 · International Open Call If Rice Is Part of Your Art, the W
+  <section.hero> BIRC 2026 · International Open Call If Rice Is Part of Your Art, the W
+    <span.eye> BIRC 2026 · International Open Call
+    <h1.title> If Rice Is Part of Your Art, the World Should See It.
+    <p.lead> From furniture, craft and sculpture to fashion, edible art, architectu
+    <a.btn> Apply to Showcase →
+    <div.stats> 120+ Countries reached 03 Days of exhibition 08 Creative pathways
+      <div.stat> 120+ Countries reached
+        <strong> 120+
+        <small> Countries reached
+      <div.stat> 03 Days of exhibition
+        <strong> 03
+        <small> Days of exhibition
+      <div.stat> 08 Creative pathways
+        <strong> 08
+        <small> Creative pathways
+  <section.manifesto.pad> A material. A memory. A global stage. One Grain Can Carry a Civilisati
+    <span.eye> A material. A memory. A global stage.
+    <h2.section-title> One Grain Can Carry a Civilisation.
+    <p> Rice is nourishment, ritual, labour, landscape and identity. The BIRC 
+  <section.materials.pad> The Rice Material Observatory Every Part Can Become a Creative Medium.
+    <span.eye> The Rice Material Observatory
+    <h2.section-title> Every Part Can Become a Creative Medium.
+    <p.lead> Look beyond the grain. Paddy, husk, bran, straw, flour, starch, paper,
+    <div.material-list> Rice Paper Grain Husk Paddy & Straw Bran & Flour Bio-composites
+      <div.material> Rice Paper
+      <div.material> Grain
+      <div.material> Husk
+      <div.material> Paddy & Straw
+      <div.material> Bran & Flour
+      <div.material> Bio-composites
+  <section.language.pad> The Visual Language of Rice Tiny Material. Infinite Expression. From o
+    <span.eye> The Visual Language of Rice
+    <h2.section-title> Tiny Material. Infinite Expression.
+    <p> From one grain to an entire room, we are looking for work that makes p
+    <div.art-grid> 01 Pattern / Ritual / Precision 02 Landscape in Grain 03 Process / Pat
+      <div.art-tile.wide> 01 Pattern / Ritual / Precision
+        <strong> 01
+        <span> Pattern / Ritual / Precision
+      <div.art-tile.wide> 02 Landscape in Grain
+        <strong> 02
+        <span> Landscape in Grain
+      <div.art-tile> 03 Process / Patience / Touch
+        <strong> 03
+        <span> Process / Patience / Touch
+      <div.art-tile> 04 Installation / Light / Scale
+        <strong> 04
+        <span> Installation / Light / Scale
+  <section.audience.pad> Who is this for? If Rice Is Part of It, You Belong Here. Choose the wo
+    <span.eye> Who is this for?
+    <h2.section-title> If Rice Is Part of It, You Belong Here.
+    <p> Choose the world closest to your work. The list is a doorway — not a b
+    <div.pathways> Furniture & Objects Fine Art Craft Textile & Fashion Space & Installat
+      <div.pathway> Furniture & Objects
+      <div.pathway> Fine Art
+      <div.pathway> Craft
+      <div.pathway> Textile & Fashion
+      <div.pathway> Space & Installation
+      <div.pathway> Edible Art
+      <div.pathway> New Media
+      <div.pathway> Something Else
+  <section.prize.pad> Prize & Recognition Win the Room, and the Headline With It. The stando
+    <span.eye> Prize & Recognition
+    <h2.section-title> Win the Room, and the Headline With It.
+    <p> The standout work at the Rice Art Showcase does not simply get seen. I
+    <div.prize-box> Winning prize ₹1,00,000 One lakh rupees
+      <small> Winning prize
+      <strong> ₹1,00,000
+      <span> One lakh rupees
+    <a.btn> Enter the Showcase →
+  <section.recognition.pad> 01 ₹1 Lakh Winning Prize A cash prize of ₹1,00,000 awarded to the winn
+    <div.recognition-list> 01 ₹1 Lakh Winning Prize A cash prize of ₹1,00,000 awarded to the winn
+      <article.recognition-row> 01 ₹1 Lakh Winning Prize A cash prize of ₹1,00,000 awarded to the winn
+        <span> 01
+        <h3> ₹1 Lakh Winning Prize
+        <p> A cash prize of ₹1,00,000 awarded to the winning artist of the BIRC 20
+      <article.recognition-row> 02 Media Byte A dedicated media interaction — your work, your material
+        <span> 02
+        <h3> Media Byte
+        <p> A dedicated media interaction — your work, your material and your prac
+      <article.recognition-row> 03 On-Stage Recognition Called to the BIRC main stage and felicitated 
+        <span> 03
+        <h3> On-Stage Recognition
+        <p> Called to the BIRC main stage and felicitated before an international 
+  <section.why-art.pad> Why BIRC 2026? Put Your Work in a Room That Reaches the World. BIRC br
+    <span.eye> Why BIRC 2026?
+    <h2.section-title> Put Your Work in a Room That Reaches the World.
+    <p> BIRC brings the international rice ecosystem to New Delhi. Your work e
+    <img.source-visual> 
+    <div.content-list.dark-list> 01 Be Discovered Internationally Put your work before an audience conn
+      <article.content-row> 01 Be Discovered Internationally Put your work before an audience conn
+        <span> 01
+        <h3> Be Discovered Internationally
+        <p> Put your work before an audience connected to 120+ countries on a plat
+      <article.content-row> 02 Meet People Beyond Galleries Start conversations with businesses, b
+        <span> 02
+        <h3> Meet People Beyond Galleries
+        <p> Start conversations with businesses, buyers, brands, industry leaders,
+      <article.content-row> 03 Turn Materials Into Opportunity Show how rice-based art and design 
+        <span> 03
+        <h3> Turn Materials Into Opportunity
+        <p> Show how rice-based art and design can become commissions, collections
+      <article.content-row> 04 Build Visible Proof Create a credible international showcase moment
+        <span> 04
+        <h3> Build Visible Proof
+        <p> Create a credible international showcase moment for your portfolio, pr
+  <section.momentum.pad> How to take advantage Arrive With Art. Leave With Momentum. The strong
+    <span.eye> How to take advantage
+    <h2.section-title> Arrive With Art. Leave With Momentum.
+    <p> The strongest showcase is not only a display. It is a story, a convers
+    <div.content-list> 01 · Before BIRC Build the Story Define the rice connection, show the 
+      <article.content-row> 01 · Before BIRC Build the Story Define the rice connection, show the 
+        <span> 01 · Before BIRC
+        <h3> Build the Story
+        <p> Define the rice connection, show the transformation through process ma
+      <article.content-row> 02 · At BIRC Make the Work Easy to Understand Bring process photos, sa
+        <span> 02 · At BIRC
+        <h3> Make the Work Easy to Understand
+        <p> Bring process photos, samples or a short making film so audiences can 
+      <article.content-row> 03 · After BIRC Carry the Momentum Forward Use the international showc
+        <span> 03 · After BIRC
+        <h3> Carry the Momentum Forward
+        <p> Use the international showcase moment for commissions, orders, collabo
+  <section.journey.pad> From idea to exhibition Your Path to the Showcase. A considered curato
+    <span.eye> From idea to exhibition
+    <h2.section-title> Your Path to the Showcase.
+    <p> A considered curatorial journey designed to help the strongest ideas a
+    <div.content-list.dark-list> 01 Share Your Work Submit your portfolio, concept and the clearest pre
+      <article.content-row> 01 Share Your Work Submit your portfolio, concept and the clearest pre
+        <span> 01
+        <h3> Share Your Work
+        <p> Submit your portfolio, concept and the clearest preview available.
+      <article.content-row> 02 Curatorial Review The BIRC team reviews originality, craftsmanship,
+        <span> 02
+        <h3> Curatorial Review
+        <p> The BIRC team reviews originality, craftsmanship, relevance and presen
+      <article.content-row> 03 Shape the Showcase Selected artists coordinate scale, display needs
+        <span> 03
+        <h3> Shape the Showcase
+        <p> Selected artists coordinate scale, display needs and final presentatio
+      <article.content-row> 04 Meet the World Your work enters a global rice platform at Bharat Ma
+        <span> 04
+        <h3> Meet the World
+        <p> Your work enters a global rice platform at Bharat Mandapam, New Delhi.
+    <p.doc-note> Selection considers originality, relationship to rice, craftsmanship, 
+  <section#apply.apply.pad> One simple test Does Rice Make It Possible? Does rice — or any part, b
+    <span.eye> One simple test
+    <h2.section-title> Does Rice Make It Possible?
+    <p> Does rice — or any part, by-product, story or material connected to ri
+    <form#artistForm.form> Full Name * Email Address * WhatsApp / Phone * City & Country * Art Fo
+      <div.field> Full Name *
+        <label> Full Name *
+        <input#artist-name> 
+      <div.field> Email Address *
+        <label> Email Address *
+        <input#artist-email> 
+      <div.field> WhatsApp / Phone *
+        <label> WhatsApp / Phone *
+        <input#artist-phone> 
+      <div.field> City & Country *
+        <label> City & Country *
+        <input#artist-city> 
+      <div.field> Art Format * Select a format Fine art / grain mosaic / painting Sculpt
+        <label> Art Format *
+        <select#artist-path> Select a format Fine art / grain mosaic / painting Sculpture / dimensi
+      <div.field> Artwork Title *
+        <label> Artwork Title *
+        <input#artist-title> 
+      <div.field> Artwork Preview Link *
+        <label> Artwork Preview Link *
+        <input#artist-preview> 
+      <div.field> Tell Us About the Work *
+        <label> Tell Us About the Work *
+        <textarea#artist-work> 
+      <div.field> Approximate Dimensions
+        <label> Approximate Dimensions
+        <input#artist-size> 
+      <div.field> Portfolio or Social Profile
+        <label> Portfolio or Social Profile
+        <input#artist-portfolio> 
+      <label> I confirm this is my work or concept, and agree to be contacted about 
+        <input> 
+      <button.submit> Continue — Verify on WhatsApp →
+      <p.doc-note> Free to apply. Shortlisted artists are contacted with display and part
+      <div#artistStatus> 
+    <section.artist-faq.pad> Still wondering if you qualify? Do Not Rule Yourself Out. My work is a
+      <span.eye> Still wondering if you qualify?
+      <h2.section-title> Do Not Rule Yourself Out.
+      <div.faq-items> My work is a product or furniture piece. Can I apply? + Yes. Functiona
+        <article.faq-item> My work is a product or furniture piece. Can I apply? + Yes. Functiona
+        <article.faq-item> I use husk, straw, bran or starch. Does it count? + Absolutely. The sh
+        <article.faq-item> Can a business, studio, collective or institute apply? + Yes. Applicat
+        <article.faq-item> What if the artwork is still only a concept? + You may submit a strong
+        <article.faq-item> I do not fit any listed category. Should I still apply? + Yes. The cat
+<footer.page.footer> Home Conference Exhibition Experience Partnership Contact © 2026 Bhara
+  <div.links> Home Conference Exhibition Experience Partnership Contact
+    <a> Home
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <a> Partnership
+    <a> Contact
+  <div.end> © 2026 Bharat International Rice Conference Privacy · Terms · Code of 
+    <br> 
+<footer.desktop-footer> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+  <div.desktop-shell> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+    <div> BIRC 2026 India at the centre. Every rice market in the room.
+      <h4> BIRC 2026
+      <p> India at the centre. Every rice market in the room.
+    <div> Explore Home About Conference
+      <small> Explore
+      <a> Home
+      <a> About
+      <a> Conference
+    <div> Participate Exhibition Partnership Influencers
+      <small> Participate
+      <a> Exhibition
+      <a> Partnership
+      <a> Influencers
+    <div> Visit Plan Visit Contact
+      <small> Visit
+      <a> Plan Visit
+      <a> Contact

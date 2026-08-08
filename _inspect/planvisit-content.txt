@@ -1,0 +1,92 @@
+BUTTON: ×
+A: Home
+A: About
+A: Conference
+BUTTON: Exhibition ⌄
+A: Why exhibit 01
+A: Exhibitor profile 02
+A: Space rental 03
+A: Experience
+BUTTON: Influencers ⌄
+A: Content Creators 01
+A: Rice Masterchef 02
+A: Artists 03
+A: Partnership
+A: Plan Visit
+A: Contact
+A: Instagram
+A: LinkedIn
+P: Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+H1: Bharat Mandapam, Pragati Maidan, New Delhi
+P: Oct 23-24-25, 2026
+H2: Bharat Mandapam
+H3: Exhibition Halls
+P: 5 halls, 50,000+ sqm
+H3: Conference Rooms
+P: Fully-equipped spaces
+H3: Parking Facility
+P: Multi-level basement
+H3: Food Courts
+P: Dining & cafeterias
+A: Open in Google Maps →
+H2: Hotels
+A: View All Hotels
+H2: How to Reach Bharat Mandapam
+P: Pragati Maidan, Mathura Road, New Delhi – 110001
+BUTTON: Metro Rail
+BUTTON: From Airport
+BUTTON: Railway Stations
+BUTTON: Bus Services
+BUTTON: By Car / Taxi
+H3: Fastest & Most Convenient
+H3: Supreme Court Station (Blue Line)
+P: Exit Gate 1 → Walk via Mathura Road → Enter Gate 10
+H3: Indraprastha Station (Blue Line)
+P: Exit Gate 1 → E-rickshaw or walk to main gate
+H3: Mandi House (Blue + Violet)
+P: Interchange station for multiple lines
+H3: ITO Station (Violet Line)
+P: Connect from Kashmere Gate or Central Secretariat
+H3: IGI Airport
+P: Airport Express → New Delhi → Yellow Line → Blue Line
+H3: New Delhi Rly Stn
+P: Yellow Line to Rajiv Chowk → Blue Line to Supreme Court
+H3: Indira Gandhi International (DEL)
+H3: Airport Express Metro
+P: Terminal 3 → New Delhi → Yellow Line → Blue Line to Supreme Court
+H3: Taxi / Cab
+P: Prepaid counters at all terminals. Drop at Gate 10, Mathura Road.
+H3: Event Shuttle
+P: 150+ Innova cabs run for delegates during summit days.
+H3: Nearest major terminals
+H3: New Delhi Railway Station
+P: Yellow Line to Rajiv Chowk → Blue Line to Supreme Court
+H3: Hazrat Nizamuddin
+P: Direct road route via Mathura Road
+H3: Old Delhi Railway Station
+P: Yellow Line → Blue Line interchange at Rajiv Chowk
+H3: DTC & cluster routes
+H3: Pragati Maidan Bus Stop
+P: Multiple DTC routes along Mathura Road
+H3: Bhairon Marg Stop
+P: Connects to Ring Road services
+H3: Driving & parking
+H3: Entry via Gate 10, Mathura Road
+P: Signage directs to visitor drop-off point
+H3: Multi-level Basement Parking
+P: Paid parking, entry from Bhairon Marg side
+H3: App Cabs (Uber / Ola)
+P: Follow signage to the cab bay near Gate 10
+H2: FAQs
+BUTTON: Do I need a visa to attend? +
+P: International delegates need a valid Indian business visa. BIRC issues invitation letters on request after registration is confirmed.
+BUTTON: Is accommodation included? +
+P: Accommodation is not included with standard passes. Partner hotels offer discounted delegate rates, and select sponsorship tiers include hotel stays.
+BUTTON: What's the dress code? +
+P: Business formal for conference sessions and ceremonies. Business casual is acceptable on the exhibition floor.
+A: Home
+A: About
+A: Conference
+A: Exhibition
+A: Experience
+A: Partnership

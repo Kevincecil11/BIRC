@@ -1,0 +1,85 @@
+BUTTON: ×
+A: Home
+A: About
+A: Conference
+A: Exhibition
+A: Experience
+BUTTON: Influencers ⌄
+A: Content Creators 01
+A: Rice Masterchef 02
+A: Artists 03
+A: Partnership
+A: Plan Visit
+A: Contact
+A: Instagram
+A: LinkedIn
+P: Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+H1: Your Content. The World's Largest Rice Stage.
+P: Apply for Creator Access. Standout profiles receive a VIP pass for all three days; other approved creators receive Day 3 access.
+A: Apply as a Creator →
+H2: Access Matched to Your Creator Profile.
+H3: Experience the Scale
+P: Capture a global conference, exhibition, networking rooms and the energy of the rice festival.
+H3: Meet Real Stories
+P: Connect with exporters, buyers, chefs, innovators and leaders from across the rice ecosystem.
+H3: Earn VIP Access
+P: The strongest profiles receive all-three-day VIP access; other approved creators join the Day 3 experience.
+H2: Your Creator Score Determines Your Pass.
+P: Every approved profile is reviewed on the same five parameters. No single metric decides the result.
+LI: Content Quality & Originality
+LI: Audience Relevance
+LI: Follower Strength
+LI: Engagement & Average Views
+LI: Consistency & Professionalism
+H3: VIP Creator Pass
+P: Full three-day access to the BIRC conference, exhibition and Rice Festival experience.
+H3: Day 3 Creator Pass
+P: Access to the Day 3 Rice Festival and assigned creator experiences.
+H2: You Create. We Give You a Story Worth Covering.
+P: Follower count is considered, but relevance, originality, engagement quality and consistency determine the complete creator score.
+P: Food, business, agriculture, travel or lifestyle creators
+P: Video-first storytellers on Instagram, YouTube or short-form platforms
+P: Creators who can publish original, high-quality event content
+P: Micro and established creators with a relevant, engaged audience
+H2: From Application to Access.
+H3: Share Your Profile
+P: Submit one short form, no login, account or OTP required.
+H3: Creator Score
+P: The BIRC team reviews quality, relevance, followers, engagement and consistency.
+H3: Get Your Access Tier
+P: Receive either VIP all-three-day or Day 3 Creator access on WhatsApp.
+H2: The Stories Will Be Created With or Without You.
+P: Apply now to be considered for BIRC 2026 Creator Access.
+H3: Apply in Under 60 Seconds.
+LABEL: Your Name *
+LABEL: WhatsApp Number *
+LABEL: Email
+LABEL: Instagram, YouTube or Creator Profile *
+LABEL: City / Country *
+LABEL: Content Category *
+OPTION: Select category
+OPTION: Food / Culinary
+OPTION: Travel / Culture
+OPTION: Lifestyle / Hospitality
+OPTION: Agriculture / Business
+OPTION: Regional-language
+OPTION: Photographer / Videographer
+BUTTON: Request Creator Access →
+P: No login. No OTP. Your profile link is used to verify content quality, relevance and engagement. By applying, you agree to be contacted by the BIRC team regarding this program.
+H2: Quick Answers.
+BUTTON: How is the VIP Creator Pass decided? +
+P: Profiles are scored on content quality and originality, audience relevance, follower strength, engagement and average views, consistency and professionalism.
+BUTTON: What if I do not qualify for VIP? +
+P: Approved creators who do not meet the VIP score receive a Day 3 Creator Pass for 25 October 2026.
+BUTTON: Does follower count alone decide the pass? +
+P: No. Follower count is one parameter; authentic engagement, content quality, relevance and consistency are considered together.
+BUTTON: Does applying guarantee creator access? +
+P: No. All applications are reviewed. Approved profiles receive either VIP all-three-day access or Day 3 access.
+BUTTON: What content will I need to create? +
+P: Selected creators will receive a clear content brief and access details before the event.
+A: Home
+A: Conference
+A: Exhibition
+A: Experience
+A: Partnership
+A: Contact

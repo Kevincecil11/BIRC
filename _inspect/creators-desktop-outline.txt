@@ -1,0 +1,218 @@
+<header#desktopMast.desktop-mast> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+  <div.desktop-shell> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+    <a> 
+      <img> 
+    <nav> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+      <a> Home
+      <a> About
+      <a> Conference
+      <div.desktop-ex> Exhibition ▾ Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <button> Exhibition ▾
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <a> Experience
+      <div.desktop-inf> Influencers ▾ Content Creators 01 Rice Masterchef 02 Artists 03
+        <button> Influencers ▾
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+      <a> Partnership
+      <a> Plan Visit
+      <a> Contact
+    <div.desktop-tools> Mobile view Register ↗
+      <a.mobile-switch> Mobile view
+      <a.desktop-register> Register ↗
+<header.bar> 
+  <a> 
+    <img.logo> 
+  <button#openMenu.menu> 
+    <i> 
+    <i> 
+<aside#drawer.drawer> × Home About Conference Exhibition Experience Influencers ⌄ Content Cr
+  <div.drawer-top> ×
+    <img.logo> 
+    <button#closeMenu.x> ×
+  <nav> Home About Conference Exhibition Experience Influencers ⌄ Content Crea
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <div> Influencers ⌄ Content Creators 01 Rice Masterchef 02 Artists 03
+      <button.nav-parent> Influencers ⌄
+        <small> ⌄
+      <div.nav-sub.open> Content Creators 01 Rice Masterchef 02 Artists 03
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+    <a> Partnership
+    <a> Plan Visit
+    <a> Contact
+  <div.drawer-social> Instagram · LinkedIn
+    <a> Instagram
+    <span> ·
+    <a> LinkedIn
+  <p> Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+    <br> 
+<main.page> Creator Access · BIRC 2026 Your Content. The World's Largest Rice Stag
+  <section#content-creators.hero> Creator Access · BIRC 2026 Your Content. The World's Largest Rice Stag
+    <span.eye> Creator Access · BIRC 2026
+    <h1.title> Your Content. The World's Largest Rice Stage.
+    <p.lead> Apply for Creator Access. Standout profiles receive a VIP pass for all
+    <a.btn> Apply as a Creator →
+    <div.stats> 30,000+ Participants 120+ Countries 3,000+ Buyers
+      <div.stat> 30,000+ Participants
+        <strong> 30,000+
+        <small> Participants
+      <div.stat> 120+ Countries
+        <strong> 120+
+        <small> Countries
+      <div.stat> 3,000+ Buyers
+        <strong> 3,000+
+        <small> Buyers
+  <section.access.pad> More than an event pass Access Matched to Your Creator Profile. 01 Exp
+    <header.head> More than an event pass Access Matched to Your Creator Profile.
+      <span.eye> More than an event pass
+      <h2.section-title> Access Matched to Your Creator Profile.
+    <div.access-list> 01 Experience the Scale Capture a global conference, exhibition, netwo
+      <article.access-row> 01 Experience the Scale Capture a global conference, exhibition, netwo
+        <span> 01
+        <h3> Experience the Scale
+        <p> Capture a global conference, exhibition, networking rooms and the ener
+      <article.access-row> 02 Meet Real Stories Connect with exporters, buyers, chefs, innovators
+        <span> 02
+        <h3> Meet Real Stories
+        <p> Connect with exporters, buyers, chefs, innovators and leaders from acr
+      <article.access-row> 03 Earn VIP Access The strongest profiles receive all-three-day VIP ac
+        <span> 03
+        <h3> Earn VIP Access
+        <p> The strongest profiles receive all-three-day VIP access; other approve
+  <section.score.pad> One application · two access outcomes Your Creator Score Determines Yo
+    <header.head> One application · two access outcomes Your Creator Score Determines Yo
+      <span.eye> One application · two access outcomes
+      <h2.section-title> Your Creator Score Determines Your Pass.
+      <p> Every approved profile is reviewed on the same five parameters. No sin
+    <ul.score-bullets> Content Quality & Originality Audience Relevance Follower Strength Eng
+      <li> Content Quality & Originality
+      <li> Audience Relevance
+      <li> Follower Strength
+      <li> Engagement & Average Views
+      <li> Consistency & Professionalism
+    <div.passes> Highest-scoring profiles · VIP VIP Creator Pass All 3 days · 23-24-25 
+      <article.pass.vip> Highest-scoring profiles · VIP VIP Creator Pass All 3 days · 23-24-25 
+        <small> Highest-scoring profiles · VIP
+        <h3> VIP Creator Pass
+        <strong> All 3 days · 23-24-25 October
+        <p> Full three-day access to the BIRC conference, exhibition and Rice Fest
+      <article.pass.day> Other approved creators Day 3 Creator Pass Day 3 only · 25 October Acc
+        <small> Other approved creators
+        <h3> Day 3 Creator Pass
+        <strong> Day 3 only · 25 October
+        <p> Access to the Day 3 Rice Festival and assigned creator experiences.
+  <section.criteria.pad> Built for the right creators You Create. We Give You a Story Worth Cov
+    <span.eye> Built for the right creators
+    <h2.section-title> You Create. We Give You a Story Worth Covering.
+    <p.lead> Follower count is considered, but relevance, originality, engagement q
+    <div.criteria-list> ✓ Food, business, agriculture, travel or lifestyle creators ✓ Video-fi
+      <div.criterion> ✓ Food, business, agriculture, travel or lifestyle creators
+        <span> ✓
+        <p> Food, business, agriculture, travel or lifestyle creators
+      <div.criterion> ✓ Video-first storytellers on Instagram, YouTube or short-form platfor
+        <span> ✓
+        <p> Video-first storytellers on Instagram, YouTube or short-form platforms
+      <div.criterion> ✓ Creators who can publish original, high-quality event content
+        <span> ✓
+        <p> Creators who can publish original, high-quality event content
+      <div.criterion> ✓ Micro and established creators with a relevant, engaged audience
+        <span> ✓
+        <p> Micro and established creators with a relevant, engaged audience
+  <section.process.pad> Simple by design From Application to Access. 01 Share Your Profile Sub
+    <header.head> Simple by design From Application to Access.
+      <span.eye> Simple by design
+      <h2.section-title> From Application to Access.
+    <div.steps> 01 Share Your Profile Submit one short form, no login, account or OTP 
+      <article.step> 01 Share Your Profile Submit one short form, no login, account or OTP 
+        <span> 01
+        <h3> Share Your Profile
+        <p> Submit one short form, no login, account or OTP required.
+      <article.step> 02 Creator Score The BIRC team reviews quality, relevance, followers, 
+        <span> 02
+        <h3> Creator Score
+        <p> The BIRC team reviews quality, relevance, followers, engagement and co
+      <article.step> 03 Get Your Access Tier Receive either VIP all-three-day or Day 3 Crea
+        <span> 03
+        <h3> Get Your Access Tier
+        <p> Receive either VIP all-three-day or Day 3 Creator access on WhatsApp.
+  <section#apply.apply.pad> Limited creator opportunities The Stories Will Be Created With or With
+    <span.eye> Limited creator opportunities
+    <h2.section-title> The Stories Will Be Created With or Without You.
+    <p> Apply now to be considered for BIRC 2026 Creator Access.
+    <form#creatorForm.form> Creator Access Application Apply in Under 60 Seconds. Your Name * What
+      <header> Creator Access Application Apply in Under 60 Seconds.
+        <span.eye> Creator Access Application
+        <h3> Apply in Under 60 Seconds.
+      <div.field> Your Name *
+        <label> Your Name *
+        <input#creator-name> 
+      <div.field> WhatsApp Number *
+        <label> WhatsApp Number *
+        <input#creator-phone> 
+      <div.field> Email
+        <label> Email
+        <input#creator-email> 
+      <div.field> Instagram, YouTube or Creator Profile *
+        <label> Instagram, YouTube or Creator Profile *
+        <input#creator-profile> 
+      <div.field> City / Country *
+        <label> City / Country *
+        <input#creator-city> 
+      <div.field> Content Category * Select category Food / Culinary Travel / Culture Li
+        <label> Content Category *
+        <select#creator-category> Select category Food / Culinary Travel / Culture Lifestyle / Hospitali
+      <button.submit> Request Creator Access →
+      <p.doc-note> No login. No OTP. Your profile link is used to verify content quality,
+      <div#creatorStatus.status> 
+  <section.faq-section.pad> Before you apply Quick Answers. How is the VIP Creator Pass decided? +
+    <header.head> Before you apply Quick Answers.
+      <span.eye> Before you apply
+      <h2.section-title> Quick Answers.
+    <div.faq-items> How is the VIP Creator Pass decided? + Profiles are scored on content 
+      <article.faq-item> How is the VIP Creator Pass decided? + Profiles are scored on content 
+        <button.faq-q> How is the VIP Creator Pass decided? +
+        <div.faq-a> Profiles are scored on content quality and originality, audience relev
+      <article.faq-item> What if I do not qualify for VIP? + Approved creators who do not meet 
+        <button.faq-q> What if I do not qualify for VIP? +
+        <div.faq-a> Approved creators who do not meet the VIP score receive a Day 3 Creato
+      <article.faq-item> Does follower count alone decide the pass? + No. Follower count is one
+        <button.faq-q> Does follower count alone decide the pass? +
+        <div.faq-a> No. Follower count is one parameter; authentic engagement, content qua
+      <article.faq-item> Does applying guarantee creator access? + No. All applications are rev
+        <button.faq-q> Does applying guarantee creator access? +
+        <div.faq-a> No. All applications are reviewed. Approved profiles receive either VI
+      <article.faq-item> What content will I need to create? + Selected creators will receive a
+        <button.faq-q> What content will I need to create? +
+        <div.faq-a> Selected creators will receive a clear content brief and access detail
+<footer.page.footer> Home Conference Exhibition Experience Partnership Contact © 2026 Bhara
+  <div.links> Home Conference Exhibition Experience Partnership Contact
+    <a> Home
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <a> Partnership
+    <a> Contact
+  <div.end> © 2026 Bharat International Rice Conference Privacy · Terms · Code of 
+    <br> 
+<footer.desktop-footer> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+  <div.desktop-shell> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+    <div> BIRC 2026 India at the centre. Every rice market in the room.
+      <h4> BIRC 2026
+      <p> India at the centre. Every rice market in the room.
+    <div> Explore Home About Conference
+      <small> Explore
+      <a> Home
+      <a> About
+      <a> Conference
+    <div> Participate Exhibition Partnership Influencers
+      <small> Participate
+      <a> Exhibition
+      <a> Partnership
+      <a> Influencers
+    <div> Visit Plan Visit Contact
+      <small> Visit
+      <a> Plan Visit
+      <a> Contact

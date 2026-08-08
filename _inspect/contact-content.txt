@@ -1,0 +1,63 @@
+BUTTON: ×
+A: Home
+A: About
+A: Conference
+A: Exhibition
+A: Experience
+BUTTON: Influencers ⌄
+A: Content Creators 01
+A: Rice Masterchef 02
+A: Artists 03
+A: Partnership
+A: Plan Visit
+A: Contact
+A: Instagram
+A: LinkedIn
+P: Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+H1: Contact Us
+P: Questions about BIRC 2026? Our team is here to help.
+H2: You Have Questions. We Have Answers.
+P: Reach out about visiting, exhibiting, sponsoring or partnering at BIRC 2026, our team is ready to help with every detail, big or small.
+H3: Delegate support
+P: Registration, travel, visas and access.
+A: Plan your visit →
+H3: Exhibition team
+P: Profiles, floor plan and space rental.
+A: Explore exhibition →
+H3: Sponsorship team
+P: Packages and special opportunities.
+A: View partnership →
+H3: Programme team
+P: Speakers, agenda and learning sessions.
+A: View conference →
+H2: Reach the BIRC team.
+H3: World Trade Center
+H3: Write to us
+P: booking@birc.in visit@birc.in
+A: booking@birc.in
+A: visit@birc.in
+H3: Call the team
+P: +91-7303093821
+A: +91-7303093821
+H3: BIRC social channels
+H2: Tell Us What You Need
+P: We will route your message to the right BIRC team.
+LABEL: Name
+LABEL: Email
+LABEL: Phone
+LABEL: I need help with
+OPTION: Select an enquiry
+OPTION: Visiting BIRC
+OPTION: Exhibiting at BIRC
+OPTION: Sponsorship and partnership
+OPTION: Conference and programme
+OPTION: Media enquiry
+OPTION: Other
+LABEL: Message
+BUTTON: Send enquiry →
+A: Home
+A: About
+A: Conference
+A: Exhibition
+A: Experience
+A: Plan Visit

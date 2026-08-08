@@ -1,0 +1,250 @@
+<header#desktopMast.desktop-mast> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+  <div.desktop-shell> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+    <a> 
+      <img> 
+    <nav> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+      <a> Home
+      <a> About
+      <a> Conference
+      <div.desktop-ex> Exhibition ▾ Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <button> Exhibition ▾
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <a> Experience
+      <div.desktop-inf> Influencers ▾ Content Creators 01 Rice Masterchef 02 Artists 03
+        <button> Influencers ▾
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+      <a> Partnership
+      <a> Plan Visit
+      <a> Contact
+    <div.desktop-tools> Mobile view Register ↗
+      <a.mobile-switch> Mobile view
+      <a.desktop-register> Register ↗
+<header.bar> 
+  <a> 
+    <img.logo> 
+  <button#openMenu.menu> 
+    <i> 
+    <i> 
+<aside#drawer.drawer> × Home About Conference Exhibition ⌄ Why exhibit 01 Exhibitor profile 
+  <div.drawer-top> ×
+    <img.logo> 
+    <button#closeMenu.x> ×
+  <nav.canonical-nav> Home About Conference Exhibition ⌄ Why exhibit 01 Exhibitor profile 02
+    <a> Home
+    <a> About
+    <a> Conference
+    <div.exhibition-group> Exhibition ⌄ Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <button.exhibition-parent> Exhibition ⌄
+        <small> ⌄
+      <div.exhibition-sub> Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+    <a> Experience
+    <div.influencer-group> Influencers ⌄ Content Creators 01 Rice Masterchef 02 Artists 03
+      <button.influencer-parent> Influencers ⌄
+        <small> ⌄
+      <div.influencer-sub> Content Creators 01 Rice Masterchef 02 Artists 03
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+    <a> Partnership
+    <a> Plan Visit
+    <a> Contact
+  <div.drawer-social> Instagram · LinkedIn
+    <a> Instagram
+    <span> ·
+    <a> LinkedIn
+  <p> Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+    <br> 
+<main.page> Plan Your Visit Bharat Mandapam, Pragati Maidan, New Delhi Oct 23-24-2
+  <section.hero> Plan Your Visit Bharat Mandapam, Pragati Maidan, New Delhi Oct 23-24-2
+    <span.eye> Plan Your Visit
+    <h1.title> Bharat Mandapam, Pragati Maidan, New Delhi
+    <p.lead> Oct 23-24-25, 2026
+    <div.hero-foot> Premium venue 50,000+ sqm infrastructure
+      <span> Premium venue
+      <span> 50,000+ sqm infrastructure
+  <section#venue.venue.pad> Venue & Location Bharat Mandapam Exhibition Halls 5 halls, 50,000+ sqm
+    <header.head> Venue & Location Bharat Mandapam
+      <span.eye> Venue & Location
+      <h2.section-title> Bharat Mandapam
+    <div.venue-grid> Exhibition Halls 5 halls, 50,000+ sqm 940+ Conference Rooms Fully-equi
+      <div.venue-row> Exhibition Halls 5 halls, 50,000+ sqm 940+
+        <div> Exhibition Halls 5 halls, 50,000+ sqm
+        <strong> 940+
+      <div.venue-row> Conference Rooms Fully-equipped spaces 30+
+        <div> Conference Rooms Fully-equipped spaces
+        <strong> 30+
+      <div.venue-row> Parking Facility Multi-level basement 900+
+        <div> Parking Facility Multi-level basement
+        <strong> 900+
+      <div.venue-row> Food Courts Dining & cafeterias 15+
+        <div> Food Courts Dining & cafeterias
+        <strong> 15+
+    <div.map> 
+    <a.btn> Open in Google Maps →
+  <section#hotels.hotels.pad> Stay nearby Hotels Hotel A $$–$$$ Hotel B $$ View All Hotels
+    <header.head> Stay nearby Hotels
+      <span.eye> Stay nearby
+      <h2.section-title> Hotels
+    <div.hotel-list> Hotel A $$–$$$ Hotel B $$
+      <div.hotel> Hotel A $$–$$$
+        <strong> Hotel A
+        <span> $$–$$$
+      <div.hotel> Hotel B $$
+        <strong> Hotel B
+        <span> $$
+    <a.btn> View All Hotels
+  <section#travel.travel.pad> Travel How to Reach Bharat Mandapam Pragati Maidan, Mathura Road, New 
+    <header.head> Travel How to Reach Bharat Mandapam
+      <span.eye> Travel
+      <h2.section-title> How to Reach Bharat Mandapam
+    <p.travel-address> Pragati Maidan, Mathura Road, New Delhi – 110001
+    <div.travel-tabs> Metro Rail From Airport Railway Stations Bus Services By Car / Taxi
+      <button.travel-tab.active> Metro Rail
+      <button.travel-tab> From Airport
+      <button.travel-tab> Railway Stations
+      <button.travel-tab> Bus Services
+      <button.travel-tab> By Car / Taxi
+    <div.travel-panel.active> Fastest & Most Convenient Key Stations / Points Supreme Court Station 
+      <h3> Fastest & Most Convenient
+      <div.group> Key Stations / Points
+      <div.route> Supreme Court Station (Blue Line) 1.2 km · 5–7 min walk Exit Gate 1 → 
+        <h3> Supreme Court Station (Blue Line)
+        <small> 1.2 km · 5–7 min walk
+        <p> Exit Gate 1 → Walk via Mathura Road → Enter Gate 10
+      <div.route> Indraprastha Station (Blue Line) 1.1 km · 6–8 min walk Exit Gate 1 → E
+        <h3> Indraprastha Station (Blue Line)
+        <small> 1.1 km · 6–8 min walk
+        <p> Exit Gate 1 → E-rickshaw or walk to main gate
+      <div.route> Mandi House (Blue + Violet) 1.7 km · 10–12 min by auto Interchange sta
+        <h3> Mandi House (Blue + Violet)
+        <small> 1.7 km · 10–12 min by auto
+        <p> Interchange station for multiple lines
+      <div.route> ITO Station (Violet Line) 1.6 km · 8–10 min by auto Connect from Kashm
+        <h3> ITO Station (Violet Line)
+        <small> 1.6 km · 8–10 min by auto
+        <p> Connect from Kashmere Gate or Central Secretariat
+      <div.group> Metro Routes from Key Locations
+      <div.route> IGI Airport ~60 min · ₹60–80 Airport Express → New Delhi → Yellow Line
+        <h3> IGI Airport
+        <small> ~60 min · ₹60–80
+        <p> Airport Express → New Delhi → Yellow Line → Blue Line
+      <div.route> New Delhi Rly Stn ~15 min · ₹30–40 Yellow Line to Rajiv Chowk → Blue L
+        <h3> New Delhi Rly Stn
+        <small> ~15 min · ₹30–40
+        <p> Yellow Line to Rajiv Chowk → Blue Line to Supreme Court
+      <div.group> Pro Tips
+      <div.tip> ✦ Use smart card for faster entry
+      <div.tip> ✦ Avoid peak hours (8–10 AM, 5–8 PM)
+      <div.tip> ✦ Metro connects to Gate 10 directly
+    <div.travel-panel> Indira Gandhi International (DEL) Options from IGI Airport Express Met
+      <h3> Indira Gandhi International (DEL)
+      <div.group> Options from IGI
+      <div.route> Airport Express Metro ~60 min · ₹60–80 Terminal 3 → New Delhi → Yellow
+        <h3> Airport Express Metro
+        <small> ~60 min · ₹60–80
+        <p> Terminal 3 → New Delhi → Yellow Line → Blue Line to Supreme Court
+      <div.route> Taxi / Cab 45–70 min · ₹600–900 Prepaid counters at all terminals. Dro
+        <h3> Taxi / Cab
+        <small> 45–70 min · ₹600–900
+        <p> Prepaid counters at all terminals. Drop at Gate 10, Mathura Road.
+      <div.route> Event Shuttle Scheduled service 150+ Innova cabs run for delegates dur
+        <h3> Event Shuttle
+        <small> Scheduled service
+        <p> 150+ Innova cabs run for delegates during summit days.
+      <div.group> Pro Tips
+      <div.tip> ✦ Distance from IGI is approximately 17 km
+      <div.tip> ✦ Allow extra time during morning peak traffic
+    <div.travel-panel> Nearest major terminals New Delhi Railway Station ~5 km · 15 min by me
+      <h3> Nearest major terminals
+      <div.route> New Delhi Railway Station ~5 km · 15 min by metro Yellow Line to Rajiv
+        <h3> New Delhi Railway Station
+        <small> ~5 km · 15 min by metro
+        <p> Yellow Line to Rajiv Chowk → Blue Line to Supreme Court
+      <div.route> Hazrat Nizamuddin ~5 km · 20 min by taxi Direct road route via Mathura
+        <h3> Hazrat Nizamuddin
+        <small> ~5 km · 20 min by taxi
+        <p> Direct road route via Mathura Road
+      <div.route> Old Delhi Railway Station ~7 km · 25 min by metro Yellow Line → Blue L
+        <h3> Old Delhi Railway Station
+        <small> ~7 km · 25 min by metro
+        <p> Yellow Line → Blue Line interchange at Rajiv Chowk
+      <div.group> Pro Tips
+      <div.tip> ✦ Metro is faster than road during peak hours
+      <div.tip> ✦ Prepaid autos available at all station exits
+    <div.travel-panel> DTC & cluster routes Pragati Maidan Bus Stop Adjacent to Gate 10 Multi
+      <h3> DTC & cluster routes
+      <div.route> Pragati Maidan Bus Stop Adjacent to Gate 10 Multiple DTC routes along 
+        <h3> Pragati Maidan Bus Stop
+        <small> Adjacent to Gate 10
+        <p> Multiple DTC routes along Mathura Road
+      <div.route> Bhairon Marg Stop ~800 m · 8 min walk Connects to Ring Road services
+        <h3> Bhairon Marg Stop
+        <small> ~800 m · 8 min walk
+        <p> Connects to Ring Road services
+      <div.group> Pro Tips
+      <div.tip> ✦ Use the DTC app for live route timings
+      <div.tip> ✦ AC cluster buses run frequently on Mathura Road
+    <div.travel-panel> Driving & parking Entry via Gate 10, Mathura Road Main delegate entran
+      <h3> Driving & parking
+      <div.route> Entry via Gate 10, Mathura Road Main delegate entrance Signage directs
+        <h3> Entry via Gate 10, Mathura Road
+        <small> Main delegate entrance
+        <p> Signage directs to visitor drop-off point
+      <div.route> Multi-level Basement Parking 900+ capacity Paid parking, entry from Bh
+        <h3> Multi-level Basement Parking
+        <small> 900+ capacity
+        <p> Paid parking, entry from Bhairon Marg side
+      <div.route> App Cabs (Uber / Ola) Designated pickup zone Follow signage to the cab
+        <h3> App Cabs (Uber / Ola)
+        <small> Designated pickup zone
+        <p> Follow signage to the cab bay near Gate 10
+      <div.group> Pro Tips
+      <div.tip> ✦ Arrive early, parking fills by mid-morning
+      <div.tip> ✦ Mathura Road is congested 5–8 PM
+  <section#faqs.faq-section.pad> Delegate help FAQs Do I need a visa to attend? + International delegat
+    <header.head> Delegate help FAQs
+      <span.eye> Delegate help
+      <h2.section-title> FAQs
+    <article.faq> Do I need a visa to attend? + International delegates need a valid Ind
+      <button> Do I need a visa to attend? +
+        <span> +
+      <div.answer> International delegates need a valid Indian business visa. BIRC issues
+        <div> International delegates need a valid Indian business visa. BIRC issues
+    <article.faq> Is accommodation included? + Accommodation is not included with standa
+      <button> Is accommodation included? +
+        <span> +
+      <div.answer> Accommodation is not included with standard passes. Partner hotels off
+        <div> Accommodation is not included with standard passes. Partner hotels off
+    <article.faq> What's the dress code? + Business formal for conference sessions and c
+      <button> What's the dress code? +
+        <span> +
+      <div.answer> Business formal for conference sessions and ceremonies. Business casua
+        <div> Business formal for conference sessions and ceremonies. Business casua
+<footer#contact.page.footer> Home About Conference Exhibition Experience Partnership © 2026 Bharat 
+  <div.links> Home About Conference Exhibition Experience Partnership
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <a> Partnership
+  <div.end> © 2026 Bharat International Rice Conference Privacy · Terms · Code of 
+    <br> 
+<footer.desktop-footer> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+  <div.desktop-shell> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+    <div> BIRC 2026 India at the centre. Every rice market in the room.
+      <h4> BIRC 2026
+      <p> India at the centre. Every rice market in the room.
+    <div> Explore Home About Conference
+      <small> Explore
+      <a> Home
+      <a> About
+      <a> Conference
+    <div> Participate Exhibition Partnership Influencers
+      <small> Participate
+      <a> Exhibition
+      <a> Partnership
+      <a> Influencers
+    <div> Visit Plan Visit Contact
+      <small> Visit
+      <a> Plan Visit
+      <a> Contact

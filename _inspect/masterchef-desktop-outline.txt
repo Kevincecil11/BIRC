@@ -1,0 +1,156 @@
+<header#desktopMast.desktop-mast> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+  <div.desktop-shell> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+    <a> 
+      <img> 
+    <nav> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+      <a> Home
+      <a> About
+      <a> Conference
+      <div.desktop-ex> Exhibition ▾ Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <button> Exhibition ▾
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <a> Experience
+      <div.desktop-inf> Influencers ▾ Content Creators 01 Rice Masterchef 02 Artists 03
+        <button> Influencers ▾
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+      <a> Partnership
+      <a> Plan Visit
+      <a> Contact
+    <div.desktop-tools> Mobile view Register ↗
+      <a.mobile-switch> Mobile view
+      <a.desktop-register> Register ↗
+<header.bar> 
+  <a> 
+    <img.logo> 
+  <button#openMenu.menu> 
+    <i> 
+    <i> 
+<aside#drawer.drawer> × Home About Conference Exhibition Experience Influencers ⌄ Content Cr
+  <div.drawer-top> ×
+    <img.logo> 
+    <button#closeMenu.x> ×
+  <nav> Home About Conference Exhibition Experience Influencers ⌄ Content Crea
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <div> Influencers ⌄ Content Creators 01 Rice Masterchef 02 Artists 03
+      <button.nav-parent> Influencers ⌄
+        <small> ⌄
+      <div.nav-sub.open> Content Creators 01 Rice Masterchef 02 Artists 03
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+    <a> Partnership
+    <a> Plan Visit
+    <a> Contact
+  <div.drawer-social> Instagram · LinkedIn
+    <a> Instagram
+    <span> ·
+    <a> LinkedIn
+  <p> Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+    <br> 
+<main.page> Rice Masterchef · BIRC 2026 Your Rice Dish. The World's Biggest Rice S
+  <section#rice-masterchef.masterchef> Rice Masterchef · BIRC 2026 Your Rice Dish. The World's Biggest Rice S
+    <section.master-hero> Rice Masterchef · BIRC 2026 Your Rice Dish. The World's Biggest Rice S
+      <span.eye> Rice Masterchef · BIRC 2026
+      <h2.title> Your Rice Dish. The World's Biggest Rice Stage.
+      <p.lead> Bring your signature rice dish and compete at BIRC 2026. Standout crea
+      <a.btn> Enter the Competition →
+      <div.master-stats> 30,000+ Expected participants 120+ Countries 3,000+ Buyers
+        <div.master-stat> 30,000+ Expected participants
+        <div.master-stat> 120+ Countries
+        <div.master-stat> 3,000+ Buyers
+    <section.moment> Your skill. A global audience. Turn One Rice Dish Into Your Moment. 01
+      <span.eye> Your skill. A global audience.
+      <h2.section-title> Turn One Rice Dish Into Your Moment.
+      <div.moment-list> 01 Cook Live Present your signature rice creation in a high-energy cul
+        <article.moment-row> 01 Cook Live Present your signature rice creation in a high-energy cul
+        <article.moment-row> 02 Show Your Craft Demonstrate flavour, technique, originality and pre
+        <article.moment-row> 03 Earn VIP Access The strongest creator profiles receive all-three-da
+    <section.winner> What the winner takes home Cook the Winning Plate. Leave With More Tha
+      <span.eye> What the winner takes home
+      <h2> Cook the Winning Plate. Leave With More Than the Title.
+      <p> One rice dish, judged live at Bharat Mandapam. The BIRC Rice MasterChe
+      <div.prize> Winning prize ₹1,00,000 One lakh rupees
+        <small> Winning prize
+        <strong> ₹1,00,000
+        <span> One lakh rupees
+      <div.winner-list> 01 ₹1 Lakh Cash Prize A winning prize of ₹1,00,000 awarded to the Rice
+        <article.winner-row> 01 ₹1 Lakh Cash Prize A winning prize of ₹1,00,000 awarded to the Rice
+        <article.winner-row> 02 Media Byte A dedicated media interaction — your dish, your techniqu
+        <article.winner-row> 03 On-Stage Recognition Called to the BIRC main stage and felicitated 
+    <section.master-score> One application · two access outcomes Your Creator Score Determines Yo
+      <span.eye> One application · two access outcomes
+      <h2.section-title> Your Creator Score Determines Your Pass.
+      <p> Every approved profile is reviewed on the same five parameters. No sin
+      <div.master-passes> Highest-scoring profiles · VIP VIP Creator Pass All 3 days · 23-24-25 
+        <article.master-pass.vip> Highest-scoring profiles · VIP VIP Creator Pass All 3 days · 23-24-25 
+        <article.master-pass> Other approved creators · Day 3 Day 3 Creator Pass Day 3 only · 25 Oct
+    <section.eligibility> Built for the right creators If Rice Is Your Canvas, This Stage Is for
+      <span.eye> Built for the right creators
+      <h2.section-title> If Rice Is Your Canvas, This Stage Is for You.
+      <p> Follower count is considered, but relevance, originality, engagement q
+      <div.content-list.dark-list> 01 Cooking Creators Cooking influencers, home chefs and culinary creat
+        <article.content-row> 01 Cooking Creators Cooking influencers, home chefs and culinary creat
+        <article.content-row> 02 Original Rice Dish Creators with an original signature rice dish.
+        <article.content-row> 03 Live Presentation Confident cooks comfortable presenting their proc
+        <article.content-row> 04 Food Storytelling Food storytellers ready to create competition-led
+    <section.chef-process> Simple by design From Application to Access. 01 Enter Your Dish Share 
+      <span.eye> Simple by design
+      <h2.section-title> From Application to Access.
+      <div.content-list> 01 Enter Your Dish Share your profile and the name of your signature r
+        <article.content-row> 01 Enter Your Dish Share your profile and the name of your signature r
+        <article.content-row> 02 Entry and Profile Review The team reviews cooking skill, originalit
+        <article.content-row> 03 Receive Your Result Shortlisted entrants receive the competition br
+    <section#masterchef-apply.master-apply> Rice Masterchef application Enter in Under 60 Seconds. Your Name * Wha
+      <span.eye> Rice Masterchef application
+      <h2.section-title> Enter in Under 60 Seconds.
+      <form#masterForm.master-form> Your Name * WhatsApp Number * Email * Cooking Profile or Best Cooking 
+        <div.field> Your Name *
+        <div.field> WhatsApp Number *
+        <div.field> Email *
+        <div.field> Cooking Profile or Best Cooking Video *
+        <div.field> City / Country *
+        <div.field> Your Signature Rice Dish *
+        <button.submit> Submit My Entry →
+        <p.doc-note> No login. No OTP. Your profile link is used to verify content quality,
+        <div#masterStatus.status> 
+    <section.faq-section.pad> Before you apply Quick Answers. Who can apply? + Cooking influencers, 
+      <header.head> Before you apply Quick Answers.
+        <span.eye> Before you apply
+        <h2.section-title> Quick Answers.
+      <div.faq-items> Who can apply? + Cooking influencers, home chefs and culinary creators
+        <article.faq-item> Who can apply? + Cooking influencers, home chefs and culinary creators
+        <article.faq-item> How do I receive VIP access? + The highest-scoring creator profiles re
+        <article.faq-item> What if I am not selected for VIP? + Approved competition creators who
+        <article.faq-item> Does applying confirm my competition place? + No. The BIRC team will s
+        <article.faq-item> When will I receive the competition rules? + Shortlisted creators will
+<footer.page.footer> Home Conference Exhibition Experience Partnership Contact © 2026 Bhara
+  <div.links> Home Conference Exhibition Experience Partnership Contact
+    <a> Home
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <a> Partnership
+    <a> Contact
+  <div.end> © 2026 Bharat International Rice Conference Privacy · Terms · Code of 
+    <br> 
+<footer.desktop-footer> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+  <div.desktop-shell> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+    <div> BIRC 2026 India at the centre. Every rice market in the room.
+      <h4> BIRC 2026
+      <p> India at the centre. Every rice market in the room.
+    <div> Explore Home About Conference
+      <small> Explore
+      <a> Home
+      <a> About
+      <a> Conference
+    <div> Participate Exhibition Partnership Influencers
+      <small> Participate
+      <a> Exhibition
+      <a> Partnership
+      <a> Influencers
+    <div> Visit Plan Visit Contact
+      <small> Visit
+      <a> Plan Visit
+      <a> Contact

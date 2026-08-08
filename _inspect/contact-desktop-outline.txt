@@ -1,0 +1,158 @@
+<header#desktopMast.desktop-mast> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+  <div.desktop-shell> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+    <a> 
+      <img> 
+    <nav> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+      <a> Home
+      <a> About
+      <a> Conference
+      <div.desktop-ex> Exhibition ▾ Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <button> Exhibition ▾
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <a> Experience
+      <div.desktop-inf> Influencers ▾ Content Creators 01 Rice Masterchef 02 Artists 03
+        <button> Influencers ▾
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+      <a> Partnership
+      <a> Plan Visit
+      <a> Contact
+    <div.desktop-tools> Mobile view Register ↗
+      <a.mobile-switch> Mobile view
+      <a.desktop-register> Register ↗
+<header.bar> 
+  <a> 
+    <img.logo> 
+  <button#openMenu.menu> 
+    <i> 
+    <i> 
+<aside#drawer.drawer> × Home About Conference Exhibition Experience Influencers ⌄ Content Cr
+  <div.drawer-top> ×
+    <img.logo> 
+    <button#closeMenu.x> ×
+  <nav> Home About Conference Exhibition Experience Influencers ⌄ Content Crea
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <div.influencer-group> Influencers ⌄ Content Creators 01 Rice Masterchef 02 Artists 03
+      <button.influencer-parent> Influencers ⌄
+        <small> ⌄
+      <div.influencer-sub> Content Creators 01 Rice Masterchef 02 Artists 03
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+    <a> Partnership
+    <a> Plan Visit
+    <a> Contact
+  <div.drawer-social> Instagram · LinkedIn
+    <a> Instagram
+    <span> ·
+    <a> LinkedIn
+  <p> Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+    <br> 
+<main.page> We'd love to hear from you Contact Us Questions about BIRC 2026? Our t
+  <section.hero> We'd love to hear from you Contact Us Questions about BIRC 2026? Our t
+    <span.eye> We'd love to hear from you
+    <h1.title> Contact Us
+    <p.lead> Questions about BIRC 2026? Our team is here to help.
+    <div.hero-foot> Contact Us 23-24-25 October 2026
+      <span> Contact Us
+      <span> 23-24-25 October 2026
+  <section.intro> Get in touch You Have Questions. We Have Answers. Reach out about visi
+    <span.eye> Get in touch
+    <h2.section-title> You Have Questions. We Have Answers.
+      <br> 
+    <p> Reach out about visiting, exhibiting, sponsoring or partnering at BIRC
+    <div.routes> Visit Delegate support Registration, travel, visas and access. Plan yo
+      <article.route> Visit Delegate support Registration, travel, visas and access. Plan yo
+        <small> Visit
+        <h3> Delegate support
+        <p> Registration, travel, visas and access.
+        <a> Plan your visit →
+      <article.route> Exhibit Exhibition team Profiles, floor plan and space rental. Explore
+        <small> Exhibit
+        <h3> Exhibition team
+        <p> Profiles, floor plan and space rental.
+        <a> Explore exhibition →
+      <article.route> Partner Sponsorship team Packages and special opportunities. View part
+        <small> Partner
+        <h3> Sponsorship team
+        <p> Packages and special opportunities.
+        <a> View partnership →
+      <article.route> Conference Programme team Speakers, agenda and learning sessions. View
+        <small> Conference
+        <h3> Programme team
+        <p> Speakers, agenda and learning sessions.
+        <a> View conference →
+  <section.official-contact> Reach the BIRC team. Location World Trade Center 73 LGF, World Trade C
+    <header.head> Reach the BIRC team.
+      <h2.section-title> Reach the BIRC team.
+    <div.contact-stack> Location World Trade Center 73 LGF, World Trade Center, Barakhamba Ave
+      <article.contact-row> Location World Trade Center 73 LGF, World Trade Center, Barakhamba Ave
+        <small> Location
+        <h3> World Trade Center
+        <address> 73 LGF, World Trade Center, Barakhamba Avenue, Connaught Place, New De
+        <span.hours> Mon–Sun · 09:00–18:00 (local)
+      <article.contact-row> Email Write to us booking@birc.in visit@birc.in
+        <small> Email
+        <h3> Write to us
+        <p> booking@birc.in visit@birc.in
+      <article.contact-row> Contact Call the team +91-7303093821
+        <small> Contact
+        <h3> Call the team
+        <p> +91-7303093821
+      <article.contact-row> Follow Us BIRC social channels
+        <small> Follow Us
+        <h3> BIRC social channels
+        <div.follow-links> 
+  <section.form-section> Send an enquiry Tell Us What You Need We will route your message to th
+    <header.head> Send an enquiry Tell Us What You Need We will route your message to th
+      <span.eye> Send an enquiry
+      <h2.section-title> Tell Us What You Need
+      <p.lead> We will route your message to the right BIRC team.
+    <form#contactForm.form> Name Email Phone I need help with Select an enquiry Visiting BIRC Exhi
+      <div.field> Name
+        <label> Name
+        <input#name> 
+      <div.field> Email
+        <label> Email
+        <input#email> 
+      <div.field> Phone
+        <label> Phone
+        <input#phone> 
+      <div.field> I need help with Select an enquiry Visiting BIRC Exhibiting at BIRC Sp
+        <label> I need help with
+        <select#subject> Select an enquiry Visiting BIRC Exhibiting at BIRC Sponsorship and par
+      <div.field> Message
+        <label> Message
+        <textarea#message> 
+      <button#submitButton.submit> Send enquiry →
+      <div#formStatus.status> 
+<footer.page.footer> Home About Conference Exhibition Experience Plan Visit © 2026 Bharat I
+  <div.links> Home About Conference Exhibition Experience Plan Visit
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <a> Plan Visit
+  <div.end> © 2026 Bharat International Rice Conference Privacy · Terms · Code of 
+    <br> 
+<footer.desktop-footer> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+  <div.desktop-shell> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+    <div> BIRC 2026 India at the centre. Every rice market in the room.
+      <h4> BIRC 2026
+      <p> India at the centre. Every rice market in the room.
+    <div> Explore Home About Conference
+      <small> Explore
+      <a> Home
+      <a> About
+      <a> Conference
+    <div> Participate Exhibition Partnership Influencers
+      <small> Participate
+      <a> Exhibition
+      <a> Partnership
+      <a> Influencers
+    <div> Visit Plan Visit Contact
+      <small> Visit
+      <a> Plan Visit
+      <a> Contact

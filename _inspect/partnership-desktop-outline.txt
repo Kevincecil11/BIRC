@@ -1,0 +1,145 @@
+<header#desktopMast.desktop-mast> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+  <div.desktop-shell> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+    <a> 
+      <img> 
+    <nav> Home About Conference Exhibition ▾ Why exhibit 01 Exhibitor profile 02
+      <a> Home
+      <a> About
+      <a> Conference
+      <div.desktop-ex> Exhibition ▾ Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <button> Exhibition ▾
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <a> Experience
+      <div.desktop-inf> Influencers ▾ Content Creators 01 Rice Masterchef 02 Artists 03
+        <button> Influencers ▾
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+      <a> Partnership
+      <a> Plan Visit
+      <a> Contact
+    <div.desktop-tools> Mobile view Register ↗
+      <a.mobile-switch> Mobile view
+      <a.desktop-register> Register ↗
+<div.progress> 
+  <i#progress> 
+<header#bar.bar> 
+  <a> 
+    <img.site-logo> 
+  <button#openMenu.menu-btn> 
+    <i> 
+    <i> 
+<aside#drawer.drawer> × Home About Conference Exhibition ⌄ Why exhibit 01 Exhibitor profile 
+  <div.drawer-top> ×
+    <img.site-logo> 
+    <button#closeMenu.drawer-close> ×
+  <nav.canonical-nav> Home About Conference Exhibition ⌄ Why exhibit 01 Exhibitor profile 02
+    <a> Home
+    <a> About
+    <a> Conference
+    <div.exhibition-group> Exhibition ⌄ Why exhibit 01 Exhibitor profile 02 Space rental 03
+      <button.exhibition-parent> Exhibition ⌄
+        <small> ⌄
+      <div.exhibition-sub> Why exhibit 01 Exhibitor profile 02 Space rental 03
+        <div> Why exhibit 01 Exhibitor profile 02 Space rental 03
+    <a> Experience
+    <div.influencer-group> Influencers ⌄ Content Creators 01 Rice Masterchef 02 Artists 03
+      <button.influencer-parent> Influencers ⌄
+        <small> ⌄
+      <div.influencer-sub> Content Creators 01 Rice Masterchef 02 Artists 03
+        <div> Content Creators 01 Rice Masterchef 02 Artists 03
+    <a> Partnership
+    <a> Plan Visit
+    <a> Contact
+  <div.drawer-social> Instagram · LinkedIn
+    <a> Instagram
+    <span> ·
+    <a> LinkedIn
+  <p> Bharat Mandapam, Pragati Maidan New Delhi · 23-24-25 October 2026
+    <br> 
+<main.dv-card> Partnership Premium brand positioning at the world's leading rice indu
+  <div> Partnership Premium brand positioning at the world's leading rice indu
+    <div.wf-h> Partnership
+    <div> Premium brand positioning at the world's leading rice industry platfor
+  <div> Sponsor pavilion / branded stage moment at the summit
+    <div.img-slot> Sponsor pavilion / branded stage moment at the summit
+      <div.img-slot-cap> Sponsor pavilion / branded stage moment at the summit
+  <div> ✦ CHOOSE YOUR TIER Sponsorship Packages Tap any card for full benefits
+    <div> ✦ CHOOSE YOUR TIER Sponsorship Packages Tap any card for full benefits
+      <div> ✦ CHOOSE YOUR TIER
+      <div.wf-h> Sponsorship Packages
+      <div> Tap any card for full benefits.
+    <div> FLAGSHIP PT Platinum Sponsor ₹50,00,000 $57,480 · + GST Package Benefi
+      <details.wf-tier-card> FLAGSHIP PT Platinum Sponsor ₹50,00,000 $57,480 · + GST Package Benefi
+        <div> FLAGSHIP
+        <summary> PT Platinum Sponsor ₹50,00,000 $57,480 · + GST
+        <div.wf-acc-body.acc-body> Package Benefits 36 sq. meters Raw/Shell exhibition space 1 Hoarding o
+      <details.wf-tier-card> DI Diamond Sponsor ₹30,00,000 $34,490 · + GST Package Benefits 27 sq. 
+        <summary> DI Diamond Sponsor ₹30,00,000 $34,490 · + GST
+        <div.wf-acc-body.acc-body> Package Benefits 27 sq. meters Raw/Shell exhibition space 3 Buyers nom
+      <details.wf-tier-card> GO Gold Sponsor ₹20,00,000 $23,000 · + GST Package Benefits 18 sq. met
+        <summary> GO Gold Sponsor ₹20,00,000 $23,000 · + GST
+        <div.wf-acc-body.acc-body> Package Benefits 18 sq. meters Shell exhibition space 1 B2B Meeting ro
+      <details.wf-tier-card> SI Silver Sponsor ₹10,00,000 $11,500 · + GST Package Benefits 18 sq. m
+        <summary> SI Silver Sponsor ₹10,00,000 $11,500 · + GST
+        <div.wf-acc-body.acc-body> Package Benefits 18 sq. meters Shell exhibition space 2 Buyers nominat
+      <details.wf-tier-card> BR Bronze Sponsor ₹5,00,000 $5,750 · + GST Package Benefits 9 sq. mete
+        <summary> BR Bronze Sponsor ₹5,00,000 $5,750 · + GST
+        <div.wf-acc-body.acc-body> Package Benefits 9 sq. meters Shell exhibition space 2 Buyers nominati
+  <div> Special Opportunities ✦ Gala Dinner Sponsor ₹20,00,000 Host dinner for
+    <div.wf-h> Special Opportunities
+    <div> ✦ Gala Dinner Sponsor ₹20,00,000 Host dinner for 500 guests incl. exhi
+      <details.wf-opp-card> ✦ Gala Dinner Sponsor ₹20,00,000 Host dinner for 500 guests incl. exhi
+        <summary> ✦ Gala Dinner Sponsor ₹20,00,000 Host dinner for 500 guests incl. exhi
+        <div.wf-acc-body> Logos appear prominently on stage backdrops, hall fascias, entry gates
+      <details.wf-opp-card> ✦ Transport Sponsor ₹15,00,000 Logo on 150+ Innova cabs for wide publi
+        <summary> ✦ Transport Sponsor ₹15,00,000 Logo on 150+ Innova cabs for wide publi
+        <div.wf-acc-body> Sponsor's logo appears as Transport Sponsor (150+ Innova Cabs) Buyers,
+      <details.wf-opp-card> ✦ Lunch Sponsor ₹10,00,000 Exclusive branding at lunch area/food court
+        <summary> ✦ Lunch Sponsor ₹10,00,000 Exclusive branding at lunch area/food court
+        <div.wf-acc-body> The Sponsor logo is exclusively displayed on the branding at Lunch are
+      <details.wf-opp-card> ✦ Exhibition Entry Gates ₹10,00,000 2 LED gates for exhibition entry i
+        <summary> ✦ Exhibition Entry Gates ₹10,00,000 2 LED gates for exhibition entry i
+        <div.wf-acc-body> Company Logo on entry gates gives visibility to Sponsor Company during
+      <details.wf-opp-card> ✦ Exhibitors'/Buyer Kit ₹10,00,000 2000 kits distributed to VIPs, dele
+        <summary> ✦ Exhibitors'/Buyer Kit ₹10,00,000 2000 kits distributed to VIPs, dele
+        <div.wf-acc-body> The Sponsor logo is exclusively displayed on the Exhibitors Kit Sponso
+      <details.wf-opp-card> ✦ Registration Counter ₹8,00,000 Logo on registration counters at exhi
+        <summary> ✦ Registration Counter ₹8,00,000 Logo on registration counters at exhi
+        <div.wf-acc-body> Prominent location gives your logo a head start Logo appears on the in
+  <div> Current Partners logo logo logo logo logo logo logo logo
+    <div.wf-h> Current Partners
+    <div> logo logo logo logo logo logo logo logo
+      <div.wf-marquee-track> logo logo logo logo logo logo logo logo
+        <div.wf-marquee-set> logo logo logo logo
+        <div.wf-marquee-set> logo logo logo logo
+  <div> Download Sponsorship Deck
+    <div> Download Sponsorship Deck
+<footer#contact.site-footer> Explore BIRC Home About Conference Exhibition Experience Partnership ©
+  <h4> Explore BIRC
+  <div.footer-links> Home About Conference Exhibition Experience Partnership
+    <a> Home
+    <a> About
+    <a> Conference
+    <a> Exhibition
+    <a> Experience
+    <a> Partnership
+  <p> © 2026 Bharat International Rice Conference Privacy · Terms · Code of 
+    <br> 
+<footer.desktop-footer> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+  <div.desktop-shell> BIRC 2026 India at the centre. Every rice market in the room. Explore 
+    <div> BIRC 2026 India at the centre. Every rice market in the room.
+      <h4> BIRC 2026
+      <p> India at the centre. Every rice market in the room.
+    <div> Explore Home About Conference
+      <small> Explore
+      <a> Home
+      <a> About
+      <a> Conference
+    <div> Participate Exhibition Partnership Influencers
+      <small> Participate
+      <a> Exhibition
+      <a> Partnership
+      <a> Influencers
+    <div> Visit Plan Visit Contact
+      <small> Visit
+      <a> Plan Visit
+      <a> Contact

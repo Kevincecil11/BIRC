@@ -418,3 +418,9 @@ The mobile Content Creators, Rice Masterchef, and Artists pages were checked aga
 - `desktop-conference.html` is the desktop Conference experience, preserving approved speakers and honest placeholders for Agenda, Workshops, and Learning Academy.
 - `desktop-exhibition.html` is the desktop Exhibition experience with hash-driven Why Exhibit, Exhibitor Profile, and Space Rental views.
 - Mobile `conference.html` and `exhibition.html` remain unchanged.
+## Desktop Exhibition routing update
+
+- Desktop Exhibition is split into `desktop-exhibition.html` (Why Exhibit), `desktop-exhibitor-profile.html`, and `desktop-space-rental.html`.
+- The desktop navbar dropdown is the only navigation between those three pages; the side-by-side section switcher was removed.
+- Desktop Conference speaker and programme alignment was corrected.
+- Mobile Conference and Exhibition files remain unchanged.

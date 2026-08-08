@@ -1,0 +1,65 @@
+name: Rebuild desktop homepage layout
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/refine-desktop-home.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply desktop-native composition
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('desktop.html')
+          html=p.read_text()
+          html=html.replace('<meta name="viewport" content="width=1440">','<meta name="viewport" content="width=device-width,initial-scale=1">')
+          html=html.replace('<div class="desktop-tools"><a href="https://birc.in/login">Login</a><a class="desktop-register" href="#register">Register ↗</a></div>','<div class="desktop-tools"><a class="desktop-view-toggle" href="index.html?view=mobile">Mobile view</a><a href="https://birc.in/login">Login</a><a class="desktop-register" href="#register">Register ↗</a></div>')
+          css=r'''<style id="desktop-home-v2">
+          :root{--shell:min(1440px,calc(100vw - 112px));--gutter:max(56px,calc((100vw - 1440px)/2));--rule:#35332e}
+          body{min-width:1080px}.page{overflow:clip}.view-switch-desktop,.action-dock,.action-backdrop,.sticky{display:none!important}
+          .bar{height:88px;padding:0 var(--gutter);grid-template-columns:190px minmax(0,1fr) auto;gap:28px}.bar>*{min-width:0}.desktop-nav{gap:clamp(12px,1.25vw,24px)}.desktop-nav a{font-size:clamp(10px,.7vw,12px)}.desktop-tools{gap:8px}.desktop-tools>a{padding-inline:14px}.desktop-view-toggle{color:var(--dm)}
+          .hero,.statement,#pathways,.knowledge,.difference,.zones,.date-sec,.programme,#voices,.why,.visit,.final,.footer{padding-left:var(--gutter)!important;padding-right:var(--gutter)!important}
+          .hero{min-height:900px;max-height:1080px;height:100vh;padding-top:140px!important;padding-bottom:44px!important;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:minmax(0,1fr) auto auto;gap:0 24px}.hero-main{grid-column:1/9;margin:0 0 42px}.hero h1{font-size:clamp(76px,7vw,118px);line-height:.88;max-width:8.8ch}.hero .lead{max-width:50ch}.hero .actions{grid-column:1/6}.hero .facts{grid-column:6/13}.hero .fact{min-width:0}.hero .fact b{font-size:clamp(11px,.9vw,14px)}
+          .statement{min-height:680px;align-items:flex-start}.statement p{max-width:15ch;font-size:clamp(52px,5vw,84px)}
+          #pathways{padding-top:132px!important;padding-bottom:132px!important}.path-list{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;background:none;border:0}.path{height:580px;border:1px solid var(--dl)}.path:hover{transform:translateY(-6px)}
+          .light[style*="padding-top"]{padding:128px var(--gutter)!important;display:grid;grid-template-columns:minmax(300px,4fr) minmax(0,8fr);grid-template-rows:auto auto;gap:0 72px;align-items:start}.light[style*="padding-top"]>.head{position:static;grid-column:1;grid-row:1;padding:0!important}.light[style*="padding-top"]>.head .title{font-size:clamp(58px,5vw,82px);max-width:7ch}.light[style*="padding-top"]>.fig{grid-column:2!important;display:grid;grid-template-columns:1fr auto;align-items:end;min-height:148px;padding:24px 0}.light[style*="padding-top"]>.fig b{font-size:clamp(66px,5.8vw,100px);line-height:.82}.light[style*="padding-top"]>.fig small{padding-bottom:8px}.light[style*="padding-top"]>.note{grid-column:2!important;padding:22px 0 0}
+          .knowledge{padding-top:132px!important;padding-bottom:132px!important}.knowledge>.head{display:grid;grid-template-columns:4fr 8fr;align-items:end;gap:72px;margin-bottom:56px}.knowledge>.head .eye{grid-column:1}.knowledge>.head .title{grid-column:1/3;max-width:9ch}.knowledge-meta{margin-left:calc(25% + 36px)}.knowledge>.session-day{grid-template-columns:minmax(190px,3fr) minmax(0,9fr);gap:36px}.session-day-head{position:static}.session-list{grid-template-columns:repeat(2,minmax(0,1fr))}.session{min-height:178px}
+          .difference{padding-top:132px!important;padding-bottom:132px!important;grid-template-columns:minmax(300px,4fr) minmax(0,8fr);gap:0 72px}.difference>.head{position:static}.difference>.head .title{font-size:clamp(48px,4vw,68px);max-width:10ch}.ey-report{grid-column:1;margin:64px 0 0;position:static;grid-template-columns:1fr}.difference-list{grid-column:2;grid-row:1/3}.difference-btn{padding-inline:18px;grid-template-columns:42px 1fr 24px}.difference-detail p{max-width:68ch}
+          .zones{padding-top:132px!important;padding-bottom:132px!important}.zones>.head{display:grid;grid-template-columns:7fr 5fr;gap:72px;align-items:end}.zones>.head .title{max-width:9ch}.tour-view{width:100%;max-width:none}.zone-vis{height:650px}.zone-copy{max-width:620px}.zone-copy h3{font-size:clamp(58px,5vw,82px)}.tour-ui{grid-template-columns:minmax(0,1fr) 70px auto;gap:16px}.tour-progress{min-width:0}.tour-actions{gap:8px}
+          .date-sec{min-height:760px;padding-top:120px!important;padding-bottom:120px!important;display:grid;grid-template-columns:minmax(300px,4fr) minmax(0,8fr);grid-template-rows:auto 1fr;gap:20px 72px;align-items:center}.date-sec>.eye{grid-column:1;grid-row:1;align-self:end}.date-sec>p{grid-column:1;grid-row:2;align-self:start;margin:22px 0 0;font-size:clamp(48px,4vw,70px);line-height:1.05;max-width:9ch}.date-lock{grid-column:2;grid-row:1/3;width:100%;padding:64px 0;border-block:1px solid var(--dl)}.date-lock h3{font-size:clamp(92px,8vw,132px);line-height:.85}.date-row{gap:28px;margin-top:44px}.date-row span{font-size:clamp(86px,7vw,120px)}
+          .programme{padding-top:132px!important;padding-bottom:132px!important}.programme>.head{display:grid;grid-template-columns:4fr 8fr;gap:72px;padding:0!important}.programme>.head .title{grid-column:1/3}.program{grid-template-columns:repeat(3,minmax(0,1fr))}.day{min-height:470px;padding:32px}.day-num{font-size:clamp(112px,9vw,150px);top:104px}.day h3{margin-top:250px}
+          #voices{padding-top:132px!important;padding-bottom:132px!important;grid-template-columns:4fr 8fr;gap:72px}.quote blockquote{font-size:clamp(46px,4vw,68px);max-width:14ch}.quote-ui{grid-column:2}
+          .why{padding-top:132px!important;padding-bottom:132px!important}.why>.head{padding:0!important}.reasons{grid-template-columns:repeat(4,minmax(0,1fr))}.reason{min-height:500px;padding:28px}.reason-word{font-size:clamp(64px,6vw,102px);opacity:.78}.reason h3{font-size:clamp(22px,1.8vw,28px)}
+          .dark.pad[style*="padding-left:0"]{padding-top:132px!important;padding-bottom:132px!important}.dark.pad[style*="padding-left:0"]>.head{padding:0 var(--gutter)!important}.gallery-img{width:440px!important;height:300px!important}.gallery-img:nth-child(even){width:560px!important}
+          .visit{padding-top:132px!important;padding-bottom:132px!important}.visit-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.visit-item{min-height:330px;padding:28px}.visit-item h3{font-size:clamp(20px,1.65vw,25px)}
+          .final{min-height:820px;padding-top:132px!important;padding-bottom:132px!important}.final h2{font-size:clamp(96px,8.5vw,146px)}.clock{margin-top:64px}.footer{padding-top:96px!important;padding-bottom:64px!important}
+          @media(max-width:1280px){:root{--gutter:40px}.desktop-nav{gap:12px}.desktop-nav a{font-size:10px}.desktop-tools .desktop-view-toggle{display:none}.bar{grid-template-columns:170px minmax(0,1fr) auto}.hero h1{font-size:84px}.hero .facts{grid-column:6/13}.difference,.light[style*="padding-top"]{gap:0 48px}.reasons{grid-template-columns:repeat(2,1fr)}.reason{min-height:360px}.visit-grid{grid-template-columns:repeat(2,1fr)}}
+          @media(prefers-reduced-motion:reduce){.path{transform:none!important}}
+          </style>'''
+          if 'id="desktop-home-v2"' not in html:
+              html=html.replace('</head>',css+'</head>',1)
+          p.write_text(html)
+
+          c=Path('context.md')
+          text=c.read_text()
+          note='- Desktop homepage v2 uses desktop-native section compositions, bounded 1440px rhythm, non-obstructive header actions, compact statistics, aligned date composition, and no floating desktop CTA/dock.\n'
+          if note not in text:
+              c.write_text(text.rstrip()+'\n'+note)
+          PY
+      - name: Commit refined desktop design
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html context.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Recompose homepage as a true desktop experience"
+          git push

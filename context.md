@@ -404,3 +404,4 @@ All three Exhibition views use the same black/ink background system. Do not swit
 - For now, secondary pages remain their existing mobile implementations.
 - Desktop homepage content and registration behavior must stay synchronized with `index.html`.
 - Desktop homepage v2 uses desktop-native section compositions, bounded 1440px rhythm, non-obstructive header actions, compact statistics, aligned date composition, and no floating desktop CTA/dock.
+- Desktop homepage v4 was rebuilt with one clean 1240px editorial grid and audited section-by-section for hierarchy, alignment, overflow, interaction placement, and desktop readability. Artifact editing chrome is excluded from the published desktop page.

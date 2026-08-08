@@ -1,0 +1,84 @@
+==== desktop-partnership.html (1440px) ====
+main.dv-card  (1 found)
+   l=0 t=0 w=1440 h=4436 align=left bg=rgb(250, 240, 230) display=block cols=none
+main.dv-card > div  (6 found)
+   l=60 t=76 w=1320 h=361 align=left bg=rgb(13, 13, 11) display=block cols=none
+   l=0 t=437 w=1440 h=520 align=left bg=rgb(13, 13, 11) display=block cols=none
+   l=60 t=957 w=1320 h=1759 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=60 t=2717 w=1320 h=1438 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=60 t=4154 w=1320 h=141 align=left bg=rgb(13, 13, 11) display=block cols=none
+   l=60 t=4295 w=1320 h=141 align=left bg=rgb(250, 240, 230) display=block cols=none
+.wf-h  (12 found)
+   l=82 t=226 w=1248 h=74 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=120 t=1114 w=312 h=21 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=163 t=1215 w=32 h=32 align=left bg=rgb(13, 13, 11) display=flex cols=none
+   l=163 t=1257 w=240 h=15 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=163 t=1276 w=288 h=19 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=568 t=1215 w=32 h=32 align=left bg=rgb(53, 51, 46) display=flex cols=none
+.img-slot  (1 found)
+   l=0 t=437 w=1440 h=440 align=left bg=rgb(25, 25, 22) display=flex cols=none
+details.wf-tier-card  (5 found)
+   l=120 t=1174 w=389 h=706 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=525 t=1174 w=389 h=706 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=931 t=1174 w=389 h=706 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=120 t=1896 w=389 h=689 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=525 t=1896 w=389 h=689 align=left bg=rgb(250, 240, 230) display=block cols=none
+details.wf-opp-card  (6 found)
+   l=120 t=2889 w=389 h=559 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=525 t=2889 w=389 h=482 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=931 t=2889 w=389 h=404 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=120 t=3464 w=389 h=462 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=525 t=3464 w=389 h=520 align=left bg=rgb(250, 240, 230) display=block cols=none
+   l=931 t=3464 w=389 h=559 align=left bg=rgb(250, 240, 230) display=block cols=none
+
+==== desktop-contact.html (1440px) ====
+section.form-section  (1 found)
+   l=0 t=2349 w=1440 h=782 align=left bg=rgb(235, 179, 65) display=grid cols=360px 890px
+section.form-section .form  (1 found)
+   l=490 t=2479 w=890 h=522 align=left bg=rgb(250, 240, 230) display=grid cols=430px 430px
+section.form-section .field  (5 found)
+   l=491 t=2480 w=430 h=89 align=left bg=rgba(0, 0, 0, 0) display=grid cols=430px
+   l=949 t=2480 w=430 h=89 align=left bg=rgba(0, 0, 0, 0) display=grid cols=430px
+   l=491 t=2591 w=430 h=89 align=left bg=rgba(0, 0, 0, 0) display=grid cols=430px
+   l=949 t=2591 w=430 h=89 align=left bg=rgba(0, 0, 0, 0) display=grid cols=430px
+   l=491 t=2703 w=888 h=185 align=left bg=rgba(0, 0, 0, 0) display=grid cols=888px
+section.form-section .submit  (1 found)
+   l=491 t=2910 w=207 h=56 align=center bg=rgb(13, 13, 11) display=block cols=none
+.routes  (1 found)
+   l=60 t=1195 w=1320 h=172 align=left bg=rgba(0, 0, 0, 0) display=grid cols=330px 330px 330px 330px
+.contact-stack  (1 found)
+   l=60 t=1707 w=1320 h=512 align=left bg=rgba(0, 0, 0, 0) display=grid cols=654px 654px
+
+==== contact.html (430px) ====
+section.form-section  (1 found)
+   l=0 t=2265 w=430 h=1313 align=start bg=rgb(235, 179, 65) display=block cols=none
+section.form-section .form  (1 found)
+   l=22 t=2554 w=386 h=929 align=start bg=rgb(250, 240, 230) display=grid cols=328px
+section.form-section .submit  (1 found)
+   l=51 t=3342 w=328 h=56 align=center bg=rgb(13, 13, 11) display=block cols=none
+
+==== desktop-plan-visit.html (1440px) ====
+.venue-grid  (1 found)
+   l=60 t=1096 w=1320 h=316 align=left bg=rgba(0, 0, 0, 0) display=grid cols=650px 650px
+.venue-row  (4 found)
+   l=60 t=1097 w=650 h=147 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=730 t=1097 w=650 h=147 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=60 t=1264 w=650 h=147 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+   l=730 t=1264 w=650 h=147 align=left bg=rgba(0, 0, 0, 0) display=block cols=none
+.travel-panel.active  (1 found)
+   l=420 t=2770 w=960 h=1081 align=left bg=rgba(0, 0, 0, 0) display=grid cols=462px 462px
+.map  (1 found)
+   l=60 t=1452 w=1320 h=420 align=left bg=rgb(13, 13, 11) display=block cols=none
+
+==== desktop-rice-masterchef.html (1440px) ====
+.master-hero  (1 found)
+   l=0 t=76 w=1440 h=774 align=left bg=rgba(0, 0, 0, 0) display=flex cols=none
+.passes  (1 found)
+   l=60 t=2810 w=1320 h=210 align=left bg=rgba(0, 0, 0, 0) display=grid cols=653px 653px
+.master-pass  (2 found)
+   l=60 t=2810 w=653 h=210 align=left bg=rgb(25, 25, 22) display=block cols=none
+   l=727 t=2810 w=653 h=210 align=left bg=rgb(250, 240, 230) display=block cols=none
+.master-apply  (1 found)
+   l=0 t=4635 w=1440 h=1219 align=left bg=rgb(235, 179, 65) display=block cols=none
+.master-form  (1 found)
+   l=310 t=4893 w=820 h=830 align=left bg=rgb(250, 240, 230) display=grid cols=736px

@@ -424,3 +424,6 @@ The mobile Content Creators, Rice Masterchef, and Artists pages were checked aga
 - The desktop navbar dropdown is the only navigation between those three pages; the side-by-side section switcher was removed.
 - Desktop Conference speaker and programme alignment was corrected.
 - Mobile Conference and Exhibition files remain unchanged.
+
+- Desktop About values heading is left-aligned and the Our Story copy is bottom-aligned with the route visual.
+- The centered yellow Exhibition page label was removed from all three desktop Exhibition pages; navigation remains in the navbar dropdown only.

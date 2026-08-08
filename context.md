@@ -413,3 +413,8 @@ The mobile Content Creators, Rice Masterchef, and Artists pages were checked aga
 - `desktop-about.html` is the purpose-built desktop About experience.
 - It preserves the approved mobile About content while using desktop-native hero, mission, three-column values, split story, results, organisers, Advisory Board, industry overview, registration chooser, and quick-action dock.
 - The mobile `about.html` remains unchanged.
+## Desktop Conference and Exhibition pages
+
+- `desktop-conference.html` is the desktop Conference experience, preserving approved speakers and honest placeholders for Agenda, Workshops, and Learning Academy.
+- `desktop-exhibition.html` is the desktop Exhibition experience with hash-driven Why Exhibit, Exhibitor Profile, and Space Rental views.
+- Mobile `conference.html` and `exhibition.html` remain unchanged.

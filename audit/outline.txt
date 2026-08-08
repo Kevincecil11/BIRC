@@ -1,0 +1,156 @@
+======================================================================
+FILE desktop-rice-masterchef.html bytes=32853
+  SEC .masterchef #rice-masterchef :: Your Rice Dish. The World's Biggest Rice Stage.
+     inner: master-hero hero | eye | title | lead | btn | master-stats stats | master-stat stat | moment access pad | section-title | moment-list access-list | moment-row access-row | winner pad | prize | winner-list access-list | winner-row access-row | master-score score pad | master-passes passes | master-pass vip pass | master-pass pass day | eligibility criteria pad | content-list dark-list access-list | content-row access-row | chef-process process pad | content-list access-list
+  SEC .master-hero hero # :: Your Rice Dish. The World's Biggest Rice Stage.
+     inner: eye | title | lead | btn | master-stats stats | master-stat stat | moment access pad | section-title | moment-list access-list | moment-row access-row | winner pad | prize | winner-list access-list | winner-row access-row | master-score score pad | master-passes passes | master-pass vip pass | master-pass pass day | eligibility criteria pad | content-list dark-list access-list | content-row access-row | chef-process process pad | content-list access-list | master-apply apply pad
+  SEC .moment access pad # :: Turn One Rice Dish Into Your Moment.
+     inner: eye | section-title | moment-list access-list | moment-row access-row | winner pad | prize | winner-list access-list | winner-row access-row | master-score score pad | master-passes passes | master-pass vip pass | master-pass pass day | eligibility criteria pad | content-list dark-list access-list | content-row access-row | chef-process process pad | content-list access-list | master-apply apply pad | master-form form | field
+  SEC .winner pad # :: Cook the Winning Plate. Leave With More Than the Title.
+     inner: eye | prize | winner-list access-list | winner-row access-row | master-score score pad | section-title | master-passes passes | master-pass vip pass | master-pass pass day | eligibility criteria pad | content-list dark-list access-list | content-row access-row | chef-process process pad | content-list access-list | master-apply apply pad | master-form form | field | submit | doc-note | status
+  SEC .master-score score pad # :: Your Creator Score Determines Your Pass.
+     inner: eye | section-title | master-passes passes | master-pass vip pass | master-pass pass day | eligibility criteria pad | content-list dark-list access-list | content-row access-row | chef-process process pad | content-list access-list | master-apply apply pad | master-form form | field | submit | doc-note | status | faq-section pad | head | faq-items | faq-item | faq-q | faq-a
+  SEC .eligibility criteria pad # :: If Rice Is Your Canvas, This Stage Is for You.
+     inner: eye | section-title | content-list dark-list access-list | content-row access-row | chef-process process pad | content-list access-list | master-apply apply pad | master-form form | field | submit | doc-note | status | faq-section pad | head | faq-items | faq-item | faq-q | faq-a | page footer | links
+  SEC .chef-process process pad # :: From Application to Access.
+     inner: eye | section-title | content-list access-list | content-row access-row | master-apply apply pad | master-form form | field | submit | doc-note | status | faq-section pad | head | faq-items | faq-item | faq-q | faq-a | page footer | links | end
+  SEC .master-apply apply pad #masterchef-apply :: Enter in Under 60 Seconds.
+     inner: eye | section-title | master-form form | field | submit | doc-note | status | faq-section pad | head | faq-items | faq-item | faq-q | faq-a | page footer | links | end | desktop-footer | desktop-shell
+  SEC .faq-section pad # :: Quick Answers.
+     inner: head | eye | section-title | faq-items | faq-item | faq-q | faq-a | page footer | links | end | desktop-footer | desktop-shell
+  FORM class="master-form form" id="masterForm"
+     label: Your Name *
+     label: WhatsApp Number *
+     label: Email *
+     label: Cooking Profile or Best Cooking Video *
+     label: City / Country *
+     label: Your Signature Rice Dish *
+     input id="chef-name" name="name" required placeholder="Full name"
+     input id="chef-phone" name="phone" type="tel" required placeholder="+91"
+     input id="chef-email" name="email" type="email" required placeholder="you@example.com"
+     input id="chef-profile" name="profile" type="url" required placeholder="Instagram, YouTube, Drive or website link"
+     input id="chef-city" name="city" required placeholder="Ahmedabad, India"
+     input id="dish-name" name="dish" required placeholder="Dish name"
+  STYLE BLOCKS: 8  sizes=[11214, 408, 3745, 351, 359, 1000, 1183, 348]
+  LAST STYLE FULL:
+   @media (min-width:900px){ body > main:nth-child(4) > section:nth-child(1) > section:nth-child(4) > div:nth-child(4) > article:nth-child(2) > small:nth-child(1){color:#0d0d0b!important} body > main:nth-child(4) > section:nth-child(1) > section:nth-child(4) > div:nth-child(4) > article:nth-child(2) > strong:nth-child(3){color:#0d0d0b!important} } 
+======================================================================
+FILE desktop-partnership.html bytes=45721
+  STYLE BLOCKS: 6  sizes=[5701, 7054, 3745, 772, 1549, 136]
+  LAST STYLE FULL:
+   @media (min-width:900px){ body > main:nth-child(5) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1){color:#0d0d0b!important} } 
+======================================================================
+FILE desktop-plan-visit.html bytes=28206
+  SEC .hero # :: Bharat Mandapam, Pragati Maidan, New Delhi
+     inner: eye | title | lead | hero-foot | venue pad | head | section-title | venue-grid | venue-row | map | btn | hotels pad | hotel-list | hotel | travel pad | travel-address | travel-tabs | travel-tab active | travel-tab | travel-panel active | group | route | tip | travel-panel
+  SEC .venue pad #venue :: Bharat Mandapam
+     inner: head | eye | section-title | venue-grid | venue-row | map | btn | hotels pad | hotel-list | hotel | travel pad | travel-address | travel-tabs | travel-tab active | travel-tab | travel-panel active | group | route | tip | travel-panel
+  SEC .hotels pad #hotels :: Hotels
+     inner: head | eye | section-title | hotel-list | hotel | btn | travel pad | travel-address | travel-tabs | travel-tab active | travel-tab | travel-panel active | group | route | tip | travel-panel | faq-section pad | faq | answer
+  SEC .travel pad #travel :: How to Reach Bharat Mandapam
+     inner: head | eye | section-title | travel-address | travel-tabs | travel-tab active | travel-tab | travel-panel active | group | route | tip | travel-panel | faq-section pad | faq | answer
+  SEC .faq-section pad #faqs :: FAQs
+     inner: head | eye | section-title | faq | answer | page footer | links | end | desktop-footer | desktop-shell
+  STYLE BLOCKS: 5  sizes=[8076, 3745, 541, 1713, 561]
+  LAST STYLE FULL:
+   @media (min-width:900px){ body > main:nth-child(4) > section:nth-child(2) > div:nth-child(2) > div:nth-child(1) > strong:nth-child(2){color:#0d0d0b!important} body > main:nth-child(4) > section:nth-child(2) > div:nth-child(2) > div:nth-child(2) > strong:nth-child(2){color:#0d0d0b!important} body > main:nth-child(4) > section:nth-child(2) > div:nth-child(2) > div:nth-child(3) > strong:nth-child(2){color:#0d0d0b!important} body > main:nth-child(4) > section:nth-child(2) > div:nth-child(2) > div:nth-child(4) > strong:nth-child(2){color:#0d0d0b!important} } 
+======================================================================
+FILE desktop-contact.html bytes=23548
+  SEC .hero # :: Contact Us
+     inner: eye | title | lead | hero-foot | intro | section-title | routes | route | official-contact | head | contact-stack | contact-row | hours | follow-links | fill | form-section | form | field | submit | status | page footer | links | end
+  SEC .intro # :: You Have Questions.We Have Answers.
+     inner: eye | section-title | routes | route | official-contact | head | contact-stack | contact-row | hours | follow-links | fill | form-section | lead | form | field | submit | status | page footer | links | end
+  SEC .official-contact # :: Reach the BIRC team.
+     inner: head | section-title | contact-stack | contact-row | hours | follow-links | fill | form-section | eye | lead | form | field | submit | status | page footer | links | end | desktop-footer | desktop-shell
+  SEC .form-section # :: Tell Us What You Need
+     inner: head | eye | section-title | lead | form | field | submit | status | page footer | links | end | desktop-footer | desktop-shell
+  FORM class="form" id="contactForm"
+     label: Name
+     label: Email
+     label: Phone
+     label: I need help with
+     label: Message
+     input id="name" name="name" required autocomplete="name"
+     input id="email" name="email" type="email" required autocomplete="email"
+     input id="phone" name="phone" type="tel" autocomplete="tel"
+     select id="subject" name="subject" required
+     textarea id="message" name="message" required
+  STYLE BLOCKS: 4  sizes=[6864, 3745, 407, 2540]
+  LAST STYLE FULL:
+   @media (min-width:900px){ main.page section,main.page section > header,main.page .head,main.page .eye,main.page h1,main.page h2,main.page h3,main.page h4,main.page p,main.page ul,main.page li,main.page address{text-align:left!important} main.page .section-title,main.page h1.title,main.page h2.title{max-width:26ch;margin-left:0;margin-right:0} main.page p.lead{max-width:70ch;margin-left:0;margin-right:0} main.page .head{margin-left:0;margin-right:0} main.page .btn{margin-left:0} }  section.form-section{background:#ebb341} section.form-section .eye{color:#7a5405!important} section.form-section .section-title{color:#0d0d0b!important} section.form-section .lead,section.form-section > p{color:#2b2b27!important} section.form-section .form{background:#faf0e6;border:1px solid #d8cec3;padding:28px;margin-top:30px} section.form-section .field{margin-bottom:22px} section.form-section .form label{display:block;font-family:Poppins,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#4a453e;margin-bottom:10px} section.form-section .form input,section.form-section .form select,section.form-section .form textarea{width:100%;background:#fffaf2;border:1px solid #d8cec3;border-radius:0;padding:14px 15px;font-family:Inter,sans-serif;font-size:15px;color:#0d0d0b} section.form-section .form textarea{min-height:150px;resize:vertical} section.form-section .form input:focus,section.form-section .form select:focus,section.form-section .form textarea:focus{outline:2px solid #c98e25;outline-offset:2px;border-color:#c98e25} section.form-section .form input::placeholder,section.form-section .form textarea::placeholder{color:#8a837a} section.form-section .submit{width:100%;background:#0d0d0b;color:#faf0e6;border:0;border-radius:0;padding:18px;font-family:Poppins,sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s cubic-bezier(.22,1,.36,1)} section.form-section .submit:hover{background:#191916} section.form-section .doc-note{font-size:12px;line-height:1.6;color:#4a453e;margin-top:16px} section.form-section .status{margin-top:12px;font-size:13px;color:#2b2b27} @media (min-width:900px){ section.form-section .form{max-width:900px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:0 28px} section.form-section .form .field:nth-child(5){grid-column:1/-1} section.form-section .submit,section.form-section .doc-note,section.form-section .status{grid-column:1/-1} section.form-section .submit{width:auto;justify-self:start;padding:18px 38px} } 
+======================================================================
+FILE desktop-artists.html bytes=33629
+  SEC .hero # :: If Rice Is Part of Your Art, the World Should See It.
+     inner: eye | title | lead | btn | stats | stat | manifesto pad | section-title | materials pad | material-list | material | language pad | art-grid | art-tile wide | art-tile | audience pad | pathways | pathway | prize pad | prize-box | recognition pad | recognition-list | recognition-row | why-art pad
+  SEC .manifesto pad # :: One Grain Can Carry a Civilisation.
+     inner: eye | section-title | materials pad | lead | material-list | material | language pad | art-grid | art-tile wide | art-tile | audience pad | pathways | pathway | prize pad | prize-box | btn | recognition pad | recognition-list | recognition-row | why-art pad | source-visual | content-list dark-list | content-row | momentum pad
+  SEC .materials pad # :: Every Part Can Become a Creative Medium.
+     inner: eye | section-title | lead | material-list | material | language pad | art-grid | art-tile wide | art-tile | audience pad | pathways | pathway | prize pad | prize-box | btn | recognition pad | recognition-list | recognition-row | why-art pad | source-visual | content-list dark-list | content-row | momentum pad | content-list
+  SEC .language pad # :: Tiny Material. Infinite Expression.
+     inner: eye | section-title | art-grid | art-tile wide | art-tile | audience pad | pathways | pathway | prize pad | prize-box | btn | recognition pad | recognition-list | recognition-row | why-art pad | source-visual | content-list dark-list | content-row | momentum pad | content-list | journey pad
+  SEC .audience pad # :: If Rice Is Part of It, You Belong Here.
+     inner: eye | section-title | pathways | pathway | prize pad | prize-box | btn | recognition pad | recognition-list | recognition-row | why-art pad | source-visual | content-list dark-list | content-row | momentum pad | content-list | journey pad
+  SEC .prize pad # :: Win the Room, and the Headline With It.
+     inner: eye | section-title | prize-box | btn | recognition pad | recognition-list | recognition-row | why-art pad | source-visual | content-list dark-list | content-row | momentum pad | content-list | journey pad | doc-note | apply pad
+  SEC .recognition pad # :: ₹1 Lakh Winning Prize
+     inner: recognition-list | recognition-row | why-art pad | eye | section-title | source-visual | content-list dark-list | content-row | momentum pad | content-list | journey pad | doc-note | apply pad | form | field
+  SEC .why-art pad # :: Put Your Work in a Room That Reaches the World.
+     inner: eye | section-title | source-visual | content-list dark-list | content-row | momentum pad | content-list | journey pad | doc-note | apply pad | form | field
+  SEC .momentum pad # :: Arrive With Art. Leave With Momentum.
+     inner: eye | section-title | content-list | content-row | journey pad | content-list dark-list | doc-note | apply pad | form | field | submit | artist-faq pad
+  SEC .journey pad # :: Your Path to the Showcase.
+     inner: eye | section-title | content-list dark-list | content-row | doc-note | apply pad | form | field | submit | artist-faq pad | faq-items | faq-item | faq-q | faq-a
+  SEC .apply pad #apply :: Does Rice Make It Possible?
+     inner: eye | section-title | form | field | submit | doc-note | artist-faq pad | faq-items | faq-item | faq-q | faq-a | page footer | links
+  SEC .artist-faq pad # :: Do Not Rule Yourself Out.
+     inner: eye | section-title | faq-items | faq-item | faq-q | faq-a | page footer | links | end | desktop-footer | desktop-shell
+  FORM class="form" id="artistForm"
+     label: Full Name *
+     label: Email Address *
+     label: WhatsApp / Phone *
+     label: City &amp; Country *
+     label: Art Format *
+     label: Artwork Title *
+     label: Artwork Preview Link *
+     label: Tell Us About the Work *
+     label: Approximate Dimensions
+     label: Portfolio or Social Profile
+     label: I confirm this is my work or concept, and agree to be contac
+     input id="artist-name" name="name" required
+     input id="artist-email" name="email" type="email" required
+     input id="artist-phone" name="phone" type="tel" required placeholder="+91"
+     input id="artist-city" name="city" required
+     select id="artist-path" name="path" required
+     input id="artist-title" name="title" required
+     input id="artist-preview" name="preview" type="url" required placeholder="Drive, website or public social link"
+     textarea id="artist-work" name="work" required placeholder="The idea, rice material used, how it is made, and what it s
+     input id="artist-size" name="size" placeholder="Optional"
+     input id="artist-portfolio" name="portfolio" type="url"
+     input type="checkbox" name="confirm" required style="width:18px;height:18px"
+  STYLE BLOCKS: 5  sizes=[8319, 620, 3745, 524, 1732]
+  LAST STYLE FULL:
+   @media (min-width:900px){ main.page section,main.page section > header,main.page .head,main.page .eye,main.page h1,main.page h2,main.page h3,main.page h4,main.page p,main.page ul,main.page li,main.page address{text-align:left!important} main.page .section-title,main.page h1.title,main.page h2.title{max-width:26ch;margin-left:0;margin-right:0} main.page p.lead{max-width:70ch;margin-left:0;margin-right:0} main.page .head{margin-left:0;margin-right:0} main.page .btn{margin-left:0} }  #apply.apply{background:#ebb341!important} #apply .eye{color:#7a5405!important} #apply > p{color:#2b2b27!important} #apply .section-title{color:#0d0d0b!important} #apply .form{background:#faf0e6!important;border:1px solid #d8cec3!important;padding:34px!important} #apply .form label{color:#4a453e!important} #apply .form input,#apply .form select,#apply .form textarea{background:#fffaf2!important;border:1px solid #d8cec3!important;color:#0d0d0b!important} #apply .form input::placeholder,#apply .form textarea::placeholder{color:#8a837a!important} #apply .form .submit{background:#0d0d0b!important;color:#faf0e6!important} #apply .doc-note{color:#4a453e!important} #apply .status{color:#2b2b27!important} #apply .artist-faq .faq-item{border-color:#cfa64a!important} #apply .artist-faq .faq-q{color:#0d0d0b!important} #apply .artist-faq .faq-a,#apply .artist-faq .faq-a p{color:#2b2b27!important} @media (min-width:900px){ #apply .form{max-width:940px;display:grid;grid-template-columns:1fr 1fr;gap:0 26px} #apply .form .field:nth-child(8){grid-column:1/-1} #apply .form > label,#apply .form .submit,#apply .form .doc-note,#apply .form .status{grid-column:1/-1} #apply .form .submit{width:auto;justify-self:start;padding:18px 36px!important} } 
+======================================================================
+FILE contact.html bytes=16782
+  SEC .hero # :: Contact Us
+     inner: eye | title | lead | hero-foot | intro | section-title | routes | route | official-contact | head | contact-stack | contact-row | hours | follow-links | fill | form-section | form | field | submit | status | page footer | links | end
+  SEC .intro # :: You Have Questions.We Have Answers.
+     inner: eye | section-title | routes | route | official-contact | head | contact-stack | contact-row | hours | follow-links | fill | form-section | lead | form | field | submit | status | page footer | links | end
+  SEC .official-contact # :: Reach the BIRC team.
+     inner: head | section-title | contact-stack | contact-row | hours | follow-links | fill | form-section | eye | lead | form | field | submit | status | page footer | links | end
+  SEC .form-section # :: Tell Us What You Need
+     inner: head | eye | section-title | lead | form | field | submit | status | page footer | links | end
+  FORM class="form" id="contactForm"
+     label: Name
+     label: Email
+     label: Phone
+     label: I need help with
+     label: Message
+     input id="name" name="name" required autocomplete="name"
+     input id="email" name="email" type="email" required autocomplete="email"
+     input id="phone" name="phone" type="tel" autocomplete="tel"
+     select id="subject" name="subject" required
+     textarea id="message" name="message" required
+  STYLE BLOCKS: 2  sizes=[6864, 2054]
+  LAST STYLE FULL:
+   section.form-section{background:#ebb341} section.form-section .eye{color:#7a5405!important} section.form-section .section-title{color:#0d0d0b!important} section.form-section .lead,section.form-section > p{color:#2b2b27!important} section.form-section .form{background:#faf0e6;border:1px solid #d8cec3;padding:28px;margin-top:30px} section.form-section .field{margin-bottom:22px} section.form-section .form label{display:block;font-family:Poppins,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#4a453e;margin-bottom:10px} section.form-section .form input,section.form-section .form select,section.form-section .form textarea{width:100%;background:#fffaf2;border:1px solid #d8cec3;border-radius:0;padding:14px 15px;font-family:Inter,sans-serif;font-size:15px;color:#0d0d0b} section.form-section .form textarea{min-height:150px;resize:vertical} section.form-section .form input:focus,section.form-section .form select:focus,section.form-section .form textarea:focus{outline:2px solid #c98e25;outline-offset:2px;border-color:#c98e25} section.form-section .form input::placeholder,section.form-section .form textarea::placeholder{color:#8a837a} section.form-section .submit{width:100%;background:#0d0d0b;color:#faf0e6;border:0;border-radius:0;padding:18px;font-family:Poppins,sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s cubic-bezier(.22,1,.36,1)} section.form-section .submit:hover{background:#191916} section.form-section .doc-note{font-size:12px;line-height:1.6;color:#4a453e;margin-top:16px} section.form-section .status{margin-top:12px;font-size:13px;color:#2b2b27} @media (min-width:900px){ section.form-section .form{max-width:900px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:0 28px} section.form-section .form .field:nth-child(5){grid-column:1/-1} section.form-section .submit,section.form-section .doc-note,section.form-section .status{grid-column:1/-1} section.form-section .submit{width:auto;justify-self:start;padding:18px 38px} } 

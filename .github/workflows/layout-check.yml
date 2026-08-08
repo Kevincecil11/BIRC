@@ -1,0 +1,34 @@
+name: Layout check
+
+on:
+  push:
+    paths:
+      - '.github/workflows/layout-check.yml'
+      - 'tools/check_layout.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - name: Serve and check
+        run: |
+          python -m http.server 8000 >/dev/null 2>&1 &
+          sleep 3
+          python tools/check_layout.py
+      - name: Commit
+        run: |
+          git config user.name "birc-bot"
+          git config user.email "bot@birc.local"
+          git add -A _inspect
+          git commit -m "Layout check" || echo "no changes"
+          git push

@@ -1,0 +1,39 @@
+name: Fix mobile influencer form and contrast
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/fix-mobile-influencer-contrast.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply targeted mobile fixes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          # Rice Art: match Masterchef gold section + linen form backdrop.
+          p=Path('artists.html'); h=p.read_text()
+          css='''<style id="rice-art-form-backdrop">#apply.apply{background:var(--g)!important;color:var(--j)!important}#apply.apply>.eye{color:var(--j)!important}#apply.apply>.section-title{color:var(--j)!important}#apply.apply>p{color:#534631!important}#apply .form{padding:24px;background:var(--l);color:var(--j)}#apply .field label{color:var(--j)}#apply .field input,#apply .field select,#apply .field textarea{background:transparent;color:var(--j);border-color:var(--ll)}#apply .field input::placeholder,#apply .field textarea::placeholder{color:var(--lm)}#apply .submit{background:var(--j);color:var(--l)}#apply .doc-note{color:var(--lm)}#apply label{color:var(--j)}</style>'''
+          if 'id="rice-art-form-backdrop"' not in h:h=h.replace('</head>',css+'</head>',1)
+          p.write_text(h)
+
+          # Masterchef: force every heading in the dark eligibility section to linen.
+          p=Path('rice-masterchef.html'); h=p.read_text()
+          css='''<style id="masterchef-eligibility-contrast">.eligibility{background:var(--j2)!important;color:var(--l)!important}.eligibility .eye{color:var(--g)!important}.eligibility .section-title,.eligibility h2,.eligibility h3{color:var(--l)!important}.eligibility>p,.eligibility .content-row p{color:var(--dm)!important}.eligibility .content-list,.eligibility .content-row{border-color:var(--dl)!important}.eligibility .content-row span{color:var(--g)!important}</style>'''
+          if 'id="masterchef-eligibility-contrast"' not in h:h=h.replace('</head>',css+'</head>',1)
+          p.write_text(h)
+          PY
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artists.html rice-masterchef.html
+          git commit -m "Match Rice Art form backdrop and fix Masterchef dark-section contrast"
+          git push

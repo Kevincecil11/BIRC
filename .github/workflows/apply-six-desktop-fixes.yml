@@ -1,0 +1,75 @@
+name: Apply six confirmed desktop fixes
+on:
+  push:
+    paths: ['.github/workflows/apply-six-desktop-fixes.yml']
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix Conference and split Exhibition desktop pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          # 1. Conference: align section headings, portraits, and programme rows.
+          p=Path('desktop-conference.html'); h=p.read_text()
+          conference_css='''<style id="conference-alignment-fix">.section>.shell>.head{grid-template-columns:260px minmax(0,1fr);gap:72px;align-items:start}.section>.shell>.head>div{max-width:760px}.speaker-grid{align-items:start}.speaker{min-width:0}.portrait{width:100%;aspect-ratio:4/5}.speaker small,.speaker h3,.speaker p{display:block}.light .head{margin-bottom:56px}.flow{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}.flow article{min-height:360px;padding:28px 26px}.flow .word{top:78px;right:18px;font-size:74px}.flow article>div{display:flex;min-height:140px;flex-direction:column;justify-content:flex-end}.flow h3{font-size:25px;line-height:1.15}.flow p{min-height:70px}.notice{max-width:none}@media(max-width:1180px){.section>.shell>.head{grid-template-columns:210px 1fr;gap:48px}.flow .word{font-size:62px}}</style>'''
+          if 'id="conference-alignment-fix"' not in h:h=h.replace('</head>',conference_css+'</head>',1)
+          p.write_text(h)
+
+          # Shared desktop Exhibition dropdown, only desktop files are touched.
+          dropdown_css='''<style id="desktop-exhibition-dropdown">.nav .nav-exhibition{position:relative}.nav .nav-exhibition>button{height:76px;padding:0;border:0;background:none;color:var(--dm);font:500 13px Poppins;cursor:pointer}.nav .nav-exhibition:hover>button,.nav .nav-exhibition>button:focus-visible{color:var(--l)}.nav .exhibition-menu{position:absolute;left:-18px;top:66px;width:250px;padding:9px;background:var(--j2);border:1px solid var(--dl);opacity:0;visibility:hidden;transform:translateY(-7px);transition:opacity .2s var(--e),transform .25s var(--e),visibility .25s}.nav .nav-exhibition:hover .exhibition-menu,.nav .nav-exhibition:focus-within .exhibition-menu{opacity:1;visibility:visible;transform:none}.nav .exhibition-menu a{display:grid;grid-template-columns:1fr auto;padding:12px 13px;border-bottom:1px solid var(--dl);font-size:13px}.nav .exhibition-menu a:last-child{border:0}.nav .exhibition-menu span{color:var(--g);font-size:9px}</style>'''
+          dropdown='''<div class="nav-exhibition"><button type="button">Exhibition ▾</button><div class="exhibition-menu"><a href="desktop-exhibition.html">Why exhibit <span>01</span></a><a href="desktop-exhibitor-profile.html">Exhibitor profile <span>02</span></a><a href="desktop-space-rental.html">Space rental <span>03</span></a></div></div>'''
+
+          def navfix(path):
+              p=Path(path); x=p.read_text()
+              # Replace either mobile Exhibition target or existing desktop target.
+              x=re.sub(r'<a(?: class="active")? href="desktop-exhibition\.html">Exhibition</a>',dropdown,x,count=1)
+              x=re.sub(r'<a(?: class="active")? href="exhibition\.html">Exhibition</a>',dropdown,x,count=1)
+              if 'id="desktop-exhibition-dropdown"' not in x:x=x.replace('</head>',dropdown_css+'</head>',1)
+              p.write_text(x)
+
+          for f in ['desktop.html','desktop-about.html','desktop-conference.html']:
+              navfix(f)
+
+          # Build three truly separate Exhibition pages from the approved desktop source.
+          base=Path('desktop-exhibition.html').read_text()
+          base=re.sub(r'<nav class="subnav">.*?</nav>','',base,count=1,flags=re.S)
+          separate_css='''<style id="separate-exhibition-view">.view{display:none!important}.view.page-current{display:block!important;padding-top:120px}.hero{min-height:72vh}.page-label{position:fixed;z-index:50;top:76px;left:0;right:0;height:42px;display:flex;align-items:center;background:var(--g);color:var(--j);font:600 10px Poppins;letter-spacing:.13em;text-transform:uppercase}.page-label .shell{display:flex;justify-content:space-between}.page-label a{color:var(--j)}</style>'''
+          if 'id="separate-exhibition-view"' not in base:base=base.replace('</head>',separate_css+dropdown_css+'</head>',1)
+          # Remove old hash switching call and make page selection controlled by body data.
+          base=re.sub(r'function view\(\).*?addEventListener\(\'hashchange\',view\);view\(\);','',base,count=1,flags=re.S)
+          # Remove existing simple Exhibition nav item before injecting dropdown.
+          base=re.sub(r'<a class="active" href="desktop-exhibition\.html">Exhibition</a>',dropdown,base,count=1)
+          base=re.sub(r'<a href="desktop-exhibition\.html">Exhibition</a>',dropdown,base,count=1)
+
+          variants=[
+            ('desktop-exhibition.html','why-exhibit','Why exhibit','01'),
+            ('desktop-exhibitor-profile.html','exhibitor-profile','Exhibitor profile','02'),
+            ('desktop-space-rental.html','space-rental','Space rental','03')]
+          for filename,section,label,num in variants:
+              x=base
+              x=x.replace('<body>','<body data-exhibition-page="'+section+'"><div class="page-label"><div class="shell"><span>Exhibition · '+num+'</span><span>'+label+'</span></div></div>',1)
+              x=x.replace('<section class="view" id="'+section+'">','<section class="view page-current" id="'+section+'">',1)
+              # Keep hero only on Why Exhibit, use compact context hero on the other two.
+              if section!='why-exhibit':
+                  x=re.sub(r'<section class="hero">.*?</section>','<section class="hero"><div class="shell"><div><span class="eye">Exhibition · '+num+'</span><h1 class="display">'+label+'</h1><p class="lead">BIRC 2026 at Bharat Mandapam, New Delhi.</p></div></div></section>',x,count=1,flags=re.S)
+              x=x.replace('<title>Exhibition | BIRC 2026 Desktop</title>','<title>'+label+' | BIRC 2026 Desktop</title>',1)
+              Path(filename).write_text(x)
+
+          # Context update, no mobile files touched.
+          p=Path('context.md'); c=p.read_text()
+          note='''\n## Desktop Exhibition routing update\n\n- Desktop Exhibition is split into `desktop-exhibition.html` (Why Exhibit), `desktop-exhibitor-profile.html`, and `desktop-space-rental.html`.\n- The desktop navbar dropdown is the only navigation between those three pages; the side-by-side section switcher was removed.\n- Desktop Conference speaker and programme alignment was corrected.\n- Mobile Conference and Exhibition files remain unchanged.\n'''
+          if '## Desktop Exhibition routing update' not in c:p.write_text(c.rstrip()+note)
+          PY
+      - name: Commit six desktop files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html desktop-about.html desktop-conference.html desktop-exhibition.html desktop-exhibitor-profile.html desktop-space-rental.html context.md
+          git commit -m "Align Conference and split Exhibition into separate desktop pages"
+          git push

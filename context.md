@@ -427,3 +427,7 @@ The mobile Content Creators, Rice Masterchef, and Artists pages were checked aga
 
 - Desktop About values heading is left-aligned and the Our Story copy is bottom-aligned with the route visual.
 - The centered yellow Exhibition page label was removed from all three desktop Exhibition pages; navigation remains in the navbar dropdown only.
+## Desktop Experience page
+
+- `desktop-experience.html` is the purpose-built desktop Experience page with all nine approved zones, alternating editorial layouts, preserved abstract visuals, registration chooser, and mobile switch.
+- Mobile `experience.html` remains unchanged.

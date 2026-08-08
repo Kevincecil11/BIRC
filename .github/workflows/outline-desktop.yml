@@ -14,28 +14,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify
+      - name: Append context
         run: |
-          python3 - <<'PY'
-          import re, os
-          out=[]
-          for f in ['desktop-rice-masterchef.html','desktop-plan-visit.html','desktop-contact.html','desktop-artists.html','desktop-creators.html','desktop-partnership.html']:
-              raw=open(f,encoding='utf-8').read()
-              ms=re.search(r'<a class="mobile-switch" href="([^"]*)"',raw)
-              out.append('%s | refine=%s | brittle=%s | mobileSwitch=%s | bytes=%d' % (
-                f,
-                'YES' if 'id="desk-refine"' in raw else 'no',
-                'YES' if 'body > main:nth-child' in raw else 'clean',
-                ms.group(1) if ms else 'n/a',
-                len(raw)))
-          os.makedirs('audit',exist_ok=True)
-          open('audit/verify.txt','w').write('\n'.join(out))
-          print('\n'.join(out))
-          PY
+          cat >> context.md <<'MD'
+
+## Desktop refine pass (2026-08-08)
+
+- desktop-partnership.html rebuilt from scratch. The old page was the 375px .dv-card wireframe stretched to desktop with inline styles and no semantic structure. Replaced with a standalone desktop document: fixed masthead, left-aligned hero with a spec list, a 5-tier master/detail (left rail of tiers, right benefit panel, gold outline on the selected tier), Special Opportunities as a varied grid with Gala Dinner as a wide feature plus a gold enquiry panel, partner marquee, shared desktop footer. All tier and special-opportunity copy and pricing preserved verbatim from partnership.html.
+- All brittle body-main-nth-child colour patches removed from every desktop page. They caused the wrong-colour form text. Replaced by one clean style id=desk-refine sheet per page, appended last, scoped to min-width 900px.
+- Left alignment is now a standing desktop rule. Section headings, eyebrows, leads, lists, forms and FAQ blocks are left-aligned with margin-left 0. Nothing on desktop is centre-aligned any more, including forms and FAQ stacks that were previously margin auto.
+- desktop-rice-masterchef.html now follows the Creators pattern: 130px section rhythm, two-column moment/winner/content lists, two-up pass cards, 760px stat row, left-aligned two-column application form. The prize block border-left stripe was replaced with a full gold border panel.
+- Shared gold form treatment applied to .apply (Creators), #apply.apply (Artists), .master-apply (Masterchef) and section.form-section (Contact): gold section background, linen form panel with hairline border, uppercase Poppins labels, light inputs with deep-gold focus ring, ink submit button, small doc-note. Two-column field grid, textarea fields span full width, submit left-aligned and auto-width.
+- desktop-artists.html: application form colours fixed through the shared treatment, and .artist-faq is now explicitly linen with ink text instead of inheriting the dark page background with dark text.
+- desktop-plan-visit.html: two-column venue grid, three-up hotel list, inline travel tabs, two-column travel panels, 360px map.
+- desktop-contact.html: three-up route cards, two-column contact stack, inline social links, Creators-style form.
+- Mobile view buttons fixed. Every desktop page Mobile view control now points at its own mobile file instead of back at the desktop page.
+- Mobile files were not modified in this pass. contact.html already carries the Creators-style gold form section from the earlier pass.
+MD
       - name: Commit
         run: |
           git config user.name 'birc-bot'
           git config user.email 'birc-bot@users.noreply.github.com'
-          git add audit/verify.txt
-          git commit -m 'Verify refine markers' || echo 'no changes'
+          git add context.md
+          git commit -m 'Log desktop refine decisions' || echo 'no changes'
           git push

@@ -1,0 +1,31 @@
+name: Add desktop controls final
+on:
+  push:
+    paths: ['.github/workflows/add-desktop-controls-final.yml']
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('desktop.html')
+          h=p.read_text()
+          h=h.replace('<div class="tools">','<div class="tools"><a class="ghost mobile-view-control" href="index.html?view=mobile">Mobile view ↙</a>',1)
+          style='''<style id="desktop-controls-final">.mobile-view-control{color:var(--linen);border-color:var(--dm)}.float-shade{position:fixed;z-index:64;inset:0;background:#0d0d0b99;opacity:0;pointer-events:none;transition:opacity .2s var(--e)}.float-shade.on{opacity:1;pointer-events:auto}.quick-dock{position:fixed;z-index:66;right:28px;bottom:28px;display:flex;flex-direction:column;align-items:flex-end;gap:9px}.quick-list{display:grid;gap:8px;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .24s var(--e),transform .3s var(--e)}.quick-dock.open .quick-list{opacity:1;transform:none;pointer-events:auto}.quick-link{appearance:none;min-width:190px;height:46px;padding:0 12px 0 16px;display:grid;grid-template-columns:1fr 28px;gap:12px;align-items:center;border:1px solid var(--dl);background:var(--ink-3);color:var(--linen);text-align:left;font:600 10px Poppins;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.quick-link span{width:28px;height:28px;display:grid;place-items:center;background:var(--gold);color:var(--ink)}.quick-link.primary{background:var(--gold);color:var(--ink);border-color:var(--gold)}.quick-link.primary span{background:var(--ink);color:var(--gold)}.quick-toggle{width:58px;height:58px;border:0;border-radius:50%;background:var(--gold);color:var(--ink);font:600 26px Poppins;box-shadow:0 14px 34px #0008;cursor:pointer;transition:transform .3s var(--e)}.quick-dock.open .quick-toggle{transform:rotate(45deg)}.float-time{position:fixed;z-index:63;left:50%;bottom:24px;width:min(560px,calc(100% - 340px));min-height:64px;padding:9px 10px 9px 20px;display:grid;grid-template-columns:1fr auto;align-items:center;background:var(--ink);border:1px solid var(--dl);box-shadow:0 16px 44px #0008;transform:translate(-50%,140%);opacity:0;transition:transform .4s var(--e),opacity .3s var(--e)}.float-time.on{transform:translate(-50%,0);opacity:1}.float-time small{display:block;color:var(--dm);font:600 9px Poppins;letter-spacing:.12em;text-transform:uppercase}.float-time strong{display:block;margin-top:3px;font:600 16px Poppins;font-variant-numeric:tabular-nums}.float-time button{min-width:126px;height:44px;border:0;background:var(--gold);color:var(--ink);font:600 11px Poppins;text-transform:uppercase;cursor:pointer}@media(max-width:1180px){.mobile-view-control{display:none}.float-time{width:480px}}@media(prefers-reduced-motion:reduce){.float-shade,.quick-list,.quick-toggle,.float-time{transition:none}}</style>'''
+          h=h.replace('</head>',style+'</head>',1)
+          markup='''<div class="float-shade" id="floatShade"></div><aside class="quick-dock" id="quickDock"><div class="quick-list"><a class="quick-link primary" href="exhibition.html#space-rental">Book your stand <span>▣</span></a><button class="quick-link" type="button" data-register>Register to visit <span>↗</span></button><a class="quick-link" href="https://birc.in/login">Login <span>→</span></a><a class="quick-link" href="https://wa.me/">WhatsApp <span>◉</span></a></div><button class="quick-toggle" id="quickToggle" type="button" aria-label="Open quick actions" aria-expanded="false">+</button></aside><aside class="float-time" id="floatTime"><div><small>Summit opens in</small><strong id="floatClock">00d 00h 00m 00s</strong></div><button type="button" data-register>Register ↗</button></aside>'''
+          h=h.replace('<dialog class="regdialog"',markup+'<dialog class="regdialog"',1)
+          script='''<script id="desktop-controls-script">(function(){var dock=document.getElementById('quickDock'),toggle=document.getElementById('quickToggle'),shade=document.getElementById('floatShade'),bar=document.getElementById('floatTime'),clock=document.getElementById('floatClock'),target=new Date('2026-10-23T00:00:00+05:30').getTime();function actions(force){var open=typeof force==='boolean'?force:!dock.classList.contains('open');dock.classList.toggle('open',open);shade.classList.toggle('on',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close quick actions':'Open quick actions')}toggle.onclick=function(){actions()};shade.onclick=function(){actions(false)};dock.querySelectorAll('a,button[data-register]').forEach(function(x){x.addEventListener('click',function(){actions(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape')actions(false)});function pad(n){return String(n).padStart(2,'0')}function update(){var d=Math.max(0,target-Date.now()),dd=Math.floor(d/864e5),hh=Math.floor(d/36e5)%24,mm=Math.floor(d/6e4)%60,ss=Math.floor(d/1e3)%60;clock.textContent=dd+'d '+pad(hh)+'h '+pad(mm)+'m '+pad(ss)+'s';var final=document.getElementById('register').getBoundingClientRect().top;bar.classList.toggle('on',scrollY>innerHeight*.75&&final>innerHeight*.88)}update();setInterval(update,1000);addEventListener('scroll',update,{passive:true})})();</script>'''
+          h=h.replace('</body>',script+'</body>',1)
+          p.write_text(h)
+          PY
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html
+          git commit -m "Add Mobile view floating countdown and quick actions to desktop"
+          git push

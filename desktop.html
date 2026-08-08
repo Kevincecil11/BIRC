@@ -1,74 +1,903 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><script id="device-router">(function(){const q=new URLSearchParams(location.search),requested=q.get('view'),saved=sessionStorage.getItem('bircView');if(requested==='desktop'){sessionStorage.setItem('bircView','desktop');return}if(requested==='mobile'){sessionStorage.setItem('bircView','mobile');location.replace('index.html?view=mobile');return}if(saved==='mobile'||(!saved&&!matchMedia('(min-width:900px)').matches)){location.replace('index.html')}})();</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0a0a08"><title>BIRC 2026 | Desktop</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"><style>
-:root{--j:#0d0d0b;--j2:#191916;--l:#faf0e6;--g:#ebb341;--g2:#c98e25;--m:#2b2b27;--dm:#aba49c;--lm:#6d6862;--dl:#35332e;--ll:#d8cec3;--e:cubic-bezier(.16,1,.3,1);--p:22px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#211f1d;color:var(--l);font:400 16px/1.6 Inter,sans-serif;-webkit-font-smoothing:antialiased}body.lock{overflow:hidden}a{color:inherit;text-decoration:none}button,input{font:inherit}.page{width:min(100%,520px);margin:auto;background:var(--j);overflow:hidden}.light{background:var(--l);color:var(--j)}.pad{padding:96px var(--p)}.eye{font:600 10px/1 Poppins;letter-spacing:.18em;text-transform:uppercase}.title{font:600 clamp(38px,11vw,58px)/.96 Poppins;letter-spacing:-.06em;text-wrap:balance;margin:0}.lead{font-weight:300;color:var(--dm);margin:0}.light .lead{color:var(--lm)}.head{display:grid;gap:16px;margin-bottom:42px}.head .eye{color:var(--lm)}.dark .head .eye{color:var(--dm)}.rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--e),transform .75s var(--e)}.rv.in{opacity:1;transform:none}.progress{position:fixed;z-index:90;top:0;left:50%;width:min(100%,520px);height:2px;transform:translateX(-50%)}.progress i{display:block;height:100%;width:0;background:var(--g)}.bar{position:fixed;z-index:80;top:0;left:50%;width:min(100%,520px);height:72px;transform:translateX(-50%);display:flex;align-items:center;justify-content:space-between;padding:0 var(--p)}.bar.on{background:var(--j);border-bottom:1px solid var(--dl)}.logo{width:158px;height:48px;object-fit:contain;object-position:left}.menu{width:44px;height:44px;border:0;background:none;color:inherit;padding:11px}.menu i{display:block;height:1px;background:currentColor;margin:6px 0}.drawer{position:fixed;z-index:100;inset:0;margin:auto;width:min(100%,520px);background:var(--j);padding:22px;display:flex;flex-direction:column;transform:translateY(-102%);transition:transform .45s var(--e)}.drawer.open{transform:none}.drawer-top{display:flex;justify-content:space-between}.drawer nav{margin:auto 0}.drawer nav a{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--dl);font:600 29px/1.2 Poppins;letter-spacing:-.05em}.drawer small,.drawer p{color:var(--dm);font-size:9px}.drawer p{font-size:13px}.x{width:44px;height:44px;border:1px solid var(--dl);background:none;color:inherit}.hero{min-height:100svh;padding:108px var(--p) 24px;display:flex;flex-direction:column;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 16%,#ebb3412b,transparent 26%),repeating-linear-gradient(116deg,transparent 0 31px,#faf0e609 31px 32px)}.hero>*{position:relative}.slot{text-align:right;color:var(--dm);font:600 8px Poppins;text-transform:uppercase}.hero-main{margin:auto 0 38px}.hero .eye{display:flex;align-items:center;gap:12px;color:var(--dm);margin-bottom:25px}.hero .eye:before{content:"";width:34px;height:1px;background:var(--g)}h1{font:600 clamp(43px,13.7vw,68px)/.91 Poppins;letter-spacing:-.07em;margin:0}.dim{color:var(--dm)}.hero .lead{max-width:35ch;margin-top:23px}.actions{display:grid;gap:8px}.btn{min-height:56px;padding:0 22px;border:0;background:var(--g);color:var(--j);display:flex;align-items:center;justify-content:center;gap:10px;font:600 13px Poppins}.btn.alt{background:transparent;color:var(--l);box-shadow:inset 0 0 0 1px var(--dl)}.facts{display:grid;grid-template-columns:1fr 1fr;margin-top:20px;border-top:1px solid var(--dl)}.fact{padding:15px 0;border-bottom:1px solid var(--dl)}.fact:nth-child(odd){border-right:1px solid var(--dl)}.fact:nth-child(even){padding-left:15px}.fact small{display:block;color:var(--dm);font:600 8px Poppins;text-transform:uppercase}.fact b{font:500 14px Poppins}.scroll{display:flex;gap:10px;align-items:center;color:var(--dm);padding-top:18px;font:600 8px Poppins;text-transform:uppercase}.scroll:after{content:"";height:1px;flex:1;background:var(--dl)}.ticker{background:var(--l);color:var(--j);overflow:hidden;padding:12px 0}.ticker div{display:flex;width:max-content;animation:run 34s linear infinite}.ticker span{white-space:nowrap;padding:0 18px;font:600 9px Poppins;text-transform:uppercase}.ticker span:after{content:" •";color:var(--g2);margin-left:18px}@keyframes run{to{transform:translateX(-50%)}}.statement{min-height:72svh;display:flex;flex-direction:column;justify-content:center;gap:28px}.statement .eye{color:var(--lm)}.statement p{font:500 clamp(29px,8.5vw,43px)/1.18 Poppins;letter-spacing:-.05em;margin:0}.statement footer{color:var(--lm);font:600 9px Poppins;text-transform:uppercase}.path-list{display:grid;gap:12px}.path{height:430px;background:var(--j2);padding:24px;display:flex;flex-direction:column;position:relative;overflow:hidden}.path:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,transparent 0 26px,#faf0e609 26px 27px)}.path>*{position:relative}.path-top{display:flex;justify-content:space-between;color:var(--dm);font:600 8px Poppins;text-transform:uppercase}.path-copy{margin-top:auto}.path h3{font:600 39px Poppins;letter-spacing:-.055em;margin:8px 0}.path p{color:var(--dm);font-size:14px}.path a{color:var(--g);font:600 10px Poppins;text-transform:uppercase}.fig{display:flex;align-items:baseline;justify-content:space-between;padding:24px var(--p);border-top:1px solid var(--ll)}.fig:last-of-type{border-bottom:1px solid var(--ll)}.fig b{font:600 clamp(41px,13vw,64px)/.9 Poppins;letter-spacing:-.07em}.fig b em{font-size:.4em;font-style:normal}.fig small{color:var(--lm);font:600 9px Poppins;text-transform:uppercase}.note{padding:20px var(--p) 90px;color:var(--lm);font-size:12px}.zones{padding-bottom:96px}.tour-view,.quote-view{overflow:hidden;touch-action:pan-y}.tour-track,.quote-track{display:flex;transition:transform .65s var(--e)}.zone{flex:0 0 100%;padding:0 var(--p) 26px}.zone-vis{height:430px;background:var(--j);color:var(--l);position:relative;overflow:hidden}.zone-no,.zone-cap{position:absolute;z-index:2;top:16px;color:var(--dm);font:600 8px Poppins;text-transform:uppercase}.zone-no{left:18px}.zone-cap{right:18px;max-width:16ch;text-align:right}.zone-copy{position:absolute;z-index:2;left:22px;right:22px;bottom:24px}.zone-copy h3{font:600 36px/1 Poppins;letter-spacing:-.055em;margin:0 0 11px;max-width:10ch}.zone-copy p{color:var(--dm);font-size:13px;margin:0}.art{position:absolute;inset:0}.art i{position:absolute}.globe{width:236px;height:236px;border:1px solid var(--dl);border-radius:50%;left:50%;top:42%;transform:translate(-50%,-50%)}.globe:before,.globe:after{content:"";position:absolute;inset:38px 0;border-block:1px solid var(--dl);border-radius:50%}.globe:after{inset:0 67px;border:0;border-inline:1px solid var(--dl)}.trail{left:14%;right:12%;top:42%;height:1px;background:var(--g);transform:rotate(-17deg);animation:route 2.8s var(--e) infinite}.trail:after{content:"";position:absolute;right:0;top:-4px;width:9px;height:9px;background:var(--g);border-radius:50%}@keyframes route{0%{transform:rotate(-17deg) scaleX(0)}60%,100%{transform:rotate(-17deg) scaleX(1)}}.seed i{width:12px;height:35px;border:1px solid var(--g);border-radius:100% 0 100% 0;left:var(--x);top:var(--y);transform:rotate(var(--r));animation:float 3.8s var(--e) infinite alternate}@keyframes float{to{transform:translateY(-20px) rotate(calc(var(--r) + 18deg));opacity:.45}}.rings i{width:210px;height:290px;border:1px solid var(--g);border-radius:100% 0 100% 0;left:50%;top:42%;transform:translate(-50%,-50%) rotate(34deg);animation:breathe 3.5s var(--e) infinite}.rings i:before,.rings i:after{content:"";position:absolute;inset:20%;border:1px solid var(--dl);border-radius:inherit}.rings i:after{inset:38%}@keyframes breathe{50%{transform:translate(-50%,-50%) rotate(39deg) scale(.92)}}.seeds{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;padding:75px 48px 140px}.seeds i{position:relative;aspect-ratio:1;border:1px solid var(--dl);border-radius:50%}.seeds i:nth-child(3n){border-color:var(--g)}.line:before{content:"";position:absolute;left:32px;right:32px;top:40%;height:1px;background:var(--g)}.line i{top:calc(40% - 6px);width:12px;height:12px;background:var(--g);border-radius:50%;left:var(--x)}.tour-ui{padding:0 var(--p);display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}.tour-progress{height:2px;background:var(--ll)}.tour-progress i{display:block;height:100%;background:var(--g2);width:11.11%}.tour-ui small{font:600 10px Poppins}.tour-actions{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:8px}.tour-actions button{height:52px;border:1px solid var(--ll);background:none;color:var(--j);font:600 10px Poppins;text-transform:uppercase}.date-sec{padding:96px var(--p) 88px}.date-sec>p{font:500 clamp(29px,8.5vw,43px)/1.18 Poppins;letter-spacing:-.05em;margin:26px 0 64px}.date-lock{padding:38px 0 42px;border-block:1px solid var(--dl);text-align:center}.date-lock h3{font:600 clamp(54px,16vw,82px)/.85 Poppins;letter-spacing:-.075em;margin:0}.date-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:32px}.date-row span{font:600 clamp(58px,17vw,88px)/.85 Poppins;letter-spacing:-.085em;color:var(--g)}.date-lock small{display:block;margin-top:25px;color:var(--dm);font:600 9px Poppins;text-transform:uppercase}.programme{padding:88px 0 96px}.program{margin:0 var(--p);position:relative}.rail{position:absolute;left:21px;top:28px;bottom:28px;width:1px;background:var(--dl)}.rail i{display:block;width:1px;height:0;background:var(--g)}.day{position:relative;padding:28px 0 38px 65px;min-height:260px;border-bottom:1px solid var(--dl)}.node{position:absolute;left:10px;top:29px;width:23px;height:23px;border:1px solid var(--dl);border-radius:50%;background:var(--j)}.day.active .node{background:var(--g)}.day small{color:var(--dm);font:600 9px Poppins;text-transform:uppercase}.day-num{font:600 76px/.8 Poppins;color:var(--m);position:absolute;right:0;top:23px}.day h3{font:600 28px Poppins;letter-spacing:-.05em;margin:62px 0 11px}.day p{color:var(--dm);font-size:14px}.quote{flex:0 0 100%;margin:0}.quote-mark{font:600 78px/.7 Poppins;color:var(--g)}.quote blockquote{font:500 34px/1.16 Poppins;letter-spacing:-.055em;margin:25px 0 46px}.quote figcaption{border-top:1px solid var(--ll);padding-top:20px}.quote b{display:block}.quote span{color:var(--lm);font-size:13px}.quote-ui{display:flex;justify-content:space-between;margin-top:32px}.q-dots{display:flex;gap:5px}.q-dots i{width:18px;height:2px;background:var(--ll)}.q-dots i.on{width:30px;background:var(--g2)}.q-btn button{width:48px;height:48px;border:1px solid var(--ll);background:none}.why{padding-bottom:96px}.why-intro{padding:0 var(--p) 64px;color:var(--dm)}.reasons{border-top:1px solid var(--dl)}.reason{min-height:340px;padding:30px var(--p);border-bottom:1px solid var(--dl);display:flex;flex-direction:column;position:relative;overflow:hidden}.reason-no{font:600 10px Poppins;color:var(--g)}.reason-word{position:absolute;top:20px;font:600 112px/.8 Poppins;letter-spacing:-.09em;color:var(--m);opacity:0;transition:transform 1s var(--e),opacity .45s}.reason:nth-child(odd) .reason-word{right:-8px;transform:translateX(115%)}.reason:nth-child(even) .reason-word{left:-8px;transform:translateX(-115%)}.reason.in .reason-word{transform:none;opacity:1}.reason-copy{margin-top:auto;position:relative;z-index:2}.reason h3{font:600 28px/1.08 Poppins;letter-spacing:-.05em;margin:0 0 13px}.reason p{color:var(--dm);font-size:14px}.reason:nth-child(even){text-align:right}.why-close{padding:58px var(--p) 0;font:500 27px/1.2 Poppins}.why-close span{color:var(--g)}.speakers{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px}.speaker-img,.gallery-img{background:repeating-linear-gradient(125deg,transparent 0 20px,#faf0e609 20px 21px),var(--j2);position:relative}.speaker-img{aspect-ratio:3/4;margin-bottom:12px}.speaker-img:after,.gallery-img:after{content:attr(data-cap);position:absolute;left:10px;bottom:9px;color:var(--dm);font:600 8px Poppins}.speaker small{color:var(--g);font:600 8px Poppins}.speaker h3{font:600 15px Poppins;margin:5px 0 0}.speaker p{color:var(--dm);font-size:12px;margin:2px 0}.gallery{overflow:hidden}.gallery-run{display:flex;gap:3px;width:max-content;animation:run 38s linear infinite}.gallery-img{width:215px;height:172px}.gallery-img:nth-child(even){width:260px}
-/* approved visit grid */.visit{padding-bottom:96px}.visit-grid{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--ll)}.visit-item{min-height:220px;padding:20px 16px 17px var(--p);border:0;background:transparent;color:var(--j);text-align:left;display:flex;flex-direction:column;position:relative;overflow:hidden;isolation:isolate}.visit-item:nth-child(odd){border-right:1px solid var(--ll)}.visit-item:nth-child(-n+2){border-bottom:1px solid var(--ll)}.visit-item:before{content:"";position:absolute;inset:0;background:var(--j);transform:translateY(101%);transition:transform .45s var(--e);z-index:-1}.visit-item.open:before{transform:none}.visit-item.open{color:var(--l)}.visit-label{color:var(--g2);font:600 8px/1 Poppins;letter-spacing:.18em;text-transform:uppercase}.visit-item h3{font:600 17px/1.25 Poppins;letter-spacing:-.035em;margin:11px 0 0}.visit-detail{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .25s}.visit-detail>span{min-height:0;overflow:hidden}.visit-detail p{font-size:12px;line-height:1.55;color:var(--dm);margin:14px 0 0}.visit-item.open .visit-detail{grid-template-rows:1fr;opacity:1}.visit-action{display:flex;gap:8px;margin-top:auto;padding-top:24px;font:600 9px/1 Poppins;letter-spacing:.13em;text-transform:uppercase}.visit-action i{font-style:normal;color:var(--g2)}.visit-note{margin:42px var(--p) 0;padding-top:20px;border-top:1px solid var(--ll);display:grid;grid-template-columns:72px 1fr;gap:16px}.visit-note small{color:var(--g2);font:600 8px Poppins;text-transform:uppercase}.visit-note p{color:var(--lm);font-size:13px;margin:0}.final{min-height:86svh;display:flex;flex-direction:column;justify-content:center;text-align:center;position:relative;overflow:hidden}.rice{position:absolute;inset:0;pointer-events:none}.grain{position:absolute;width:28px;height:78px;border-radius:55% 45%;background:linear-gradient(90deg,#8e682d,#f1d794 38%,#b78335 72%,#5a421f);box-shadow:inset 4px 0 8px #ffffff55,inset -5px -3px 10px #18100a88,0 18px 22px #0009;left:var(--x);top:var(--y);transform:rotate(var(--r)) scale(var(--s));opacity:var(--o);animation:drift 6s var(--e) infinite alternate}@keyframes drift{to{transform:translateY(-14px) rotate(calc(var(--r) + 9deg)) scale(var(--s))}}.final>*:not(.rice){position:relative}.final .eye{color:var(--g)}.final h2{font:600 65px/.9 Poppins;letter-spacing:-.07em;margin:28px 0 36px}.clock{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;padding-top:25px;border-top:1px solid var(--dl)}.clock div+div{border-left:1px solid var(--dl)}.clock strong{display:block;font:600 27px Poppins}.clock small{color:var(--dm);font:600 8px Poppins}.footer{padding:70px var(--p) 110px;border-top:1px solid var(--dl)}.field{display:flex;border-bottom:1px solid var(--dl)}.field input{flex:1;background:none;border:0;color:var(--l);padding:14px 0}.field button{background:none;border:0;color:var(--g)}.links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px}.end{margin-top:40px;color:var(--dm);font-size:12px}.sticky{position:fixed;z-index:70;left:50%;bottom:0;width:min(100%,520px);transform:translate(-50%,110%);transition:transform .35s var(--e);background:var(--j);border-top:1px solid var(--dl);padding:11px var(--p);display:flex;gap:12px;align-items:center}.sticky.on{transform:translate(-50%,0)}.sticky-copy{flex:1}.sticky small{display:block;color:var(--dm);font-size:8px}.sticky .btn{min-height:44px}@media(prefers-reduced-motion:reduce){.rv,.reason-word{opacity:1;transform:none}.ticker div,.gallery-run,.art *,.grain{animation:none!important}}.drawer-social{display:flex;gap:7px;align-items:center;padding-top:18px;border-top:1px dashed var(--dl);color:var(--dm);font-size:13px}.drawer-social a{color:inherit}.drawer-social a:hover{color:var(--g)}/* Knowledge Sessions */.knowledge{padding:96px 0;background:var(--j);color:var(--l)}.knowledge .head,.difference .head{padding:0 var(--p)}.knowledge .head .eye,.difference .head .eye{color:var(--g)}.knowledge-meta{margin:0 var(--p) 42px;padding:18px 0;border-block:1px solid var(--dl);display:flex;justify-content:space-between;align-items:center}.knowledge-meta strong{font:600 13px Poppins,sans-serif}.knowledge-meta span{color:var(--dm);font:600 9px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase}.session-day{padding:0 var(--p)}.session-day+.session-day{margin-top:58px}.session-day-head{display:flex;justify-content:space-between;gap:20px;align-items:end;padding-bottom:16px;border-bottom:1px solid var(--dl)}.session-day-head strong{color:var(--g);font:600 12px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase}.session-day-head span{color:var(--dm);font:600 9px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase}.session-list{counter-reset:session}.session{counter-increment:session;display:grid;grid-template-columns:36px 1fr;gap:14px;padding:23px 0;border-bottom:1px solid var(--dl)}.session:before{content:counter(session);width:30px;height:30px;border-radius:50%;background:var(--g);color:var(--j);display:grid;place-items:center;font:700 11px Poppins,sans-serif}.session-day:nth-of-type(2) .session-list{counter-reset:session 4}.session h3{font:600 18px/1.2 Poppins,sans-serif;letter-spacing:-.035em;margin:2px 0 6px}.session p{color:var(--dm);font-size:13px;line-height:1.55;margin:0}.difference{padding:96px 0;background:var(--j2);color:var(--l)}.ey-report{margin:0 var(--p) 42px;padding:20px;border:1px solid var(--dl);display:grid;grid-template-columns:1fr auto;gap:14px}.ey-report strong{display:block;color:var(--g);font:600 12px Poppins,sans-serif;margin-bottom:6px}.ey-report p{color:var(--dm);font-size:12px;line-height:1.5;margin:0}.ey-report span{align-self:center;color:var(--g);font:600 9px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase}.difference-list{border-top:1px solid var(--dl)}.difference-item{border-bottom:1px solid var(--dl)}.difference-btn{width:100%;min-height:94px;padding:0 var(--p);border:0;background:none;color:var(--l);display:grid;grid-template-columns:38px 1fr 22px;gap:12px;align-items:center;text-align:left}.difference-btn>span:first-child{color:var(--g);font:600 10px Poppins,sans-serif}.difference-btn strong{font:600 16px/1.28 Poppins,sans-serif;letter-spacing:-.025em}.difference-btn em{font-style:normal;font-size:20px;transition:transform .3s var(--e)}.difference-item.open .difference-btn em{transform:rotate(45deg)}.difference-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}.difference-detail>div{overflow:hidden}.difference-detail p{color:var(--dm);font-size:13px;line-height:1.6;margin:0;padding:0 var(--p) 25px 72px}.difference-item.open .difference-detail{grid-template-rows:1fr}@media(prefers-reduced-motion:reduce){.difference-detail,.difference-btn em{transition:none}}/* Floating action dock */.action-dock{position:fixed;z-index:69;right:max(16px,calc((100vw - 520px)/2 + 16px));bottom:92px;display:flex;flex-direction:column;align-items:flex-end;gap:8px}.action-list{display:grid;gap:8px;opacity:0;transform:translateY(12px) scale(.96);transform-origin:bottom right;pointer-events:none;transition:opacity .25s var(--e),transform .3s var(--e)}.action-dock.open .action-list{opacity:1;transform:none;pointer-events:auto}.action-link{min-height:44px;padding:0 14px;display:flex;align-items:center;justify-content:flex-end;gap:10px;background:var(--j2);color:var(--l);border:1px solid var(--dl);font:600 9px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 8px 22px #0006}.action-link span{width:22px;height:22px;display:grid;place-items:center;background:var(--g);color:var(--j);font-size:11px}.action-link.primary{background:var(--g);color:var(--j);border-color:var(--g)}.action-link.primary span{background:var(--j);color:var(--g)}.action-toggle{width:54px;height:54px;border-radius:50%;border:0;background:var(--g);color:var(--j);display:grid;place-items:center;font:600 24px/1 Poppins,sans-serif;box-shadow:0 10px 28px #0008;transition:transform .3s var(--e)}.action-dock.open .action-toggle{transform:rotate(45deg)}.action-toggle:focus-visible,.action-link:focus-visible{outline:3px solid var(--l);outline-offset:2px}.action-backdrop{position:fixed;z-index:68;inset:0;background:#0005;opacity:0;pointer-events:none;transition:opacity .2s}.action-backdrop.on{opacity:1;pointer-events:auto}/* Gallery 20% larger */.gallery-img{width:258px!important;height:206px!important}.gallery-img:nth-child(even){width:312px!important}.gallery-run{gap:4px!important}@media(prefers-reduced-motion:reduce){.action-list,.action-toggle,.action-backdrop{transition:none}}/* Geometric Rice Current */.rice-current{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}.rice-current svg{width:100%;height:100%;display:block}.rice-current .current-band{transform-origin:center;animation:currentDrift 10s var(--e) infinite alternate}.rice-current .current-band:nth-child(2){animation-delay:-3s;animation-duration:13s}.rice-current .current-band:nth-child(3){animation-delay:-6s;animation-duration:15s}.rice-current .current-grain{fill:var(--l);opacity:.42}.rice-current .current-grain.gold{fill:var(--g);opacity:.72}.final:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 50% 45%,#0d0d0b99 0 32%,#0d0d0be0 68%,#0d0d0b 100%);pointer-events:none}.final>*:not(.rice-current){position:relative;z-index:2}@keyframes currentDrift{to{transform:translate3d(18px,-8px,0)}}@media(prefers-reduced-motion:reduce){.rice-current .current-band{animation:none}}/* Approved rice world-map artwork */.rice-world-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(180deg,#0d0d0b55 0%,#0d0d0b22 34%,#0d0d0baa 100%),url('assets/rice-world-map.png');background-size:cover;background-position:center 43%;background-repeat:no-repeat;pointer-events:none}.final:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 50% 46%,#0d0d0b88 0 30%,#0d0d0bc4 66%,#0d0d0bea 100%);pointer-events:none}.final>*:not(.rice-world-bg){position:relative;z-index:2}/* Rice world-map visibility fix */.final>.rice-world-bg{position:absolute!important;inset:0!important;z-index:0!important;display:block!important;background-image:url('assets/rice-world-map.png')!important;background-size:cover!important;background-position:center 42%!important;background-repeat:no-repeat!important;opacity:1!important}.final:after{background:linear-gradient(180deg,#0d0d0b55 0%,#0d0d0b2e 32%,#0d0d0b70 68%,#0d0d0bb8 100%)!important}.final>*:not(.rice-world-bg){position:relative;z-index:2}/* Registration chooser */.registration-dialog{width:min(calc(100% - 28px),480px);max-height:calc(100svh - 28px);padding:0;border:1px solid var(--ll);background:var(--l);color:var(--j);box-shadow:0 24px 70px #0009}.registration-dialog::backdrop{background:#0d0d0bd1}.registration-head{position:relative;padding:30px 22px 24px;text-align:center;border-bottom:1px solid var(--ll)}.registration-head .eye{color:var(--g2)}.registration-head h2{font:600 25px/1.05 Poppins,sans-serif;letter-spacing:-.045em;margin:17px 0 9px}.registration-head p{color:var(--lm);font-size:13px;margin:0}.registration-close{position:absolute;right:12px;top:12px;width:40px;height:40px;border:1px solid var(--ll);border-radius:50%;background:transparent;color:var(--j);font-size:22px}.registration-options{display:grid;gap:10px;padding:18px 14px}.registration-option{min-height:92px;padding:15px 14px;display:grid;grid-template-columns:42px 1fr 20px;gap:12px;align-items:center;border:1px solid var(--ll);color:var(--j);background:var(--l);transition:transform .18s var(--e),background .18s}.registration-option:hover,.registration-option:focus-visible{background:#f2e6d8;transform:translateY(-1px)}.registration-icon{width:42px;height:42px;display:grid;place-items:center;background:var(--j);color:var(--g);font-size:18px}.registration-option:nth-child(n+2) .registration-icon{background:var(--m);color:var(--l)}.registration-option strong{display:block;font:600 14px Poppins,sans-serif;margin-bottom:4px}.registration-option small{display:block;color:var(--lm);font-size:11px;line-height:1.45}.registration-arrow{color:var(--g2);font-size:20px}.registration-login{padding:5px 18px 24px;text-align:center;color:var(--lm);font-size:12px}.registration-login a{color:var(--j);font-weight:600;text-decoration:underline;text-underline-offset:3px}body.registration-open{overflow:hidden}@media(prefers-reduced-motion:reduce){.registration-option{transition:none}}</style><style id="view-switch-style">.view-switch{position:fixed;z-index:67;left:max(14px,calc((100vw - 520px)/2 + 14px));bottom:18px;min-height:42px;padding:0 13px;display:flex;align-items:center;gap:9px;background:var(--l);color:var(--j);border:1px solid var(--ll);font:600 9px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 24px #0005}.view-switch span{color:var(--g2);font-size:13px}.view-switch:focus-visible{outline:3px solid var(--g);outline-offset:2px}</style><style id="desktop-home-v4">
-/* Desktop v4: a clean, bounded editorial system */
-:root{--max:1240px;--side:max(40px,calc((100vw - 1240px)/2));--sy:112px}
-*{box-sizing:border-box}body{min-width:1100px;background:var(--j);font-size:16px}.page{width:100%;max-width:none;overflow:hidden}.view-switch,.action-dock,.action-backdrop,.sticky,.drawer,.menu{display:none!important}
-.bar{left:0;right:0;top:0;width:100%;height:80px;transform:none;padding:0 var(--side);display:grid;grid-template-columns:160px 1fr auto;gap:28px;background:var(--j);border-bottom:1px solid var(--dl)}.bar .logo{width:150px;height:46px}.desktop-nav{display:flex;justify-content:center;align-items:center;gap:20px}.desktop-nav a{padding:30px 0 27px;color:var(--dm);font:500 11px Poppins,sans-serif;white-space:nowrap}.desktop-nav a:hover{color:var(--l)}.desktop-tools{display:flex;align-items:center;gap:8px}.desktop-tools>a{min-height:40px;padding:0 14px;display:grid;place-items:center;border:1px solid var(--dl);font:600 9px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase}.desktop-tools .desktop-register{background:var(--g);border-color:var(--g);color:var(--j)}.desktop-view-toggle{display:none!important}.progress{left:0;width:100%;transform:none}
-.hero{min-height:860px;padding:148px var(--side) 44px;display:grid;grid-template-columns:7fr 5fr;grid-template-rows:auto auto 1fr auto;gap:28px 64px}.hero:before{background:radial-gradient(circle at 80% 30%,#ebb34120,transparent 28%),repeating-linear-gradient(116deg,transparent 0 55px,#faf0e606 55px 56px)}.hero .slot{grid-column:2;grid-row:1;text-align:right;align-self:start}.hero-main{grid-column:1/2;grid-row:1/4;margin:0;align-self:end}.hero .eye{margin-bottom:24px}.hero h1{font-size:clamp(72px,6vw,96px);line-height:.91;letter-spacing:-.065em;max-width:9.5ch}.hero .lead{font-size:17px;line-height:1.6;max-width:52ch;margin-top:28px}.hero .actions{grid-column:2;grid-row:2;display:grid;grid-template-columns:1fr 1fr;align-self:end}.hero .facts{grid-column:2;grid-row:3;align-self:end;margin:0;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--dl)}.hero .fact{min-height:82px;padding:18px;border:0}.hero .fact:nth-child(odd){border-right:1px solid var(--dl)}.hero .fact:nth-child(-n+2){border-bottom:1px solid var(--dl)}.hero .fact:nth-child(even){padding-left:18px}.hero .scroll{grid-column:1/3;grid-row:4;padding-top:0}.ticker{padding:14px 0}
-.statement{min-height:0;padding:var(--sy) var(--side);display:grid;grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start}.statement .eye{padding-top:12px}.statement p{font-size:clamp(48px,4vw,64px);line-height:1.09;letter-spacing:-.05em;max-width:19ch}.statement footer{grid-column:2;margin-top:20px}
-#pathways{padding:var(--sy) var(--side)}#pathways>.head{display:grid;grid-template-columns:240px 1fr;gap:64px;margin-bottom:56px}#pathways>.head .eye{padding-top:12px}#pathways>.head .title{font-size:64px;max-width:11ch}.path-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.path{height:500px;padding:28px;border:1px solid var(--dl)}.path h3{font-size:48px}.path p{font-size:14px;max-width:30ch}
-.light[style*="padding-top"]{padding:var(--sy) var(--side)!important;display:grid;grid-template-columns:360px 1fr;gap:0 72px}.light[style*="padding-top"]>.head{grid-column:1;padding:0!important;position:static}.light[style*="padding-top"]>.head .title{font-size:58px;line-height:.95;max-width:8ch}.light[style*="padding-top"]>.fig{grid-column:2!important;min-height:112px;padding:20px 0;display:grid;grid-template-columns:1fr auto;align-items:center}.light[style*="padding-top"]>.fig b{font-size:72px;line-height:.9}.light[style*="padding-top"]>.fig small{align-self:center}.light[style*="padding-top"]>.note{grid-column:2!important;padding:20px 0 0}
-.knowledge{padding:var(--sy) var(--side)}.knowledge>.head{display:grid;grid-template-columns:360px 1fr;gap:72px;margin-bottom:48px}.knowledge>.head .eye{padding-top:12px}.knowledge>.head .title{font-size:60px;line-height:.96;max-width:10ch}.knowledge-meta{margin:0 0 36px 432px}.knowledge>.session-day{padding:0;display:grid;grid-template-columns:360px 1fr;gap:72px}.session-day+.session-day{margin-top:52px}.session-day-head{display:grid;gap:8px;align-content:start;padding-top:22px;border-top:1px solid var(--dl);position:static}.session-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--dl)}.session{min-height:150px;padding:22px 18px}.session h3{font-size:17px}.session p{font-size:13px}
-.difference{padding:var(--sy) var(--side);display:grid;grid-template-columns:360px 1fr;gap:0 72px}.difference>.head{padding:0;position:static}.difference>.head .title{font-size:50px;line-height:1;max-width:11ch}.ey-report{grid-column:1;margin:48px 0 0;position:static;grid-template-columns:1fr}.difference-list{grid-column:2;grid-row:1/3}.difference-btn{min-height:96px;padding:0 16px}.difference-btn strong{font-size:16px;line-height:1.35}.difference-detail p{font-size:14px;max-width:68ch}
-.zones{padding:var(--sy) var(--side)}.zones>.head{padding:0!important;display:grid;grid-template-columns:7fr 5fr;gap:72px;align-items:end;margin-bottom:48px}.zones>.head .title{font-size:62px;max-width:9ch}.zones>.head .lead{max-width:38ch}.tour-view{width:100%;max-width:none}.zone{padding:0}.zone-vis{height:590px}.zone-copy{left:42px;right:42px;bottom:40px}.zone-copy h3{font-size:62px;max-width:11ch}.zone-copy p{font-size:15px;max-width:46ch}.globe{width:390px;height:390px}.rings i{width:330px;height:440px}.tour-ui{padding:20px 0 0;grid-template-columns:1fr 68px auto}.tour-progress{min-width:0}.tour-actions{grid-column:auto;display:flex;gap:8px}.tour-actions button{width:140px}
-.date-sec{padding:var(--sy) var(--side);display:grid;grid-template-columns:360px 1fr;grid-template-rows:auto 1fr;gap:16px 72px;align-items:start}.date-sec>.eye{grid-column:1;grid-row:1;padding-top:12px}.date-sec>p{grid-column:1;grid-row:2;font-size:48px;line-height:1.08;max-width:10ch;margin:0}.date-lock{grid-column:2;grid-row:1/3;width:100%;padding:44px 0}.date-lock h3{font-size:88px}.date-row{margin-top:28px;gap:18px}.date-row span{font-size:82px}
-.programme{padding:var(--sy) var(--side)}.programme>.head{padding:0!important;display:grid;grid-template-columns:360px 1fr;gap:72px;margin-bottom:48px}.programme>.head .eye{padding-top:12px}.programme>.head .title{font-size:60px}.program{margin:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--dl)}.rail{display:none}.day{min-height:380px;padding:28px}.day+.day{border-left:1px solid var(--dl)}.node{left:auto;right:28px;top:30px}.day-num{right:24px;top:76px;font-size:96px}.day h3{margin-top:195px;font-size:28px}.day p{font-size:13px}
-#voices{padding:var(--sy) var(--side);display:grid;grid-template-columns:360px 1fr;gap:72px}#voices>.head .title{font-size:58px}.quote blockquote{font-size:50px;line-height:1.1;max-width:15ch}.quote-mark{font-size:88px}.quote-ui{grid-column:2}
-.why{padding:var(--sy) var(--side)}.why>.head{padding:0!important;display:grid;grid-template-columns:360px 1fr;gap:72px;margin-bottom:18px}.why>.head .eye{padding-top:12px}.why>.head .title{font-size:60px;max-width:9ch}.why-intro{padding:0 0 44px 432px}.reasons{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--dl)}.reason{min-height:330px;padding:26px;border-bottom:1px solid var(--dl)}.reason:nth-child(odd){border-right:1px solid var(--dl)}.reason-word{top:48px;font-size:82px;white-space:nowrap}.reason h3{font-size:24px}.reason p{font-size:14px;max-width:34ch}.reason:nth-child(even){text-align:left}.why-close{padding:48px 0 0;font-size:34px}
-.dark.pad[style*="padding-left:0"]{padding:var(--sy) 0!important}.dark.pad[style*="padding-left:0"]>.head{padding:0 var(--side)!important}.gallery-img{width:390px!important;height:270px!important}.gallery-img:nth-child(even){width:490px!important}
-.visit{padding:var(--sy) var(--side)}.visit>.head{padding:0!important;display:grid;grid-template-columns:360px 1fr;gap:72px}.visit>.head .eye{padding-top:12px}.visit>.head .title{font-size:60px}.visit-grid{display:grid;grid-template-columns:repeat(4,1fr)}.visit-item{min-height:290px;padding:24px}.visit-item h3{font-size:21px}.visit-detail p{font-size:13px}.visit-note{margin:40px 0 0}
-.final{min-height:680px;padding:var(--sy) var(--side)}.final h2{font-size:104px}.final .btn{width:380px;margin:0 auto}.clock{width:640px;margin:50px auto 0}.clock strong{font-size:36px}.footer{padding:80px var(--side) 56px;display:grid;grid-template-columns:1fr 1fr;gap:28px 80px}.footer h4{font:600 38px Poppins}.footer .field{grid-column:1}.footer .links{grid-column:2;grid-row:1/4;margin:0}.footer .end{grid-column:1}
-.registration-dialog{width:min(760px,calc(100% - 60px))}.registration-options{grid-template-columns:repeat(3,1fr)}.registration-option{min-height:180px;grid-template-columns:1fr 20px;align-content:start}.registration-icon{grid-column:1/-1;margin-bottom:16px}
-@media(max-width:1200px){:root{--side:36px}.desktop-nav{gap:11px}.desktop-nav a{font-size:9px}.bar{grid-template-columns:145px 1fr auto}.bar .logo{width:138px}.desktop-tools>a{padding-inline:10px}.hero{gap-inline:40px}.hero h1{font-size:74px}.statement,#pathways>.head,.knowledge>.head,.knowledge>.session-day,.difference,.date-sec,.programme>.head,#voices,.why>.head,.visit>.head{grid-template-columns:300px 1fr;gap:52px}.knowledge-meta{margin-left:352px}.why-intro{padding-left:352px}.light[style*="padding-top"]{grid-template-columns:300px 1fr;gap:52px}.path{height:450px}.path h3{font-size:42px}}
-</style></head><body><div class="progress"><i id="progress"></i></div><header class="bar" id="bar"><a href="#top"><img class="logo" src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="desktop.html">Home</a><a href="about.html">About</a><a href="conference.html">Conference</a><a href="exhibition.html">Exhibition</a><a href="experience.html">Experience</a><a href="creators.html">Influencers</a><a href="partnership.html">Partnership</a><a href="plan-visit.html">Plan Visit</a><a href="contact.html">Contact</a></nav><div class="desktop-tools"><a class="desktop-view-toggle" href="index.html?view=mobile">Mobile view</a><a href="https://birc.in/login">Login</a><a class="desktop-register" href="#register">Register ↗</a></div><button class="menu" id="openMenu" aria-label="Menu"><i></i><i></i></button></header><aside class="drawer" id="drawer"><div class="drawer-top"><img class="logo" src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"><button class="x" id="closeMenu">×</button></div><nav class="canonical-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="conference.html">Conference</a><div class="exhibition-group"><button class="exhibition-parent" type="button" aria-expanded="false">Exhibition <small>⌄</small></button><div class="exhibition-sub"><div><a href="exhibition.html#why-exhibit">Why exhibit <span>01</span></a><a href="exhibition.html#exhibitor-profile">Exhibitor profile <span>02</span></a><a href="exhibition.html#space-rental">Space rental <span>03</span></a></div></div></div><a href="experience.html">Experience</a><div class="influencer-group"><button class="influencer-parent" type="button" aria-expanded="false">Influencers <small>⌄</small></button><div class="influencer-sub"><div><a href="creators.html">Content Creators <span>01</span></a><a href="rice-masterchef.html">Rice Masterchef <span>02</span></a><a href="artists.html">Artists <span>03</span></a></div></div></div><a href="partnership.html">Partnership</a><a href="plan-visit.html">Plan Visit</a><a href="contact.html">Contact</a></nav><div class="drawer-social"><a href="#">Instagram</a><span>·</span><a href="#">LinkedIn</a></div><p>Bharat Mandapam, Pragati Maidan<br>New Delhi · 23-24-25 October 2026</p></aside><main class="page" id="top">
-<section class="hero"><span class="slot">Summit hall · wide · dim lighting</span><div class="hero-main"><div class="eye">Next edition · 23-24-25 October 2026</div><h1>The Global<br>Platform for<br>Rice Industry<br><span class="dim">Leadership.</span></h1><p class="lead">30,000+ participants from 120+ countries convene Oct 23-24-25, 2026, to shape the trade, policy, and future of rice.</p></div><div class="actions"><a class="btn" href="#register">Register now ↗</a><a class="btn alt" href="#">Watch the film</a></div><div class="facts"><div class="fact"><small>Dates</small><b>23-24-25 Oct 2026</b></div><div class="fact"><small>Venue</small><b>Halls 4 & 5</b></div><div class="fact"><small>Delegations</small><b>120+ countries</b></div><div class="fact"><small>Participants</small><b>30,000+</b></div></div><div class="scroll">Scroll</div></section><div class="ticker"><div><span>Bharat Mandapam</span><span>250+ Speakers</span><span>₹30,435 Cr in MOUs</span><span>120+ Delegations</span><span>9 Experience Zones</span><span>300+ Exhibitors</span><span>Bharat Mandapam</span><span>250+ Speakers</span><span>₹30,435 Cr in MOUs</span><span>120+ Delegations</span><span>9 Experience Zones</span><span>300+ Exhibitors</span></div></div>
-<section class="statement light pad"><span class="eye rv">The purpose</span><p class="rv">India at the centre. Every rice market in the room. One place where the industry decides what comes next.</p><footer>Bharat Mandapam · New Delhi</footer></section><section class="dark pad" id="pathways"><header class="head"><span class="eye">Take part</span><h2 class="title">Three ways to join BIRC 2026</h2></header><div class="path-list"><article class="path"><div class="path-top"><span>01</span><span>For delegates</span></div><div class="path-copy"><span class="eye">For delegates</span><h3>Attend</h3><p>Access the inner circle of global trade policy and executive networking.</p><a href="#register">Register now →</a></div></article><article class="path"><div class="path-top"><span>02</span><span>For exporters</span></div><div class="path-copy"><span class="eye">For exporters</span><h3>Exhibit</h3><p>Meet the world's largest rice buyers at the epicentre of the supply chain.</p><a href="#">Booth packages →</a></div></article><article class="path"><div class="path-top"><span>03</span><span>For partners</span></div><div class="path-copy"><span class="eye">For partners</span><h3>Sponsor</h3><p>Claim a leadership platform in front of 30,000+ decision-makers.</p><a href="#">Sponsorship tiers →</a></div></article></div></section><section class="light" style="padding-top:96px"><header class="head" style="padding:0 var(--p)"><span class="eye">BIRC in figures</span><h2 class="title">The scale of the floor</h2></header><div class="fig"><b>30,000<em>+</em></b><small>Participants</small></div><div class="fig"><b>120<em>+</em></b><small>Countries</small></div><div class="fig"><b>₹30,435<em>Cr</em></b><small>In MOUs signed</small></div><div class="fig"><b>300<em>+</em></b><small>Exhibitors</small></div><p class="note">Projected for the 2026 edition, based on delegations registered as of July 2026.</p></section>
-<section class="knowledge dark" id="knowledge-sessions"><header class="head"><span class="eye rv">Knowledge Sessions</span><h2 class="title rv">The 9 Knowledge Sessions.</h2></header><div class="knowledge-meta"><strong>9 sessions · 2 days</strong><span>23–24 October</span></div><section class="session-day"><header class="session-day-head"><strong>Day 1</strong><span>Friday 23 October</span></header><div class="session-list"><article class="session"><div><h3>Crop Survey &amp; Price Forecasting</h3><p>Global Demand &amp; Supply Outlook — 2027: Price Crash or New Bull Run?</p></div></article><article class="session"><div><h3>New Market Opportunities</h3><p>Top 10 Rice Markets to Watch in 2027 and Entry Strategy</p></div></article><article class="session"><div><h3>Documentation, Insurance &amp; Credit</h3><p>Protecting Export Payments: Cut Risk by 80% and Prevent Disputes.</p></div></article><article class="session"><div><h3>Shipping — Bulk &amp; Containers</h3><p>Bulk &amp; Container Shipping 2026: Protect Margins and Mitigate Disputes</p></div></article></div></section><section class="session-day"><header class="session-day-head"><strong>Day 2</strong><span>Saturday 24 October</span></header><div class="session-list"><article class="session"><div><h3>Quality &amp; Certification</h3><p>Why Buyers Reject Rice Shipments: How Exporters Can Prevent It</p></div></article><article class="session"><div><h3>Trade Schemes &amp; Incentives</h3><p>Policy Shifts 2026: Trade Schemes, Incentives and Export Opportunities</p></div></article><article class="session"><div><h3>Sustainability &amp; Carbon Credits</h3><p>Sustainability Initiatives &amp; Carbon Credits in Rice: Can Your Business Profit?</p></div></article><article class="session"><div><h3>Rice Milling</h3><p>Profitable Rice Milling: Costs, Planning and Margin Improvement</p></div></article><article class="session"><div><h3>Value-Added Products</h3><p>Cleaning, sorting and branded — value-added rice products.</p></div></article></div></section></section><section class="difference dark" id="knowledge-difference"><header class="head"><span class="eye rv">Built differently</span><h2 class="title rv">What Makes the BIRC 2026 Knowledge Sessions Different</h2></header><aside class="ey-report"><div><strong>EY Post-Conference Report</strong><p>The Ernst &amp; Young Post-Conference Report on BIRC 2025 established the 2025 edition as the world's largest-ever dedicated rice conference in terms of scale and participation.</p></div><span>EY BIRC 2025 Report</span></aside><div class="difference-list"><article class="difference-item open"><button class="difference-btn" aria-expanded="true"><span>01</span><strong>Sessions Built as Business Training Modules — Months of Deep Curation, Every Speaker Chosen for Impact</strong><em>+</em></button><div class="difference-detail"><div><p>Not long speeches. Not boring panels. Real working sessions. Every BIRC 2026 session is built like a business training class — with months of planning behind each one, focused on the real decisions rice businesses make every day. And every speaker is chosen for one reason: they have actually done the business, not just studied it.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>02</span><strong>A Trade-Led Agenda Built Around Real Business Decisions</strong><em>+</em></button><div class="difference-detail"><div><p>Every session answers one simple question: how will this grow your rice business? No heavy theory, no general talk — only the real decisions you face. Where prices will go. Which markets to target. How to lower risk, protect margins, use new ideas and find bigger partners. You go home with clear decisions, not just notes.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>03</span><strong>Price Forecasting and Market Intelligence as a Signature Feature</strong><em>+</em></button><div class="difference-detail"><div><p>Price affects every decision — buying, stocking, contracts and exports. So BIRC 2026 makes price forecasting the main highlight: crop surveys, production estimates, demand-and-supply data and expert views, all in one place. Understand the market before it moves.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>04</span><strong>From Knowledge to Commercial Success</strong><em>+</em></button><div class="difference-detail"><div><p>Knowledge is useful only when it makes money. BIRC 2026 turns learning into results — real case studies, live market analysis and simple business examples that improve your planning, strengthen your position and protect your profit across the value chain.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>05</span><strong>Managing Risk. Improving Profit.</strong><em>+</em></button><div class="difference-detail"><div><p>Big sales do not always mean big profit — margins do. BIRC 2026 focuses on what really affects your earnings: price ups and downs, payment and transaction risk, extra costs and trade planning. Protect your money, keep your margins and grow stronger.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>06</span><strong>Discovering Tomorrow's Markets</strong><em>+</em></button><div class="difference-detail"><div><p>The next big market is not always where everyone is looking. BIRC 2026 looks ahead — new countries, changing customer tastes, new trade rules and government schemes — so you can enter early, move first and grow where the demand is going.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>07</span><strong>Innovation That Creates Business Value</strong><em>+</em></button><div class="difference-detail"><div><p>New technology is useful only if you can actually use it. We checked hundreds of new products, technologies and solutions, and picked only the ones with real business value — shown live at the Top Innovations Reveal and Innovation Showcase. Practical, profitable and ready to use.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>08</span><strong>Experience Zones and Global Rice Cuisine Showcase</strong><em>+</em></button><div class="difference-detail"><div><p>Rice is not just a commodity — it is loved on plates all over the world. Nine special Experience Zones and a Global Rice Cuisine Showcase bring rice dishes from more than 50 countries and over 25 types of biryani to life. See the demand for yourself — and find your next product, market or value-added idea.</p></div></div></article><article class="difference-item"><button class="difference-btn" aria-expanded="false"><span>09</span><strong>Structured Networking for Meaningful Partnerships</strong><em>+</em></button><div class="difference-detail"><div><p>Good deals should not depend on luck or a chance meeting. BIRC 2026 makes networking planned and simple — app-based scheduling and organised B2B meetings connect buyers, exporters, millers and importers with the right partners. Less waiting, more real deals.</p></div></div></article></div></section><section class="zones light" id="zones"><header class="head" style="padding:96px var(--p) 0"><span class="eye">Inside the summit</span><h2 class="title">Experience Zones</h2><p class="lead">Nine immersive worlds tracing rice from field to future, built to be walked, touched, and remembered.</p></header><div class="tour-view" id="tourView"><div class="tour-track" id="tourTrack"></div></div><div class="tour-ui"><div class="tour-progress"><i id="tourProgress"></i></div><small id="tourCount">01 / 09</small><div class="tour-actions"><button id="tourPrev">← Previous</button><button id="tourNext">Next zone →</button></div></div></section>
-<section class="date-sec dark"><span class="eye">Three days</span><p>Policy on Friday. Trade on Saturday. The future on Sunday.</p><div class="date-lock"><h3>October</h3><div class="date-row"><span>23</span><span>24</span><span>25</span></div><small>2026 · New Delhi</small></div></section><section class="programme dark" id="programme"><header class="head" style="padding:0 var(--p)"><span class="eye">Programme</span><h2 class="title">Three intensive days</h2></header><div class="program"><div class="rail"><i id="programFill"></i></div><article class="day"><i class="node"></i><span class="day-num">01</span><small>Day 1 · Fri 23 Oct</small><h3>Knowledge & Policy</h3><p>Opening ceremonies, ministerial summits and global food security panels.</p></article><article class="day"><i class="node"></i><span class="day-num">02</span><small>Day 2 · Sat 24 Oct</small><h3>Trade & Commerce</h3><p>Buyer-seller meets and the largest gathering of rice traders in history.</p></article><article class="day"><i class="node"></i><span class="day-num">03</span><small>Day 3 · Sun 25 Oct</small><h3>Future & Innovation</h3><p>Startup pitch finals and the closing BIRC Global Awards Gala.</p></article></div></section>
-<section class="light pad" id="voices"><header class="head"><span class="eye">Voices of the industry</span><h2 class="title">What leaders say</h2></header><div class="quote-view" id="quoteView"><div class="quote-track" id="quoteTrack"><figure class="quote"><div class="quote-mark">“</div><blockquote>BIRC redefined how we see global rice trade.</blockquote><figcaption><b>Priya Nair</b><span>Director, Global Grain Council</span></figcaption></figure><figure class="quote"><div class="quote-mark">“</div><blockquote>The ecosystem here moves faster than any fair.</blockquote><figcaption><b>Marco van der Belt</b><span>CEO, EuroRice Partners</span></figcaption></figure><figure class="quote"><div class="quote-mark">“</div><blockquote>Every session sharpened our market view.</blockquote><figcaption><b>Chen Wei</b><span>Head of Trade, Asia Foods</span></figcaption></figure><figure class="quote"><div class="quote-mark">“</div><blockquote>A platform built for the industry's future.</blockquote><figcaption><b>James Sterling</b><span>Founder, Sterling Commodities</span></figcaption></figure></div></div><div class="quote-ui"><div class="q-dots" id="qDots"><i class="on"></i><i></i><i></i><i></i></div><div class="q-btn"><button id="qPrev">←</button><button id="qNext">→</button></div></div></section>
-<section class="why" id="why"><header class="head" style="padding:96px var(--p) 0"><span class="eye">Why BIRC</span><h2 class="title">One platform, every pillar</h2></header><p class="why-intro">Four reasons the global rice industry meets here.</p><div class="reasons"><article class="reason"><span class="reason-no">01</span><span class="reason-word">INDIA</span><div class="reason-copy"><h3>India-anchored, globally led</h3><p>We root the world's rice conversation in India, then open it to every market that trades in grain.</p></div></article><article class="reason"><span class="reason-no">02</span><span class="reason-word">TRADE</span><div class="reason-copy"><h3>Trade, innovation, knowledge</h3><p>Every pillar of the industry under one roof, including sustainability and policy.</p></div></article><article class="reason"><span class="reason-no">03</span><span class="reason-word">365</span><div class="reason-copy"><h3>Built for year-round progress</h3><p>A year-round community that convenes at the summit but never ends.</p></div></article><article class="reason"><span class="reason-no">04</span><span class="reason-word">ONE</span><div class="reason-copy"><h3>Everyone wins together</h3><p>Growth for the entire rice ecosystem, not a smaller slice for a few.</p></div></article></div><p class="why-close">India at the centre. <span>Every market in the room.</span></p></section>
-<section class="dark pad" style="padding-left:0;padding-right:0"><header class="head" style="padding:0 var(--p)"><span class="eye">Impressions</span><h2 class="title">BIRC in pictures</h2></header><div class="gallery"><div class="gallery-run"><div class="gallery-img" data-cap="Delegate connect"></div><div class="gallery-img" data-cap="Excellence awards"></div><div class="gallery-img" data-cap="International buyers"></div><div class="gallery-img" data-cap="Installation"></div><div class="gallery-img" data-cap="Delegate connect"></div></div></div></section>
-<section class="visit light" id="visit"><header class="head" style="padding:96px var(--p) 0"><span class="eye">Bharat Mandapam · Halls 4 & 5</span><h2 class="title">Plan your visit</h2></header><div class="visit-grid"><button class="visit-item"><span class="visit-label">Venue</span><h3>Bharat Mandapam</h3><span class="visit-detail"><span><p>Pragati Maidan, New Delhi. Halls 4 and 5, gates open 08:30.</p></span></span><span class="visit-action">Directions <i>→</i></span></button><button class="visit-item"><span class="visit-label">Stay</span><h3>Partner hotels</h3><span class="visit-detail"><span><p>Five partner hotels across every price range, minutes from the venue.</p></span></span><span class="visit-action">View hotels <i>→</i></span></button><button class="visit-item"><span class="visit-label">Travel</span><h3>Getting here</h3><span class="visit-detail"><span><p>Flight, train or metro. Blue Line to Supreme Court, six minutes on foot.</p></span></span><span class="visit-action">Travel guide <i>→</i></span></button><button class="visit-item"><span class="visit-label">Support</span><h3>Visas & FAQs</h3><span class="visit-detail"><span><p>Invitation letters, accreditation, accessibility and delegate support.</p></span></span><span class="visit-action">All FAQs <i>→</i></span></button></div><div class="visit-note"><small>Doors</small><p>Gates open at 08:30 daily. Keep your delegate QR ready for faster entry.</p></div></section>
-<section class="final pad" id="register"><div class="rice-world-bg" aria-hidden="true"></div><span class="eye">Early bird closes 31 July</span><h2>Be in the room.</h2><a class="btn" href="#register">Secure your early bird rate ↗</a><div class="clock"><div><strong id="cd">00</strong><small>Days</small></div><div><strong id="ch">00</strong><small>Hrs</small></div><div><strong id="cm">00</strong><small>Mins</small></div><div><strong id="cs">00</strong><small>Secs</small></div></div></section><footer class="footer"><h4>Get in touch</h4><p class="lead">Programme updates and delegate news, once a month.</p><form class="field"><input type="email" placeholder="you@company.com"><button>↗</button></form><div class="links"><a href="#pathways">Take part</a><a href="#zones">Experience zones</a><a href="#programme">Programme</a><a href="#visit">Plan your visit</a><a href="#register">Register</a><a href="#">Contact</a></div><div class="end">© 2026 Bharat International Rice Conference<br>Privacy · Terms · Code of Conduct</div></footer></main><a class="view-switch view-switch-desktop" href="index.html?view=mobile" aria-label="Open mobile homepage">Mobile view <span>↙</span></a><div class="action-backdrop" id="actionBackdrop"></div><aside class="action-dock" id="actionDock" aria-label="Quick actions"><div class="action-list" id="actionList"><a class="action-link primary" href="#register">Book your stand <span>▣</span></a><a class="action-link" href="#register">Register to visit <span>↗</span></a><a class="action-link" href="#">Login <span>→</span></a><a class="action-link" href="https://wa.me/" aria-label="Open WhatsApp">WhatsApp <span>◉</span></a></div><button class="action-toggle" id="actionToggle" aria-label="Open quick actions" aria-expanded="false">+</button></aside><div class="sticky" id="sticky"><div class="sticky-copy"><small>Summit opens in</small><b id="stickyTime">—</b></div><a class="btn" href="#register">Register</a></div><script>
-const z=[['The Rice Route Map','Illuminated export route map',"A giant illuminated map traces India's rice exports from fields to plates across the world.",'route','<i class="globe"></i><i class="trail"></i>'],['Seed Cloud','Suspended capsules','A network of intelligence.','seed','<i style="--x:18%;--y:18%;--r:30deg"></i><i style="--x:43%;--y:31%;--r:78deg"></i><i style="--x:72%;--y:14%;--r:120deg"></i>'],['The Rice Archive','Living archive','200+ varieties, one archive.','seeds',Array(20).fill('<i></i>').join('')],['Rice Through Time','Timeline corridor','Ancient grain, future harvest.','line','<i style="--x:14%"></i><i style="--x:40%"></i><i style="--x:66%"></i>'],['How the World Eats Rice','Forty metre table','Forty metres of tables.','rings','<i></i>'],['Hands of Rice','Sculptural hands','From seed to serving hands.','seed','<i style="--x:28%;--y:20%;--r:35deg"></i><i style="--x:62%;--y:38%;--r:150deg"></i>'],['The World Within','Macro grain projection','A grain becomes a universe.','rings','<i></i>'],['Rice Mirror','Mirror installation','The grains know your face.','seeds',Array(20).fill('<i></i>').join('')],['Beyond the Bowl','Window installation','A window you cannot pass.','line','<i style="--x:20%"></i><i style="--x:48%"></i><i style="--x:78%"></i>']];tourTrack.innerHTML=z.map((a,i)=>`<article class="zone"><div class="zone-vis"><span class="zone-no">${String(i+1).padStart(2,'0')} / 09</span><span class="zone-cap">${a[1]}</span><div class="art ${a[3]}">${a[4]}</div><div class="zone-copy"><h3>${a[0]}</h3><p>${a[2]}</p></div></div></article>`).join('');function menu(o){drawer.classList.toggle('open',o);document.body.classList.toggle('lock',o)}openMenu.onclick=()=>menu(1);closeMenu.onclick=()=>menu(0);drawer.querySelectorAll('a').forEach(a=>a.onclick=()=>menu(0));let zi=0,sx=0;function zone(n){zi=(n+9)%9;tourTrack.style.transform=`translateX(-${zi*100}%)`;tourProgress.style.width=(zi+1)/9*100+'%';tourCount.textContent=String(zi+1).padStart(2,'0')+' / 09'}tourPrev.onclick=()=>zone(zi-1);tourNext.onclick=()=>zone(zi+1);tourView.ontouchstart=e=>sx=e.touches[0].clientX;tourView.ontouchend=e=>{let d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>45)zone(zi+(d<0?1:-1))};let qi=0;const dots=[...qDots.children];function quote(n){qi=(n+4)%4;quoteTrack.style.transform=`translateX(-${qi*100}%)`;dots.forEach((d,i)=>d.classList.toggle('on',i===qi))}qPrev.onclick=()=>quote(qi-1);qNext.onclick=()=>quote(qi+1);document.querySelectorAll('.visit-item').forEach(b=>b.onclick=()=>{let was=b.classList.contains('open');document.querySelectorAll('.visit-item').forEach(x=>x.classList.remove('open'));if(!was)b.classList.add('open')});const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});document.querySelectorAll('.rv,.reason').forEach(x=>io.observe(x));const days=[...document.querySelectorAll('.day')];function scrollFx(){let y=scrollY,h=document.documentElement.scrollHeight-innerHeight;bar.classList.toggle('on',y>20);progress.style.width=(h?y/h*100:0)+'%';sticky.classList.toggle('on',y>innerHeight&&register.getBoundingClientRect().top>innerHeight);let n=0;days.forEach((d,i)=>{let on=d.getBoundingClientRect().top<innerHeight*.65;d.classList.toggle('active',on);if(on)n=i+1});programFill.style.height=n/3*100+'%'}addEventListener('scroll',scrollFx,{passive:true});scrollFx();const T=new Date('2026-10-23T00:00:00+05:30').getTime();function pad(n){return String(n).padStart(2,'0')}setInterval(()=>{let d=Math.max(0,T-Date.now()),dd=Math.floor(d/864e5),hh=Math.floor(d/36e5)%24,mm=Math.floor(d/6e4)%60,ss=Math.floor(d/1e3)%60;cd.textContent=pad(dd);ch.textContent=pad(hh);cm.textContent=pad(mm);cs.textContent=pad(ss);stickyTime.textContent=`${dd}d ${pad(hh)}h ${pad(mm)}m ${pad(ss)}s`},1000);
-document.querySelectorAll('.difference-item').forEach(item=>{const button=item.querySelector('.difference-btn');button.addEventListener('click',()=>{const was=item.classList.contains('open');document.querySelectorAll('.difference-item').forEach(x=>{x.classList.remove('open');x.querySelector('.difference-btn').setAttribute('aria-expanded','false')});if(!was){item.classList.add('open');button.setAttribute('aria-expanded','true')}})});const actionDock=document.getElementById('actionDock'),actionToggle=document.getElementById('actionToggle'),actionBackdrop=document.getElementById('actionBackdrop');function toggleActions(force){const open=typeof force==='boolean'?force:!actionDock.classList.contains('open');actionDock.classList.toggle('open',open);actionBackdrop.classList.toggle('on',open);actionToggle.setAttribute('aria-expanded',String(open));actionToggle.setAttribute('aria-label',open?'Close quick actions':'Open quick actions')}actionToggle.addEventListener('click',()=>toggleActions());actionBackdrop.addEventListener('click',()=>toggleActions(false));actionDock.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleActions(false)));addEventListener('keydown',e=>{if(e.key==='Escape')toggleActions(false)});const experienceParent=document.querySelector('.experience-menu-parent'),experienceSub=document.querySelector('.experience-submenu');if(experienceParent&&experienceSub)experienceParent.addEventListener('click',()=>{const open=experienceParent.getAttribute('aria-expanded')==='true';experienceParent.setAttribute('aria-expanded',String(!open));experienceSub.classList.toggle('open',!open)});const planParent=document.querySelector('.plan-menu-parent'),planSub=document.querySelector('.plan-submenu');if(planParent&&planSub)planParent.addEventListener('click',()=>{const open=planParent.getAttribute('aria-expanded')==='true';planParent.setAttribute('aria-expanded',String(!open));planSub.classList.toggle('open',!open)});const exhibitionParent=document.querySelector('.exhibition-parent'),exhibitionSub=document.querySelector('.exhibition-sub');if(exhibitionParent&&exhibitionSub)exhibitionParent.addEventListener('click',()=>{const open=exhibitionParent.getAttribute('aria-expanded')==='true';exhibitionParent.setAttribute('aria-expanded',String(!open));exhibitionSub.classList.toggle('open',!open)});const influencerParent=document.querySelector('.influencer-parent'),influencerSub=document.querySelector('.influencer-sub');if(influencerParent&&influencerSub)influencerParent.addEventListener('click',()=>{const open=influencerParent.getAttribute('aria-expanded')==='true';influencerParent.setAttribute('aria-expanded',String(!open));influencerSub.classList.toggle('open',!open)});</script><dialog class="registration-dialog" id="registrationDialog" aria-labelledby="registrationTitle"><header class="registration-head"><button class="registration-close" id="registrationClose" aria-label="Close registration options">×</button><span class="eye">Registration</span><h2 id="registrationTitle">Register for BIRC 2026</h2><p>Choose your registration type to get started.</p></header><div class="registration-options"><a class="registration-option" href="register.html?type=visitor"><span class="registration-icon" aria-hidden="true">♙</span><span><strong>Register as Visitor</strong><small>Attend BIRC 2026 as a visitor to explore exhibitions, attend sessions, and network with industry leaders.</small></span><span class="registration-arrow">→</span></a><a class="registration-option" href="register.html?type=exhibitor"><span class="registration-icon" aria-hidden="true">▣</span><span><strong>Register as Exhibitor</strong><small>Showcase your products and services at Asia's largest rice industry event. Book your exhibition space now.</small></span><span class="registration-arrow">→</span></a><a class="registration-option" href="register.html?type=buyer"><span class="registration-icon" aria-hidden="true">▢</span><span><strong>Register as Buyer</strong><small>Connect with top rice exporters and manufacturers. Register as a buyer to explore business opportunities.</small></span><span class="registration-arrow">→</span></a></div><p class="registration-login">Already registered? <a href="https://birc.in/login">Login here</a></p></dialog><script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script id="device-router">(function(){var q=new URLSearchParams(location.search),r=q.get('view'),s=null;try{s=sessionStorage.getItem('bircView')}catch(e){}if(r==='desktop'){try{sessionStorage.setItem('bircView','desktop')}catch(e){}return}if(r==='mobile'){try{sessionStorage.setItem('bircView','mobile')}catch(e){}location.replace('index.html?view=mobile');return}if(s==='mobile'||(!s&&!matchMedia('(min-width:900px)').matches)){location.replace('index.html')}})();</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d0d0b">
+<title>BIRC 2026 | Bharat International Rice Conference</title>
+<meta name="description" content="BIRC 2026. Bharat Mandapam, New Delhi. 23-24-25 October 2026. 30,000+ participants from 120+ countries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0d0b;--ink-2:#131311;--ink-3:#191916;--grey:#2b2b27;
+  --linen:#faf0e6;--linen-2:#f3e8db;
+  --gold:#ebb341;--gold-deep:#c98e25;
+  --dm:#aba49c;--lm:#6d6862;--dl:#35332e;--ll:#d8cec3;
+  --e:cubic-bezier(.16,1,.3,1);
+  --shell:min(1320px,calc(100% - 112px));
+  --nav:76px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--linen);font:400 17px/1.65 Inter,sans-serif;-webkit-font-smoothing:antialiased;font-optical-sizing:auto;overflow-x:hidden}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+img{display:block}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.shell{width:var(--shell);margin-inline:auto}
+.eyebrow{display:block;font:600 11px/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.section{padding:150px 0}
+.section-tight{padding:118px 0}
+.light{background:var(--linen);color:var(--ink)}
+.light .eyebrow{color:var(--gold-deep)}
+.d1{font:600 clamp(58px,5vw,96px)/.94 Poppins,sans-serif;letter-spacing:-.055em}
+.d2{font:600 clamp(40px,3.4vw,60px)/1.02 Poppins,sans-serif;letter-spacing:-.045em}
+.d3{font:600 26px/1.2 Poppins,sans-serif;letter-spacing:-.03em}
+.lede{font-weight:300;font-size:19px;line-height:1.6;color:var(--dm);max-width:58ch}
+.light .lede{color:var(--lm)}
+.num{font-variant-numeric:tabular-nums}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--e),transform .7s var(--e);transition-delay:calc(var(--i,0) * 70ms)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- header ---------- */
+.topline{position:fixed;inset:0 0 auto;height:2px;z-index:60}
+.topline i{display:block;height:100%;width:0;background:var(--gold)}
+.masthead{position:fixed;inset:2px 0 auto;z-index:55;height:var(--nav);display:flex;align-items:center;background:#0d0d0bd9;backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:background .3s var(--e),border-color .3s var(--e)}
+.masthead.stuck{background:var(--ink);border-bottom-color:var(--dl)}
+.masthead .shell{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:40px}
+.brand img{width:132px;height:42px;object-fit:contain;object-position:left}
+.mainnav{display:flex;justify-content:center;gap:4px;list-style:none;margin:0;padding:0}
+.mainnav>li{position:relative}
+.mainnav>li>a,.navtrigger{display:flex;align-items:center;gap:6px;height:var(--nav);padding:0 13px;border:0;background:none;font:500 13px Poppins,sans-serif;color:var(--dm);cursor:pointer;transition:color .2s}
+.mainnav>li>a:hover,.navtrigger:hover,.mainnav>li:hover .navtrigger{color:var(--linen)}
+.navtrigger svg{width:9px;height:9px;transition:transform .3s var(--e)}
+.mainnav>li:hover .navtrigger svg,.navtrigger[aria-expanded="true"] svg{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(var(--nav) - 8px);left:-8px;min-width:288px;padding:10px;background:var(--ink-3);border:1px solid var(--dl);box-shadow:0 26px 60px #00000073;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .22s var(--e),transform .28s var(--e),visibility .28s}
+.mainnav>li:hover .dropdown,.dropdown.open{opacity:1;visibility:visible;transform:none}
+.dropdown a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;padding:13px 14px;font:500 14px Poppins,sans-serif;color:var(--dm);transition:background .18s,color .18s}
+.dropdown a span{font:600 10px Poppins,sans-serif;letter-spacing:.14em;color:var(--gold-deep)}
+.dropdown a:hover{background:var(--grey);color:var(--linen)}
+.tools{display:flex;align-items:center;gap:10px}
+.ghost{height:42px;padding:0 16px;display:grid;place-items:center;border:1px solid var(--dl);font:600 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--dm);transition:border-color .2s,color .2s}
+.ghost:hover{border-color:var(--dm);color:var(--linen)}
+.solid{height:42px;padding:0 20px;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--gold);background:var(--gold);color:var(--ink);font:600 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s var(--e)}
+.solid:hover{background:#f5c257;transform:translateY(-1px)}
+
+/* ---------- buttons ---------- */
+.cta{min-height:60px;padding:0 30px;display:inline-flex;align-items:center;justify-content:center;gap:11px;border:1px solid var(--gold);background:var(--gold);color:var(--ink);font:600 13px Poppins,sans-serif;letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .15s var(--e)}
+.cta:hover{background:#f5c257;transform:translateY(-2px)}
+.cta.line{background:transparent;color:var(--linen);border-color:var(--dl)}
+.cta.line:hover{border-color:var(--linen);background:#ffffff0d}
+.textlink{display:inline-flex;align-items:center;gap:9px;font:600 12px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.textlink i{font-style:normal;transition:transform .3s var(--e)}
+.textlink:hover i{transform:translateX(5px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:calc(var(--nav) + 76px) 0 44px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(1100px 620px at 78% 18%,#ebb34124,transparent 62%),repeating-linear-gradient(115deg,transparent 0 78px,#faf0e605 78px 79px)}
+.hero-bg:after{content:"";position:absolute;inset:auto 0 0;height:280px;background:linear-gradient(180deg,transparent,#0d0d0b)}
+.hero .shell{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(400px,4.4fr);gap:0 72px;align-items:end}
+.hero-copy .eyebrow{display:flex;align-items:center;gap:14px;color:var(--dm)}
+.hero-copy .eyebrow:before{content:"";width:44px;height:1px;background:var(--gold)}
+.hero h1{margin:30px 0 0;font:600 clamp(64px,5.6vw,104px)/.92 Poppins,sans-serif;letter-spacing:-.06em;max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--dm)}
+.hero .lede{margin-top:30px;max-width:46ch}
+.hero-actions{display:flex;gap:12px;margin-top:44px}
+.dossier{border:1px solid var(--dl);background:#12120fbf}
+.dossier-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--dl);font:600 10px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--dm)}
+.dossier-head b{color:var(--gold);font-weight:600}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:18px 24px;padding:24px 22px;border-bottom:1px solid var(--dl)}
+.spec dt{font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--lm)}
+.spec dd{margin:0;text-align:right;font:500 16px Poppins,sans-serif}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.countdown div{padding:20px 6px}
+.countdown div+div{border-left:1px solid var(--dl)}
+.countdown strong{display:block;font:600 30px/1 Poppins,sans-serif;font-variant-numeric:tabular-nums}
+.countdown small{display:block;margin-top:8px;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--lm)}
+.scrollcue{display:flex;align-items:center;gap:14px;margin-top:52px;font:600 9px Poppins,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--lm)}
+.scrollcue:after{content:"";flex:1;height:1px;background:var(--dl)}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--linen);color:var(--ink);overflow:hidden;padding:15px 0}
+.ticker-run{display:flex;width:max-content;animation:run 42s linear infinite}
+.ticker-run span{white-space:nowrap;padding:0 26px;font:600 11px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.ticker-run span:after{content:"/";margin-left:26px;color:var(--gold-deep)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* ---------- purpose ---------- */
+.purpose .shell{display:grid;grid-template-columns:220px minmax(0,1fr);gap:80px}
+.purpose p{font:500 clamp(38px,3.1vw,54px)/1.16 Poppins,sans-serif;letter-spacing:-.04em;max-width:19ch}
+.purpose footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--ll);display:flex;gap:34px;font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--lm)}
+
+/* ---------- section heads ---------- */
+.sechead{display:grid;grid-template-columns:220px minmax(0,1fr);gap:80px;align-items:start;margin-bottom:64px}
+.sechead .eyebrow{padding-top:10px}
+.sechead h2{max-width:14ch}
+.sechead .lede{margin-top:20px}
+
+/* ---------- pathways ---------- */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.path{position:relative;display:flex;flex-direction:column;min-height:470px;padding:30px;background:var(--ink-3);border:1px solid var(--dl);overflow:hidden;transition:transform .4s var(--e),border-color .3s}
+.path:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(118deg,transparent 0 34px,#faf0e606 34px 35px)}
+.path>*{position:relative}
+.path:hover{transform:translateY(-8px);border-color:var(--gold-deep)}
+.path-top{display:flex;justify-content:space-between;font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--lm)}
+.path h3{margin-top:auto;font:600 clamp(38px,3vw,50px)/1 Poppins,sans-serif;letter-spacing:-.05em}
+.path p{margin:16px 0 26px;color:var(--dm);font-size:15px;max-width:32ch}
+
+/* ---------- figures ---------- */
+.figures .shell{display:grid;grid-template-columns:340px minmax(0,1fr);gap:0 80px}
+.figures h2{max-width:8ch}
+.figrows{border-top:1px solid var(--ll)}
+.figrow{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:24px;padding:26px 0;border-bottom:1px solid var(--ll)}
+.figrow b{font:600 clamp(52px,4.4vw,76px)/.9 Poppins,sans-serif;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.figrow b em{font-style:normal;font-size:.42em;margin-left:2px}
+.figrow small{font:600 10px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--lm)}
+.fignote{margin-top:22px;font-size:13px;color:var(--lm)}
+
+/* ---------- knowledge ---------- */
+.days{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.day-col+.day-col{border-left:1px solid var(--dl);padding-left:56px}
+.day-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid var(--dl)}
+.day-head strong{font:600 13px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.day-head span{font:600 10px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--lm)}
+.slist{list-style:none;margin:0;padding:0}
+.slist li{display:grid;grid-template-columns:34px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--dl)}
+.slist li b{width:32px;height:32px;display:grid;place-items:center;background:var(--gold);color:var(--ink);font:700 11px Poppins,sans-serif;font-variant-numeric:tabular-nums}
+.slist h3{font:600 18px/1.3 Poppins,sans-serif;letter-spacing:-.02em}
+.slist p{margin-top:7px;color:var(--dm);font-size:14px;max-width:46ch}
+
+/* ---------- difference ---------- */
+.difference{background:var(--ink-3)}
+.difference .shell{display:grid;grid-template-columns:340px minmax(0,1fr);gap:0 80px;align-items:start}
+.diff-aside{position:sticky;top:calc(var(--nav) + 46px)}
+.diff-aside h2{margin-top:20px;max-width:12ch}
+.ey{margin-top:40px;padding:22px;border:1px solid var(--dl)}
+.ey strong{display:block;color:var(--gold);font:600 12px Poppins,sans-serif;letter-spacing:.06em;margin-bottom:10px}
+.ey p{color:var(--dm);font-size:13px;line-height:1.6}
+.ey span{display:block;margin-top:14px;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.acc{border-top:1px solid var(--dl)}
+.acc-item{border-bottom:1px solid var(--dl)}
+.acc-btn{width:100%;min-height:92px;padding:24px 8px;display:grid;grid-template-columns:44px 1fr 28px;gap:16px;align-items:center;background:none;border:0;text-align:left;cursor:pointer}
+.acc-btn>span:first-child{font:600 11px Poppins,sans-serif;color:var(--gold);font-variant-numeric:tabular-nums}
+.acc-btn strong{font:600 17px/1.4 Poppins,sans-serif;letter-spacing:-.02em;transition:color .2s}
+.acc-btn:hover strong{color:var(--gold)}
+.acc-btn em{font-style:normal;font-size:22px;color:var(--dm);transition:transform .3s var(--e)}
+.acc-item.open .acc-btn em{transform:rotate(45deg);color:var(--gold)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}
+.acc-item.open .acc-panel{grid-template-rows:1fr}
+.acc-panel>div{overflow:hidden}
+.acc-panel p{padding:0 40px 30px 60px;color:var(--dm);font-size:15px;max-width:76ch}
+
+/* ---------- zones ---------- */
+.zones .shell{display:grid;grid-template-columns:320px minmax(0,1fr);gap:0 64px;align-items:start}
+.zonerail{list-style:none;margin:0;padding:0;border-top:1px solid var(--ll)}
+.zonerail button{width:100%;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:center;padding:15px 10px;background:none;border:0;border-bottom:1px solid var(--ll);text-align:left;cursor:pointer;transition:background .2s,padding-left .3s var(--e)}
+.zonerail button span{font:600 10px Poppins,sans-serif;color:var(--lm);font-variant-numeric:tabular-nums}
+.zonerail button strong{font:600 15px Poppins,sans-serif;letter-spacing:-.02em;color:var(--lm);transition:color .2s}
+.zonerail button:hover{background:var(--linen-2)}
+.zonerail button[aria-selected="true"]{background:var(--ink);padding-left:18px}
+.zonerail button[aria-selected="true"] strong{color:var(--linen)}
+.zonerail button[aria-selected="true"] span{color:var(--gold)}
+.zonestage{position:relative;height:660px;background:var(--ink);overflow:hidden}
+.zonestage-meta{position:absolute;z-index:3;inset:26px 30px auto;display:flex;justify-content:space-between;font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dm)}
+.zonestage-copy{position:absolute;z-index:3;left:44px;right:44px;bottom:44px;max-width:32ch}
+.zonestage-copy h3{font:600 clamp(44px,3.6vw,62px)/1 Poppins,sans-serif;letter-spacing:-.05em}
+.zonestage-copy p{margin-top:16px;color:var(--dm);font-size:16px}
+.zonestage.swap .zonestage-copy,.zonestage.swap .art{animation:swap .5s var(--e)}
+@keyframes swap{from{opacity:0;transform:translateY(14px)}}
+.art{position:absolute;inset:0;z-index:1}
+.art i{position:absolute}
+.art.route .globe{width:420px;height:420px;border:1px solid var(--dl);border-radius:50%;left:50%;top:46%;transform:translate(-50%,-50%)}
+.art.route .globe:before,.art.route .globe:after{content:"";position:absolute;inset:70px 0;border-block:1px solid var(--dl);border-radius:50%}
+.art.route .globe:after{inset:0 118px;border:0;border-inline:1px solid var(--dl)}
+.art.route .trail{left:12%;right:10%;top:44%;height:1px;background:var(--gold);transform:rotate(-15deg);animation:route 3s var(--e) infinite}
+.art.route .trail:after{content:"";position:absolute;right:0;top:-5px;width:11px;height:11px;background:var(--gold);border-radius:50%}
+@keyframes route{0%{transform:rotate(-15deg) scaleX(0)}62%,100%{transform:rotate(-15deg) scaleX(1)}}
+.art.seed i{width:22px;height:64px;border:1px solid var(--gold);border-radius:100% 0 100% 0;left:var(--x);top:var(--y);transform:rotate(var(--r));animation:float 4.4s var(--e) infinite alternate}
+@keyframes float{to{transform:translateY(-26px) rotate(calc(var(--r) + 16deg));opacity:.4}}
+.art.rings i{width:340px;height:470px;border:1px solid var(--gold);border-radius:100% 0 100% 0;left:50%;top:46%;transform:translate(-50%,-50%) rotate(33deg);animation:breathe 4s var(--e) infinite}
+.art.rings i:before,.art.rings i:after{content:"";position:absolute;inset:20%;border:1px solid var(--dl);border-radius:inherit}
+.art.rings i:after{inset:38%}
+@keyframes breathe{50%{transform:translate(-50%,-50%) rotate(38deg) scale(.93)}}
+.art.grid-seeds{display:grid;grid-template-columns:repeat(8,1fr);gap:16px;padding:130px 90px}
+.art.grid-seeds i{position:relative;aspect-ratio:1;border:1px solid var(--dl);border-radius:50%}
+.art.grid-seeds i:nth-child(3n){border-color:var(--gold)}
+.art.line:before{content:"";position:absolute;left:70px;right:70px;top:42%;height:1px;background:var(--gold)}
+.art.line i{top:calc(42% - 8px);width:16px;height:16px;background:var(--gold);border-radius:50%;left:var(--x)}
+.zonebar{display:flex;align-items:center;gap:24px;margin-top:22px}
+.zonebar .track{flex:1;height:2px;background:var(--ll)}
+.zonebar .track i{display:block;height:100%;background:var(--gold-deep);transition:width .4s var(--e)}
+.zonebar small{font:600 11px Poppins,sans-serif;font-variant-numeric:tabular-nums}
+.zonebar button{width:52px;height:52px;border:1px solid var(--ll);background:none;cursor:pointer;transition:background .2s,border-color .2s}
+.zonebar button:hover{background:var(--ink);color:var(--linen);border-color:var(--ink)}
+
+/* ---------- dates + programme ---------- */
+.dates{position:relative;overflow:hidden}
+.datelock{text-align:center;padding:76px 0 68px;border-block:1px solid var(--dl)}
+.datelock h2{font:600 clamp(78px,7.2vw,132px)/.84 Poppins,sans-serif;letter-spacing:-.07em}
+.datelock .row{display:flex;justify-content:center;gap:clamp(28px,4vw,64px);margin-top:34px}
+.datelock .row span{font:600 clamp(78px,7.6vw,140px)/.84 Poppins,sans-serif;letter-spacing:-.08em;color:var(--gold);font-variant-numeric:tabular-nums}
+.datelock small{display:block;margin-top:30px;font:600 10px Poppins,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--dm)}
+.datelead{display:grid;grid-template-columns:220px minmax(0,1fr);gap:80px;margin-bottom:58px}
+.datelead p{font:500 clamp(32px,2.6vw,44px)/1.2 Poppins,sans-serif;letter-spacing:-.04em;max-width:22ch}
+.programme{display:grid;grid-template-columns:repeat(3,1fr);margin-top:88px;border-top:1px solid var(--dl)}
+.pday{position:relative;padding:34px 34px 44px;min-height:330px;display:flex;flex-direction:column}
+.pday+.pday{border-left:1px solid var(--dl)}
+.pday:before{content:"";position:absolute;left:34px;top:-1px;width:0;height:2px;background:var(--gold);transition:width .8s var(--e)}
+.pday.active:before{width:calc(100% - 68px)}
+.pday small{font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dm)}
+.pday b{display:block;margin-top:26px;font:600 84px/.8 Poppins,sans-serif;color:var(--grey);letter-spacing:-.06em}
+.pday h3{margin-top:auto;font:600 30px Poppins,sans-serif;letter-spacing:-.04em}
+.pday p{margin-top:12px;color:var(--dm);font-size:15px;max-width:32ch}
+
+/* ---------- voices ---------- */
+.voices .shell{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:80px;align-items:start}
+.qmark{font:600 84px/.6 Poppins,sans-serif;color:var(--gold-deep)}
+.quote{margin:0}
+.quote blockquote{margin:34px 0 0;font:500 clamp(34px,2.9vw,50px)/1.16 Poppins,sans-serif;letter-spacing:-.04em;max-width:17ch}
+.quote figcaption{margin-top:40px;padding-top:20px;border-top:1px solid var(--ll)}
+.quote figcaption b{display:block;font:600 16px Poppins,sans-serif}
+.quote figcaption span{color:var(--lm);font-size:14px}
+.voicelist{list-style:none;margin:0;padding:0;border-top:1px solid var(--ll)}
+.voicelist button{width:100%;padding:18px 12px;display:grid;gap:3px;background:none;border:0;border-bottom:1px solid var(--ll);text-align:left;cursor:pointer;transition:background .2s,padding-left .3s var(--e)}
+.voicelist button b{font:600 15px Poppins,sans-serif;color:var(--lm);transition:color .2s}
+.voicelist button span{font-size:13px;color:var(--lm)}
+.voicelist button:hover{background:var(--linen-2)}
+.voicelist button[aria-selected="true"]{padding-left:20px}
+.voicelist button[aria-selected="true"] b{color:var(--ink)}
+.voicelist button[aria-selected="true"]:after{content:"";position:absolute}
+
+/* ---------- why ---------- */
+.reasons{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--dl)}
+.reason{position:relative;min-height:400px;padding:30px 26px 34px;display:flex;flex-direction:column;overflow:hidden;border-bottom:1px solid var(--dl)}
+.reason+.reason{border-left:1px solid var(--dl)}
+.reason>span:first-child{font:600 11px Poppins,sans-serif;color:var(--gold)}
+.reason .word{position:absolute;left:-6px;top:64px;font:600 clamp(58px,5vw,86px)/.8 Poppins,sans-serif;letter-spacing:-.07em;color:var(--grey);white-space:nowrap;opacity:0;transform:translateY(18px);transition:opacity .6s var(--e),transform .8s var(--e)}
+.reason.in .word{opacity:1;transform:none}
+.reason-copy{margin-top:auto;position:relative;z-index:2}
+.reason h3{font:600 24px/1.2 Poppins,sans-serif;letter-spacing:-.035em}
+.reason p{margin-top:12px;color:var(--dm);font-size:14px;max-width:30ch}
+.whyclose{margin-top:56px;font:500 clamp(28px,2.2vw,38px)/1.3 Poppins,sans-serif;letter-spacing:-.035em}
+.whyclose span{color:var(--gold)}
+
+/* ---------- gallery ---------- */
+.gallery{overflow:hidden;margin-top:56px}
+.gallery-run{display:flex;gap:6px;width:max-content;animation:run 52s linear infinite}
+.tile{position:relative;width:420px;height:290px;background:repeating-linear-gradient(122deg,transparent 0 26px,#faf0e608 26px 27px),var(--ink-3);border:1px solid var(--dl)}
+.tile:nth-child(even){width:530px}
+.tile:after{content:attr(data-cap);position:absolute;left:16px;bottom:14px;font:600 10px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--dm)}
+
+/* ---------- visit ---------- */
+.visitgrid{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--ll)}
+.visit-item{position:isolate;min-height:340px;padding:30px 26px;display:flex;flex-direction:column;text-align:left;background:transparent;border:0;color:var(--ink);cursor:pointer;overflow:hidden;position:relative;isolation:isolate}
+.visit-item+.visit-item{border-left:1px solid var(--ll)}
+.visit-item:before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .45s var(--e);z-index:-1}
+.visit-item.open:before{transform:none}
+.visit-item.open{color:var(--linen)}
+.visit-item .label{font:600 10px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+.visit-item h3{margin-top:14px;font:600 23px/1.25 Poppins,sans-serif;letter-spacing:-.03em}
+.visit-detail{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .3s}
+.visit-item.open .visit-detail{grid-template-rows:1fr;opacity:1}
+.visit-detail>span{overflow:hidden}
+.visit-detail p{margin-top:16px;font-size:14px;color:var(--dm)}
+.visit-item .act{margin-top:auto;padding-top:26px;font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.visit-item .act i{font-style:normal;color:var(--gold-deep)}
+.visitnote{margin-top:36px;display:grid;grid-template-columns:120px 1fr;gap:24px;max-width:70ch}
+.visitnote small{font:600 10px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+.visitnote p{color:var(--lm);font-size:15px}
+
+/* ---------- final ---------- */
+.final{position:relative;min-height:640px;display:flex;align-items:center;text-align:center;overflow:hidden;padding:130px 0}
+.final-bg{position:absolute;inset:0;background:url('assets/rice-world-map.png') center 42%/cover no-repeat}
+.final:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0d0d0b8c,#0d0d0b52 34%,#0d0d0bcc)}
+.final .shell{position:relative;z-index:2}
+.final h2{margin:26px 0 38px;font:600 clamp(72px,6.4vw,116px)/.9 Poppins,sans-serif;letter-spacing:-.06em}
+.final .cta{min-width:360px}
+.final .clockrow{display:grid;grid-template-columns:repeat(4,1fr);max-width:680px;margin:64px auto 0;border-top:1px solid var(--dl);padding-top:26px}
+.final .clockrow div+div{border-left:1px solid var(--dl)}
+.final .clockrow strong{display:block;font:600 34px Poppins,sans-serif;font-variant-numeric:tabular-nums}
+.final .clockrow small{font:600 9px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--dm)}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--dl);padding:88px 0 40px}
+.footer .shell{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:56px}
+.footer h4{margin:0 0 16px;font:600 26px Poppins,sans-serif;letter-spacing:-.03em}
+.footer p{color:var(--dm);font-size:15px;max-width:34ch}
+.subscribe{display:flex;margin-top:26px;border-bottom:1px solid var(--dl)}
+.subscribe input{flex:1;background:none;border:0;padding:14px 0;color:var(--linen)}
+.subscribe input::placeholder{color:var(--lm)}
+.subscribe button{background:none;border:0;color:var(--gold);cursor:pointer;padding:0 8px}
+.fcol h5{margin:0 0 18px;font:600 10px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--lm)}
+.fcol a{display:block;padding:7px 0;color:var(--dm);font-size:15px;transition:color .2s}
+.fcol a:hover{color:var(--gold)}
+.legal{width:var(--shell);margin:66px auto 0;padding-top:26px;border-top:1px solid var(--dl);display:flex;justify-content:space-between;color:var(--lm);font-size:13px}
+
+/* ---------- registration dialog ---------- */
+.regdialog{width:min(900px,calc(100% - 64px));padding:0;border:1px solid var(--dl);background:var(--ink-3);color:var(--linen);box-shadow:0 40px 100px #000000a6}
+.regdialog::backdrop{background:#0d0d0be0}
+.reghead{position:relative;padding:38px 40px 30px;border-bottom:1px solid var(--dl)}
+.reghead h2{margin:14px 0 8px;font:600 32px Poppins,sans-serif;letter-spacing:-.04em}
+.reghead p{color:var(--dm);font-size:15px}
+.regclose{position:absolute;right:22px;top:22px;width:44px;height:44px;border:1px solid var(--dl);background:none;font-size:20px;cursor:pointer}
+.regclose:hover{border-color:var(--linen)}
+.regopts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:26px 40px}
+.regopt{display:flex;flex-direction:column;min-height:210px;padding:22px;border:1px solid var(--dl);transition:background .2s,transform .2s var(--e),border-color .2s}
+.regopt:hover{background:var(--grey);border-color:var(--gold-deep);transform:translateY(-3px)}
+.regopt b{font:600 17px Poppins,sans-serif}
+.regopt small{margin-top:10px;color:var(--dm);font-size:13px;line-height:1.55}
+.regopt .go{margin-top:auto;padding-top:20px;font:600 10px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.regfoot{padding:0 40px 34px;color:var(--dm);font-size:14px}
+.regfoot a{color:var(--linen);font-weight:500;text-decoration:underline;text-underline-offset:4px}
+
+@media(max-width:1180px){:root{--shell:calc(100% - 64px)}.mainnav>li>a,.navtrigger{padding:0 9px;font-size:12px}.hero .shell{grid-template-columns:minmax(0,1fr) 360px;gap:48px}.sechead,.purpose .shell,.datelead{grid-template-columns:180px 1fr;gap:48px}.figures .shell,.difference .shell,.zones .shell,.voices .shell{grid-template-columns:280px 1fr;gap:48px}.voices .shell{grid-template-columns:1fr 280px}.reasons{grid-template-columns:1fr 1fr}.reason+.reason{border-left:0}.reason:nth-child(even){border-left:1px solid var(--dl)}.visitgrid{grid-template-columns:1fr 1fr}.visit-item:nth-child(-n+2){border-bottom:1px solid var(--ll)}.visit-item:nth-child(odd){border-left:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.reveal,.reason .word{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="topline"><i id="progress"></i></div>
+
+<header class="masthead" id="masthead">
+  <div class="shell">
+    <a class="brand" href="desktop.html" aria-label="BIRC 2026 home"><img src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"></a>
+    <nav aria-label="Primary">
+      <ul class="mainnav">
+        <li><a href="desktop.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conference.html">Conference</a></li>
+        <li>
+          <button class="navtrigger" type="button" aria-expanded="false">Exhibition <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+          <div class="dropdown">
+            <a href="exhibition.html#why-exhibit">Why exhibit <span>01</span></a>
+            <a href="exhibition.html#exhibitor-profile">Exhibitor profile <span>02</span></a>
+            <a href="exhibition.html#space-rental">Space rental <span>03</span></a>
+          </div>
+        </li>
+        <li><a href="experience.html">Experience</a></li>
+        <li>
+          <button class="navtrigger" type="button" aria-expanded="false">Influencers <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+          <div class="dropdown">
+            <a href="creators.html">Content Creators <span>01</span></a>
+            <a href="rice-masterchef.html">Rice Masterchef <span>02</span></a>
+            <a href="artists.html">Artists <span>03</span></a>
+          </div>
+        </li>
+        <li><a href="partnership.html">Partnership</a></li>
+        <li><a href="plan-visit.html">Plan Visit</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <a class="ghost" href="https://birc.in/login">Login</a>
+      <button class="solid" type="button" data-register>Register <span aria-hidden="true">&#8599;</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="shell">
+      <div class="hero-copy">
+        <span class="eyebrow">Next edition &middot; 23-24-25 October 2026</span>
+        <h1>The Global Platform for Rice Industry <em>Leadership.</em></h1>
+        <p class="lede">30,000+ participants from 120+ countries convene Oct 23-24-25, 2026, to shape the trade, policy, and future of rice.</p>
+        <div class="hero-actions">
+          <button class="cta" type="button" data-register>Register now <span aria-hidden="true">&#8599;</span></button>
+          <a class="cta line" href="#zones">Watch the film</a>
+        </div>
+        <div class="scrollcue">Scroll to explore</div>
+      </div>
+      <aside class="dossier" aria-label="Summit facts">
+        <div class="dossier-head"><span>Summit dossier</span><b>2026</b></div>
+        <dl class="spec">
+          <dt>Dates</dt><dd>23-24-25 Oct 2026</dd>
+          <dt>Venue</dt><dd>Bharat Mandapam</dd>
+          <dt>Halls</dt><dd>Halls 4 &amp; 5</dd>
+          <dt>Delegations</dt><dd>120+ countries</dd>
+          <dt>Participants</dt><dd>30,000+</dd>
+        </dl>
+        <div class="countdown">
+          <div><strong id="cd">00</strong><small>Days</small></div>
+          <div><strong id="ch">00</strong><small>Hrs</small></div>
+          <div><strong id="cm">00</strong><small>Min</small></div>
+          <div><strong id="cs">00</strong><small>Sec</small></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-run">
+      <span>Bharat Mandapam</span><span>250+ Speakers</span><span>&#8377;30,435 Cr in MOUs</span><span>120+ Delegations</span><span>9 Experience Zones</span><span>300+ Exhibitors</span>
+      <span>Bharat Mandapam</span><span>250+ Speakers</span><span>&#8377;30,435 Cr in MOUs</span><span>120+ Delegations</span><span>9 Experience Zones</span><span>300+ Exhibitors</span>
+    </div>
+  </div>
+
+  <section class="purpose light section">
+    <div class="shell">
+      <span class="eyebrow reveal">The purpose</span>
+      <div>
+        <p class="reveal">India at the centre. Every rice market in the room. One place where the industry decides what comes next.</p>
+        <footer><span>Bharat Mandapam</span><span>New Delhi</span><span>23-24-25 October 2026</span></footer>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pathways">
+    <div class="shell">
+      <header class="sechead">
+        <span class="eyebrow">Take part</span>
+        <div>
+          <h2 class="d2">Three ways to join BIRC 2026</h2>
+          <p class="lede">Every role in the value chain has a route into the floor, the programme, and the deal room.</p>
+        </div>
+      </header>
+      <div class="paths">
+        <article class="path reveal" style="--i:0">
+          <div class="path-top"><span>01</span><span>For delegates</span></div>
+          <h3>Attend</h3>
+          <p>Access the inner circle of global trade policy and executive networking.</p>
+          <button class="textlink" type="button" data-register>Register now <i>&rarr;</i></button>
+        </article>
+        <article class="path reveal" style="--i:1">
+          <div class="path-top"><span>02</span><span>For exporters</span></div>
+          <h3>Exhibit</h3>
+          <p>Meet the world's largest rice buyers at the epicentre of the supply chain.</p>
+          <a class="textlink" href="exhibition.html#space-rental">Booth packages <i>&rarr;</i></a>
+        </article>
+        <article class="path reveal" style="--i:2">
+          <div class="path-top"><span>03</span><span>For partners</span></div>
+          <h3>Sponsor</h3>
+          <p>Claim a leadership platform in front of 30,000+ decision-makers.</p>
+          <a class="textlink" href="partnership.html">Sponsorship tiers <i>&rarr;</i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="figures light section">
+    <div class="shell">
+      <div>
+        <span class="eyebrow">BIRC in figures</span>
+        <h2 class="d2" style="margin-top:20px">The scale of the floor</h2>
+      </div>
+      <div>
+        <div class="figrows">
+          <div class="figrow reveal" style="--i:0"><b>30,000<em>+</em></b><small>Participants</small></div>
+          <div class="figrow reveal" style="--i:1"><b>120<em>+</em></b><small>Countries</small></div>
+          <div class="figrow reveal" style="--i:2"><b>&#8377;30,435<em>Cr</em></b><small>In MOUs signed</small></div>
+          <div class="figrow reveal" style="--i:3"><b>300<em>+</em></b><small>Exhibitors</small></div>
+        </div>
+        <p class="fignote">Projected for the 2026 edition, based on delegations registered as of July 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="knowledge-sessions">
+    <div class="shell">
+      <header class="sechead">
+        <span class="eyebrow">Knowledge Sessions</span>
+        <div>
+          <h2 class="d2">The 9 Knowledge Sessions.</h2>
+          <p class="lede">Nine working sessions across two days, built around the decisions rice businesses make every week.</p>
+        </div>
+      </header>
+      <div class="days">
+        <div class="day-col">
+          <div class="day-head"><strong>Day 1</strong><span>Friday 23 October</span></div>
+          <ul class="slist">
+            <li><b>1</b><div><h3>Crop Survey &amp; Price Forecasting</h3><p>Global Demand &amp; Supply Outlook, 2027: Price Crash or New Bull Run?</p></div></li>
+            <li><b>2</b><div><h3>New Market Opportunities</h3><p>Top 10 Rice Markets to Watch in 2027 and Entry Strategy</p></div></li>
+            <li><b>3</b><div><h3>Documentation, Insurance &amp; Credit</h3><p>Protecting Export Payments: Cut Risk by 80% and Prevent Disputes.</p></div></li>
+            <li><b>4</b><div><h3>Shipping, Bulk &amp; Containers</h3><p>Bulk &amp; Container Shipping 2026: Protect Margins and Mitigate Disputes</p></div></li>
+          </ul>
+        </div>
+        <div class="day-col">
+          <div class="day-head"><strong>Day 2</strong><span>Saturday 24 October</span></div>
+          <ul class="slist">
+            <li><b>5</b><div><h3>Quality &amp; Certification</h3><p>Why Buyers Reject Rice Shipments: How Exporters Can Prevent It</p></div></li>
+            <li><b>6</b><div><h3>Trade Schemes &amp; Incentives</h3><p>Policy Shifts 2026: Trade Schemes, Incentives and Export Opportunities</p></div></li>
+            <li><b>7</b><div><h3>Sustainability &amp; Carbon Credits</h3><p>Sustainability Initiatives &amp; Carbon Credits in Rice: Can Your Business Profit?</p></div></li>
+            <li><b>8</b><div><h3>Rice Milling</h3><p>Profitable Rice Milling: Costs, Planning and Margin Improvement</p></div></li>
+            <li><b>9</b><div><h3>Value-Added Products</h3><p>Cleaning, sorting and branded value-added rice products.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="difference section" id="knowledge-difference">
+    <div class="shell">
+      <div class="diff-aside">
+        <span class="eyebrow">Built differently</span>
+        <h2 class="d2">What Makes the BIRC 2026 Knowledge Sessions Different</h2>
+        <aside class="ey">
+          <strong>EY Post-Conference Report</strong>
+          <p>The Ernst &amp; Young Post-Conference Report on BIRC 2025 established the 2025 edition as the world's largest-ever dedicated rice conference in terms of scale and participation.</p>
+          <span>EY BIRC 2025 Report</span>
+        </aside>
+      </div>
+      <div class="acc" id="acc">
+        <article class="acc-item open">
+          <button class="acc-btn" type="button" aria-expanded="true"><span>01</span><strong>Sessions Built as Business Training Modules, Every Speaker Chosen for Impact</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Not long speeches. Not boring panels. Real working sessions. Every BIRC 2026 session is built like a business training class, with months of planning behind each one, focused on the real decisions rice businesses make every day. And every speaker is chosen for one reason: they have actually done the business, not just studied it.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>02</span><strong>A Trade-Led Agenda Built Around Real Business Decisions</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Every session answers one simple question: how will this grow your rice business? No heavy theory, no general talk, only the real decisions you face. Where prices will go. Which markets to target. How to lower risk, protect margins, use new ideas and find bigger partners. You go home with clear decisions, not just notes.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>03</span><strong>Price Forecasting and Market Intelligence as a Signature Feature</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Price affects every decision: buying, stocking, contracts and exports. So BIRC 2026 makes price forecasting the main highlight: crop surveys, production estimates, demand-and-supply data and expert views, all in one place. Understand the market before it moves.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>04</span><strong>From Knowledge to Commercial Success</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Knowledge is useful only when it makes money. BIRC 2026 turns learning into results: real case studies, live market analysis and simple business examples that improve your planning, strengthen your position and protect your profit across the value chain.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>05</span><strong>Managing Risk. Improving Profit.</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Big sales do not always mean big profit, margins do. BIRC 2026 focuses on what really affects your earnings: price ups and downs, payment and transaction risk, extra costs and trade planning. Protect your money, keep your margins and grow stronger.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>06</span><strong>Discovering Tomorrow's Markets</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>The next big market is not always where everyone is looking. BIRC 2026 looks ahead: new countries, changing customer tastes, new trade rules and government schemes, so you can enter early, move first and grow where the demand is going.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>07</span><strong>Innovation That Creates Business Value</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>New technology is useful only if you can actually use it. We checked hundreds of new products, technologies and solutions, and picked only the ones with real business value, shown live at the Top Innovations Reveal and Innovation Showcase. Practical, profitable and ready to use.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>08</span><strong>Experience Zones and Global Rice Cuisine Showcase</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Rice is not just a commodity, it is loved on plates all over the world. Nine special Experience Zones and a Global Rice Cuisine Showcase bring rice dishes from more than 50 countries and over 25 types of biryani to life. See the demand for yourself, and find your next product, market or value-added idea.</p></div></div>
+        </article>
+        <article class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false"><span>09</span><strong>Structured Networking for Meaningful Partnerships</strong><em>+</em></button>
+          <div class="acc-panel"><div><p>Good deals should not depend on luck or a chance meeting. BIRC 2026 makes networking planned and simple: app-based scheduling and organised B2B meetings connect buyers, exporters, millers and importers with the right partners. Less waiting, more real deals.</p></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="zones light section" id="zones">
+    <div class="shell" style="display:block">
+      <header class="sechead" style="margin-bottom:56px">
+        <span class="eyebrow">Inside the summit</span>
+        <div>
+          <h2 class="d2">Experience Zones</h2>
+          <p class="lede">Nine immersive worlds tracing rice from field to future, built to be walked, touched, and remembered.</p>
+        </div>
+      </header>
+    </div>
+    <div class="shell">
+      <div class="zonerail" id="zonerail" role="tablist" aria-label="Experience zones"></div>
+      <div>
+        <div class="zonestage" id="zonestage">
+          <div class="zonestage-meta"><span id="zoneIndex">01 / 09</span><span id="zoneKind">Trade &amp; logistics</span></div>
+          <div class="art route" id="zoneArt"><i class="globe"></i><i class="trail"></i></div>
+          <div class="zonestage-copy">
+            <h3 id="zoneTitle">The Rice Route Map</h3>
+            <p id="zoneCopy">A giant illuminated map traces India's rice exports from fields to plates across the world.</p>
+          </div>
+        </div>
+        <div class="zonebar">
+          <div class="track"><i id="zoneTrack" style="width:11.1%"></i></div>
+          <small id="zoneCount">01 / 09</small>
+          <button type="button" id="zonePrev" aria-label="Previous zone">&larr;</button>
+          <button type="button" id="zoneNext" aria-label="Next zone">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dates section">
+    <div class="shell">
+      <div class="datelead">
+        <span class="eyebrow">Three days</span>
+        <p>Policy on Friday. Trade on Saturday. The future on Sunday.</p>
+      </div>
+      <div class="datelock">
+        <h2>October</h2>
+        <div class="row"><span>23</span><span>24</span><span>25</span></div>
+        <small>2026 &middot; New Delhi</small>
+      </div>
+      <div class="programme" id="programme">
+        <article class="pday"><small>Day 1 &middot; Fri 23 Oct</small><b>01</b><h3>Knowledge &amp; Policy</h3><p>Opening ceremonies, ministerial summits and global food security panels.</p></article>
+        <article class="pday"><small>Day 2 &middot; Sat 24 Oct</small><b>02</b><h3>Trade &amp; Commerce</h3><p>Buyer-seller meets and the largest gathering of rice traders in history.</p></article>
+        <article class="pday"><small>Day 3 &middot; Sun 25 Oct</small><b>03</b><h3>Future &amp; Innovation</h3><p>Startup pitch finals and the closing BIRC Global Awards Gala.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="voices light section" id="voices">
+    <div class="shell" style="display:block">
+      <header class="sechead" style="margin-bottom:56px">
+        <span class="eyebrow">Voices of the industry</span>
+        <div><h2 class="d2">What leaders say</h2></div>
+      </header>
+    </div>
+    <div class="shell">
+      <div>
+        <div class="qmark" aria-hidden="true">&ldquo;</div>
+        <figure class="quote">
+          <blockquote id="quoteText">BIRC redefined how we see global rice trade.</blockquote>
+          <figcaption><b id="quoteName">Priya Nair</b><span id="quoteRole">Director, Global Grain Council</span></figcaption>
+        </figure>
+      </div>
+      <div class="voicelist" id="voicelist"></div>
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <div class="shell">
+      <header class="sechead">
+        <span class="eyebrow">Why BIRC</span>
+        <div>
+          <h2 class="d2">One platform, every pillar</h2>
+          <p class="lede">Four reasons the global rice industry meets here.</p>
+        </div>
+      </header>
+      <div class="reasons">
+        <article class="reason"><span>01</span><span class="word" aria-hidden="true">INDIA</span><div class="reason-copy"><h3>India-anchored, globally led</h3><p>We root the world's rice conversation in India, then open it to every market that trades in grain.</p></div></article>
+        <article class="reason"><span>02</span><span class="word" aria-hidden="true">TRADE</span><div class="reason-copy"><h3>Trade, innovation, knowledge</h3><p>Every pillar of the industry under one roof, including sustainability and policy.</p></div></article>
+        <article class="reason"><span>03</span><span class="word" aria-hidden="true">365</span><div class="reason-copy"><h3>Built for year-round progress</h3><p>A year-round community that convenes at the summit but never ends.</p></div></article>
+        <article class="reason"><span>04</span><span class="word" aria-hidden="true">ONE</span><div class="reason-copy"><h3>Everyone wins together</h3><p>Growth for the entire rice ecosystem, not a smaller slice for a few.</p></div></article>
+      </div>
+      <p class="whyclose">India at the centre. <span>Every market in the room.</span></p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell">
+      <header class="sechead" style="margin-bottom:0">
+        <span class="eyebrow">Impressions</span>
+        <div><h2 class="d2">BIRC in pictures</h2></div>
+      </header>
+    </div>
+    <div class="gallery" aria-hidden="true">
+      <div class="gallery-run">
+        <div class="tile" data-cap="Delegate connect"></div><div class="tile" data-cap="Excellence awards"></div><div class="tile" data-cap="International buyers"></div><div class="tile" data-cap="Installation"></div>
+        <div class="tile" data-cap="Delegate connect"></div><div class="tile" data-cap="Excellence awards"></div><div class="tile" data-cap="International buyers"></div><div class="tile" data-cap="Installation"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light section" id="visit">
+    <div class="shell">
+      <header class="sechead">
+        <span class="eyebrow">Bharat Mandapam &middot; Halls 4 &amp; 5</span>
+        <div><h2 class="d2">Plan your visit</h2></div>
+      </header>
+      <div class="visitgrid">
+        <button class="visit-item open" type="button" aria-expanded="true"><span class="label">Venue</span><h3>Bharat Mandapam</h3><span class="visit-detail"><span><p>Pragati Maidan, New Delhi. Halls 4 and 5, gates open 08:30.</p></span></span><span class="act">Directions <i>&rarr;</i></span></button>
+        <button class="visit-item" type="button" aria-expanded="false"><span class="label">Stay</span><h3>Partner hotels</h3><span class="visit-detail"><span><p>Five partner hotels across every price range, minutes from the venue.</p></span></span><span class="act">View hotels <i>&rarr;</i></span></button>
+        <button class="visit-item" type="button" aria-expanded="false"><span class="label">Travel</span><h3>Getting here</h3><span class="visit-detail"><span><p>Flight, train or metro. Blue Line to Supreme Court, six minutes on foot.</p></span></span><span class="act">Travel guide <i>&rarr;</i></span></button>
+        <button class="visit-item" type="button" aria-expanded="false"><span class="label">Support</span><h3>Visas &amp; FAQs</h3><span class="visit-detail"><span><p>Invitation letters, accreditation, accessibility and delegate support.</p></span></span><span class="act">All FAQs <i>&rarr;</i></span></button>
+      </div>
+      <div class="visitnote"><small>Doors</small><p>Gates open at 08:30 daily. Keep your delegate QR ready for faster entry.</p></div>
+    </div>
+  </section>
+
+  <section class="final" id="register">
+    <div class="final-bg" aria-hidden="true"></div>
+    <div class="shell">
+      <span class="eyebrow">Early bird closes 31 July</span>
+      <h2>Be in the room.</h2>
+      <button class="cta" type="button" data-register>Secure your early bird rate <span aria-hidden="true">&#8599;</span></button>
+      <div class="clockrow">
+        <div><strong id="fd">00</strong><small>Days</small></div>
+        <div><strong id="fh">00</strong><small>Hrs</small></div>
+        <div><strong id="fm">00</strong><small>Mins</small></div>
+        <div><strong id="fs">00</strong><small>Secs</small></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div>
+      <h4>Get in touch</h4>
+      <p>Programme updates and delegate news, once a month.</p>
+      <form class="subscribe" id="subscribe">
+        <label for="email" class="eyebrow" style="position:absolute;left:-9999px">Email</label>
+        <input id="email" type="email" placeholder="you@company.com" required>
+        <button type="submit" aria-label="Subscribe">&#8599;</button>
+      </form>
+      <p id="subscribeStatus" style="margin-top:12px;font-size:13px;min-height:18px;color:var(--gold)"></p>
+    </div>
+    <div class="fcol"><h5>Explore</h5><a href="#pathways">Take part</a><a href="#zones">Experience zones</a><a href="#knowledge-sessions">Knowledge sessions</a><a href="#why">Why BIRC</a></div>
+    <div class="fcol"><h5>Participate</h5><a href="exhibition.html">Exhibition</a><a href="partnership.html">Partnership</a><a href="creators.html">Influencers</a><a href="conference.html">Conference</a></div>
+    <div class="fcol"><h5>Visit</h5><a href="plan-visit.html">Plan your visit</a><a href="contact.html">Contact</a><a href="index.html?view=mobile">Mobile version</a><a href="https://birc.in/login">Login</a></div>
+  </div>
+  <div class="legal"><span>&copy; 2026 Bharat International Rice Conference</span><span>Privacy &middot; Terms &middot; Code of Conduct</span></div>
+</footer>
+
+<dialog class="regdialog" id="regDialog" aria-labelledby="regTitle">
+  <header class="reghead">
+    <button class="regclose" id="regClose" type="button" aria-label="Close registration options">&times;</button>
+    <span class="eyebrow">Registration</span>
+    <h2 id="regTitle">Register for BIRC 2026</h2>
+    <p>Choose your registration type to get started.</p>
+  </header>
+  <div class="regopts">
+    <a class="regopt" href="register.html?type=visitor"><b>Visitor</b><small>Attend BIRC 2026 as a visitor to explore exhibitions, attend sessions, and network with industry leaders.</small><span class="go">Continue &rarr;</span></a>
+    <a class="regopt" href="register.html?type=exhibitor"><b>Exhibitor</b><small>Showcase your products and services at Asia's largest rice industry event. Book your exhibition space now.</small><span class="go">Continue &rarr;</span></a>
+    <a class="regopt" href="register.html?type=buyer"><b>Buyer</b><small>Connect with top rice exporters and manufacturers. Register as a buyer to explore business opportunities.</small><span class="go">Continue &rarr;</span></a>
+  </div>
+  <p class="regfoot">Already registered? <a href="https://birc.in/login">Login here</a></p>
+</dialog>
+
+<script>
 (function(){
-  const dialog=document.getElementById('registrationDialog');
-  const closeButton=document.getElementById('registrationClose');
-  if(!dialog||!closeButton)return;
+  'use strict';
 
-  function openRegistration(event){
-    if(event)event.preventDefault();
-    if(typeof dialog.showModal==='function')dialog.showModal();
-    else dialog.setAttribute('open','');
-    document.body.classList.add('registration-open');
+  /* scroll progress + sticky header */
+  var masthead=document.getElementById('masthead'),progress=document.getElementById('progress');
+  function onScroll(){
+    var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    masthead.classList.toggle('stuck',y>24);
+    progress.style.width=(h>0?y/h*100:0)+'%';
   }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  function closeRegistration(){
-    if(typeof dialog.close==='function'&&dialog.open)dialog.close();
-    else dialog.removeAttribute('open');
-    document.body.classList.remove('registration-open');
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+  },{threshold:.18});
+  document.querySelectorAll('.reveal,.reason,.pday').forEach(function(el){io.observe(el)});
+  var pio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting)en.target.classList.add('active')});
+  },{threshold:.4});
+  document.querySelectorAll('.pday').forEach(function(el){pio.observe(el)});
+
+  /* nav dropdowns, keyboard accessible */
+  document.querySelectorAll('.navtrigger').forEach(function(btn){
+    var panel=btn.nextElementSibling;
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('aria-expanded')==='true';
+      document.querySelectorAll('.dropdown.open').forEach(function(p){p.classList.remove('open')});
+      document.querySelectorAll('.navtrigger').forEach(function(b){b.setAttribute('aria-expanded','false')});
+      if(!open){panel.classList.add('open');btn.setAttribute('aria-expanded','true')}
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.mainnav')){
+      document.querySelectorAll('.dropdown.open').forEach(function(p){p.classList.remove('open')});
+      document.querySelectorAll('.navtrigger').forEach(function(b){b.setAttribute('aria-expanded','false')});
+    }
+  });
+
+  /* accordion */
+  document.querySelectorAll('.acc-item').forEach(function(item){
+    var btn=item.querySelector('.acc-btn');
+    btn.addEventListener('click',function(){
+      var was=item.classList.contains('open');
+      document.querySelectorAll('.acc-item').forEach(function(x){
+        x.classList.remove('open');x.querySelector('.acc-btn').setAttribute('aria-expanded','false');
+      });
+      if(!was){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  /* experience zones */
+  var zones=[
+    ['The Rice Route Map','Trade & logistics',"A giant illuminated map traces India's rice exports from fields to plates across the world.",'route','<i class="globe"></i><i class="trail"></i>'],
+    ['Seed Cloud','Innovation & data','A network of intelligence.','seed','<i style="--x:16%;--y:20%;--r:28deg"></i><i style="--x:38%;--y:44%;--r:76deg"></i><i style="--x:62%;--y:22%;--r:118deg"></i><i style="--x:80%;--y:52%;--r:12deg"></i>'],
+    ['The Rice Archive','Heritage & knowledge','200+ varieties, one archive.','grid-seeds',new Array(24).join('<i></i>')+'<i></i>'],
+    ['Rice Through Time','Heritage & knowledge','Ancient grain, future harvest.','line','<i style="--x:16%"></i><i style="--x:42%"></i><i style="--x:68%"></i>'],
+    ['How the World Eats Rice','Culture & culinary','Forty metres of tables.','rings','<i></i>'],
+    ['Hands of Rice','Culture & culinary','From seed to serving hands.','seed','<i style="--x:26%;--y:24%;--r:32deg"></i><i style="--x:58%;--y:46%;--r:148deg"></i><i style="--x:74%;--y:20%;--r:64deg"></i>'],
+    ['The World Within','Innovation & data','A grain becomes a universe.','rings','<i></i>'],
+    ['Rice Mirror','Immersive installation','The grains know your face.','grid-seeds',new Array(24).join('<i></i>')+'<i></i>'],
+    ['Beyond the Bowl','Industry & product','A window you cannot pass.','line','<i style="--x:20%"></i><i style="--x:50%"></i><i style="--x:78%"></i>']
+  ];
+  var rail=document.getElementById('zonerail'),stage=document.getElementById('zonestage'),art=document.getElementById('zoneArt'),
+      zTitle=document.getElementById('zoneTitle'),zCopy=document.getElementById('zoneCopy'),zKind=document.getElementById('zoneKind'),
+      zIndex=document.getElementById('zoneIndex'),zCount=document.getElementById('zoneCount'),zTrack=document.getElementById('zoneTrack'),current=0;
+  zones.forEach(function(z,i){
+    var b=document.createElement('button');
+    b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-selected',i===0?'true':'false');
+    b.innerHTML='<span>'+String(i+1).padStart(2,'0')+'</span><strong>'+z[0]+'</strong>';
+    b.addEventListener('click',function(){setZone(i)});
+    rail.appendChild(b);
+  });
+  function setZone(i){
+    current=(i+zones.length)%zones.length;
+    var z=zones[current];
+    zTitle.textContent=z[0];zCopy.textContent=z[2];zKind.textContent=z[1];
+    var label=String(current+1).padStart(2,'0')+' / 09';
+    zIndex.textContent=label;zCount.textContent=label;
+    zTrack.style.width=((current+1)/zones.length*100)+'%';
+    art.className='art '+z[3];art.innerHTML=z[4];
+    Array.prototype.forEach.call(rail.children,function(b,bi){b.setAttribute('aria-selected',bi===current?'true':'false')});
+    stage.classList.remove('swap');void stage.offsetWidth;stage.classList.add('swap');
   }
+  document.getElementById('zonePrev').addEventListener('click',function(){setZone(current-1)});
+  document.getElementById('zoneNext').addEventListener('click',function(){setZone(current+1)});
+  setZone(0);
 
-  document.addEventListener('click',function(event){
-    const trigger=event.target.closest('a[href="#register"]');
-    if(!trigger)return;
-    openRegistration(event);
+  /* voices */
+  var voices=[
+    ['BIRC redefined how we see global rice trade.','Priya Nair','Director, Global Grain Council'],
+    ['The ecosystem here moves faster than any fair.','Marco van der Belt','CEO, EuroRice Partners'],
+    ['Every session sharpened our market view.','Chen Wei','Head of Trade, Asia Foods'],
+    ["A platform built for the industry's future.",'James Sterling','Founder, Sterling Commodities']
+  ];
+  var vlist=document.getElementById('voicelist'),qText=document.getElementById('quoteText'),
+      qName=document.getElementById('quoteName'),qRole=document.getElementById('quoteRole');
+  voices.forEach(function(v,i){
+    var b=document.createElement('button');
+    b.type='button';b.setAttribute('aria-selected',i===0?'true':'false');
+    b.innerHTML='<b>'+v[1]+'</b><span>'+v[2]+'</span>';
+    b.addEventListener('click',function(){
+      qText.textContent=v[0];qName.textContent=v[1];qRole.textContent=v[2];
+      Array.prototype.forEach.call(vlist.children,function(x,xi){x.setAttribute('aria-selected',xi===i?'true':'false')});
+    });
+    vlist.appendChild(b);
   });
 
-  closeButton.addEventListener('click',closeRegistration);
-  dialog.addEventListener('cancel',function(){
-    document.body.classList.remove('registration-open');
+  /* plan your visit */
+  document.querySelectorAll('.visit-item').forEach(function(item){
+    item.addEventListener('click',function(){
+      var was=item.classList.contains('open');
+      document.querySelectorAll('.visit-item').forEach(function(x){x.classList.remove('open');x.setAttribute('aria-expanded','false')});
+      if(!was){item.classList.add('open');item.setAttribute('aria-expanded','true')}
+    });
   });
-  dialog.addEventListener('close',function(){
-    document.body.classList.remove('registration-open');
+
+  /* countdown */
+  var target=new Date('2026-10-23T00:00:00+05:30').getTime();
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d=Math.max(0,target-Date.now());
+    var dd=Math.floor(d/864e5),hh=Math.floor(d/36e5)%24,mm=Math.floor(d/6e4)%60,ss=Math.floor(d/1e3)%60;
+    ['cd','fd'].forEach(function(id){document.getElementById(id).textContent=pad(dd)});
+    ['ch','fh'].forEach(function(id){document.getElementById(id).textContent=pad(hh)});
+    ['cm','fm'].forEach(function(id){document.getElementById(id).textContent=pad(mm)});
+    ['cs','fs'].forEach(function(id){document.getElementById(id).textContent=pad(ss)});
+  }
+  tick();setInterval(tick,1000);
+
+  /* newsletter feedback */
+  var form=document.getElementById('subscribe'),status=document.getElementById('subscribeStatus');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var input=document.getElementById('email');
+    if(!input.checkValidity()){status.textContent='Enter a valid email address.';return}
+    status.textContent='Thanks. You are on the BIRC 2026 list.';
+    form.reset();
   });
-  dialog.addEventListener('click',function(event){
-    const box=dialog.getBoundingClientRect();
-    const outside=event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom;
-    if(outside)closeRegistration();
+
+  /* registration chooser */
+  var dialog=document.getElementById('regDialog'),closeBtn=document.getElementById('regClose');
+  function openReg(e){
+    if(e)e.preventDefault();
+    if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
+    document.body.classList.add('locked');
+  }
+  function closeReg(){
+    if(dialog.close&&dialog.open)dialog.close();else dialog.removeAttribute('open');
+    document.body.classList.remove('locked');
+  }
+  document.addEventListener('click',function(e){
+    var trigger=e.target.closest('[data-register]');
+    if(trigger)openReg(e);
+  });
+  closeBtn.addEventListener('click',closeReg);
+  dialog.addEventListener('close',function(){document.body.classList.remove('locked')});
+  dialog.addEventListener('cancel',function(){document.body.classList.remove('locked')});
+  dialog.addEventListener('click',function(e){
+    var b=dialog.getBoundingClientRect();
+    if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)closeReg();
   });
 })();
-</script></body></html>
+</script>
+</body>
+</html>

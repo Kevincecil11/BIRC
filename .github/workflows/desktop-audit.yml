@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/desktop-audit.yml'
       - 'tools/audit.py'
+      - 'tools/polish2.py'
   workflow_dispatch:
 
 permissions:
@@ -18,10 +19,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - run: python tools/polish2.py
       - run: pip install playwright
       - run: python -m playwright install --with-deps chromium
       - name: Serve and audit
         run: |
+          sed -i "s/wait_until='load'/wait_until='domcontentloaded', timeout=60000/" tools/audit.py
           python -m http.server 8000 >/dev/null 2>&1 &
           sleep 3
           python tools/audit.py
@@ -29,6 +32,7 @@ jobs:
         run: |
           git config user.name "birc-bot"
           git config user.email "bot@birc.local"
-          git add -A _inspect
-          git commit -m "Desktop audit" || echo "no changes"
+          git checkout -- tools/audit.py
+          git add -A _inspect desktop-rice-masterchef.html
+          git commit -m "Polish pass 2 and audit" || echo "no changes"
           git push

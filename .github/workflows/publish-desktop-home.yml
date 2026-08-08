@@ -5,13 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/publish-desktop-home.yml'
-      - 'desktop.html'
-      - 'desktop-about.html'
-      - 'desktop-conference.html'
-      - 'desktop-exhibition.html'
-      - 'desktop-exhibitor-profile.html'
-      - 'desktop-space-rental.html'
-      - 'desktop-experience.html'
+      - 'desktop*.html'
       - 'index.html'
   workflow_dispatch:
 
@@ -36,8 +30,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy desktop Experience page
+      - name: Deploy all desktop pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Desktop Experience page, 2026-08-08.
+# Influencers, Partnership, Plan Visit, and Contact desktop pages, 2026-08-08.

@@ -408,3 +408,8 @@ All three Exhibition views use the same black/ink background system. Do not swit
 ## Supplied influencer source documents audit (2026-08-08)
 
 The mobile Content Creators, Rice Masterchef, and Artists pages were checked against the three supplied BIRC source documents. Missing approved application fields, qualification details, process steps, access rules, FAQs, Rice Art opportunity sections, curatorial journey, and Why BIRC content were added. Desktop files were not changed.
+## Desktop About page
+
+- `desktop-about.html` is the purpose-built desktop About experience.
+- It preserves the approved mobile About content while using desktop-native hero, mission, three-column values, split story, results, organisers, Advisory Board, industry overview, registration chooser, and quick-action dock.
+- The mobile `about.html` remains unchanged.

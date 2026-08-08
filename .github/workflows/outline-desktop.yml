@@ -14,59 +14,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build outline
+      - name: Extract copy
         run: |
           python3 - <<'PY'
-          import re, os
-          out = []
-          f = 'desktop-partnership.html'
+          import re, os, html
+          f = 'partnership.html'
+          if not os.path.exists(f):
+              f = 'desktop-partnership.html'
           raw = open(f, encoding='utf-8').read()
-          body = raw.split('<body', 1)[-1]
-          out.append('FILE %s bytes=%d' % (f, len(raw)))
-          out.append('--- ALL CLASSES IN ORDER (first occurrence) ---')
-          seen = []
-          for c in re.findall(r'class="([^"]*)"', body):
-              if c not in seen:
-                  seen.append(c)
-          out.append('\n'.join(seen))
-          out.append('--- TOP LEVEL MAIN CHILDREN ---')
-          m = re.search(r'<main[^>]*>', body)
-          if m:
-              depth = 0
-              i = m.end()
-              tags = re.compile(r'<(/?)(\w+)([^>]*)>')
-              for t in tags.finditer(body, i):
-                  close, name, attrs = t.group(1), t.group(2), t.group(3)
-                  if name in ('br','img','input','meta','link','source','hr'):
-                      continue
-                  if close:
-                      depth -= 1
-                      if depth < 0:
-                          break
-                  else:
-                      if depth <= 1:
-                          cl = re.search(r'class="([^"]*)"', attrs)
-                          idd = re.search(r'id="([^"]*)"', attrs)
-                          chunk = body[t.end():t.end()+900]
-                          h = re.search(r'<h[1234][^>]*>(.*?)</h[1234]>', chunk, re.S)
-                          htxt = re.sub(r'<[^>]+>', '', h.group(1)).strip()[:70] if h else ''
-                          out.append('%s<%s> .%s #%s :: %s' % ('  '*depth, name, cl.group(1) if cl else '', idd.group(1) if idd else '', htxt))
-                      depth += 1
-          out.append('--- HEADINGS ---')
-          for hm in re.finditer(r'<(h[1234])[^>]*>(.*?)</\1>', body, re.S):
-              out.append('  ' + hm.group(1) + ': ' + re.sub(r'<[^>]+>', '', hm.group(2)).strip()[:80])
-          styles = re.findall(r'<style[^>]*>(.*?)</style>', raw, re.S)
-          out.append('--- STYLE BLOCK SIZES: %s' % [len(s) for s in styles])
-          out.append('--- STYLE 1 (page base) ---')
-          out.append(styles[0].replace('\n', ' ')[:5800])
+          body = raw.split('<main', 1)[-1] if '<main' in raw else raw
+          body = body.split('<footer', 1)[0]
+          body = re.sub(r'<script.*?</script>', '', body, flags=re.S)
+          body = re.sub(r'<style.*?</style>', '', body, flags=re.S)
+          # mark block boundaries
+          body = re.sub(r'<(details|summary|li|h1|h2|h3|h4|p|div|span|strong|small|a|button|td|th|tr)([^>]*)>', lambda m: '\n[' + m.group(1) + ']', body)
+          body = re.sub(r'</(details|summary|li|h1|h2|h3|h4|p|div|span|strong|small|a|button|td|th|tr)>', '\n', body)
+          body = re.sub(r'<[^>]+>', ' ', body)
+          lines = []
+          for ln in body.split('\n'):
+              t = html.unescape(ln).strip()
+              t = re.sub(r'\s+', ' ', t)
+              if not t:
+                  continue
+              if re.fullmatch(r'\[(div|span|a|p|strong|small|button|td|th|tr)\]', t):
+                  continue
+              lines.append(t)
+          txt = 'SOURCE FILE: %s\n' % f + '\n'.join(lines)
           os.makedirs('audit', exist_ok=True)
-          open('audit/partnership.txt','w',encoding='utf-8').write('\n'.join(out))
-          print('ok')
+          open('audit/partnership-copy.txt','w',encoding='utf-8').write(txt)
+          print(len(txt))
           PY
-      - name: Commit outline
+      - name: Commit
         run: |
           git config user.name 'birc-bot'
           git config user.email 'birc-bot@users.noreply.github.com'
-          git add audit/partnership.txt
-          git commit -m 'Outline partnership structure' || echo 'no changes'
+          git add audit/partnership-copy.txt
+          git commit -m 'Extract partnership copy' || echo 'no changes'
           git push

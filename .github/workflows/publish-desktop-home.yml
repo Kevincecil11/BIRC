@@ -35,8 +35,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy refined desktop pages
+      - name: Deploy latest desktop alignment
         id: deployment
         uses: actions/deploy-pages@v4
 
-# About alignment and Exhibition yellow strip removal, 2026-08-08.
+# About story, Conference headings, and Exhibition nav alignment, 2026-08-08.

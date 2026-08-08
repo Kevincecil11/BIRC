@@ -1,0 +1,6 @@
+desktop-creators.html -> _shots/desktop-creators.jpg (820, 3544)
+desktop-rice-masterchef.html -> _shots/desktop-rice-masterchef.jpg (820, 3926)
+desktop-artists.html -> _shots/desktop-artists.jpg (820, 5600)
+desktop-partnership.html -> _shots/desktop-partnership.jpg (820, 1752)
+desktop-plan-visit.html -> _shots/desktop-plan-visit.jpg (820, 2752)
+desktop-contact.html -> _shots/desktop-contact.jpg (820, 1923)

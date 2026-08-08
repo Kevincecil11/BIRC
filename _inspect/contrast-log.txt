@@ -1,0 +1,13 @@
+desktop-rice-masterchef.html: 2 fixes
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: Other approved creators · Day 3
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: Day 3 only · 25 October
+desktop-artists.html: 0 fixes
+desktop-partnership.html: 1 fixes
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: ✦ CHOOSE YOUR TIER
+desktop-plan-visit.html: 4 fixes
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: 940+
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: 30+
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: 900+
+   1.69 rgb(235, 179, 65) -> #0d0d0b :: 15+
+desktop-contact.html: 0 fixes
+contact.html: 0 fixes

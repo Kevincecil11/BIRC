@@ -11,14 +11,11 @@ overflow items: 0
 
 ==== desktop-rice-masterchef.html ====
 docWidth 1440 / viewport 1440
-heading left edges (px:count): [('120', 14), ('741', 4), ('750', 2), ('146', 1), ('753', 1), ('1056', 1)]
+heading left edges (px:count): [('60', 14), ('741', 4), ('750', 2), ('86', 1), ('753', 1), ('1086', 1)]
 centered headings/paras: 0
-low contrast items: 14
+low contrast items: 9
   CONTRAST 2.53 SPAN.eye color=rgb(201, 142, 37) :: Your skill. A global audience.
-  CONTRAST 1.00 H2.section-title color=rgb(250, 240, 230) :: Turn One Rice Dish Into Your Moment.
   CONTRAST 2.53 SPAN. color=rgb(201, 142, 37) :: 01
-  CONTRAST 1.69 SMALL. color=rgb(235, 179, 65) :: Other approved creators · Day 3
-  CONTRAST 1.69 STRONG. color=rgb(235, 179, 65) :: Day 3 only · 25 October
 overflow items: 0
 
 ==== desktop-artists.html ====
@@ -41,8 +38,7 @@ overflow items: 0
 docWidth 1440 / viewport 1440
 heading left edges (px:count): [('60', 5), ('445', 3), ('943', 3), ('89', 2), ('420', 1), ('758', 1)]
 centered headings/paras: 0
-low contrast items: 4
-  CONTRAST 1.69 STRONG. color=rgb(235, 179, 65) :: 940+
+low contrast items: 0
 overflow items: 0
 
 ==== desktop-contact.html ====

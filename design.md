@@ -416,3 +416,11 @@ A new page is ready only when:
 - motion is purposeful and reduced-motion-safe
 - no horizontal overflow exists
 - the page visually belongs beside `index.html`
+## 16. Desktop homepage
+
+- `desktop.html` is the dedicated desktop homepage; `index.html` remains the approved mobile homepage.
+- Devices at 900px or wider with a fine pointer open `desktop.html` automatically unless the visitor explicitly selects Mobile view.
+- Both versions expose a persistent manual view switch. The selection lasts for the browser session.
+- Desktop uses the same content, palette, typography, assets, registration chooser, and section order as mobile. Do not fork or rewrite approved copy.
+- Desktop layout is full-width with a 12-column hero, inline primary navigation, three-column participation pathways, two-column knowledge sessions, four-column Why BIRC and Plan Visit compositions, and a maximum 1600px working rhythm.
+- Desktop breakpoints are not a stretched mobile canvas. Preserve the editorial hierarchy and use wider compositions intentionally.

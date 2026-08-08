@@ -396,3 +396,10 @@ Exhibition is a hash-driven single-section experience. Selecting a submenu or se
 
 All three Exhibition views use the same black/ink background system. Do not switch Exhibitor Profile or Space Rental back to linen; only gold, linen text, muted grey, and editorial grey may vary within the dark surfaces.
 - Registration flow: every homepage registration CTA opens a native chooser for Visitor, Exhibitor, or Buyer; each choice routes to `register.html?type=<role>`.
+## Desktop homepage architecture
+
+- `index.html` remains the mobile homepage and source for shared homepage content.
+- `desktop.html` is the dedicated desktop homepage, currently the only desktop-specific page.
+- Automatic routing chooses desktop at 900px+ with a fine pointer and mobile below that. Manual Desktop view and Mobile view controls override detection for the browser session.
+- For now, secondary pages remain their existing mobile implementations.
+- Desktop homepage content and registration behavior must stay synchronized with `index.html`.

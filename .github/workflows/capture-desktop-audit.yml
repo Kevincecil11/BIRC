@@ -1,0 +1,45 @@
+name: Capture desktop visual audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/capture-desktop-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Capture every desktop section
+        run: |
+          python3 -m http.server 4173 >/tmp/birc-server.log 2>&1 &
+          cat > /tmp/audit.mjs <<'JS'
+          import { chromium } from 'playwright';
+          import fs from 'fs';
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
+          await page.goto('http://127.0.0.1:4173/desktop.html?view=desktop',{waitUntil:'networkidle'});
+          await page.emulateMedia({reducedMotion:'reduce'});
+          fs.mkdirSync('audit/desktop',{recursive:true});
+          const shots=[['01-hero','.hero'],['02-purpose','.statement'],['03-pathways','#pathways'],['04-figures','.light[style*="padding-top"]'],['05-knowledge','#knowledge-sessions'],['06-difference','#knowledge-difference'],['07-zones','#zones'],['08-date','.date-sec'],['09-programme','#programme'],['10-voices','#voices'],['11-why','#why'],['12-gallery','.dark.pad[style*="padding-left:0"]'],['13-visit','#visit'],['14-final','#register'],['15-footer','.footer']];
+          for(const [name,selector] of shots){const el=page.locator(selector).first();await el.scrollIntoViewIfNeeded();await page.waitForTimeout(120);await el.screenshot({path:`audit/desktop/${name}.png`});}
+          await page.screenshot({path:'audit/desktop/00-full-page.png',fullPage:true});
+          await browser.close();
+          JS
+          node /tmp/audit.mjs
+      - name: Commit audit screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit/desktop
+          git diff --cached --quiet || (git commit -m "Capture desktop homepage visual audit" && git push)

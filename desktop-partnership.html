@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<script>if(!matchMedia('(min-width:900px)').matches)location.replace('partnership.html')</script><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partnership Desktop | BIRC — Partnership (mobile)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;min-height:100%;background:#211f1d;-webkit-font-smoothing:antialiased}
+body{display:block;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif}
+.dv-card{background:#faf0e6;border:1.5px solid #111;overflow:hidden;
+  font-family:'Inter',system-ui,sans-serif;width:100%!important;max-width:767px!important;
+  margin:0 auto!important;box-shadow:none!important}
+.wf-h{font-family:'Poppins',sans-serif;font-weight:600}
+
+/* image slot */
+.img-slot{background:repeating-linear-gradient(135deg,#e7e0cf,#e7e0cf 10px,#e2dac6 10px,#e2dac6 20px);
+  color:#6b6350;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:center}
+.img-slot-cap{font:600 10px/1.35 'Poppins',system-ui,sans-serif;letter-spacing:.3px;
+  text-align:center;padding:8px 10px;opacity:.85;text-transform:uppercase}
+
+/* accordion cards */
+.wf-tier-card,.wf-opp-card{list-style:none}
+.wf-tier-card summary,.wf-opp-card summary{list-style:none;cursor:pointer}
+.wf-tier-card summary::-webkit-details-marker,
+.wf-opp-card summary::-webkit-details-marker{display:none}
+.wf-tier-toggle::after{content:'View All Benefits'}
+.wf-tier-card[open] .wf-tier-toggle::after{content:'Hide Benefits ↑'}
+.wf-opp-toggle::after{content:'Explore Benefits →'}
+.wf-opp-card[open] .wf-opp-toggle::after{content:'Hide Benefits ↑'}
+@keyframes wf-fade-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.wf-acc-body{animation:wf-fade-up .25s ease both}
+
+/* benefit rows */
+.wf-bl-row{display:flex;gap:8px;align-items:flex-start;padding:6px 0;
+  border-bottom:1px solid rgba(0,0,0,.08)}
+.wf-bl-row:last-child{border-bottom:none}
+.slab{display:inline-block;width:13px;height:6px;background:#ebb341;border-radius:1px;
+  transform:rotate(-18deg) skewX(-10deg);flex:none;margin-top:5px}
+.blist{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#333}
+.grp{font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;margin-bottom:8px}
+.price-box{text-align:center;margin-top:16px}
+.price-box>div{display:inline-block;background:#0d0d0b;color:#fff;padding:14px 24px}
+.price-box .amt{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;color:#ebb341}
+.price-box .note{font-size:10px;color:#aba49c;margin-top:4px}
+.acc-body{padding-top:14px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:12px}
+
+/* partner marquee */
+@keyframes wf-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.wf-marquee-track{animation:wf-marquee 22s linear infinite;display:flex;width:max-content}
+.wf-marquee-set{display:flex;align-items:center;gap:14px;white-space:nowrap;padding-right:14px}
+.logo-box{border:1.5px dashed rgba(255,255,255,.45);width:90px;height:40px;display:flex;
+  align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,.7)}
+@media(prefers-reduced-motion:reduce){.wf-marquee-track{animation:none}.wf-acc-body{animation:none}}
+
+@media (min-width:768px){
+  body{background:#211f1d;padding:32px 0}
+  .dv-card{width:375px!important;box-shadow:0 12px 40px rgba(24,51,75,.16)!important}
+}
+.plan-menu-parent{width:100%;display:flex;justify-content:space-between;padding:14px 0;border:0;border-bottom:1px solid var(--dl);background:none;color:var(--l);font:600 27px/1.2 Poppins,sans-serif;letter-spacing:-.05em;text-align:left}.plan-submenu{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .25s}.plan-submenu>div{overflow:hidden}.plan-submenu.open{grid-template-rows:1fr;opacity:1}.plan-submenu a{display:flex!important;justify-content:space-between;padding:10px 0 10px 18px!important;border-bottom:1px solid var(--dl);color:var(--dm)!important;font:500 12px Poppins,sans-serif!important}.plan-submenu a span{order:2;color:var(--g);font:600 9px Poppins,sans-serif}.plan-menu-parent small{transition:transform .3s var(--e)}.plan-menu-parent[aria-expanded=true] small{transform:rotate(180deg)}.canonical-nav{margin:auto 0}.canonical-nav>a,.exhibition-parent{width:100%;display:flex;justify-content:space-between;padding:14px 0;border:0;border-bottom:1px solid var(--dl);background:none;color:var(--l);font:600 27px/1.2 Poppins,sans-serif;letter-spacing:-.05em;text-align:left}.exhibition-parent small{transition:transform .3s var(--e)}.exhibition-parent[aria-expanded=true] small{transform:rotate(180deg)}.exhibition-sub{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .25s}.exhibition-sub>div{overflow:hidden}.exhibition-sub.open{grid-template-rows:1fr;opacity:1}.exhibition-sub a{display:flex!important;justify-content:space-between;padding:10px 0 10px 18px!important;border-bottom:1px solid var(--dl);color:var(--dm)!important;font:500 12px/1.25 Poppins,sans-serif!important;letter-spacing:-.01em!important}.exhibition-sub a span{order:2;color:var(--g);font:600 9px Poppins,sans-serif}.influencer-parent{width:100%;display:flex;justify-content:space-between;padding:14px 0;border:0;border-bottom:1px solid var(--dl);background:none;color:var(--l);font:600 27px/1.2 Poppins,sans-serif;letter-spacing:-.05em;text-align:left}.influencer-sub{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--e),opacity .25s}.influencer-sub>div{overflow:hidden}.influencer-sub.open{grid-template-rows:1fr;opacity:1}.influencer-sub a{display:flex!important;justify-content:space-between;padding:10px 0 10px 18px!important;border-bottom:1px solid var(--dl);color:var(--dm)!important;font:500 12px Poppins,sans-serif!important}.influencer-sub a span{order:2;color:var(--g);font:600 9px Poppins}.influencer-parent small{transition:transform .3s var(--e)}.influencer-parent[aria-expanded=true] small{transform:rotate(180deg)}</style>
+<style>
+:root{--j:#0d0d0b;--j2:#191916;--l:#faf0e6;--g:#ebb341;--g2:#c98e25;--m:#2b2b27;--dm:#aba49c;--lm:#6d6862;--dl:#35332e;--ll:#d8cec3;--e:cubic-bezier(.16,1,.3,1);--p:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0!important;padding:0!important;background:#211f1d!important;color:var(--j);font:400 16px/1.62 Inter,sans-serif!important}.dv-card{width:min(100%,520px)!important;max-width:520px!important;margin:auto!important;border:0!important;background:var(--l)!important;box-shadow:none!important;padding-top:72px}.wf-h{font-family:Poppins,sans-serif!important;letter-spacing:-.03em}.progress{position:fixed;z-index:90;top:0;left:50%;width:min(100%,520px);height:2px;transform:translateX(-50%)}.progress i{display:block;height:100%;width:0;background:var(--g)}.bar{position:fixed;z-index:80;top:0;left:50%;width:min(100%,520px);height:72px;transform:translateX(-50%);display:flex;align-items:center;justify-content:space-between;padding:0 var(--p);background:var(--j);border-bottom:1px solid var(--dl)}.site-logo{width:158px;height:48px;object-fit:contain;object-position:left}.menu-btn{width:44px;height:44px;border:0;background:none;color:var(--l);padding:11px}.menu-btn i{display:block;height:1px;background:currentColor;margin:6px 0}.drawer{position:fixed;z-index:100;inset:0;margin:auto;width:min(100%,520px);background:var(--j);color:var(--l);padding:22px;display:flex;flex-direction:column;transform:translateY(-102%);transition:transform .45s var(--e)}.drawer.open{transform:none}.drawer-top{display:flex;justify-content:space-between}.drawer-close{width:44px;height:44px;border:1px solid var(--dl);background:none;color:var(--l)}.drawer nav{margin:auto 0}.drawer nav a{display:flex;padding:15px 0;border-bottom:1px solid var(--dl);font:600 28px/1.2 Poppins,sans-serif;letter-spacing:-.05em}.drawer p,.drawer-social{color:var(--dm);font-size:13px}.drawer-social{display:flex;gap:7px;padding-top:18px;border-top:1px dashed var(--dl)}
+/* Partnership hierarchy */.dv-card>div:nth-child(1){padding:96px var(--p) 42px!important;background:var(--j)!important;color:var(--l)!important}.dv-card>div:nth-child(1) .wf-h{font-size:clamp(42px,13vw,66px)!important;line-height:.92!important;letter-spacing:-.065em!important}.dv-card>div:nth-child(1)>div:last-child{color:var(--dm)!important;font-size:16px!important;max-width:34ch}.dv-card>div:nth-child(2){border:0!important;background:var(--j)!important}.img-slot{background:repeating-linear-gradient(125deg,transparent 0 20px,#faf0e609 20px 21px),var(--j2)!important;color:var(--dm)!important}.dv-card>div{border-color:var(--dl)!important}.wf-tier-card,.wf-opp-card{border:1px solid var(--dl)!important;box-shadow:none!important;background:var(--l)!important;padding:18px!important}.wf-tier-card summary,.wf-opp-card summary{min-height:150px;display:flex;flex-direction:column}.wf-tier-toggle,.wf-opp-toggle{margin-top:auto!important;border:0!important;background:var(--j)!important;color:var(--l)!important;min-height:44px;display:grid;place-items:center}.wf-tier-card[open],.wf-opp-card[open]{background:var(--l)!important}.wf-acc-body{animation:fadeUp .4s var(--e) both}.slab{background:var(--g)!important}.price-box>div{background:var(--j)!important}.price-box .amt{color:var(--g)!important}.logo-box{border-color:var(--dl)!important;color:var(--dm)!important}.cta-gold{background:var(--g)!important;border-color:var(--g)!important;color:var(--j)!important;min-height:48px;display:grid;place-items:center;font:600 12px Poppins,sans-serif}.site-footer{width:min(100%,520px);margin:auto;padding:70px var(--p) 40px;background:var(--j);color:var(--l);border-top:1px solid var(--dl)}.site-footer h4{font:600 10px Poppins,sans-serif;color:var(--dm);text-transform:uppercase;letter-spacing:.16em}.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0 44px}.site-footer p{color:var(--dm);font-size:12px}.wf-tier-card:focus-within,.wf-opp-card:focus-within{outline:3px solid var(--g);outline-offset:2px}@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Unified package and opportunity cards */.wf-tier-card,.wf-opp-card{background:var(--l)!important;border:1px solid var(--j)!important;box-shadow:none!important;padding:14px!important;outline:none!important}.wf-tier-card summary,.wf-opp-card summary{min-height:150px!important}.wf-tier-card[open],.wf-opp-card[open]{background:var(--l)!important;border-color:var(--j)!important}.wf-tier-card:focus-within,.wf-opp-card:focus-within{outline:none!important}.wf-tier-card summary:focus-visible,.wf-opp-card summary:focus-visible{outline:3px solid var(--g);outline-offset:3px}.wf-tier-toggle,.wf-opp-toggle{margin-top:auto!important;border:0!important;background:var(--j)!important;color:var(--l)!important;min-height:44px!important;display:grid!important;place-items:center!important}.wf-tier-card[open] .wf-acc-body,.wf-opp-card[open] .wf-acc-body{border-top:1px solid var(--ll)!important}.wf-tier-card .wf-h,.wf-opp-card .wf-h{color:var(--j)}.dv-card>div:nth-child(3){background:var(--l)!important;border-color:var(--j)!important}.wf-tier-card,.wf-opp-card{background:var(--l)!important;border:1px solid var(--j)!important;box-shadow:none!important;padding:14px!important}.wf-tier-card:first-of-type,.wf-opp-card:first-of-type{outline:2px solid var(--g)!important;outline-offset:3px!important}.wf-tier-card summary,.wf-opp-card summary{min-height:150px!important}.wf-tier-toggle,.wf-opp-toggle{margin-top:auto!important;background:var(--j)!important;color:var(--l)!important;border:0!important;min-height:44px!important;display:grid!important;place-items:center!important}.wf-tier-card[open] .wf-acc-body,.wf-opp-card[open] .wf-acc-body{border-top:1px solid var(--ll)!important}.wf-tier-card:focus-within,.wf-opp-card:focus-within{outline-color:var(--g)!important}/* Final Partnership package treatment */.dv-card>div:nth-child(3){background:var(--l)!important;color:var(--j)!important;border-color:var(--j)!important}.dv-card>div:nth-child(3)>.wf-h,.dv-card>div:nth-child(3)>div>.wf-h{color:var(--j)!important}.wf-tier-card,.wf-opp-card{background:var(--l)!important;border:1px solid var(--j)!important;outline:none!important;box-shadow:none!important;padding:14px!important}.wf-tier-card[open],.wf-opp-card[open]{outline:2px solid var(--g)!important;outline-offset:3px!important}.wf-tier-card:not([open]),.wf-opp-card:not([open]){outline:none!important}.wf-tier-toggle,.wf-opp-toggle{background:var(--j)!important;color:var(--l)!important;border:0!important;min-height:44px!important;display:grid!important;place-items:center!important;margin-top:auto!important}.wf-tier-card summary,.wf-opp-card summary{min-height:150px!important}.wf-tier-card[open] .wf-acc-body,.wf-opp-card[open] .wf-acc-body{border-top:1px solid var(--ll)!important}.wf-tier-card summary:focus-visible,.wf-opp-card summary:focus-visible{outline:3px solid var(--g)!important;outline-offset:2px!important}</style><style id="desktop-page-system">
+:root{--desk-shell:min(1320px,calc(100% - 112px));--desk-side:max(56px,calc((100vw - 1320px)/2));--desk-nav:76px)}
+html{scroll-padding-top:76px}body{min-width:1100px!important;padding:0!important;background:var(--j,#0d0d0b)!important}.bar,.drawer,.site-footer,.page.footer,footer.page{display:none!important}.page,.dv-card{width:100%!important;max-width:none!important;margin:0!important;padding-top:76px!important;border:0!important;box-shadow:none!important;overflow:hidden!important}.desktop-shell{width:var(--desk-shell);margin:auto}.desktop-mast{position:fixed;z-index:1000;inset:0 0 auto;height:76px;background:#0d0d0bf0;border-bottom:1px solid #35332e;color:#faf0e6}.desktop-mast .desktop-shell{height:100%;display:grid;grid-template-columns:145px 1fr auto;align-items:center;gap:30px}.desktop-mast img{width:132px;height:42px;object-fit:contain}.desktop-mast nav{display:flex;justify-content:center;align-items:center;gap:20px}.desktop-mast nav>a,.desktop-mast nav button{border:0;background:none;color:#aba49c;font:500 12px Poppins,sans-serif;white-space:nowrap}.desktop-mast nav>a:hover,.desktop-mast nav button:hover{color:#faf0e6}.desktop-ex,.desktop-inf{position:relative;height:76px;display:flex;align-items:center}.desktop-ex>button,.desktop-inf>button{height:76px}.desktop-ex>div,.desktop-inf>div{position:absolute;left:-16px;top:66px;width:250px;padding:9px;background:#191916;border:1px solid #35332e;opacity:0;visibility:hidden;transform:translateY(-6px);transition:.25s cubic-bezier(.16,1,.3,1)}.desktop-ex:hover>div,.desktop-inf:hover>div{opacity:1;visibility:visible;transform:none}.desktop-ex div a,.desktop-inf div a{display:grid;grid-template-columns:1fr auto;padding:12px;border-bottom:1px solid #35332e;color:#aba49c;font:500 13px Poppins}.desktop-ex div span,.desktop-inf div span{color:#ebb341;font-size:9px}.desktop-tools{display:flex;gap:8px}.desktop-tools a{height:42px;padding:0 14px;display:grid;place-items:center;border:1px solid #35332e;color:#faf0e6;font:600 9px Poppins;text-transform:uppercase;letter-spacing:.1em}.desktop-tools .desktop-register{background:#ebb341;color:#0d0d0b;border-color:#ebb341}.desktop-footer{padding:78px 0 44px;background:#0d0d0b;color:#faf0e6;border-top:1px solid #35332e}.desktop-footer .desktop-shell{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:56px}.desktop-footer h4{font:600 26px Poppins;margin:0}.desktop-footer p{color:#aba49c;max-width:34ch}.desktop-footer small{display:block;margin-bottom:12px;color:#6d6862;font:600 9px Poppins;text-transform:uppercase;letter-spacing:.15em}.desktop-footer a{display:block;padding:5px 0;color:#aba49c;font-size:14px}
+main.page>section,.dv-card>div{padding-left:var(--desk-side)!important;padding-right:var(--desk-side)!important}.hero,.master-hero{min-height:86vh!important;padding-top:160px!important;padding-bottom:80px!important}.hero .title,.master-hero .title{font-size:clamp(62px,5.2vw,92px)!important;max-width:12ch}.section-title{font-size:clamp(42px,3.5vw,62px)!important}.stats,.master-stats{max-width:720px;grid-template-columns:repeat(3,1fr)!important}.access-list,.moment-list,.criteria-list,.content-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 42px}.access-row,.moment-row,.criterion,.content-row{min-height:150px}.passes,.master-passes,.steps{grid-template-columns:repeat(3,1fr)!important}.passes,.master-passes{display:grid!important}.form,.master-form{max-width:820px;margin-left:auto!important;margin-right:auto!important;padding:42px!important}.faq-items{max-width:980px;margin:auto}.footer{display:none!important}
+@media(max-width:1180px){:root{--desk-shell:calc(100% - 64px);--desk-side:32px}.desktop-mast nav{gap:11px}.desktop-mast nav>a,.desktop-mast nav button{font-size:10px}}
+</style><style>.dv-card>div:nth-child(1){padding-top:150px!important;padding-bottom:80px!important}.dv-card>div:nth-child(1) .wf-h{font-size:80px!important}.dv-card>div:nth-child(2){height:520px!important;aspect-ratio:auto!important}.dv-card>div:nth-child(3),.dv-card>div:nth-child(4){padding-top:120px!important;padding-bottom:130px!important}.dv-card [style*="display:flex;flex-direction:column;gap:12px"],.dv-card [style*="display:flex;flex-direction:column;gap:10px"]{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}.wf-tier-card,.wf-opp-card{min-width:0!important}.wf-tier-card summary,.wf-opp-card summary{min-height:190px!important}.wf-acc-body{max-height:460px;overflow:auto}.dv-card>div:nth-last-child(1){padding:46px!important}</style></head>
+<body><header class="desktop-mast" id="desktopMast"><div class="desktop-shell"><a href="desktop.html"><img src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"></a><nav><a href="desktop.html">Home</a><a href="desktop-about.html">About</a><a href="desktop-conference.html">Conference</a><div class="desktop-ex"><button type="button">Exhibition ▾</button><div><a href="desktop-exhibition.html">Why exhibit <span>01</span></a><a href="desktop-exhibitor-profile.html">Exhibitor profile <span>02</span></a><a href="desktop-space-rental.html">Space rental <span>03</span></a></div></div><a href="desktop-experience.html">Experience</a><div class="desktop-inf"><button type="button">Influencers ▾</button><div><a href="desktop-creators.html">Content Creators <span>01</span></a><a href="desktop-rice-masterchef.html">Rice Masterchef <span>02</span></a><a href="desktop-artists.html">Artists <span>03</span></a></div></div><a href="desktop-partnership.html">Partnership</a><a href="desktop-plan-visit.html">Plan Visit</a><a href="desktop-contact.html">Contact</a></nav><div class="desktop-tools"><a class="mobile-switch" href="desktop-partnership.html">Mobile view</a><a class="desktop-register" href="register.html?type=visitor">Register ↗</a></div></div></header><div class="progress"><i id="progress"></i></div><header class="bar" id="bar"><a href="index.html"><img class="site-logo" src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"></a><button class="menu-btn" id="openMenu" aria-label="Open menu"><i></i><i></i></button></header><aside class="drawer" id="drawer"><div class="drawer-top"><img class="site-logo" src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"><button class="drawer-close" id="closeMenu" aria-label="Close menu">×</button></div><nav class="canonical-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="conference.html">Conference</a><div class="exhibition-group"><button class="exhibition-parent" type="button" aria-expanded="false">Exhibition <small>⌄</small></button><div class="exhibition-sub"><div><a href="exhibition.html#why-exhibit">Why exhibit <span>01</span></a><a href="exhibition.html#exhibitor-profile">Exhibitor profile <span>02</span></a><a href="exhibition.html#space-rental">Space rental <span>03</span></a></div></div></div><a href="experience.html">Experience</a><div class="influencer-group"><button class="influencer-parent" type="button" aria-expanded="false">Influencers <small>⌄</small></button><div class="influencer-sub"><div><a href="desktop-creators.html">Content Creators <span>01</span></a><a href="desktop-rice-masterchef.html">Rice Masterchef <span>02</span></a><a href="desktop-artists.html">Artists <span>03</span></a></div></div></div><a href="desktop-partnership.html">Partnership</a><a href="desktop-plan-visit.html">Plan Visit</a><a href="desktop-contact.html">Contact</a></nav><div class="drawer-social"><a href="#">Instagram</a><span>·</span><a href="#">LinkedIn</a></div><p>Bharat Mandapam, Pragati Maidan<br>New Delhi · 23-24-25 October 2026</p></aside>
+
+<main class="dv-card">
+
+
+
+<div style="padding:20px 16px 16px">
+<div class="wf-h" style="font-size:22px;margin-bottom:6px">Partnership</div>
+<div style="font-size:13px;color:#6d6862">Premium brand positioning at the world's leading rice industry platform.</div>
+</div>
+
+<div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-top:2px solid #111;border-bottom:2px solid #111">
+<div class="img-slot" style="position:absolute;inset:0"><div class="img-slot-cap">Sponsor pavilion / branded stage moment at the summit</div></div>
+</div>
+
+<!-- SPONSORSHIP TIERS -->
+<div style="padding:20px 16px;border-bottom:2px solid #111;background:#0d0d0b">
+<div style="text-align:center;margin-bottom:16px">
+<div style="display:inline-block;border:1px solid rgba(255,255,255,.35);border-radius:12px;padding:3px 12px;font-size:10px;letter-spacing:1.2px;color:#ebb341;margin-bottom:10px">✦ CHOOSE YOUR TIER</div>
+<div class="wf-h" style="font-size:20px;color:#fff">Sponsorship Packages</div>
+<div style="font-size:12px;color:#aba49c;margin-top:4px">Tap any card for full benefits.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+
+<details class="wf-tier-card" style="background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.18);padding:16px;position:relative">
+<div style="position:absolute;top:12px;right:12px;font-size:9px;letter-spacing:.5px;background:#0d0d0b;color:#fff;padding:2px 8px;border-radius:10px">FLAGSHIP</div>
+<summary>
+<div class="wf-tier-teaser">
+<div class="wf-h" style="width:32px;height:32px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:10px">PT</div>
+<div class="wf-h" style="font-size:14px;margin-bottom:4px">Platinum Sponsor</div>
+<div class="wf-h" style="font-size:18px">₹50,00,000</div>
+<div style="font-size:11px;color:#aba49c;margin-bottom:10px">$57,480 · + GST</div>
+</div>
+<div class="wf-tier-toggle" style="border:2px solid #0d0d0b;background:#0d0d0b;color:#fff;padding:9px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body acc-body">
+<div class="grp" style="color:#2b2b27">Package Benefits</div>
+<div class="blist" style="margin-bottom:14px">
+<div class="wf-bl-row"><span class="slab"></span>36 sq. meters Raw/Shell exhibition space</div>
+<div class="wf-bl-row"><span class="slab"></span>1 Hoarding outside + 1 inside exhibition hall</div>
+<div class="wf-bl-row"><span class="slab"></span>5 Buyers nomination with hotel stay</div>
+<div class="wf-bl-row"><span class="slab"></span>Hotel stay for sponsor (3 nights, 2 rooms)</div>
+<div class="wf-bl-row"><span class="slab"></span>1 B2B Meeting room</div>
+<div class="wf-bl-row"><span class="slab"></span>Speaker slot on both conference days</div>
+<div class="wf-bl-row"><span class="slab"></span>CEO's 30-minute interview on IREF's Commodity Today</div>
+<div class="wf-bl-row"><span class="slab"></span>Access to VIP and B2B lounge</div>
+<div class="wf-bl-row"><span class="slab"></span>Logo on all receptions and lunches</div>
+<div class="wf-bl-row"><span class="slab"></span>Special ceremonial function passes</div>
+<div class="wf-bl-row"><span class="slab"></span>Website logo and hyperlink</div>
+<div class="wf-bl-row"><span class="slab"></span>Logo on TV interviews backdrop</div>
+<div class="wf-bl-row"><span class="slab"></span>Dedicated pre-event sponsor promo video</div>
+<div class="wf-bl-row"><span class="slab"></span>25 Admit cards for all ceremonies</div>
+</div>
+<div class="grp" style="color:#0d0d0b">Promotional Visibility</div>
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Mailers for visitor promotion</div>
+<div class="wf-bl-row"><span class="slab"></span>Newspaper advertisements</div>
+<div class="wf-bl-row"><span class="slab"></span>Hoardings at venue &amp; exhibition hall</div>
+<div class="wf-bl-row"><span class="slab"></span>Stage, backdrops &amp; entry gates</div>
+</div>
+<div class="price-box"><div><div class="amt">₹50,00,000 / $57,480</div><div class="note">*Goods &amp; Service Tax as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-tier-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:16px">
+<summary>
+<div class="wf-tier-teaser">
+<div class="wf-h" style="width:32px;height:32px;background:#35332e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:10px">DI</div>
+<div class="wf-h" style="font-size:14px;margin-bottom:4px">Diamond Sponsor</div>
+<div class="wf-h" style="font-size:18px">₹30,00,000</div>
+<div style="font-size:11px;color:#aba49c;margin-bottom:10px">$34,490 · + GST</div>
+</div>
+<div class="wf-tier-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:9px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body acc-body">
+<div class="grp" style="color:#2b2b27">Package Benefits</div>
+<div class="blist" style="margin-bottom:14px">
+<div class="wf-bl-row"><span class="slab"></span>27 sq. meters Raw/Shell exhibition space</div>
+<div class="wf-bl-row"><span class="slab"></span>3 Buyers nomination with hotel stay</div>
+<div class="wf-bl-row"><span class="slab"></span>1 Hoarding outside + 1 inside exhibition hall</div>
+<div class="wf-bl-row"><span class="slab"></span>1 B2B Meeting room</div>
+<div class="wf-bl-row"><span class="slab"></span>Speaker slot on both conference days</div>
+<div class="wf-bl-row"><span class="slab"></span>Website logo and hyperlink</div>
+<div class="wf-bl-row"><span class="slab"></span>Access to VIP and B2B lounge</div>
+<div class="wf-bl-row"><span class="slab"></span>Dedicated pre-event sponsor promo video</div>
+<div class="wf-bl-row"><span class="slab"></span>Thank You Sponsor acknowledgment</div>
+<div class="wf-bl-row"><span class="slab"></span>15 Admit cards for all ceremonies</div>
+</div>
+<div class="grp" style="color:#0d0d0b">Promotional Visibility</div>
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Mailers for visitor promotion</div>
+<div class="wf-bl-row"><span class="slab"></span>Newspaper advertisements</div>
+<div class="wf-bl-row"><span class="slab"></span>Hoardings at venue &amp; exhibition hall</div>
+<div class="wf-bl-row"><span class="slab"></span>Stage, backdrops &amp; entry gates</div>
+</div>
+<div class="price-box"><div><div class="amt">₹30,00,000 / $34,490</div><div class="note">*Goods &amp; Service Tax as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-tier-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:16px">
+<summary>
+<div class="wf-tier-teaser">
+<div class="wf-h" style="width:32px;height:32px;background:#2b2b27;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:10px">GO</div>
+<div class="wf-h" style="font-size:14px;margin-bottom:4px">Gold Sponsor</div>
+<div class="wf-h" style="font-size:18px">₹20,00,000</div>
+<div style="font-size:11px;color:#aba49c;margin-bottom:10px">$23,000 · + GST</div>
+</div>
+<div class="wf-tier-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:9px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body acc-body">
+<div class="grp" style="color:#2b2b27">Package Benefits</div>
+<div class="blist" style="margin-bottom:14px">
+<div class="wf-bl-row"><span class="slab"></span>18 sq. meters Shell exhibition space</div>
+<div class="wf-bl-row"><span class="slab"></span>1 B2B Meeting room</div>
+<div class="wf-bl-row"><span class="slab"></span>1 Speaker slot in conference</div>
+<div class="wf-bl-row"><span class="slab"></span>1 Hoarding outside exhibition hall</div>
+<div class="wf-bl-row"><span class="slab"></span>3 Buyers nomination with hotel stay</div>
+<div class="wf-bl-row"><span class="slab"></span>Thank You Sponsor acknowledgment</div>
+<div class="wf-bl-row"><span class="slab"></span>10 Admit cards for all ceremonies</div>
+</div>
+<div class="grp" style="color:#0d0d0b">Promotional Visibility</div>
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Mailers for visitor promotion</div>
+<div class="wf-bl-row"><span class="slab"></span>Newspaper advertisements</div>
+<div class="wf-bl-row"><span class="slab"></span>Hoardings at venue &amp; exhibition hall</div>
+<div class="wf-bl-row"><span class="slab"></span>Stage, backdrops &amp; entry gates</div>
+</div>
+<div class="price-box"><div><div class="amt">₹20,00,000 / $23,000</div><div class="note">*Goods &amp; Service Tax as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-tier-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:16px">
+<summary>
+<div class="wf-tier-teaser">
+<div class="wf-h" style="width:32px;height:32px;background:#2b2b27;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:10px">SI</div>
+<div class="wf-h" style="font-size:14px;margin-bottom:4px">Silver Sponsor</div>
+<div class="wf-h" style="font-size:18px">₹10,00,000</div>
+<div style="font-size:11px;color:#aba49c;margin-bottom:10px">$11,500 · + GST</div>
+</div>
+<div class="wf-tier-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:9px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body acc-body">
+<div class="grp" style="color:#2b2b27">Package Benefits</div>
+<div class="blist" style="margin-bottom:14px">
+<div class="wf-bl-row"><span class="slab"></span>18 sq. meters Shell exhibition space</div>
+<div class="wf-bl-row"><span class="slab"></span>2 Buyers nomination with hotel stay</div>
+<div class="wf-bl-row"><span class="slab"></span>Thank You Sponsor acknowledgment</div>
+<div class="wf-bl-row"><span class="slab"></span>5 Admit cards for all ceremonies</div>
+</div>
+<div class="grp" style="color:#0d0d0b">Promotional Visibility</div>
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Mailers for visitor promotion</div>
+<div class="wf-bl-row"><span class="slab"></span>Newspaper advertisements</div>
+<div class="wf-bl-row"><span class="slab"></span>Hoardings at venue &amp; exhibition hall</div>
+</div>
+<div class="price-box"><div><div class="amt">₹10,00,000 / $11,500</div><div class="note">*Goods &amp; Service Tax as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-tier-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:16px">
+<summary>
+<div class="wf-tier-teaser">
+<div class="wf-h" style="width:32px;height:32px;background:#c98e25;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:10px">BR</div>
+<div class="wf-h" style="font-size:14px;margin-bottom:4px">Bronze Sponsor</div>
+<div class="wf-h" style="font-size:18px">₹5,00,000</div>
+<div style="font-size:11px;color:#aba49c;margin-bottom:10px">$5,750 · + GST</div>
+</div>
+<div class="wf-tier-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:9px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body acc-body">
+<div class="grp" style="color:#2b2b27">Package Benefits</div>
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>9 sq. meters Shell exhibition space</div>
+<div class="wf-bl-row"><span class="slab"></span>2 Buyers nomination with hotel stay</div>
+<div class="wf-bl-row"><span class="slab"></span>Thank You Sponsor acknowledgment</div>
+<div class="wf-bl-row"><span class="slab"></span>5 Admit cards for all ceremonies</div>
+</div>
+<div class="price-box"><div><div class="amt">₹5,00,000 / $5,750</div><div class="note">*Goods &amp; Service Tax as applicable</div></div></div>
+</div>
+</details>
+
+</div>
+</div>
+
+<!-- SPECIAL OPPORTUNITIES -->
+<div style="padding:20px 16px;border-bottom:2px solid #111;background:#faf0e6">
+<div class="wf-h" style="font-size:17px;text-align:center;margin-bottom:14px">Special Opportunities</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+
+<details class="wf-opp-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:14px">
+<summary>
+<div class="wf-opp-teaser"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:28px;height:28px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✦</div><div class="wf-h" style="font-size:13px">Gala Dinner Sponsor</div></div><div class="wf-h" style="font-size:16px">₹20,00,000</div><div style="font-size:11px;color:#6d6862;margin:6px 0 10px">Host dinner for 500 guests incl. exhibitors, govt officials, exporters, foreign delegates</div></div>
+<div class="wf-opp-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:8px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body" style="padding-top:12px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:10px">
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Logos appear prominently on stage backdrops, hall fascias, entry gates — displayed jointly with the organizers' logos</div>
+<div class="wf-bl-row"><span class="slab"></span>Dinner hosted on one event day; ~500 invites incl. exhibitors, govt officials, exporters, foreign delegates</div>
+<div class="wf-bl-row"><span class="slab"></span>Acknowledgment on the Sponsor Page of the event website</div>
+</div>
+<div class="price-box" style="margin-top:14px"><div style="padding:12px 22px"><div class="amt" style="font-size:15px">₹20,00,000 / $23,000</div><div class="note">*GST as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-opp-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:14px">
+<summary>
+<div class="wf-opp-teaser"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:28px;height:28px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✦</div><div class="wf-h" style="font-size:13px">Transport Sponsor</div></div><div class="wf-h" style="font-size:16px">₹15,00,000</div><div style="font-size:11px;color:#6d6862;margin:6px 0 10px">Logo on 150+ Innova cabs for wide publicity during exhibition</div></div>
+<div class="wf-opp-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:8px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body" style="padding-top:12px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:10px">
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Sponsor's logo appears as Transport Sponsor (150+ Innova Cabs)</div>
+<div class="wf-bl-row"><span class="slab"></span>Buyers, Delegates, Visitors use shuttles to reach the venue — wide publicity during the exhibition period</div>
+</div>
+<div class="price-box" style="margin-top:14px"><div style="padding:12px 22px"><div class="amt" style="font-size:15px">₹15,00,000 / $17,250</div><div class="note">*GST as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-opp-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:14px">
+<summary>
+<div class="wf-opp-teaser"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:28px;height:28px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✦</div><div class="wf-h" style="font-size:13px">Lunch Sponsor</div></div><div class="wf-h" style="font-size:16px">₹10,00,000</div><div style="font-size:11px;color:#6d6862;margin:6px 0 10px">Exclusive branding at lunch area/food court (October 30 &amp; 31)</div></div>
+<div class="wf-opp-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:8px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body" style="padding-top:12px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:10px">
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>The Sponsor logo is exclusively displayed on the branding at Lunch area / Food Court</div>
+</div>
+<div class="price-box" style="margin-top:14px"><div style="padding:12px 22px"><div class="amt" style="font-size:15px">₹10,00,000 / $11,500 per day</div><div class="note">*GST as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-opp-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:14px">
+<summary>
+<div class="wf-opp-teaser"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:28px;height:28px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✦</div><div class="wf-h" style="font-size:13px">Exhibition Entry Gates</div></div><div class="wf-h" style="font-size:16px">₹10,00,000</div><div style="font-size:11px;color:#6d6862;margin:6px 0 10px">2 LED gates for exhibition entry in foyer area</div></div>
+<div class="wf-opp-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:8px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body" style="padding-top:12px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:10px">
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Company Logo on entry gates gives visibility to Sponsor Company during the event</div>
+<div class="wf-bl-row"><span class="slab"></span>2 LED gates for Exhibition Entry (Foyer Area, 2 Nos.)</div>
+</div>
+<div class="price-box" style="margin-top:14px"><div style="padding:12px 22px"><div class="amt" style="font-size:15px">₹10,00,000 / $11,500</div><div class="note">*GST as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-opp-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:14px">
+<summary>
+<div class="wf-opp-teaser"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:28px;height:28px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✦</div><div class="wf-h" style="font-size:13px">Exhibitors'/Buyer Kit</div></div><div class="wf-h" style="font-size:16px">₹10,00,000</div><div style="font-size:11px;color:#6d6862;margin:6px 0 10px">2000 kits distributed to VIPs, delegates, media &amp; exhibitors</div></div>
+<div class="wf-opp-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:8px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body" style="padding-top:12px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:10px">
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>The Sponsor logo is exclusively displayed on the Exhibitors Kit</div>
+<div class="wf-bl-row"><span class="slab"></span>Sponsor corporate literature is included in the Exhibitors Kit</div>
+<div class="wf-bl-row"><span class="slab"></span>Kit distributed to VIP's, Delegates, Media &amp; Exhibitors at the event</div>
+</div>
+<div class="price-box" style="margin-top:14px"><div style="padding:12px 22px"><div class="amt" style="font-size:15px">₹10,00,000 / $11,500</div><div class="note">*GST as applicable</div></div></div>
+</div>
+</details>
+
+<details class="wf-opp-card" style="background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:14px">
+<summary>
+<div class="wf-opp-teaser"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:28px;height:28px;background:#0d0d0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✦</div><div class="wf-h" style="font-size:13px">Registration Counter</div></div><div class="wf-h" style="font-size:16px">₹8,00,000</div><div style="font-size:11px;color:#6d6862;margin:6px 0 10px">Logo on registration counters at exhibition entrance</div></div>
+<div class="wf-opp-toggle" style="border:1.5px solid #0d0d0b;color:#0d0d0b;padding:8px;font-size:12px;text-align:center"></div>
+</summary>
+<div class="wf-acc-body" style="padding-top:12px;border-top:1.5px solid rgba(0,0,0,.15);margin-top:10px">
+<div class="blist">
+<div class="wf-bl-row"><span class="slab"></span>Prominent location gives your logo a head start</div>
+<div class="wf-bl-row"><span class="slab"></span>Logo appears on the inner back and sidewalls of the registration counter</div>
+<div class="wf-bl-row"><span class="slab"></span>Counters situated at the entrance of the exhibition site</div>
+<div class="wf-bl-row"><span class="slab"></span>Business delegates and visitors register at these counters</div>
+</div>
+<div class="price-box" style="margin-top:14px"><div style="padding:12px 22px"><div class="amt" style="font-size:15px">₹8,00,000 / $9,200</div><div class="note">*GST as applicable</div></div></div>
+</div>
+</details>
+
+</div>
+</div>
+
+<!-- CURRENT PARTNERS -->
+<div style="padding:20px 0;border-bottom:2px solid #111;background:#0d0d0b">
+<div class="wf-h" style="font-size:16px;text-align:center;margin-bottom:12px;color:#fff">Current Partners</div>
+<div style="overflow:hidden">
+<div class="wf-marquee-track">
+<div class="wf-marquee-set">
+<div class="logo-box">logo</div><div class="logo-box">logo</div><div class="logo-box">logo</div><div class="logo-box">logo</div>
+</div>
+<div class="wf-marquee-set" aria-hidden="true">
+<div class="logo-box">logo</div><div class="logo-box">logo</div><div class="logo-box">logo</div><div class="logo-box">logo</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="padding:20px 16px;text-align:center;background:#faf0e6"><div style="border:2px solid #111;background:#ebb341;padding:11px 20px;font-size:14px;display:inline-block;cursor:pointer">Download Sponsorship Deck</div></div>
+
+</main><footer class="site-footer" id="contact"><h4>Explore BIRC</h4><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="conference.html">Conference</a><a href="exhibition.html">Exhibition</a><a href="experience.html">Experience</a><a href="desktop-partnership.html">Partnership</a></div><p>© 2026 Bharat International Rice Conference<br>Privacy · Terms · Code of Conduct</p></footer><script>const drawer=document.getElementById('drawer');function menu(open){drawer.classList.toggle('open',open);document.body.classList.toggle('lock',open)}openMenu.onclick=()=>menu(true);closeMenu.onclick=()=>menu(false);drawer.querySelectorAll('a').forEach(a=>a.onclick=()=>menu(false));addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});addEventListener('scroll',()=>{const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h?y/h*100:0)+'%'},{passive:true});</script><footer class="desktop-footer"><div class="desktop-shell"><div><h4>BIRC 2026</h4><p>India at the centre. Every rice market in the room.</p></div><div><small>Explore</small><a href="desktop.html">Home</a><a href="desktop-about.html">About</a><a href="desktop-conference.html">Conference</a></div><div><small>Participate</small><a href="desktop-exhibition.html">Exhibition</a><a href="desktop-partnership.html">Partnership</a><a href="desktop-creators.html">Influencers</a></div><div><small>Visit</small><a href="desktop-plan-visit.html">Plan Visit</a><a href="desktop-contact.html">Contact</a></div></div></footer></body>
+</html>

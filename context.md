@@ -431,3 +431,8 @@ The mobile Content Creators, Rice Masterchef, and Artists pages were checked aga
 
 - `desktop-experience.html` is the purpose-built desktop Experience page with all nine approved zones, alternating editorial layouts, preserved abstract visuals, registration chooser, and mobile switch.
 - Mobile `experience.html` remains unchanged.
+## Remaining desktop pages
+
+- Desktop pages now exist for Content Creators, Rice Masterchef, Artists, Partnership, Plan Visit, and Contact.
+- All desktop navigation links route to desktop-specific pages.
+- Mobile source pages remain unchanged.

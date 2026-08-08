@@ -1,0 +1,91 @@
+name: Build desktop homepage
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-desktop-home.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create desktop homepage and device routing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          index_path = Path('index.html')
+          mobile = index_path.read_text()
+
+          mobile_router = '''<script id="device-router">(function(){const q=new URLSearchParams(location.search),requested=q.get('view'),saved=sessionStorage.getItem('bircView');if(requested==='mobile'){sessionStorage.setItem('bircView','mobile');return}if(requested==='desktop'){sessionStorage.setItem('bircView','desktop');location.replace('desktop.html?view=desktop');return}if(saved==='desktop'||(!saved&&matchMedia('(min-width:900px) and (pointer:fine)').matches)){location.replace('desktop.html')}})();</script>'''
+          if 'id="device-router"' not in mobile:
+              mobile = mobile.replace('<meta charset="utf-8">', '<meta charset="utf-8">'+mobile_router, 1)
+
+          mobile_switch = '<a class="view-switch view-switch-mobile" href="desktop.html?view=desktop" aria-label="Open desktop homepage">Desktop view <span>↗</span></a>'
+          mobile_style = '''<style id="view-switch-style">.view-switch{position:fixed;z-index:67;left:max(14px,calc((100vw - 520px)/2 + 14px));bottom:18px;min-height:42px;padding:0 13px;display:flex;align-items:center;gap:9px;background:var(--l);color:var(--j);border:1px solid var(--ll);font:600 9px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 24px #0005}.view-switch span{color:var(--g2);font-size:13px}.view-switch:focus-visible{outline:3px solid var(--g);outline-offset:2px}</style>'''
+          if 'view-switch-mobile' not in mobile:
+              mobile = mobile.replace('</head>', mobile_style+'</head>', 1)
+              mobile = mobile.replace('<div class="action-backdrop"', mobile_switch+'<div class="action-backdrop"', 1)
+          index_path.write_text(mobile)
+
+          desktop = mobile
+          desktop = desktop.replace('<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">','<meta name="viewport" content="width=1440">',1)
+          start = desktop.find('<script id="device-router">')
+          end = desktop.find('</script>', start)+9
+          desktop_router = '''<script id="device-router">(function(){const q=new URLSearchParams(location.search),requested=q.get('view'),saved=sessionStorage.getItem('bircView');if(requested==='desktop'){sessionStorage.setItem('bircView','desktop');return}if(requested==='mobile'){sessionStorage.setItem('bircView','mobile');location.replace('index.html?view=mobile');return}if(saved==='mobile'||(!saved&&!matchMedia('(min-width:900px)').matches)){location.replace('index.html')}})();</script>'''
+          desktop = desktop[:start]+desktop_router+desktop[end:]
+          desktop = desktop.replace('<title>BIRC 2026 — Bharat International Rice Conference</title>','<title>BIRC 2026 | Desktop</title>',1)
+
+          desktop_nav = '''<nav class="desktop-nav" aria-label="Primary navigation"><a href="desktop.html">Home</a><a href="about.html">About</a><a href="conference.html">Conference</a><a href="exhibition.html">Exhibition</a><a href="experience.html">Experience</a><a href="creators.html">Influencers</a><a href="partnership.html">Partnership</a><a href="plan-visit.html">Plan Visit</a><a href="contact.html">Contact</a></nav><div class="desktop-tools"><a href="https://birc.in/login">Login</a><a class="desktop-register" href="#register">Register ↗</a></div>'''
+          desktop = desktop.replace('<button class="menu" id="openMenu"', desktop_nav+'<button class="menu" id="openMenu"',1)
+          desktop = desktop.replace(mobile_switch,'<a class="view-switch view-switch-desktop" href="index.html?view=mobile" aria-label="Open mobile homepage">Mobile view <span>↙</span></a>',1)
+
+          desktop_css = r'''<style id="desktop-home-style">
+          :root{--desk-pad:clamp(40px,5.5vw,96px);--desk-max:1600px}
+          html{scroll-behavior:smooth}body{min-width:1180px;background:var(--j);overflow-x:hidden}.page{width:100%;max-width:none;margin:0}.progress{left:0;width:100%;transform:none}.bar{left:0;width:100%;height:88px;transform:none;padding:0 var(--desk-pad);display:grid;grid-template-columns:190px 1fr auto;gap:32px;background:linear-gradient(180deg,#0d0d0be8,#0d0d0b00)}.bar.on{background:var(--j)}.logo{width:176px}.menu{display:none}.desktop-nav{display:flex;align-items:center;justify-content:center;gap:clamp(15px,1.45vw,28px)}.desktop-nav a{position:relative;padding:32px 0 29px;color:var(--dm);font:500 clamp(10px,.78vw,13px) Poppins,sans-serif;white-space:nowrap}.desktop-nav a:after{content:"";position:absolute;left:0;right:0;bottom:23px;height:1px;background:var(--g);transform:scaleX(0);transform-origin:right;transition:transform .3s var(--e)}.desktop-nav a:hover{color:var(--l)}.desktop-nav a:hover:after,.desktop-nav a:focus-visible:after{transform:scaleX(1);transform-origin:left}.desktop-tools{display:flex;align-items:center;gap:8px}.desktop-tools>a{min-height:42px;padding:0 16px;display:grid;place-items:center;border:1px solid var(--dl);font:600 10px Poppins,sans-serif;text-transform:uppercase;letter-spacing:.08em}.desktop-tools .desktop-register{background:var(--g);border-color:var(--g);color:var(--j)}.drawer{width:min(480px,100%);right:0;left:auto;margin:0;transform:translateX(102%)}.drawer.open{transform:none}.pad{padding:clamp(112px,10vw,168px) var(--desk-pad)}.head{margin-bottom:64px}.title{font-size:clamp(58px,5.2vw,92px);max-width:12ch}.lead{font-size:17px}.eye{font-size:10px}
+          .hero{min-height:100vh;padding:150px var(--desk-pad) 34px;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:1fr auto auto;column-gap:24px}.hero:before{background:radial-gradient(circle at 78% 24%,#ebb3412b,transparent 25%),repeating-linear-gradient(116deg,transparent 0 48px,#faf0e607 48px 49px)}.hero .slot{grid-column:10/13;align-self:start;font-size:9px}.hero-main{grid-column:1/9;align-self:end;margin:0 0 50px}.hero h1{font-size:clamp(68px,7.3vw,124px);max-width:9.2ch}.hero .lead{font-size:18px;max-width:55ch;margin-top:30px}.hero .actions{grid-column:1/7;grid-row:2;display:grid;grid-template-columns:220px 190px;gap:10px}.hero .facts{grid-column:7/13;grid-row:2;display:grid;grid-template-columns:repeat(4,1fr);margin:0;border:1px solid var(--dl)}.hero .fact{padding:15px;border:0}.hero .fact+.fact{border-left:1px solid var(--dl)}.hero .scroll{grid-column:1/13;grid-row:3;margin-top:26px}.ticker{padding:15px 0}.ticker span{font-size:10px;padding:0 28px}
+          .statement{min-height:76vh;padding-left:14vw;padding-right:14vw}.statement p{font-size:clamp(48px,5vw,88px);max-width:18ch}.statement footer{font-size:10px}
+          #pathways{padding-bottom:150px}.path-list{grid-template-columns:repeat(3,1fr);gap:1px;background:var(--dl);border:1px solid var(--dl)}.path{height:min(62vw,700px);max-height:700px;padding:32px;background:var(--j2);transition:transform .45s var(--e)}.path:hover{transform:translateY(-10px)}.path h3{font-size:clamp(42px,4vw,68px)}.path p{max-width:32ch;font-size:15px}.path a{font-size:11px}
+          .light[style*="padding-top"]{padding-top:140px;display:grid;grid-template-columns:minmax(320px,1fr) 2fr;padding-left:var(--desk-pad);padding-right:var(--desk-pad);padding-bottom:140px}.light[style*="padding-top"]>.head{padding:0!important;position:sticky;top:130px;align-self:start}.light[style*="padding-top"]>.fig,.light[style*="padding-top"]>.note{grid-column:2}.fig{padding:30px 0}.fig b{font-size:clamp(62px,6vw,108px)}.fig small{font-size:10px}.note{padding:24px 0 0}
+          .knowledge{padding:140px var(--desk-pad)}.knowledge>.head{padding:0}.knowledge>.head .title{max-width:10ch}.knowledge-meta{margin:0 0 52px}.knowledge>.session-day{display:grid;grid-template-columns:220px 1fr;padding:0}.session-day+.session-day{margin-top:72px}.session-day-head{align-self:start;position:sticky;top:120px;display:grid;gap:10px;border:0}.session-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--dl)}.session{grid-template-columns:42px 1fr;min-height:190px;padding:28px 22px;border-bottom:1px solid var(--dl)}.session:nth-child(odd){border-right:1px solid var(--dl)}.session h3{font-size:20px}.session p{font-size:14px}
+          .difference{padding:140px var(--desk-pad);display:grid;grid-template-columns:minmax(340px,.85fr) 1.4fr;column-gap:7vw;align-items:start}.difference>.head{padding:0;position:sticky;top:120px}.difference>.head .title{font-size:clamp(48px,4.2vw,74px)}.ey-report{grid-column:1;margin:380px 0 0;position:sticky;top:500px}.difference-list{grid-column:2;grid-row:1/span 2}.difference-btn{min-height:116px;padding:0 12px}.difference-btn strong{font-size:18px}.difference-detail p{font-size:15px;padding:0 54px 30px 62px}
+          .zones{padding:140px var(--desk-pad)}.zones>.head{padding:0!important;display:grid;grid-template-columns:1fr 1fr;align-items:end}.zones>.head .lead{max-width:44ch}.tour-view{max-width:calc(100vw - 2 * var(--desk-pad))}.zone{padding:0}.zone-vis{height:min(68vh,720px)}.zone-copy{left:48px;right:48px;bottom:48px}.zone-copy h3{font-size:clamp(52px,5vw,84px);max-width:12ch}.zone-copy p{font-size:16px;max-width:45ch}.globe{width:460px;height:460px}.rings i{width:390px;height:520px}.tour-ui{padding:26px 0 0;grid-template-columns:1fr auto auto}.tour-actions{grid-column:auto;display:flex}.tour-actions button{width:150px}.tour-progress{min-width:360px}
+          .date-sec{padding:150px var(--desk-pad);display:grid;grid-template-columns:1fr 1.4fr;gap:8vw;align-items:center}.date-sec>p{font-size:clamp(44px,4vw,70px);margin:24px 0 0;max-width:12ch}.date-lock{padding:60px 0}.date-lock h3{font-size:clamp(84px,8vw,140px)}.date-row span{font-size:clamp(80px,7.3vw,126px)}
+          .programme{padding:140px var(--desk-pad)}.programme>.head{padding:0!important}.program{margin:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--dl)}.rail{display:none}.day{min-height:480px;padding:34px 34px 46px;border-bottom:1px solid var(--dl)}.day+.day{border-left:1px solid var(--dl)}.node{left:auto;right:34px;top:38px}.day-num{right:28px;top:110px;font-size:150px}.day h3{margin-top:260px;font-size:34px}.day p{font-size:15px;max-width:34ch}
+          #voices{display:grid;grid-template-columns:.8fr 1.2fr;column-gap:8vw}.quote-view{align-self:end}.quote blockquote{font-size:clamp(42px,4vw,72px)}.quote-ui{grid-column:2}.quote-mark{font-size:110px}
+          .why{padding:140px var(--desk-pad)}.why>.head{padding:0!important}.why-intro{padding:0 0 64px}.reasons{display:grid;grid-template-columns:repeat(4,1fr)}.reason{min-height:530px;padding:30px;border-top:1px solid var(--dl)}.reason+.reason{border-left:1px solid var(--dl)}.reason-word{font-size:clamp(80px,7vw,118px);top:90px}.reason h3{font-size:27px}.reason:nth-child(even){text-align:left}.why-close{padding:70px 0 0;font-size:42px}
+          .dark.pad[style*="padding-left:0"]{padding:140px 0}.dark.pad[style*="padding-left:0"]>.head{padding:0 var(--desk-pad)!important}.gallery-img{width:480px!important;height:330px!important}.gallery-img:nth-child(even){width:600px!important}
+          .visit{padding:140px var(--desk-pad)}.visit>.head{padding:0!important}.visit-grid{grid-template-columns:repeat(4,1fr)}.visit-item{min-height:360px;padding:32px}.visit-item:nth-child(n){border-bottom:1px solid var(--ll)}.visit-item+.visit-item{border-left:1px solid var(--ll)}.visit-item:nth-child(odd){border-right:0}.visit-item h3{font-size:24px}.visit-detail p{font-size:14px}.visit-note{margin:48px 0 0}
+          .final{min-height:92vh;padding:140px var(--desk-pad)}.final h2{font-size:clamp(92px,9vw,154px)}.final .btn{width:min(420px,100%);margin:0 auto}.clock{width:min(760px,100%);margin:70px auto 0}.clock strong{font-size:48px}
+          .footer{padding:100px var(--desk-pad) 70px;display:grid;grid-template-columns:1fr 1fr;gap:32px 9vw}.footer h4{font:600 42px Poppins}.footer .lead{grid-column:1}.footer .field{grid-column:1}.footer .links{grid-column:2;grid-row:1/span 3;grid-template-columns:1fr 1fr;align-content:start;margin:0}.footer .end{grid-column:1;margin-top:50px}.sticky{left:50%;width:min(620px,calc(100% - 80px));bottom:20px;border:1px solid var(--dl);transform:translate(-50%,150%)}.sticky.on{transform:translate(-50%,0)}.action-dock{right:28px;bottom:28px}.view-switch{left:28px;bottom:28px;background:var(--j2);color:var(--l);border-color:var(--dl)}.registration-dialog{width:min(760px,calc(100% - 60px))}.registration-options{grid-template-columns:repeat(3,1fr);padding:20px}.registration-option{min-height:190px;grid-template-columns:1fr 20px;align-content:start}.registration-icon{grid-column:1/-1;margin-bottom:20px}.registration-option small{font-size:12px}.registration-head h2{font-size:36px}
+          a:focus-visible,button:focus-visible{outline:3px solid var(--g);outline-offset:3px}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.path{transition:none}}
+          </style>'''
+          desktop = desktop.replace('</head>', desktop_css+'</head>',1)
+          Path('desktop.html').write_text(desktop)
+
+          design_path=Path('design.md')
+          design=design_path.read_text()
+          desktop_rules='''\n## 16. Desktop homepage\n\n- `desktop.html` is the dedicated desktop homepage; `index.html` remains the approved mobile homepage.\n- Devices at 900px or wider with a fine pointer open `desktop.html` automatically unless the visitor explicitly selects Mobile view.\n- Both versions expose a persistent manual view switch. The selection lasts for the browser session.\n- Desktop uses the same content, palette, typography, assets, registration chooser, and section order as mobile. Do not fork or rewrite approved copy.\n- Desktop layout is full-width with a 12-column hero, inline primary navigation, three-column participation pathways, two-column knowledge sessions, four-column Why BIRC and Plan Visit compositions, and a maximum 1600px working rhythm.\n- Desktop breakpoints are not a stretched mobile canvas. Preserve the editorial hierarchy and use wider compositions intentionally.\n'''
+          if '## 16. Desktop homepage' not in design:
+              design_path.write_text(design.rstrip()+desktop_rules)
+
+          context_path=Path('context.md')
+          context=context_path.read_text()
+          context_rules='''\n## Desktop homepage architecture\n\n- `index.html` remains the mobile homepage and source for shared homepage content.\n- `desktop.html` is the dedicated desktop homepage, currently the only desktop-specific page.\n- Automatic routing chooses desktop at 900px+ with a fine pointer and mobile below that. Manual Desktop view and Mobile view controls override detection for the browser session.\n- For now, secondary pages remain their existing mobile implementations.\n- Desktop homepage content and registration behavior must stay synchronized with `index.html`.\n'''
+          if '## Desktop homepage architecture' not in context:
+              context_path.write_text(context.rstrip()+context_rules)
+          PY
+      - name: Commit desktop homepage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html desktop.html design.md context.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Add desktop homepage with automatic device routing"
+          git push

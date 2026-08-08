@@ -1,0 +1,42 @@
+name: Strip mobile metro fares
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/strip-mobile-fares.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  strip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove metro fare figures
+        run: |
+          python3 - <<'PY'
+          import re, sys
+          f = 'plan-visit.html'
+          raw = open(f, encoding='utf-8').read()
+          total = 0
+          # metro fares only: strip the rupee range that follows a duration
+          for pat in [r'(<small>~60 min)\s*\u00b7\s*\u20b960\u201380(</small>)',
+                      r'(<small>~15 min)\s*\u00b7\s*\u20b930\u201340(</small>)']:
+              raw, n = re.subn(pat, r'\1\2', raw)
+              print(pat, '->', n)
+              total += n
+          assert total == 3, 'expected 3 replacements, got %d' % total
+          # confirm the taxi estimate survives
+          assert '\u20b9600\u2013900' in raw, 'taxi estimate was lost'
+          open(f, 'w', encoding='utf-8').write(raw)
+          print('remaining metro fares:', raw.count('\u20b960\u201380') + raw.count('\u20b930\u201340'))
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'birc-bot'
+          git config user.email 'birc-bot@users.noreply.github.com'
+          git add plan-visit.html
+          git commit -m 'Strip metro fare figures from mobile plan-visit' || echo 'no changes'
+          git push

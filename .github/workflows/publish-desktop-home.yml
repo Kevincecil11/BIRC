@@ -1,12 +1,10 @@
-name: Publish desktop pages
+name: Publish site
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - 'desktop*.html'
-      - 'index.html'
-      - 'contact.html'
+      - '**.html'
       - '.github/workflows/publish-desktop-home.yml'
 
 permissions:

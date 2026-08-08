@@ -4,13 +4,13 @@ log = []
 
 MASTER2 = """
 @media (min-width:900px){
+main.page > section.masterchef{padding:0!important;margin:0!important;max-width:none!important;width:auto!important;background:transparent!important;border:0!important}
 main.page > section.masterchef > section{padding-left:max(60px,calc((100% - 1320px)/2))!important;padding-right:max(60px,calc((100% - 1320px)/2))!important}
 main.page .master-hero .title,main.page .master-hero h2{color:#faf0e6!important}
 main.page .master-hero .lead{color:#aba49c!important}
 main.page .master-hero .eye{color:#ebb341!important}
 main.page .master-stat strong{color:#ebb341!important}
 main.page .master-stat small{color:#aba49c!important}
-main.page .winner h2,main.page .master-score h2,main.page .eligibility h2,main.page .chef-process h2,main.page .moment h2{color:#faf0e6!important}
 main.page .master-apply .section-title{color:#0d0d0b!important}
 main.page .master-apply .eye{color:#7a5405!important}
 main.page .master-apply .form label{color:#4a453e!important}

@@ -14,40 +14,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Extract copy
+      - name: Verify
         run: |
           python3 - <<'PY'
-          import re, os, html
-          f = 'partnership.html'
-          if not os.path.exists(f):
-              f = 'desktop-partnership.html'
-          raw = open(f, encoding='utf-8').read()
-          body = raw.split('<main', 1)[-1] if '<main' in raw else raw
-          body = body.split('<footer', 1)[0]
-          body = re.sub(r'<script.*?</script>', '', body, flags=re.S)
-          body = re.sub(r'<style.*?</style>', '', body, flags=re.S)
-          # mark block boundaries
-          body = re.sub(r'<(details|summary|li|h1|h2|h3|h4|p|div|span|strong|small|a|button|td|th|tr)([^>]*)>', lambda m: '\n[' + m.group(1) + ']', body)
-          body = re.sub(r'</(details|summary|li|h1|h2|h3|h4|p|div|span|strong|small|a|button|td|th|tr)>', '\n', body)
-          body = re.sub(r'<[^>]+>', ' ', body)
-          lines = []
-          for ln in body.split('\n'):
-              t = html.unescape(ln).strip()
-              t = re.sub(r'\s+', ' ', t)
-              if not t:
-                  continue
-              if re.fullmatch(r'\[(div|span|a|p|strong|small|button|td|th|tr)\]', t):
-                  continue
-              lines.append(t)
-          txt = 'SOURCE FILE: %s\n' % f + '\n'.join(lines)
-          os.makedirs('audit', exist_ok=True)
-          open('audit/partnership-copy.txt','w',encoding='utf-8').write(txt)
-          print(len(txt))
+          import re, os
+          out=[]
+          for f in ['desktop-rice-masterchef.html','desktop-plan-visit.html','desktop-contact.html','desktop-artists.html','desktop-creators.html','desktop-partnership.html']:
+              raw=open(f,encoding='utf-8').read()
+              ms=re.search(r'<a class="mobile-switch" href="([^"]*)"',raw)
+              out.append('%s | refine=%s | brittle=%s | mobileSwitch=%s | bytes=%d' % (
+                f,
+                'YES' if 'id="desk-refine"' in raw else 'no',
+                'YES' if 'body > main:nth-child' in raw else 'clean',
+                ms.group(1) if ms else 'n/a',
+                len(raw)))
+          os.makedirs('audit',exist_ok=True)
+          open('audit/verify.txt','w').write('\n'.join(out))
+          print('\n'.join(out))
           PY
       - name: Commit
         run: |
           git config user.name 'birc-bot'
           git config user.email 'birc-bot@users.noreply.github.com'
-          git add audit/partnership-copy.txt
-          git commit -m 'Extract partnership copy' || echo 'no changes'
+          git add audit/verify.txt
+          git commit -m 'Verify refine markers' || echo 'no changes'
           git push

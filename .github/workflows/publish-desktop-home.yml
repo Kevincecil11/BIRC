@@ -34,4 +34,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Desktop polish pass: masterchef on the creators system, artists form colours, plan visit grids, partnership desktop layout, creators-style contact form. 2026-08-08.
+# Polish pass 2 live: masterchef on the creators system at the 60px gutter, artists + plan visit + partnership contrast fixes, creators-style contact form on desktop and mobile. 2026-08-08.

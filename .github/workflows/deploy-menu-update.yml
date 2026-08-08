@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish mobile Creator, Rice Masterchef, and Rice Art source-document sync, 2026-08-08.
+# Publish Rice Art gold form backdrop and Masterchef eligibility contrast fixes, 2026-08-08.

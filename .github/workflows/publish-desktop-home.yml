@@ -30,8 +30,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy rebuilt desktop homepage
+      - name: Deploy refined desktop homepage
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Purpose-built desktop homepage, published 2026-08-08.
+# Register CTA, Voices, and Why BIRC refinement, 2026-08-08.

@@ -35,8 +35,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy six desktop fixes
+      - name: Deploy refined desktop pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Conference alignment and three separate Exhibition pages, 2026-08-08.
+# About alignment and Exhibition yellow strip removal, 2026-08-08.

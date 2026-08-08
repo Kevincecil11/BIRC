@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/inspect-report.yml'
+      - 'tools/inspect_pages.py'
   workflow_dispatch:
 
 permissions:
@@ -17,110 +18,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install deps
-        run: pip install beautifulsoup4
-      - name: Build reports
-        run: |
-          mkdir -p _inspect
-          cat > /tmp/inspect.py <<'PY'
-          from bs4 import BeautifulSoup
-          import re, os
-
-          def soup(p):
-              return BeautifulSoup(open(p, encoding='utf-8').read(), 'html.parser')
-
-          def outline(path, out):
-              s = soup(path)
-              body = s.body
-              lines = []
-              def walk(node, depth):
-                  for ch in node.find_all(recursive=False):
-                      if ch.name in ('script','style'):
-                          continue
-                      cls = '.'.join(ch.get('class') or [])
-                      idv = ch.get('id') or ''
-                      txt = ' '.join(ch.get_text(' ', strip=True).split())[:70]
-                      lines.append('%s<%s%s%s> %s' % ('  '*depth, ch.name, ('#'+idv) if idv else '', ('.'+cls) if cls else '', txt))
-                      if depth < 4:
-                          walk(ch, depth+1)
-              walk(body, 0)
-              open(out,'w',encoding='utf-8').write('\n'.join(lines))
-
-          def content(path, out):
-              s = soup(path)
-              for t in s(['script','style']):
-                  t.decompose()
-              lines = []
-              for el in s.body.find_all(['h1','h2','h3','h4','h5','p','li','a','button','label','option','span','strong','em','td','th']):
-                  if el.find(['h1','h2','h3','h4','h5','p','li']):
-                      continue
-                  txt = ' '.join(el.get_text(' ', strip=True).split())
-                  if not txt:
-                      continue
-                  lines.append('%s: %s' % (el.name.upper(), txt))
-              dedup = []
-              for l in lines:
-                  if not dedup or dedup[-1] != l:
-                      dedup.append(l)
-              open(out,'w',encoding='utf-8').write('\n'.join(dedup))
-
-          def snippet(path, needle, out, before=200, after=9000):
-              raw = open(path, encoding='utf-8').read()
-              i = raw.find(needle)
-              if i < 0:
-                  open(out,'w',encoding='utf-8').write('NOT FOUND: '+needle)
-                  return
-              open(out,'w',encoding='utf-8').write(raw[max(0,i-before):i+after])
-
-          def styleblock(path, out, keywords):
-              raw = open(path, encoding='utf-8').read()
-              blocks = re.findall(r'<style[^>]*>(.*?)</style>', raw, re.S)
-              keep = []
-              for b in blocks:
-                  for rule in re.findall(r'[^{}]+\{[^{}]*\}', b):
-                      if any(k in rule for k in keywords):
-                          keep.append(rule.strip())
-              open(out,'w',encoding='utf-8').write('\n'.join(keep))
-
-          files = {
-            'desktop-creators.html': 'creators-desktop-outline.txt',
-            'desktop-rice-masterchef.html': 'masterchef-desktop-outline.txt',
-            'desktop-partnership.html': 'partnership-desktop-outline.txt',
-            'desktop-plan-visit.html': 'planvisit-desktop-outline.txt',
-            'desktop-contact.html': 'contact-desktop-outline.txt',
-            'desktop-artists.html': 'artists-desktop-outline.txt',
-          }
-          for f,o in files.items():
-              if os.path.exists(f):
-                  outline(f, '_inspect/'+o)
-
-          for f,o in {
-            'rice-masterchef.html':'masterchef-content.txt',
-            'partnership.html':'partnership-content.txt',
-            'plan-visit.html':'planvisit-content.txt',
-            'contact.html':'contact-content.txt',
-            'creators.html':'creators-content.txt',
-          }.items():
-              if os.path.exists(f):
-                  content(f, '_inspect/'+o)
-
-          snippet('desktop-creators.html', 'form', '_inspect/creators-form-markup.txt')
-          snippet('desktop-artists.html', 'form', '_inspect/artists-form-markup.txt')
-          styleblock('desktop-artists.html', '_inspect/artists-form-css.txt', ['input','label','textarea','select','form','field','submit'])
-          styleblock('desktop-creators.html', '_inspect/creators-form-css.txt', ['input','label','textarea','select','form','field','submit'])
-
-          sizes = []
-          for f in sorted(os.listdir('.')):
-              if f.endswith('.html'):
-                  sizes.append('%8d  %s' % (os.path.getsize(f), f))
-          open('_inspect/sizes.txt','w',encoding='utf-8').write('\n'.join(sizes))
-          PY
-          python /tmp/inspect.py
-          wc -c _inspect/*
+      - run: pip install beautifulsoup4
+      - run: python tools/inspect_pages.py
       - name: Commit
         run: |
           git config user.name "birc-bot"
           git config user.email "bot@birc.local"
-          git add _inspect
+          git add -A _inspect
           git commit -m "Inspection reports" || echo "no changes"
           git push

@@ -31,4 +31,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Publish the wired registration chooser and all three role forms, 2026-08-05.
+# Publish mobile Creator, Rice Masterchef, and Rice Art source-document sync, 2026-08-08.

@@ -405,3 +405,6 @@ All three Exhibition views use the same black/ink background system. Do not swit
 - Desktop homepage content and registration behavior must stay synchronized with `index.html`.
 - Desktop homepage v2 uses desktop-native section compositions, bounded 1440px rhythm, non-obstructive header actions, compact statistics, aligned date composition, and no floating desktop CTA/dock.
 - Desktop homepage v4 was rebuilt with one clean 1240px editorial grid and audited section-by-section for hierarchy, alignment, overflow, interaction placement, and desktop readability. Artifact editing chrome is excluded from the published desktop page.
+## Supplied influencer source documents audit (2026-08-08)
+
+The mobile Content Creators, Rice Masterchef, and Artists pages were checked against the three supplied BIRC source documents. Missing approved application fields, qualification details, process steps, access rules, FAQs, Rice Art opportunity sections, curatorial journey, and Why BIRC content were added. Desktop files were not changed.

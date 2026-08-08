@@ -6,6 +6,7 @@ on:
       - '.github/workflows/desktop-audit.yml'
       - 'tools/audit.py'
       - 'tools/polish2.py'
+      - 'tools/contrast_fix.py'
   workflow_dispatch:
 
 permissions:
@@ -22,17 +23,19 @@ jobs:
       - run: python tools/polish2.py
       - run: pip install playwright
       - run: python -m playwright install --with-deps chromium
-      - name: Serve and audit
+      - name: Serve, fix, audit
         run: |
           sed -i "s/wait_until='load'/wait_until='domcontentloaded', timeout=60000/" tools/audit.py
           python -m http.server 8000 >/dev/null 2>&1 &
           sleep 3
+          python tools/contrast_fix.py
+          cat _inspect/contrast-log.txt
           python tools/audit.py
       - name: Commit
         run: |
           git config user.name "birc-bot"
           git config user.email "bot@birc.local"
           git checkout -- tools/audit.py
-          git add -A _inspect desktop-rice-masterchef.html
-          git commit -m "Polish pass 2 and audit" || echo "no changes"
+          git add -A _inspect *.html
+          git commit -m "Contrast fixes and audit" || echo "no changes"
           git push

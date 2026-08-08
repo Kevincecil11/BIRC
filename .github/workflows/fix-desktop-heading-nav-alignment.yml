@@ -1,0 +1,35 @@
+name: Fix desktop heading and Exhibition nav alignment
+on:
+  push:
+    paths: ['.github/workflows/fix-desktop-heading-nav-alignment.yml']
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply desktop-only alignment fixes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          # About: keep Who we are + Our Story at top, bottom-align only the remaining copy.
+          p=Path('desktop-about.html'); h=p.read_text()
+          css='''<style id="about-story-heading-fix">.story-copy{height:580px;align-self:stretch;display:flex;flex-direction:column;padding:0}.story-copy .eyebrow{flex:none}.story-copy h2{flex:none;margin:18px 0 0}.story-copy h3{margin-top:auto;margin-bottom:18px}.story-copy p{flex:none}.nav .nav-exhibition{height:var(--nav);display:flex!important;align-items:center}.nav .nav-exhibition>button{height:var(--nav)!important;display:flex;align-items:center;line-height:1}</style>'''
+          if 'id="about-story-heading-fix"' not in h:h=h.replace('</head>',css+'</head>',1)
+          p.write_text(h)
+
+          # Conference: move both section heading groups fully left.
+          p=Path('desktop-conference.html'); h=p.read_text()
+          css='''<style id="conference-heading-left-fix">.section>.shell>.head{display:block!important;margin-bottom:58px}.section>.shell>.head .eye{display:block;padding-top:0;margin-bottom:24px}.section>.shell>.head>div{max-width:760px;margin:0}.section>.shell>.head h2{max-width:12ch}.section>.shell>.head .lead{margin-top:20px}.speaker-grid{clear:both}.light .head{display:block!important}.nav .nav-exhibition{height:var(--nav);display:flex!important;align-items:center}.nav .nav-exhibition>button{height:var(--nav)!important;display:flex;align-items:center;line-height:1}</style>'''
+          if 'id="conference-heading-left-fix"' not in h:h=h.replace('</head>',css+'</head>',1)
+          p.write_text(h)
+          PY
+      - name: Commit desktop fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop-about.html desktop-conference.html
+          git commit -m "Keep About story heading high and left-align Conference headings"
+          git push

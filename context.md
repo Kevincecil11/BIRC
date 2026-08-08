@@ -403,3 +403,4 @@ All three Exhibition views use the same black/ink background system. Do not swit
 - Automatic routing chooses desktop at 900px+ with a fine pointer and mobile below that. Manual Desktop view and Mobile view controls override detection for the browser session.
 - For now, secondary pages remain their existing mobile implementations.
 - Desktop homepage content and registration behavior must stay synchronized with `index.html`.
+- Desktop homepage v2 uses desktop-native section compositions, bounded 1440px rhythm, non-obstructive header actions, compact statistics, aligned date composition, and no floating desktop CTA/dock.

@@ -34,4 +34,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Influencers, Partnership, Plan Visit, and Contact desktop pages, 2026-08-08.
+# Desktop polish pass: masterchef on the creators system, artists form colours, plan visit grids, partnership desktop layout, creators-style contact form. 2026-08-08.

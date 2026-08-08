@@ -1,4 +1,4 @@
-name: Capture desktop visual audit
+name: Audit desktop homepage
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  capture:
+  audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,35 +20,57 @@ jobs:
           node-version: 20
       - run: npm install playwright
       - run: npx playwright install --with-deps chromium
-      - name: Capture every desktop section
+      - name: Measure and capture every section
         run: |
-          python3 -m http.server 4173 >/tmp/birc-server.log 2>&1 &
+          python3 -m http.server 4173 >/tmp/server.log 2>&1 &
           sleep 2
           cat > /tmp/audit.mjs <<'JS'
           import { chromium } from 'playwright';
           import fs from 'fs';
-          const browser=await chromium.launch({headless:true});
-          const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
-          await page.goto('http://127.0.0.1:4173/desktop.html?view=desktop',{waitUntil:'domcontentloaded',timeout:30000});
-          await page.emulateMedia({reducedMotion:'reduce'});
-          await page.waitForTimeout(2500);
-          fs.rmSync('audit/desktop',{recursive:true,force:true});
-          fs.mkdirSync('audit/desktop',{recursive:true});
-          const shots=[['01-hero','.hero'],['02-purpose','.statement'],['03-pathways','#pathways'],['04-figures','.light[style*="padding-top"]'],['05-knowledge','#knowledge-sessions'],['06-difference','#knowledge-difference'],['07-zones','#zones'],['08-date','.date-sec'],['09-programme','#programme'],['10-voices','#voices'],['11-why','#why'],['12-gallery','.dark.pad[style*="padding-left:0"]'],['13-visit','#visit'],['14-final','#register'],['15-footer','.footer']];
-          for(const [name,selector] of shots){
-            const el=page.locator(selector).first();
-            if(await el.count()){
-              await el.scrollIntoViewIfNeeded();
-              await page.waitForTimeout(80);
-              await el.screenshot({path:`audit/desktop/${name}.png`,animations:'disabled',timeout:15000});
+          const browser = await chromium.launch();
+          const report = [];
+          for (const width of [1440, 1280]) {
+            const page = await browser.newPage({ viewport: { width, height: 900 } });
+            await page.emulateMedia({ reducedMotion: 'reduce' });
+            await page.goto('http://127.0.0.1:4173/desktop.html?view=desktop', { waitUntil: 'load' });
+            await page.waitForTimeout(1500);
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+            const sections = await page.evaluate(() => {
+              const out = [];
+              document.querySelectorAll('main > section, footer.footer').forEach(el => {
+                const r = el.getBoundingClientRect();
+                out.push({ id: el.id || el.className.split(' ')[0], height: Math.round(r.height), width: Math.round(r.width) });
+              });
+              return out;
+            });
+            report.push({ width, horizontalOverflow: overflow, sections });
+            if (width === 1440) {
+              fs.rmSync('audit/desktop', { recursive: true, force: true });
+              fs.mkdirSync('audit/desktop', { recursive: true });
+              const shots = [['01-hero','.hero'],['02-purpose','.purpose'],['03-pathways','#pathways'],['04-figures','.figures'],['05-knowledge','#knowledge-sessions'],['06-difference','#knowledge-difference'],['07-zones','#zones'],['08-dates','.dates'],['09-voices','#voices'],['10-why','#why'],['11-visit','#visit'],['12-final','#register'],['13-footer','.footer']];
+              for (const [name, sel] of shots) {
+                const el = page.locator(sel).first();
+                if (await el.count()) {
+                  await el.scrollIntoViewIfNeeded();
+                  await page.waitForTimeout(120);
+                  await el.screenshot({ path: `audit/desktop/${name}.png`, animations: 'disabled', timeout: 20000 }).catch(() => {});
+                }
+              }
             }
+            await page.close();
           }
+          fs.writeFileSync('audit/desktop/report.json', JSON.stringify(report, null, 2));
+          console.log(JSON.stringify(report, null, 2));
+          const bad = report.filter(r => r.horizontalOverflow > 1);
+          const thin = report.flatMap(r => r.sections.filter(s => s.height < 160).map(s => `${r.width}px ${s.id} = ${s.height}px`));
+          if (bad.length) console.log('HORIZONTAL OVERFLOW:', JSON.stringify(bad.map(b => ({ width: b.width, px: b.horizontalOverflow }))));
+          if (thin.length) console.log('THIN SECTIONS:', thin.join(' | '));
           await browser.close();
           JS
           node /tmp/audit.mjs
-      - name: Commit audit screenshots
+      - name: Commit audit output
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add audit/desktop
-          git diff --cached --quiet || (git commit -m "Capture desktop section visual audit" && git push)
+          git diff --cached --quiet || (git commit -m "Audit rebuilt desktop homepage" && git push)

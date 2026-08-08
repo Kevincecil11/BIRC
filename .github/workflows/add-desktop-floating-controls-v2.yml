@@ -1,0 +1,60 @@
+name: Apply desktop floating controls safely
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/add-desktop-floating-controls-v2.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch controls
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('desktop.html'); h=p.read_text()
+
+          if 'mobile-view-control' not in h:
+              h,n=re.subn(r'(<div class="tools">\s*)(<a class="ghost" href="https://birc\.in/login">)',r'\1<a class="ghost mobile-view-control" href="index.html?view=mobile">Mobile view <span aria-hidden="true">↙</span></a>\n      \2',h,count=1)
+              if n!=1: raise SystemExit('header patch failed')
+
+          controls='''<div class="desktop-action-backdrop" id="desktopActionBackdrop"></div><aside class="desktop-action-dock" id="desktopActionDock" aria-label="Quick actions"><div class="desktop-action-list"><a class="desktop-action-link primary" href="exhibition.html#space-rental">Book your stand <span>▣</span></a><button class="desktop-action-link" type="button" data-register>Register to visit <span>↗</span></button><a class="desktop-action-link" href="https://birc.in/login">Login <span>→</span></a><a class="desktop-action-link" href="https://wa.me/" aria-label="Open WhatsApp">WhatsApp <span>◉</span></a></div><button class="desktop-action-toggle" id="desktopActionToggle" type="button" aria-label="Open quick actions" aria-expanded="false">+</button></aside><aside class="desktop-timebar" id="desktopTimebar" aria-label="Summit countdown"><div><small>Summit opens in</small><strong id="floatingTime">00d 00h 00m 00s</strong></div><button type="button" data-register>Register <span>↗</span></button></aside>'''
+          if 'id="desktopActionDock"' not in h:
+              h,n=re.subn(r'(<dialog class="regdialog")',controls+r'\n\n\1',h,count=1)
+              if n!=1: raise SystemExit('controls markup patch failed')
+
+          css='''<style id="desktop-floating-controls">.mobile-view-control{gap:8px;color:var(--linen);border-color:var(--dm)}.mobile-view-control span{color:var(--gold);font-size:13px}.desktop-action-backdrop{position:fixed;z-index:64;inset:0;background:#0d0d0b99;opacity:0;pointer-events:none;transition:opacity .22s var(--e)}.desktop-action-backdrop.on{opacity:1;pointer-events:auto}.desktop-action-dock{position:fixed;z-index:66;right:28px;bottom:28px;display:flex;flex-direction:column;align-items:flex-end;gap:10px}.desktop-action-list{display:grid;gap:8px;opacity:0;transform:translateY(14px) scale(.97);transform-origin:bottom right;pointer-events:none;transition:opacity .24s var(--e),transform .32s var(--e)}.desktop-action-dock.open .desktop-action-list{opacity:1;transform:none;pointer-events:auto}.desktop-action-link{appearance:none;min-width:190px;min-height:46px;padding:0 12px 0 16px;display:grid;grid-template-columns:1fr 28px;gap:12px;align-items:center;border:1px solid var(--dl);background:var(--ink-3);color:var(--linen);text-align:left;font:600 10px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 28px #00000073;cursor:pointer}.desktop-action-link span{width:28px;height:28px;display:grid;place-items:center;background:var(--gold);color:var(--ink)}.desktop-action-link.primary{background:var(--gold);border-color:var(--gold);color:var(--ink)}.desktop-action-link.primary span{background:var(--ink);color:var(--gold)}.desktop-action-toggle{width:58px;height:58px;border:0;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);font:600 26px/1 Poppins,sans-serif;box-shadow:0 14px 34px #0000008c;cursor:pointer;transition:transform .32s var(--e),background .2s}.desktop-action-dock.open .desktop-action-toggle{transform:rotate(45deg)}.desktop-timebar{position:fixed;z-index:63;left:50%;bottom:24px;width:min(560px,calc(100% - 340px));min-height:64px;padding:9px 10px 9px 20px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;background:var(--ink);border:1px solid var(--dl);box-shadow:0 16px 44px #00000080;transform:translate(-50%,140%);opacity:0;transition:transform .4s var(--e),opacity .3s var(--e)}.desktop-timebar.on{transform:translate(-50%,0);opacity:1}.desktop-timebar small{display:block;color:var(--dm);font:600 9px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase}.desktop-timebar strong{display:block;margin-top:3px;font:600 16px Poppins,sans-serif;font-variant-numeric:tabular-nums}.desktop-timebar button{min-width:126px;height:44px;border:1px solid var(--gold);background:var(--gold);color:var(--ink);font:600 11px Poppins,sans-serif;text-transform:uppercase;cursor:pointer}.desktop-timebar button span{margin-left:7px}@media(max-width:1180px){.mobile-view-control{display:none}.desktop-timebar{width:min(500px,calc(100% - 280px))}}@media(prefers-reduced-motion:reduce){.desktop-action-list,.desktop-action-toggle,.desktop-action-backdrop,.desktop-timebar{transition:none}}</style>'''
+          if 'id="desktop-floating-controls"' not in h:h=h.replace('</head>',css+'</head>',1)
+
+          if '/* desktop floating controls */' not in h:
+              js='''  /* desktop floating controls */
+  var actionDock=document.getElementById('desktopActionDock'),actionToggle=document.getElementById('desktopActionToggle'),actionBackdrop=document.getElementById('desktopActionBackdrop'),timebar=document.getElementById('desktopTimebar'),floatingTime=document.getElementById('floatingTime');
+  function setActions(force){var open=typeof force==='boolean'?force:!actionDock.classList.contains('open');actionDock.classList.toggle('open',open);actionBackdrop.classList.toggle('on',open);actionToggle.setAttribute('aria-expanded',String(open));actionToggle.setAttribute('aria-label',open?'Close quick actions':'Open quick actions')}
+  actionToggle.addEventListener('click',function(){setActions()});actionBackdrop.addEventListener('click',function(){setActions(false)});actionDock.querySelectorAll('a,button[data-register]').forEach(function(x){x.addEventListener('click',function(){setActions(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape')setActions(false)});
+  function floatFx(){var finalTop=document.getElementById('register').getBoundingClientRect().top;timebar.classList.toggle('on',window.scrollY>window.innerHeight*.75&&finalTop>window.innerHeight*.88)}window.addEventListener('scroll',floatFx,{passive:true});floatFx();
+
+'''
+              h,n=re.subn(r'(\s*/\* registration chooser \*/)',r'\n'+js+r'\1',h,count=1)
+              if n!=1: raise SystemExit('js patch failed')
+
+          marker="['cs','fs'].forEach(function(id){document.getElementById(id).textContent=pad(ss)});"
+          if 'floatingTime.textContent' not in h:
+              if marker not in h: raise SystemExit('timer marker missing')
+              h=h.replace(marker,marker+"\n    if(typeof floatingTime!=='undefined'&&floatingTime)floatingTime.textContent=dd+'d '+pad(hh)+'h '+pad(mm)+'m '+pad(ss)+'s';",1)
+          p.write_text(h)
+          c=Path('context.md'); t=c.read_text(); note='- Desktop homepage now includes a visible Mobile view control, the floating summit countdown/Register bar, and the expandable four-action quick dock.\n';
+          if note not in t:c.write_text(t.rstrip()+'\n'+note)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html context.md
+          git commit -m "Add desktop Mobile view countdown and quick action dock"
+          git push

@@ -1,0 +1,6 @@
+desktop-rice-masterchef.html | refine=YES | brittle=clean | mobileSwitch=rice-masterchef.html | bytes=36259
+desktop-plan-visit.html | refine=YES | brittle=clean | mobileSwitch=plan-visit.html | bytes=28517
+desktop-contact.html | refine=YES | brittle=clean | mobileSwitch=contact.html | bytes=26909
+desktop-artists.html | refine=YES | brittle=clean | mobileSwitch=artists.html | bytes=37333
+desktop-creators.html | refine=YES | brittle=clean | mobileSwitch=creators.html | bytes=31701
+desktop-partnership.html | refine=no | brittle=clean | mobileSwitch=n/a | bytes=23901

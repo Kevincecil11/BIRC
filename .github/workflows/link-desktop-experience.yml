@@ -1,0 +1,26 @@
+name: Link desktop Experience
+on:
+  push:
+    paths: ['.github/workflows/link-desktop-experience.yml']
+permissions:
+  contents: write
+jobs:
+  link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          files=['desktop.html','desktop-about.html','desktop-conference.html','desktop-exhibition.html','desktop-exhibitor-profile.html','desktop-space-rental.html']
+          for name in files:
+              p=Path(name);h=p.read_text();h=h.replace('href="experience.html">Experience</a>','href="desktop-experience.html">Experience</a>');p.write_text(h)
+          p=Path('context.md');c=p.read_text();note='''\n## Desktop Experience page\n\n- `desktop-experience.html` is the purpose-built desktop Experience page with all nine approved zones, alternating editorial layouts, preserved abstract visuals, registration chooser, and mobile switch.\n- Mobile `experience.html` remains unchanged.\n''';
+          if '## Desktop Experience page' not in c:p.write_text(c.rstrip()+note)
+          PY
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html desktop-about.html desktop-conference.html desktop-exhibition.html desktop-exhibitor-profile.html desktop-space-rental.html context.md
+          git commit -m "Link all desktop navigation to desktop Experience page"
+          git push

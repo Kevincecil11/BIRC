@@ -9,6 +9,8 @@ on:
       - 'desktop-about.html'
       - 'desktop-conference.html'
       - 'desktop-exhibition.html'
+      - 'desktop-exhibitor-profile.html'
+      - 'desktop-space-rental.html'
       - 'index.html'
   workflow_dispatch:
 
@@ -33,8 +35,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy desktop pages
+      - name: Deploy six desktop fixes
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Desktop Conference and Exhibition pages, 2026-08-08.
+# Conference alignment and three separate Exhibition pages, 2026-08-08.

@@ -30,3 +30,5 @@ jobs:
           path: '.'
       - id: deployment
         uses: actions/deploy-pages@v4
+
+# Re-triggered 2026-08-12 after homepage timing and desktop action bar update.

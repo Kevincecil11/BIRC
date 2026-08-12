@@ -36,4 +36,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Forced from current main after the 2026-08-12 homepage update.
+# Published desktop navigation and bottom-bar refinement, 2026-08-12.

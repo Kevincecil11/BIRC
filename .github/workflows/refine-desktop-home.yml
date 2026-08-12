@@ -18,5 +18,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add desktop.html context.md
-          git commit -m "Refine desktop header actions and hero symmetry"
+          git commit -m "Polish desktop navbar and bottom-right actions"
           git push

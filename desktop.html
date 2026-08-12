@@ -545,6 +545,16 @@ body.search-open{overflow:hidden}
 @media(max-width:1400px){.zones>.shell:first-child .sechead{grid-template-columns:320px minmax(0,1fr);gap:64px}.voices .voices-layout{grid-template-columns:250px minmax(0,1fr);gap:48px}.voices .voice-stage{grid-template-columns:minmax(0,1fr) 190px;gap:24px 36px}.voice-portrait{width:160px}}
 @media(max-width:1180px){.zones>.shell:first-child .sechead{grid-template-columns:280px minmax(0,1fr);gap:48px}.voices .voice-stage{grid-template-columns:minmax(0,1fr) 170px;padding:36px}.voice-portrait{width:145px}.voice-quote blockquote{font-size:38px}}
 @media(prefers-reduced-motion:reduce){.voice-stage.swap .voice-quote,.voice-stage.swap .voice-person{animation:none}}
+
+/* stage-aligned section headings */
+.zones>.shell:first-child .sechead{grid-template-columns:320px minmax(0,1fr);gap:52px;margin-bottom:48px}
+.zones>.shell:first-child .sechead>div{grid-column:2;padding-left:0}
+.dates .datelead{grid-template-columns:320px minmax(0,1fr);gap:52px;align-items:start;margin-bottom:36px}
+.dates .datelead .date-statement{grid-column:2;text-align:center;justify-self:stretch;max-width:none;margin:0;font-size:clamp(36px,3vw,48px);line-height:1.08}
+.dates .datelead .eyebrow{grid-column:1;text-align:left}
+.dates .datelock{margin-left:372px;width:calc(100% - 372px);padding-top:56px}
+@media(max-width:1400px){.zones>.shell:first-child .sechead,.dates .datelead{grid-template-columns:320px minmax(0,1fr);gap:48px}.dates .datelock{margin-left:368px;width:calc(100% - 368px)}}
+@media(max-width:1180px){.zones>.shell:first-child .sechead,.dates .datelead{grid-template-columns:280px minmax(0,1fr);gap:48px}.dates .datelock{margin-left:328px;width:calc(100% - 328px)}.dates .datelead .date-statement{font-size:34px}}
 </style></head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

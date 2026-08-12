@@ -106,10 +106,6 @@ body { min-width: 1100px }
 
 Desktop homepage masthead uses the logo, a sandwich-menu control, and three utility PDF links: Download EY report, Buyer facilitation, and BIRC 2026 agenda. The drawer contains every main menu plus Exhibition and Influencers submenus. Existing Mobile view, Login, and Register controls remain. Other desktop pages retain their current inline masthead until navigation is intentionally synchronized.
 
-### Private desktop layout editor
-
-All desktop pages load `assets/birc-layout-editor.js`. The editor stays dormant unless `?editor=1` is added to a desktop URL; activation is remembered only in that browser. It previews direct drag, resize, spacing, text, duplicate, hide, delete, and section reorder changes immediately and stores drafts in browser `localStorage`. The panel is draggable and resizable, Minimize always leaves the Edit layout launcher available, and an 8px baseline with selectable 8/12/16-column overlays supports precise alignment. It never commits to GitHub. `Export changes` downloads a page-specific JSON manifest for review and permanent implementation. Use `?editor=0` or Hide editor to disable it. Mobile files never load it.
-
 ### Left alignment is a standing rule
 
 Eyebrows, headings, leads, lists, forms, and FAQ stacks are all left-aligned with `margin-left: 0`. Nothing on desktop is centred, including forms and FAQ blocks that were previously `margin: auto`.

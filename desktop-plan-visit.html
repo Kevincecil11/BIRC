@@ -153,4 +153,4 @@ var rail=document.querySelectorAll('.tv-rail button'),panels=document.querySelec
 rail.forEach(function(b){b.addEventListener('click',function(){rail.forEach(function(x){x.setAttribute('aria-selected','false')});b.setAttribute('aria-selected','true');panels.forEach(function(p){p.classList.toggle('on',p.id===b.dataset.t)})})});
 document.querySelectorAll('.faq').forEach(function(f){var b=f.querySelector('button');b.addEventListener('click',function(){var was=f.classList.contains('open');document.querySelectorAll('.faq').forEach(function(x){x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded','false')});if(!was){f.classList.add('open');b.setAttribute('aria-expanded','true')}})});
 </script>
-<script src="assets/birc-layout-editor.js" defer></script><script src="assets/birc-layout-editor-upgrade.js" defer></script></body></html>
+</body></html>

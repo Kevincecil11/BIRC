@@ -110,6 +110,8 @@ Desktop homepage eyebrow titles use 13.2px Poppins, a 20% increase from the prev
 
 ### Left alignment is a standing rule
 
+Desktop homepage section introductions share one editorial grid token: a 240px label rail and 88px content gap on wide screens, scaling to 190/56 and 160/40 at narrower desktop widths. Purpose metadata uses an explicit aligned three-column grid beneath the statement.
+
 Eyebrows, headings, leads, lists, forms, and FAQ stacks are all left-aligned with `margin-left: 0`. Nothing on desktop is centred, including forms and FAQ blocks that were previously `margin: auto`.
 
 ### Connected grids

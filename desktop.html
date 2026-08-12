@@ -511,6 +511,15 @@ body.search-open{overflow:hidden}
 @media(max-width:1320px){.coverage-outlets a{padding-inline:16px}.coverage-outlets a:nth-last-child(-n+2){display:none}.coverage-title{padding-inline:20px}.coverage-all{padding-inline:20px}}
 .coverage-outlets{overflow:hidden!important}.coverage-track{display:flex;width:max-content;min-width:100%;animation:coverageMove 34s linear infinite}.coverage-track:hover{animation-play-state:paused}.coverage-track>a{flex:none}@keyframes coverageMove{to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){.coverage-track{animation:none;overflow-x:auto}}
 .purpose.section{padding:112px 0 104px}.purpose .shell{grid-template-columns:240px minmax(0,1fr);gap:88px;align-items:start}.purpose .eyebrow{padding-top:12px}.purpose .purpose-statement{width:100%;max-width:23ch;font:500 clamp(52px,4vw,66px)/1.03 Poppins,sans-serif;letter-spacing:-.052em}.purpose .purpose-statement span{display:block;white-space:nowrap}.purpose footer{margin-top:44px;padding-top:20px}@media(max-width:1400px){.purpose .shell{grid-template-columns:190px minmax(0,1fr);gap:56px}.purpose .purpose-statement{font-size:clamp(46px,3.8vw,56px)}}@media(max-width:1180px){.purpose.section{padding:96px 0}.purpose .shell{grid-template-columns:160px minmax(0,1fr);gap:40px}.purpose .purpose-statement{font-size:42px;max-width:none}}
+
+/* unified editorial alignment */
+:root{--editorial-rail:240px;--editorial-gap:88px}
+.purpose .shell,.sechead,.datelead,.why-head{grid-template-columns:var(--editorial-rail) minmax(0,1fr);gap:var(--editorial-gap)}
+.sechead .eyebrow,.datelead .eyebrow,.why-head .eyebrow{padding-top:12px}
+.purpose footer{display:grid;grid-template-columns:160px 110px minmax(0,1fr);gap:20px;align-items:center;width:100%}
+.purpose footer span{margin:0;text-align:left;white-space:nowrap}
+@media(max-width:1400px){:root{--editorial-rail:190px;--editorial-gap:56px}.purpose footer{grid-template-columns:140px 90px minmax(0,1fr);gap:16px}}
+@media(max-width:1180px){:root{--editorial-rail:160px;--editorial-gap:40px}.purpose footer{grid-template-columns:130px 80px minmax(0,1fr);gap:14px}}
 </style></head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

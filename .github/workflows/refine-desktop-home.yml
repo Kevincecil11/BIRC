@@ -20,3 +20,5 @@ jobs:
           git add desktop.html index.html context.md
           git commit -m "Animate coverage rail and link dedicated pages"
           git push
+
+# Corrected mobile rail matching and re-run.

@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-12 after desktop eyebrow and purpose typography update.
+# Re-triggered 2026-08-12 to deploy the verified exact three-line purpose markup.

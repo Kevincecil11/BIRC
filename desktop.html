@@ -520,6 +520,31 @@ body.search-open{overflow:hidden}
 .purpose footer span{margin:0;text-align:left;white-space:nowrap}
 @media(max-width:1400px){:root{--editorial-rail:190px;--editorial-gap:56px}.purpose footer{grid-template-columns:140px 90px minmax(0,1fr);gap:16px}}
 @media(max-width:1180px){:root{--editorial-rail:160px;--editorial-gap:40px}.purpose footer{grid-template-columns:130px 80px minmax(0,1fr);gap:14px}}
+
+/* experience header aligns to visual stage */
+.zones>.shell:first-child .sechead{grid-template-columns:320px minmax(0,1fr);gap:64px}
+.zones>.shell:first-child .sechead>div{grid-column:2}
+.zones>.shell:first-child .sechead>.eyebrow{grid-column:1}
+.date-statement span{display:block}
+/* automatic editorial leader stage */
+.voices .voices-layout{grid-template-columns:300px minmax(0,1fr);grid-template-rows:1fr;gap:72px}
+.voices-intro{grid-row:1;grid-column:1}
+.voices .voice-stage{grid-column:2;min-height:460px;padding:44px 48px;display:grid;grid-template-columns:minmax(0,1fr) 220px;grid-template-rows:auto 1fr;gap:28px 48px;align-items:stretch}
+.voice-index{grid-column:1/-1;grid-row:1;text-align:right}
+.voice-quote{grid-column:1;grid-row:2;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;position:relative;z-index:2}
+.voice-quote .qmark{margin:0 0 34px}
+.voice-quote blockquote{margin:0;font:500 clamp(38px,3.25vw,58px)/1.08 Poppins,sans-serif;letter-spacing:-.05em;max-width:14ch}
+.voice-person{grid-column:2;grid-row:2;align-self:end;display:flex;flex-direction:column;align-items:flex-end;text-align:right;position:relative;z-index:2}
+.voice-portrait{width:180px;aspect-ratio:3/4;margin-bottom:20px;display:grid;place-items:end start;padding:14px;background:repeating-linear-gradient(125deg,transparent 0 22px,#faf0e608 22px 23px),var(--ink-3);border:1px solid var(--dl);color:var(--lm)}
+.voice-portrait span{font:600 8px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.voice-person b{font:600 16px Poppins,sans-serif;color:var(--linen)}
+.voice-person>span{margin-top:5px;color:var(--dm);font-size:12px}
+.voice-stage.swap .voice-quote,.voice-stage.swap .voice-person{animation:voiceSwap .55s var(--e)}
+@keyframes voiceSwap{from{opacity:0;transform:translateY(12px)}}
+.voices .voicelist{display:none!important}
+@media(max-width:1400px){.zones>.shell:first-child .sechead{grid-template-columns:320px minmax(0,1fr);gap:64px}.voices .voices-layout{grid-template-columns:250px minmax(0,1fr);gap:48px}.voices .voice-stage{grid-template-columns:minmax(0,1fr) 190px;gap:24px 36px}.voice-portrait{width:160px}}
+@media(max-width:1180px){.zones>.shell:first-child .sechead{grid-template-columns:280px minmax(0,1fr);gap:48px}.voices .voice-stage{grid-template-columns:minmax(0,1fr) 170px;padding:36px}.voice-portrait{width:145px}.voice-quote blockquote{font-size:38px}}
+@media(prefers-reduced-motion:reduce){.voice-stage.swap .voice-quote,.voice-stage.swap .voice-person{animation:none}}
 </style></head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>
@@ -745,7 +770,7 @@ body.search-open{overflow:hidden}
     <div class="shell">
       <div class="datelead">
         <span class="eyebrow">Three days</span>
-        <p>Policy on Friday. Trade on Saturday. The future on Sunday.</p>
+        <p class="date-statement"><span>Policy on Friday.</span><span>Trade on Saturday.</span><span>The future on Sunday.</span></p>
       </div>
       <div class="datelock">
         <h2>October</h2>
@@ -760,7 +785,7 @@ body.search-open{overflow:hidden}
     </div>
   </section>
 
-  <section class="voices light section" id="voices"><div class="shell voices-layout"><header class="voices-intro"><span class="eyebrow">Voices of the industry</span><h2>What leaders say</h2><p>Four perspectives from across global trade, policy, and industry.</p><div class="voice-progress" aria-hidden="true"><i id="voiceProgress"></i></div></header><div class="voice-stage" aria-live="polite"><div class="voice-index" id="voiceIndex">01 / 04</div><div class="qmark" aria-hidden="true">&ldquo;</div><figure class="quote"><blockquote id="quoteText">BIRC redefined how we see global rice trade.</blockquote><figcaption><b id="quoteName">Priya Nair</b><span id="quoteRole">Director, Global Grain Council</span></figcaption></figure></div><div class="voicelist" id="voicelist" aria-label="Select a leader quote"></div></div></section>
+  <section class="voices light section" id="voices"><div class="shell voices-layout"><header class="voices-intro"><span class="eyebrow">Voices of the industry</span><h2>What leaders say</h2><p>Four perspectives from across global trade, policy, and industry.</p><div class="voice-progress" aria-hidden="true"><i id="voiceProgress"></i></div></header><div class="voice-stage" id="voiceStage" aria-live="polite"><div class="voice-index" id="voiceIndex">01 / 04</div><div class="voice-quote"><div class="qmark" aria-hidden="true">&ldquo;</div><blockquote id="quoteText">BIRC redefined how we see global rice trade.</blockquote></div><aside class="voice-person"><div class="voice-portrait" id="voicePortrait" role="img" aria-label="Portrait placeholder for Priya Nair"><span>Portrait</span></div><b id="quoteName">Priya Nair</b><span id="quoteRole">Director, Global Grain Council</span></aside></div></div></section>
 
   <section class="section why-section" id="why"><div class="shell"><header class="why-head"><div><span class="eyebrow">Why BIRC</span><span class="why-count">04 principles</span></div><div><h2>One platform,<br>every pillar.</h2><p>Four reasons the global rice industry meets here.</p></div></header><div class="reasons"><article class="reason"><span class="reason-no">01</span><span class="word" aria-hidden="true">INDIA</span><div class="reason-copy"><h3>India-anchored,<br>globally led</h3><p>We root the world's rice conversation in India, then open it to every market that trades in grain.</p></div></article><article class="reason"><span class="reason-no">02</span><span class="word" aria-hidden="true">TRADE</span><div class="reason-copy"><h3>Trade, innovation,<br>knowledge</h3><p>Every pillar of the industry under one roof, including sustainability and policy.</p></div></article><article class="reason"><span class="reason-no">03</span><span class="word" aria-hidden="true">365</span><div class="reason-copy"><h3>Built for year-round<br>progress</h3><p>A year-round community that convenes at the summit but never ends.</p></div></article><article class="reason"><span class="reason-no">04</span><span class="word" aria-hidden="true">ONE</span><div class="reason-copy"><h3>Everyone wins<br>together</h3><p>Growth for the entire rice ecosystem, not a smaller slice for a few.</p></div></article></div><div class="whyclose"><span>India at the centre.</span><strong>Every market in the room.</strong></div></div></section>
 
@@ -934,25 +959,17 @@ body.search-open{overflow:hidden}
   document.getElementById('zoneNext').addEventListener('click',function(){setZone(current+1)});
   setZone(0);
 
-  /* voices */
+  /* voices, automatic rotation */
   var voices=[
     ['BIRC redefined how we see global rice trade.','Priya Nair','Director, Global Grain Council'],
     ['The ecosystem here moves faster than any fair.','Marco van der Belt','CEO, EuroRice Partners'],
     ['Every session sharpened our market view.','Chen Wei','Head of Trade, Asia Foods'],
     ["A platform built for the industry's future.",'James Sterling','Founder, Sterling Commodities']
   ];
-  var vlist=document.getElementById('voicelist'),qText=document.getElementById('quoteText'),
-      qName=document.getElementById('quoteName'),qRole=document.getElementById('quoteRole'),voiceIndex=document.getElementById('voiceIndex'),voiceProgress=document.getElementById('voiceProgress');
-  voices.forEach(function(v,i){
-    var b=document.createElement('button');
-    b.type='button';b.setAttribute('aria-selected',i===0?'true':'false');
-    b.innerHTML='<b>'+v[1]+'</b><span>'+v[2]+'</span>';
-    b.addEventListener('click',function(){
-      qText.textContent=v[0];qName.textContent=v[1];qRole.textContent=v[2];voiceIndex.textContent=String(i+1).padStart(2,'0')+' / 04';voiceProgress.style.width=((i+1)/voices.length*100)+'%';
-      Array.prototype.forEach.call(vlist.children,function(x,xi){x.setAttribute('aria-selected',xi===i?'true':'false')});
-    });
-    vlist.appendChild(b);
-  });
+  var voiceCurrent=0,voiceTimer=null,voiceStage=document.getElementById('voiceStage'),qText=document.getElementById('quoteText'),qName=document.getElementById('quoteName'),qRole=document.getElementById('quoteRole'),voiceIndex=document.getElementById('voiceIndex'),voiceProgress=document.getElementById('voiceProgress'),voicePortrait=document.getElementById('voicePortrait');
+  function setVoice(i){voiceCurrent=(i+voices.length)%voices.length;var v=voices[voiceCurrent];voiceStage.classList.remove('swap');void voiceStage.offsetWidth;voiceStage.classList.add('swap');qText.textContent=v[0];qName.textContent=v[1];qRole.textContent=v[2];voiceIndex.textContent=String(voiceCurrent+1).padStart(2,'0')+' / 04';voiceProgress.style.width=((voiceCurrent+1)/voices.length*100)+'%';voicePortrait.setAttribute('aria-label','Portrait placeholder for '+v[1])}
+  function startVoices(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;clearInterval(voiceTimer);voiceTimer=setInterval(function(){setVoice(voiceCurrent+1)},5200)}
+  setVoice(0);startVoices();
 
   /* plan your visit */
   document.querySelectorAll('.visit-item').forEach(function(item){

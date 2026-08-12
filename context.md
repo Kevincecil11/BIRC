@@ -103,7 +103,7 @@ body { min-width: 1100px }
 
 ### Masthead
 
-Fixed, `76px`, `#0d0d0bf0` with a `--dl` bottom border. Grid of `145px 1fr auto`: logo, centred inline nav, tools. Nav order is Home, About, Conference, Exhibition (hover dropdown, 3 items), Experience, Influencers (hover dropdown, 3 items), Partnership, Plan Visit, Contact. Current page marked with `aria-current="page"` in gold. Tools are a bordered `Mobile view` ghost link and a gold `Register ↗` button.
+Desktop homepage masthead uses the logo, a sandwich-menu control, and three utility PDF links: Download EY report, Buyer facilitation, and BIRC 2026 agenda. The drawer contains every main menu plus Exhibition and Influencers submenus. Existing Mobile view, Login, and Register controls remain. Other desktop pages retain their current inline masthead until navigation is intentionally synchronized.
 
 ### Left alignment is a standing rule
 
@@ -255,7 +255,7 @@ Do not present these as verified facts and do not invent replacements:
 - About Advisory Board names, titles, portraits
 - Conference Agenda and Schedule, Workshops, Learning Academy content
 - Instagram and LinkedIn URLs
-- Homepage Login and WhatsApp destination URLs
+- Homepage WhatsApp destination URL
 - Partner logos on Partnership (placeholder marquee)
 - Hotel names on Plan Visit (currently Hotel A / Hotel B)
 

@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-12 after Experience, dates, and rotating leader-stage refinement.
+# Re-triggered 2026-08-12 after positioning headings directly above their stages.

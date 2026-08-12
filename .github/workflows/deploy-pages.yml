@@ -36,4 +36,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Published shared desktop layout editor, 2026-08-12.
+# Published movable editor and precision grids, 2026-08-12.

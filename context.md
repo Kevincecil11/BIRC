@@ -91,7 +91,7 @@ This was attempted repeatedly and rejected every time. The homepage took five at
 Tokens used by the clean pages:
 
 ```
---sh: min(1320px, calc(100% - 112px))   /* content shell */
+--sh: min(1680px, calc(100% - 64px))    /* homepage wide content shell */
 --side: max(56px, calc((100vw - 1320px)/2))  /* section gutter */
 --nav: 76px                              /* masthead height */
 --e: cubic-bezier(.16,1,.3,1)            /* ease out */
@@ -99,6 +99,7 @@ body { min-width: 1100px }
 ```
 
 - Section rhythm: `132px` vertical padding on standard sections, `104px + nav` on heroes.
+- Desktop homepage uses a wide 1680px shell with 32px minimum side gutters. Its hero is a balanced 1:1 composition: headline and summit dossier align vertically, while the dossier uses a fixed label column, equal row heights, and four equal countdown cells.
 - Breakpoint at `1180px` narrows the shell to `calc(100% - 64px)` and the gutter to `32px`.
 
 ### Masthead

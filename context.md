@@ -104,7 +104,7 @@ body { min-width: 1100px }
 
 ### Masthead
 
-Desktop homepage masthead uses the official logo, a search icon, three icon-labelled PDF utilities (EY report, Buyer facilitation, 2026 agenda), the live countdown, Login, Register, and a sandwich menu at the extreme right. The Mobile view control is removed from this homepage masthead. The previous full-width bottom action bar is removed; Book your stand and WhatsApp are stacked as floating actions at the right edge. Other desktop pages retain their current inline mastheads until navigation is intentionally synchronized.
+Desktop homepage masthead is 88px high and uses the official logo at 170 x 55px, a 20% increase from the previous 142 x 46px treatment. The navigation is organized into three deliberate groups: the enlarged brand, a shared utility rail containing Search plus the EY report, Buyer facilitation, and 2026 agenda links, then the countdown, Login, Register, and sandwich menu at the extreme right. At narrower desktop widths the three document controls retain their icons while their labels collapse to keep the header breathable. The Mobile view control is removed from this homepage masthead. The previous full-width bottom action bar is removed; Book your stand and green WhatsApp actions are stacked at the bottom-right. Other desktop pages retain their current inline mastheads until navigation is intentionally synchronized.
 
 ### Left alignment is a standing rule
 
@@ -160,7 +160,7 @@ Side-stripe accent borders (`border-left` as decoration) are banned. The Masterc
 
 - `index.html` mobile, `desktop.html` desktop. Content must stay synchronized.
 - Desktop homepage was rebuilt from scratch on one editorial grid. Voices is an interactive quote stage with a four-button selector. Why BIRC is a 2x2 with large background words.
-- Desktop homepage controls: countdown lives in the masthead; Book your stand and WhatsApp are stacked on the right edge. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
+- Desktop homepage controls: countdown lives in the masthead; Book your stand and the green WhatsApp action with its official mark are stacked at the bottom-right. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
 - Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.

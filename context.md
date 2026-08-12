@@ -1,440 +1,291 @@
 # BIRC Project Context
 
-Last updated: 2026-08-03 (Partnership added; Experience made full-bleed) (detailed Experience page added)
+Last updated: 2026-08-12. Consolidated rewrite. Previous versions stacked chronological "desktop polish" notes at the bottom until the top sections contradicted the repository. That history has been removed and folded into the sections below. Per section 12, remove stale instructions rather than stacking them.
 
-This is the living handoff file for the BIRC website. Read this file first whenever the repository is opened in a new chat, coding session, or by a new contributor. Keep it accurate whenever pages, navigation, content, styling rules, deployment, or project decisions change.
+This is the living handoff file for the BIRC website. Read it first whenever the repository is opened in a new chat, coding session, or by a new contributor.
 
 ## 1. Required reading order
 
 Before making any change:
 
-1. Read `context.md` for project state, architecture, links, and pending work.
-2. Read `design.md` for mandatory visual, interaction, typography, color, motion, accessibility, and content-preservation rules.
+1. Read `context.md` for project state, architecture, and pending work.
+2. Read `design.md` for mandatory visual, typography, colour, motion, and content-preservation rules.
 3. Inspect the current target HTML file before editing it.
-4. Treat repository files on `main` as the source of truth, not old chat artifacts or screenshots.
+4. Treat repository `main` as the source of truth, not old chat artifacts or screenshots.
 
-If `context.md` and the repository disagree, inspect recent commits and update `context.md` as part of the same change.
+If this file and the repository disagree, inspect recent commits and correct this file in the same change.
 
 ## 2. Project purpose
 
-BIRC is the mobile-first website for the Bharat International Rice Conference 2026. The experience positions India at the centre of the global rice industry and communicates conference participation, programme, exhibition, experience zones, partnership, travel, and registration information.
+The website for the Bharat International Rice Conference 2026. It positions India at the centre of the global rice industry and communicates conference, exhibition, experience, partnership, travel, and registration information.
 
-The visual direction is cinematic, editorial, premium, precise, and easy to understand. Existing approved content must be preserved when restyling supplied page files.
+Visual direction: cinematic, editorial, premium, precise. Approved content must be preserved when restyling.
 
 ## 3. Repository and deployment
 
 - Repository: `https://github.com/Kevincecil11/BIRC`
 - Default branch: `main`
-- GitHub Pages site: `https://kevincecil11.github.io/BIRC/`
-- Pages is deployed through GitHub Actions workflows in `.github/workflows/`.
-- The repository is public so GitHub Pages can deploy under the current GitHub plan.
-- Official logo asset: `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`
+- Live site: `https://kevincecil11.github.io/BIRC/`
+- Public repo, required for Pages on the current plan.
+- Logo asset (every page): `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`
+- Rice world map asset: `assets/rice-world-map.png`
 
-### Deployment caution
+### Publishing
 
-Several temporary workflow files were created while enabling Pages and applying changes. The active publishing approach uploads the current repository to GitHub Pages with `actions/upload-pages-artifact` and `actions/deploy-pages`.
+`.github/workflows/publish-desktop-home.yml` is the active publish workflow. It watches `**.html` and deploys the repository root with `actions/upload-pages-artifact` and `actions/deploy-pages`. Concurrency group `pages`, `cancel-in-progress: true`.
 
-If a Pages update does not appear:
+If an update does not appear live:
 
-1. Confirm the intended code is committed to `main`.
-2. Check GitHub Actions for an older deployment stuck in progress.
-3. Cancel the stuck deployment if it blocks the current queued run.
-4. Trigger the current publish workflow.
-5. Verify the live URL after the run succeeds.
+1. Confirm the code is committed to `main`.
+2. Check Actions for an older deployment stuck queued or in progress.
+3. Cancel the stuck run.
+4. Re-trigger the publish workflow.
+5. Verify the live URL, never just the commit.
 
-Do not assume a commit is live until the Pages URL is checked.
+### Workflow debt
 
-The official dated ivory BIRC logo is used on every current HTML page: `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`.
+Around 70 single-purpose workflow files have accumulated in `.github/workflows/`. Most are spent one-shot patches. Only `publish-desktop-home.yml` and `deploy-pages.yml` matter going forward. The rest can be deleted in a cleanup pass. **Batch related edits into one workflow instead of writing a new file per fix.** The per-fix pattern was the single largest source of wasted round trips on this project.
 
-## 4. Current source files
+Notes on writing patch workflows, learned the hard way:
 
-### `index.html`
+- Exact-string matching inside Python heredocs fails silently. Use `re.subn` and assert the match count.
+- Never reference a CSS `var()` from JavaScript. Use a literal.
+- Playwright screenshot workflows were attempted twice and abandoned. Verify with a live page fetch instead.
 
-The homepage and original implementation source of truth.
+## 4. Two parallel experiences
 
-Current homepage sections include:
+The site maintains a mobile experience and a separate desktop experience as distinct files.
 
-1. Fixed header and hamburger menu
-2. Hero
-3. Conference highlights ticker
-4. Purpose statement
-5. Three participation pathways: Attend, Exhibit, Sponsor
-6. BIRC statistics
-7. Knowledge Sessions: 9 sessions across Day 1 and Day 2
-8. What Makes the Knowledge Sessions Different: 9 expandable differentiators
-9. Experience Zones carousel
-10. October 23, 24, 25 date composition
-11. Three-day programme timeline
-12. Industry leader quotes
-13. Why BIRC
-14. Impressions gallery
-15. Plan your visit 2 x 2 grid
-16. Final registration CTA with 3D rice-grain background
-17. Footer and sticky registration CTA
+- Every `desktop-*.html` page begins with a redirect script: below 900px it replaces location with its mobile counterpart.
+- Every desktop page has a `Mobile view` control in the masthead pointing at its own mobile file.
+- **The mobile pages are approved and considered finished. Do not modify a mobile file while working on desktop unless the user explicitly asks for that mobile file to change.**
 
-The Speakers section was removed from the homepage and moved to `conference.html`.
+### Mobile pages (12)
 
+`index.html`, `about.html`, `conference.html`, `exhibition.html`, `experience.html`, `creators.html`, `rice-masterchef.html`, `artists.html`, `partnership.html`, `plan-visit.html`, `contact.html`, `register.html`
 
-### Homepage Knowledge Sessions
+Mobile canvas is capped at `520px` with a centred `.page` wrapper.
 
-Two sections sit immediately above Experience Zones in `index.html`:
+### Desktop pages (13)
 
-1. `#knowledge-sessions`: all nine Knowledge Sessions across Friday 23 October and Saturday 24 October.
-2. `#knowledge-difference`: the EY report note plus nine expandable reasons the BIRC 2026 sessions are different.
+`desktop.html`, `desktop-about.html`, `desktop-conference.html`, `desktop-exhibition.html`, `desktop-exhibitor-profile.html`, `desktop-space-rental.html`, `desktop-experience.html`, `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html`, `desktop-partnership.html`, `desktop-plan-visit.html`, `desktop-contact.html`
 
-The copy was extracted from two user-supplied images on 2026-08-01 and must remain unchanged unless revised source content is supplied. The differentiators use a one-open-at-a-time accordion.
+## 5. The most important desktop lesson
 
-### `about.html`
+**Do not build a desktop page by copying mobile markup and layering desktop CSS overrides on top. It fails every time.**
 
-A separate About page built from the supplied About content and restyled to match the BIRC system.
+This was attempted repeatedly and rejected every time. The homepage took five attempts before a from-scratch rewrite was accepted. Six pages built with the copy-and-override method later had to be redesigned. The failure mode is concrete, not aesthetic: those pages ended up carrying four competing stylesheets (mobile base, an anonymous desktop block, `#dt-polish`, `#desk-refine`), and mobile border rules such as `.venue-row:last-child{border:0}` and `.route:nth-child(n+3){border-bottom:0}` survived every override and drew half-finished grid lines. Brittle `body > main:nth-child(...)` colour patches were also used to fix text colour and were the cause of the wrong-coloured form text.
 
-Current flow:
+**Author every desktop page as a standalone document with exactly one stylesheet.** No mobile CSS, no override layers, no `nth-child` path selectors.
 
-1. About hero
-2. Mission statement
-3. Values: Collaboration, Innovation, Leadership
-4. Our Story
-5. Results and statistics
-6. Organisers placeholders
-7. Advisory Board placeholders
-8. Industry Overview
-9. Industry pillars
-10. Footer
+### Clean, single-stylesheet pages
 
-Content originated from the user-provided About HTML. Preserve that approved content unless the user supplies replacements.
+`desktop-partnership.html`, `desktop-plan-visit.html`, `desktop-contact.html`. Use these three as the reference implementation for any new or rebuilt desktop page.
 
+### Pages still carrying layered stylesheets
 
+`desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html`, and the About / Conference / Exhibition / Experience set. They render correctly today but are fragile. Rebuild them as standalone documents when they next need substantive work rather than patching them again.
 
+## 6. Desktop design system
 
-### `creators.html`
+Tokens used by the clean pages:
 
-Influencers is three separate pages: Content Creators (`creators.html`), Rice Masterchef (`rice-masterchef.html`), and Artists / Rice Art Showcase (`artists.html`). Content Creators is implemented from approved mobile screenshots, including access outcomes, scoring factors, eligibility, application flow, form fields, and FAQ questions. Rice Masterchef is implemented from six approved mobile screenshots, including competition proposition, three participation benefits, ₹1,00,000 prize, Media Byte, On-Stage Recognition, creator access tiers, and application form. Artists is implemented from ten approved Rice Art Showcase screenshots, including material manifesto, eight pathways, ₹1,00,000 prize, recognition, and application form. Influencers appears immediately above Partnership as a three-item hamburger submenu across all current pages.
+```
+--sh: min(1320px, calc(100% - 112px))   /* content shell */
+--side: max(56px, calc((100vw - 1320px)/2))  /* section gutter */
+--nav: 76px                              /* masthead height */
+--e: cubic-bezier(.16,1,.3,1)            /* ease out */
+body { min-width: 1100px }
+```
 
-### `partnership.html`
+- Section rhythm: `132px` vertical padding on standard sections, `104px + nav` on heroes.
+- Breakpoint at `1180px` narrows the shell to `calc(100% - 64px)` and the gutter to `32px`.
 
-A separate Partnership page built from the user-supplied sponsorship content and styled with `design.md`. Partnership is one direct hamburger link with no submenu. The page preserves all supplied sponsorship tiers, prices, GST notes, package benefits, promotional visibility, special opportunities, and partner logo placeholders. Keep the detailed accordion content intact unless approved replacements are supplied.
+### Masthead
 
+Fixed, `76px`, `#0d0d0bf0` with a `--dl` bottom border. Grid of `145px 1fr auto`: logo, centred inline nav, tools. Nav order is Home, About, Conference, Exhibition (hover dropdown, 3 items), Experience, Influencers (hover dropdown, 3 items), Partnership, Plan Visit, Contact. Current page marked with `aria-current="page"` in gold. Tools are a bordered `Mobile view` ghost link and a gold `Register ↗` button.
 
+### Left alignment is a standing rule
 
-### `contact.html`
+Eyebrows, headings, leads, lists, forms, and FAQ stacks are all left-aligned with `margin-left: 0`. Nothing on desktop is centred, including forms and FAQ blocks that were previously `margin: auto`.
 
-Dedicated Contact page based on the mobile `birc.in/contact` structure and BIRC `design.md`. Approved visible copy includes “We’d love to hear from you,” “Contact Us,” “Questions about BIRC 2026? Our team is here to help,” “Get in touch,” and “You Have Questions. We Have Answers.” The page routes users toward Visit, Exhibition, Partnership, or Conference and includes a working enquiry form that opens the user’s email client with a prefilled subject/body. Official source details are now included: 73 LGF, World Trade Center, Barakhamba Avenue, Connaught Place, New Delhi 110001; Mon–Sun 09:00–18:00 local; booking@birc.in; visit@birc.in; +91-7303093821. The enquiry form routes Visiting enquiries to visit@birc.in and other enquiries to booking@birc.in. Contact is a direct hamburger link on all current pages.
+### Connected grids
 
-### `plan-visit.html`
+**Never build a connected grid from per-cell borders.** Use `gap: 1px` with the line colour as the grid container background and the surface colour on each cell:
 
-Dedicated Plan Visit page built from supplied content and `design.md`. Sections and submenu anchors: Venue & Location (`#venue`), Hotels (`#hotels`), How to Reach (`#travel`), and FAQs (`#faqs`). Travel includes Metro, Airport, Railway, Bus, and Car/Taxi tabs. All current site menus expose this four-item Plan Visit submenu.
+- `.mesh.light`: `--ll` lines, `--l` cells
+- `.mesh.dark`: `--dl` lines, `--j2` cells
 
-### `experience.html`
+Every cell then shares a true hairline and nothing dangles. Also **keep cell counts even**: a 3-up row with four items leaves a visible orphan. Either pad the row with a genuine content cell or change the column count.
 
-A dedicated detailed Experience page containing all nine approved zones in this order:
+### Shared form treatment
 
-1. The Rice Route Map
-2. Seed Cloud
-3. The Rice Archive
-4. Rice Through Time
-5. How the World Eats Rice
-6. Hands of Rice
-7. The World Within
-8. Rice Mirror
-9. Beyond the Bowl
+Application and enquiry forms sit on a **gold section background** with a **linen panel** inside. Applies to `.apply` (Creators), `#apply.apply` (Artists), `.master-apply` (Masterchef), and the Contact enquiry section.
 
-Each zone has its own anchor, abstract visual treatment, and the approved homepage description. The page has no numeric rail and no zone submenu. Experience is one direct hamburger link across all pages. The approved layout uses a dark cinematic hero, then a consistent linen editorial body where every zone retains its immersive abstract visual inside a full-bleed ink panel, followed by dark closing CTA and footer. Zone visuals touch both edges of the 520px canvas; do not add left or right gutters around them. Do not invent longer zone claims without supplied content.
+- Panel: `--l` background, `1px solid --ll`, `48px` padding, max width ~960px, left-aligned.
+- Two-column field grid; textarea fields span full width.
+- Labels: uppercase Poppins, `600 10px`, `.14em` tracking, colour `#4a453e`.
+- Inputs: `#fffaf2` background, `1px solid --ll`, square corners, `15px` Inter.
+- Focus: `2px solid --g2` outline with `2px` offset.
+- Submit: ink background, linen text, auto width, left-aligned, `58px` min height.
+- Followed by a small `doc-note` disclaimer.
 
-### `conference.html`
+## 7. Palette and type
 
-A separate Conference page linked from the hamburger menu.
+Exact tokens from `design.md`:
 
-Required content flow:
+| Token | Value | Role |
+| --- | --- | --- |
+| `--j` | `#0d0d0b` | ink |
+| `--j2` | `#191916` | raised ink |
+| `--l` | `#faf0e6` | linen |
+| `--g` | `#ebb341` | gold |
+| `--g2` | `#c98e25` | deep gold |
+| `--m` | `#2b2b27` | editorial grey |
+| `--dm` | `#aba49c` | muted on dark |
+| `--lm` | `#6d6862` | muted on light |
+| `--dl` | `#35332e` | line on dark |
+| `--ll` | `#d8cec3` | line on light |
 
-1. Speakers
-2. Agenda and Schedule
-3. Workshops
-4. Learning Academy
+**Zero blue, ever.** Source-site navy values `#17354c`, `#18334b`, `#0f253a` are forbidden. The retired moss green `#566746` must not return; editorial grey replaced it in large background words and programme numbers.
 
-Current state:
+Fonts: **Poppins** for display and UI, **Inter** for body. No other families.
 
-- Speakers are implemented and were moved from the homepage.
-- Agenda and Schedule is a styled placeholder awaiting the user's file.
-- Workshops is a styled placeholder awaiting content.
-- Learning Academy is a styled placeholder awaiting content.
+Side-stripe accent borders (`border-left` as decoration) are banned. The Masterchef prize block was converted from a gold left stripe to a full gold border panel for this reason.
 
-When the files arrive, replace the matching placeholder section while preserving the order above.
+## 8. Page-specific rules
 
-### `design.md`
+### Homepage
 
-The mandatory design system and page adaptation guide. It defines exact colors, typography, spacing, motion, components, accessibility, section patterns, and content-preservation rules.
+- `index.html` mobile, `desktop.html` desktop. Content must stay synchronized.
+- Desktop homepage was rebuilt from scratch on one editorial grid. Voices is an interactive quote stage with a four-button selector. Why BIRC is a 2x2 with large background words.
+- Desktop floating controls: visible `Mobile view` header control, floating countdown/Register bar, expandable four-action quick dock.
+- Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
+- Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
+- Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.
+- Header holds logo and menu only. No Register button in the mobile fixed header.
 
-All new pages and edits must follow `design.md`.
+### Registration
 
-### `context.md`
+Every Register CTA opens an accessible native `<dialog>` chooser with three choices, each routing to the shared local form:
 
-This file. It records the living project state, page relationships, decisions, deployment information, and pending work.
+- Visitor → `register.html?type=visitor`
+- Exhibitor → `register.html?type=exhibitor`
+- Buyer → `register.html?type=buyer`
 
-## 5. Planned pages
+The dialog also links existing users to `https://birc.in/login`. `register.html` is a two-step form: step 1 is name, company, mobile with country code, WhatsApp match, country, email, remember me; step 2 is multi-select Industry Type plus declaration. Only the title and routing differ by role. Do not send a generic Register button straight to one role.
 
-### `exhibition.html`
+### Exhibition
 
-Not created yet. It will be linked from the Exhibition hamburger item and must contain this flow:
+Desktop Exhibition is **three genuinely separate pages**: `desktop-exhibition.html` (Why exhibit), `desktop-exhibitor-profile.html`, `desktop-space-rental.html`. The navbar dropdown is the only navigation between them. The side-by-side section switcher and the centred yellow page-label strip were both removed and must not return.
 
-1. Why exhibit
-2. Exhibitor profile
-3. Space rental
+Mobile `exhibition.html` stays hash-driven: selecting a submenu item shows one section and hides the other two, defaulting to Why exhibit. Do not convert it back to one long scroll.
 
-The submenu links are already prepared as:
+All three views use the dark ink background system. Do not switch Exhibitor Profile or Space Rental to linen. Do not restore the horizontal Rice Millers / Exporters / Traders selector bar; use the expandable profile list only.
 
-- `exhibition.html#why-exhibit`
-- `exhibition.html#exhibitor-profile`
-- `exhibition.html#space-rental`
+### Influencers
 
-Do not fabricate the Exhibition page content. Wait for the user's supplied file or content.
+Three separate pages, never a combined one: Content Creators, Rice Masterchef, Artists. Sits directly above Partnership in the nav.
 
-### Future supplied Conference sections
+**The Creators page is the approved structural pattern.** Its flow is: hero (eyebrow, large title, lead, gold CTA, three-stat row) → light access section with numbered rows → score section with five bullet rows plus VIP and Day-3 pass cards → dark criteria section with checkmark rows → light process section with numbered step cards → gold apply section containing the linen form panel → light FAQ accordions. When a sibling influencer page needs a redesign, match this.
 
-Pending:
+- Scoring factors are five bullet rows, not a matrix.
+- VIP Creator Pass must use high-contrast linen headings on raised ink.
+- In Artists, the four "Tiny Material. Infinite Expression." tiles are an equal 2x2 with identical dimensions.
+- Masterchef and Artists prize is `₹1,00,000`.
 
-- Agenda and Schedule file
-- Workshops content/file
-- Learning Academy content/file
+### Partnership
 
-## 6. Navigation architecture
+One direct nav link, no submenu. Desktop was rebuilt from scratch: hero with a spec list, then a **five-tier master/detail** (left rail of tiers, right benefit panel, gold outline on the selected tier), then Special Opportunities as a varied grid with Gala Dinner as a wide feature and a gold enquiry panel, then a partner marquee.
 
-The hamburger menu must remain consistent across every page.
+All supplied tiers, prices, GST notes, package benefits, promotional visibility, and special opportunities are preserved verbatim. Tiers: Platinum ₹50,00,000 / $57,480, Diamond ₹30,00,000 / $34,490, Gold ₹20,00,000 / $23,000, Silver ₹10,00,000 / $11,500, Bronze ₹5,00,000 / $5,750. Six special opportunities: Gala Dinner ₹20,00,000, Transport ₹15,00,000, Lunch ₹10,00,000 per day, Exhibition Entry Gates ₹10,00,000, Exhibitors'/Buyer Kit ₹10,00,000, Registration Counter ₹8,00,000.
 
-Current top-level order:
+**Content correction:** the supplied Lunch Sponsor line read "October 30 & 31", which contradicts the event dates. Desktop now reads "24 & 25 October". Mobile `partnership.html` still carries the original text.
 
-1. Home
-2. About
-3. Conference
-4. Exhibition
-5. Experience
-6. Partnership
-7. Plan Visit
-8. Contact
+On mobile, Sponsorship Package and Special Opportunity cards share one treatment: linen background, one-pixel ink border, no shadow, black action bar. No card is highlighted by default; the gold outer outline appears only while a card is open. Do not make the Sponsorship Packages section black.
 
-### Current destinations
+### Plan Visit
 
-- Home: `index.html`
-- About: `about.html`
-- Conference: `conference.html`
-- Exhibition: expandable submenu
-- Experience: direct link to `experience.html`; no dropdown or numbered submenu
-- Partnership: `partnership.html`, direct link with no dropdown
-- Plan Visit: one direct link to `plan-visit.html`; no dropdown
-- Contact: direct link to `contact.html`
+Mobile `plan-visit.html` keeps its four-anchor structure: `#venue`, `#hotels`, `#travel`, `#faqs`, with Metro, Airport, Railway, Bus, and Car/Taxi tabs.
 
-### Dropdown rules
+Desktop was rebuilt from scratch: venue stats as a connected 2x2 mesh, hotels as a 3-up where the third cell is an honest "full list coming" panel so the row is never orphaned, and Travel as a **sticky left tab rail** with the panel on the right and route rows in connected 2-up meshes. Every panel was padded to an even cell count.
 
-- About has no dropdown.
-- Conference has no dropdown.
-- Exhibition has exactly three submenu items.
-- Exhibition submenu labels align left and their numbers align right:
-  - Why exhibit | 01
-  - Exhibitor profile | 02
-  - Space rental | 03
-- Partnership and Plan Visit currently retain dropdown indicators from the approved menu direction, but dedicated submenu structures have not yet been supplied.
+**Metro fare figures were removed from both desktop and mobile** (₹60–80 in the Metro and Airport tabs, ₹30–40 for New Delhi Railway). A fare-less row beside a fare row read as unfinished. The ₹600–900 taxi estimate was deliberately kept as genuinely useful.
 
-### Social links
+### Contact
 
-The drawer footer includes:
+Approved copy to preserve: "We'd love to hear from you", "Contact Us", "Questions about BIRC 2026? Our team is here to help", "Get in touch", "You Have Questions. We Have Answers."
 
-- Instagram
-- LinkedIn
+Official details: 73 LGF, World Trade Center, Barakhamba Avenue, Connaught Place, New Delhi 110001. Mon–Sun 09:00–18:00 local. `booking@birc.in`, `visit@birc.in`, `+91-7303093821`.
 
-Their final URLs have not yet been supplied. Do not invent them.
+The enquiry form routes Visiting enquiries to `visit@birc.in` and everything else to `booking@birc.in` via a prefilled mailto.
 
+Desktop was rebuilt from scratch: the four route cards are a connected **2x2** (previously a 3-up with an orphan fourth), official details is a 3-up of bordered ink panels plus a full-width social row, and the enquiry form uses the shared gold-and-linen treatment.
 
-### Homepage quick-action dock
+Social controls use inline SVG icons for Instagram, LinkedIn, Facebook, and X. Do not revert to text initials. The official contact block begins directly with the heading and has no "Contact details" eyebrow.
 
-The homepage has one floating circular `+` button to avoid clutter. Tapping it reveals four stacked actions: Book your stand, Register to visit, Login, and WhatsApp. Tapping outside, choosing an action, or pressing Escape closes it. Final Login and WhatsApp destination URLs are still pending and must not be invented.
+### Experience
 
-The approved final CTA background is the supplied rice-grain world map stored at `assets/rice-world-map.png`. Preserve the full-bleed crop and dark readability overlay.
+Nine approved zones in this order: The Rice Route Map, Seed Cloud, The Rice Archive, Rice Through Time, How the World Eats Rice, Hands of Rice, The World Within, Rice Mirror, Beyond the Bowl.
 
-### Homepage gallery scale
+One direct nav link. **Never** add the nine zones as a submenu and never restore the numbered 1–9 rail. On mobile, zone visuals are full-bleed to both canvas edges with zero horizontal gutter; text keeps 22px padding above or below. Keep the immersive abstract CSS visuals. Do not invent longer zone claims.
 
-BIRC in pictures image/video placeholders are intentionally 20% larger than the earlier gallery dimensions. Preserve this scale unless explicitly changed.
+### About and Conference
 
-Experience navigation must remain a single direct link. Do not add the nine zones as hamburger submenus or restore a numbered 1–9 rail.
+About flow: hero, mission, three values (Collaboration, Innovation, Leadership), Our Story, results, organisers, Advisory Board, industry overview, industry pillars. On desktop the "Who we are" and "Our Story" headings stay at the top; only body copy is bottom-aligned with the visual.
 
-Experience visual panels must remain full-bleed across the mobile canvas with zero left/right spacing. Text keeps 22px padding above or below the visual.
+Conference flow is fixed: Speakers, Agenda and Schedule, Workshops, Learning Academy. Speakers are implemented and were moved off the homepage. The other three are honest styled placeholders awaiting supplied content. Speaker portraits are symmetrical 3:4 rectangles with no staggered offsets. Speakers and programme headings are left-aligned on desktop.
 
-Experience page styling must match the rest of BIRC: dark hero, linen content body, ink visual panels, gold accents, dark CTA/footer. Keep the immersive abstract zone visuals from the original version, but no numeric rail and no nine-item hamburger submenu.
+## 9. Approved facts, do not change without new source content
 
-Partnership card rule: Sponsorship Package cards and Special Opportunity cards must use the exact same linen background, one-pixel ink border, shadow-free surface, black action bar, expanded divider, and keyboard focus treatment.
+- Dates: **23-24-25 October 2026**. Always written `23-24-25`, never `23–25` or `23-25`.
+- Venue: Bharat Mandapam, Pragati Maidan, New Delhi. Halls 4 and 5. Delegate entry Gate 10.
+- 30,000+ participants, 120+ countries, 250+ speakers, 300+ exhibitors, 3,000+ buyers
+- ₹30,435 Cr in MoUs
+- Nine Experience Zones
+- Venue infrastructure: 5 halls, 50,000+ sqm, 940+ exhibition halls metric, 30+ conference rooms, 900+ parking, 15+ food courts
 
-Partnership styling: Sponsorship Packages and Special Opportunities both use the cream section background and black one-pixel card frames. No card is highlighted by default; the gold outer outline appears only while that card is opened to view benefits. Do not make the Sponsorship Packages section black.
+## 10. Outstanding placeholders
 
-Canonical menu rule: every page uses the same top-level order and styling. Only Exhibition has a dropdown. About, Conference, Experience, Partnership, and Plan Visit are direct links.
-
-Exhibition profile rule: do not show the separate horizontal Rice Millers / Exporters / Traders selector bar. Use the expandable profile list only. Part 1, Part 2, and Part 3 eyebrow labels use the same gold treatment.
-
-Contact social controls use inline SVG icons for Instagram, LinkedIn, Facebook, and X; do not revert them to text initials. The official contact block begins directly with “Reach the BIRC team.” and has no “Contact details” eyebrow.
-
-Visible event date ranges use `23-24-25`, never `23–25` or `23-25`. Influencers sits directly above Partnership and contains exactly Content Creators, Rice Masterchef, and Artists.
-
-Influencer pages must never use navy or blue. Use only the exact design.md ink, raised ink, linen, gold, editorial grey, and muted tokens. Each Influencers submenu item opens its own separate HTML page.
-
-Influencer pages have a zero-blue rule: use `#0d0d0b` ink and `#191916` raised ink for every dark surface. Source-site navy values such as `#17354c`, `#18334b`, and `#0f253a` are forbidden.
-
-Content Creators scoring factors are displayed as five bullet rows, not a matrix. The VIP Creator Pass must always use high-contrast linen heading text on raised ink. In Artists, the four “Tiny Material. Infinite Expression.” tiles are an equal 2 x 2 grid with identical dimensions.
-
-Homepage Register actions open an accessible native dialog with exactly three choices: Register as Visitor (`https://birc.in/register/visitor`), Register as Exhibitor (`https://birc.in/register/exhibitor`), and Register as Buyer (`https://birc.in/register/buyer`). The dialog also links registered users to `https://birc.in/login`. Preserve this chooser instead of sending generic Register buttons directly to one role.
-
-Registration uses one shared minimal two-step page at `register.html?type=visitor|exhibitor|buyer`. Step 1 is identical for all roles: name, company, mobile/country code, WhatsApp match, country, email, remember me. Step 2 is identical: multi-select Industry Type plus declaration. Only the title and submission routing differ by role. Homepage chooser links to these local forms.
-
-## 7. Design decisions that must persist
-
-Follow `design.md` for full details. Important current decisions:
-
-- Fonts: Poppins for display/UI and Inter for body copy.
-- Mobile canvas: maximum width `520px`.
-- Primary colors: ink, linen, and gold.
-- Editorial grey: `#2b2b27`.
-- The old moss green `#566746` has been retired and must not be reintroduced.
-- Editorial grey replaces moss in large background words, programme numbers, and quiet narrative accents.
-- Homepage programme numbers `01`, `02`, `03` use the editorial grey and are intentionally subtle.
-- Header contains the official logo and menu icon only. No Register button in the fixed header.
-- Participation cards are vertically stacked with matching dimensions.
-- Speakers use symmetrical 3:4 portrait rectangles with no staggered offsets.
-- Plan your visit uses an image-free 2 x 2 grid.
-- Final registration CTA uses the supplied rice world-map image at `assets/rice-world-map.png`, replacing both the original 3D grains and the temporary Rice Current.
-- Motion must be purposeful and reduced-motion-safe.
-
-## 8. Content handling rules
-
-When the user supplies an HTML page with correct content but incorrect styling:
-
-1. Extract and preserve all meaningful supplied content.
-2. Remove artifact chrome, obsolete inline styling, and conflicting visual systems.
-3. Rebuild it as a separate, editable HTML page in this repository.
-4. Apply `design.md` without losing or rewriting content.
-5. Add the page to navigation where requested.
-6. Update cross-page links on all existing pages.
-7. Update `context.md` in the same change.
-8. Publish and verify GitHub Pages.
-
-Do not merge every page into `index.html`. Separate pages are intentional so they remain easy to edit.
-
-## 9. Content placeholders
-
-Some current content is intentionally placeholder content because final assets were not supplied:
+Do not present these as verified facts and do not invent replacements:
 
 - Speaker portraits
 - About organiser logos
-- About Advisory Board names, titles, and portraits
-- Conference Agenda and Schedule content
-- Conference Workshops content
-- Conference Learning Academy content
-- Exhibition page and all its content
+- About Advisory Board names, titles, portraits
+- Conference Agenda and Schedule, Workshops, Learning Academy content
 - Instagram and LinkedIn URLs
-
-Do not present placeholders as verified facts. Replace them only with supplied approved content.
-
-## 10. Current factual and copy constraints
-
-Approved recurring facts currently include:
-
-- Event dates: 23-24-25 October 2026
-- Venue: Bharat Mandapam, Halls 4 and 5, New Delhi
-- 30,000+ participants
-- 120+ countries
-- 250+ speakers
-- 300+ exhibitors
-- ₹30,435 Cr in MoUs
-- Nine Experience Zones
-
-Do not change these without explicit updated content from the user.
+- Homepage Login and WhatsApp destination URLs
+- Partner logos on Partnership (placeholder marquee)
+- Hotel names on Plan Visit (currently Hotel A / Hotel B)
 
 ## 11. Change checklist
 
-Every material edit must include:
+Every material edit must:
 
-- Change the correct source HTML file.
-- Keep the navigation consistent across all pages.
-- Follow `design.md`.
-- Preserve approved content.
-- Update `context.md` with new pages, removed sections, changed links, pending items, or design decisions.
-- Commit changes to `main`.
-- Trigger GitHub Pages publishing when appropriate.
-- Verify the live page, not only the repository commit.
+1. Change the correct file, and only that file.
+2. Keep navigation consistent across every page in that experience.
+3. Follow `design.md`.
+4. Preserve approved content.
+5. Leave mobile untouched during desktop work unless explicitly asked.
+6. Update `context.md` in the same change.
+7. Commit to `main` and trigger publishing.
+8. Verify the live URL, not the commit.
 
 ## 12. How to update this file
 
-Update `context.md` whenever any of these happen:
+Update it whenever a page is added, renamed, moved, or deleted; a section moves between pages; navigation changes; a placeholder is replaced; design tokens change; a permanent asset or external URL is introduced; deployment changes; or the user establishes a new standing rule.
 
-- a page is added, renamed, moved, or deleted
-- a section moves between pages
-- navigation or submenu structure changes
-- a placeholder is replaced with final content
-- design tokens or fonts change
-- a new permanent asset or external URL is introduced
-- deployment architecture changes
-- a major UI or motion decision is approved
-- the user establishes a new standing project rule
-
-Keep this file factual and concise enough to scan. Remove stale instructions rather than stacking contradictory history.
+Keep it factual and scannable. **Rewrite stale sections rather than appending contradictory notes at the bottom.** The previous version of this file grew to 23KB of stacked chronology and its opening sections no longer matched the repository.
 
 ## 13. Immediate next work
 
-Expected next steps:
-
-1. Receive Exhibition page content and create `exhibition.html`.
-2. Receive Agenda and Schedule content and add it to `conference.html`.
-3. Receive Workshops content and add it to `conference.html`.
-4. Receive Learning Academy content and add it to `conference.html`.
-5. Replace remaining logos, portraits, names, and social URLs when supplied.
+1. Receive and add Conference Agenda and Schedule content.
+2. Receive and add Conference Workshops content.
+3. Receive and add Conference Learning Academy content.
+4. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
+5. Optional cleanup: delete the ~68 spent one-shot workflow files.
+6. Optional hardening: rebuild `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html` and the About / Conference / Exhibition / Experience set as standalone single-stylesheet documents.
 
 ## 14. New-chat instruction
 
-When starting work in a new chat, use this instruction:
-
-> Read `context.md`, then `design.md`, then inspect the current target file. Treat repository `main` as the source of truth. Preserve supplied content, keep navigation synchronized across pages, update `context.md` with every structural decision, and verify GitHub Pages after publishing.
-
-
-## Exhibition display rule
-
-Exhibition is a hash-driven single-section experience. Selecting a submenu or section switcher item shows only that section and hides the other two. The default view is Why exhibit. Do not return it to one long scrolling page unless explicitly requested.
-
-All three Exhibition views use the same black/ink background system. Do not switch Exhibitor Profile or Space Rental back to linen; only gold, linen text, muted grey, and editorial grey may vary within the dark surfaces.
-- Registration flow: every homepage registration CTA opens a native chooser for Visitor, Exhibitor, or Buyer; each choice routes to `register.html?type=<role>`.
-## Desktop homepage architecture
-
-- `index.html` remains the mobile homepage and source for shared homepage content.
-- `desktop.html` is the dedicated desktop homepage, currently the only desktop-specific page.
-- Automatic routing chooses desktop at 900px+ with a fine pointer and mobile below that. Manual Desktop view and Mobile view controls override detection for the browser session.
-- For now, secondary pages remain their existing mobile implementations.
-- Desktop homepage content and registration behavior must stay synchronized with `index.html`.
-- Desktop homepage v2 uses desktop-native section compositions, bounded 1440px rhythm, non-obstructive header actions, compact statistics, aligned date composition, and no floating desktop CTA/dock.
-- Desktop homepage v4 was rebuilt with one clean 1240px editorial grid and audited section-by-section for hierarchy, alignment, overflow, interaction placement, and desktop readability. Artifact editing chrome is excluded from the published desktop page.
-## Supplied influencer source documents audit (2026-08-08)
-
-The mobile Content Creators, Rice Masterchef, and Artists pages were checked against the three supplied BIRC source documents. Missing approved application fields, qualification details, process steps, access rules, FAQs, Rice Art opportunity sections, curatorial journey, and Why BIRC content were added. Desktop files were not changed.
-## Desktop About page
-
-- `desktop-about.html` is the purpose-built desktop About experience.
-- It preserves the approved mobile About content while using desktop-native hero, mission, three-column values, split story, results, organisers, Advisory Board, industry overview, registration chooser, and quick-action dock.
-- The mobile `about.html` remains unchanged.
-## Desktop Conference and Exhibition pages
-
-- `desktop-conference.html` is the desktop Conference experience, preserving approved speakers and honest placeholders for Agenda, Workshops, and Learning Academy.
-- `desktop-exhibition.html` is the desktop Exhibition experience with hash-driven Why Exhibit, Exhibitor Profile, and Space Rental views.
-- Mobile `conference.html` and `exhibition.html` remain unchanged.
-## Desktop Exhibition routing update
-
-- Desktop Exhibition is split into `desktop-exhibition.html` (Why Exhibit), `desktop-exhibitor-profile.html`, and `desktop-space-rental.html`.
-- The desktop navbar dropdown is the only navigation between those three pages; the side-by-side section switcher was removed.
-- Desktop Conference speaker and programme alignment was corrected.
-- Mobile Conference and Exhibition files remain unchanged.
-
-- Desktop About values heading is left-aligned and the Our Story copy is bottom-aligned with the route visual.
-- The centered yellow Exhibition page label was removed from all three desktop Exhibition pages; navigation remains in the navbar dropdown only.
-## Desktop Experience page
-
-- `desktop-experience.html` is the purpose-built desktop Experience page with all nine approved zones, alternating editorial layouts, preserved abstract visuals, registration chooser, and mobile switch.
-- Mobile `experience.html` remains unchanged.
-## Remaining desktop pages
-
-- Desktop pages now exist for Content Creators, Rice Masterchef, Artists, Partnership, Plan Visit, and Contact.
-- All desktop navigation links route to desktop-specific pages.
-- Mobile source pages remain unchanged.
-
-- 2026-08-08 desktop polish: Masterchef now runs on the Creators desktop system (class aliases + shared layer); Artists apply section and FAQ recoloured for the gold backdrop; Plan Visit venue/hotel/travel blocks gridded; Partnership unwrapped from the mobile card into a full-width desktop grid; Contact enquiry form rebuilt in the Creators form style on desktop-contact.html and mobile contact.html; all copy left-aligned on desktop.
+> Read `context.md`, then `design.md`, then inspect the target file. Treat repository `main` as the source of truth. Author desktop pages as standalone single-stylesheet documents, never as mobile markup with CSS overrides. Do not modify mobile files during desktop work unless explicitly asked. Keep navigation synchronized, preserve approved content, update `context.md` with every structural decision, and verify the live Pages URL after publishing.

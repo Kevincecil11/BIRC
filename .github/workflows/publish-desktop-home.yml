@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-12 after the final balanced purpose-section commit.
+# Re-triggered 2026-08-12 after unified desktop editorial alignment.

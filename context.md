@@ -106,7 +106,7 @@ body { min-width: 1100px }
 
 Desktop homepage masthead is 88px high and uses the official logo at 170 x 55px, a 20% increase from the previous 142 x 46px treatment. The navigation is organized into three deliberate groups: the enlarged brand, a shared utility rail containing Search plus the EY report, Buyer facilitation, and 2026 agenda links, then the countdown, Login, Register, and sandwich menu at the extreme right. The three document labels use the same 11px Poppins weight and tracking as Login and Register; at narrower desktop widths they retain their icons while their labels collapse to keep the header breathable. The sandwich drawer is a single, left-aligned vertical stack: primary links have no numbers, while submenu items retain their small sequence numbers. The Mobile view control is removed from this homepage masthead. The previous full-width bottom action bar is removed; Book your stand and green WhatsApp actions are stacked at the bottom-right. Other desktop pages retain their current inline mastheads until navigation is intentionally synchronized.
 
-Desktop homepage eyebrow titles use 13.2px Poppins, a 20% increase from the previous 11px shared size. The Purpose statement uses a restrained 36-50px scale and explicit line breaks to guarantee exactly three lines on desktop.
+Desktop homepage eyebrow titles use 13.2px Poppins, a 20% increase from the previous 11px shared size. The Purpose section uses a compact editorial rhythm with balanced 3-line copy, 52-66px on wide desktop, reduced section padding, and aligned label/content columns.
 
 ### Left alignment is a standing rule
 

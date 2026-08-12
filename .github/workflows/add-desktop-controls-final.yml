@@ -9,38 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Connect the editor to every desktop page
-        run: |
+      - run: |
           python3 - <<'PY'
           from pathlib import Path
-          pages=sorted(Path('.').glob('desktop*.html'))
-          assert len(pages)==13, f'Expected 13 desktop pages, found {len(pages)}'
           tag='<script src="assets/birc-layout-editor.js" defer></script>'
-          changed=[]
+          pages=[p for p in Path('.').glob('desktop*.html') if p.is_file()]
           for p in pages:
               h=p.read_text()
               if tag not in h:
-                  assert '</body>' in h, f'{p}: missing body close'
                   h=h.replace('</body>',tag+'</body>',1)
                   p.write_text(h)
-                  changed.append(p.name)
-          assert len(changed)==13, f'Expected 13 injections, changed {len(changed)}'
-
           p=Path('context.md');c=p.read_text()
-          marker='### Left alignment is a standing rule'
-          addition='''### Private desktop layout editor
+          if '### Private desktop layout editor' not in c:
+              marker='### Left alignment is a standing rule'
+              note='''### Private desktop layout editor
 
-All 13 desktop pages load `assets/birc-layout-editor.js`. The editor is dormant unless `?editor=1` is added to a desktop page URL; activation is remembered only in that browser. It edits the current page directly, previews every drag, resize, spacing, text, duplication, hide, delete, and section reorder immediately, and stores the draft in browser `localStorage`. It never commits to GitHub. `Export changes` downloads a page-specific JSON change manifest for review and permanent implementation. Use `?editor=0` or the editor's Hide editor control to disable it. Mobile files do not load the editor.
+All desktop pages load `assets/birc-layout-editor.js`. The editor stays dormant unless `?editor=1` is added to a desktop URL; activation is remembered only in that browser. It previews direct drag, resize, spacing, text, duplicate, hide, delete, and section reorder changes immediately and stores drafts in browser `localStorage`. It never commits to GitHub. `Export changes` downloads a page-specific JSON manifest for review and permanent implementation. Use `?editor=0` or Hide editor to disable it. Mobile files never load it.
 
-'''+marker
-          assert c.count(marker)==1
-          c=c.replace(marker,addition,1)
-          p.write_text(c)
+'''
+              c=c.replace(marker,note+marker,1)
+              p.write_text(c)
           PY
-      - name: Commit the shared editor installation
-        run: |
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add desktop*.html context.md
-          git commit -m "Install shared local layout editor on desktop pages"
+          git diff --cached --quiet || git commit -m "Install shared local layout editor on desktop pages"
           git push

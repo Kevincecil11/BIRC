@@ -1,4 +1,4 @@
-name: Upgrade shared desktop editor
+name: Install editor precision upgrade
 
 on:
   push:
@@ -9,68 +9,14 @@ permissions:
   contents: write
 
 jobs:
-  upgrade:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Upgrade editor behavior
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('assets/birc-layout-editor.js')
-          s=p.read_text()
-
-          old="const state={open:false,mode:'select',selected:null,drag:null,history:[],ops:[],applying:false};"
-          new="const state={open:false,mode:'select',selected:null,drag:null,history:[],ops:[],applying:false,snap:true,snapStep:8,grid:true,columns:12,panelDrag:null};"
-          assert s.count(old)==1
-          s=s.replace(old,new)
-          s=s.replace("const snap=n=>Math.round(n/4)*4;","const snap=n=>state.snap?Math.round(n/state.snapStep)*state.snapStep:n;")
-
-          old_css="#bePanel{pointer-events:auto;position:fixed;inset:0 0 0 auto;width:330px;background:var(--be-bg);border-left:1px solid var(--be-line);transform:translateX(102%);transition:transform .35s cubic-bezier(.16,1,.3,1);display:grid;grid-template-rows:58px auto 1fr auto;box-shadow:-22px 0 60px #0008}"
-          new_css="#bePanel{pointer-events:auto;position:fixed;right:18px;top:82px;width:350px;height:min(760px,calc(100vh - 104px));background:var(--be-bg);border:1px solid var(--be-line);transform:translateX(calc(100% + 40px));opacity:0;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .2s;display:grid;grid-template-rows:58px auto 1fr auto;box-shadow:0 22px 60px #0009;resize:both;overflow:hidden}"
-          assert s.count(old_css)==1
-          s=s.replace(old_css,new_css)
-          s=s.replace("#bePanel.open{transform:none}.be-head{display:flex;", "#bePanel.open{transform:none;opacity:1}.be-head{cursor:move;user-select:none;display:flex;")
-          grid_css="#beGridOverlay{position:fixed;z-index:2147483500;inset:0;pointer-events:none;display:none;background-image:linear-gradient(to right,rgba(235,179,65,.2) 1px,transparent 1px),repeating-linear-gradient(to bottom,rgba(235,179,65,.09) 0 1px,transparent 1px 8px);background-size:calc((100vw - 64px)/var(--be-cols,12)) 100%,100% 8px;background-position:32px 0,0 0;clip-path:inset(0 32px)}#beGridOverlay.on{display:block}.be-grid-tools{display:grid;grid-template-columns:auto repeat(3,1fr);gap:4px;align-items:center}.be-grid-tools button{height:30px;border:1px solid var(--be-line);background:var(--be-panel);color:var(--be-muted);font:700 10px Inter,sans-serif;cursor:pointer}.be-grid-tools button.on{border-color:var(--be-gold);color:var(--be-gold)}"
-          marker="[data-be-selected]{outline:3px solid #ebb341!important;outline-offset:-3px!important}[data-be-hover]{outline:1px dashed #c98e25!important;outline-offset:-1px!important}"
-          assert s.count(marker)==1
-          s=s.replace(marker,grid_css+marker)
-
-          old_tools='<div class="be-tools"><div class="be-modes"><button data-mode="select" class="on">Select</button><button data-mode="move">Move</button><button data-mode="resize">Resize</button></div><div class="be-status"><span>Live preview</span><span>Saved locally</span></div></div>'
-          new_tools='<div class="be-tools"><div class="be-modes"><button data-mode="select" class="on">Select</button><button data-mode="move">Move</button><button data-mode="resize">Resize</button></div><div class="be-grid-tools"><button id="beGridToggle" class="on">Grid</button><button data-cols="8">8 col</button><button data-cols="12" class="on">12 col</button><button data-cols="16">16 col</button></div><div class="be-status"><span>8px snap + baseline</span><span>Saved locally</span></div></div>'
-          assert s.count(old_tools)==1
-          s=s.replace(old_tools,new_tools)
-          s=s.replace('<button class="be-btn" id="beDisable">Hide editor</button>','<button class="be-btn" id="beDisable">Minimize</button>')
-          s=s.replace('</aside><div id="beBox" hidden>','</aside><div id="beGridOverlay" class="on" style="--be-cols:12"></div><div id="beBox" hidden>')
-
-          old_handler="$('#beDisable').onclick=()=>{localStorage.removeItem(ENABLE);root.remove();st.remove()};"
-          new_handler="$('#beDisable').onclick=()=>setOpen(false);"
-          assert s.count(old_handler)==1
-          s=s.replace(old_handler,new_handler)
-
-          insert_after="$('#beLaunch').onclick=()=>setOpen(true);$('#beClose').onclick=()=>setOpen(false);\n$('#beDisable').onclick=()=>setOpen(false);"
-          panel_code="""$('#beLaunch').onclick=()=>setOpen(true);$('#beClose').onclick=()=>setOpen(false);
-$('#beDisable').onclick=()=>setOpen(false);
-const head=$('.be-head',panel);
-head.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;e.preventDefault();const r=panel.getBoundingClientRect();state.panelDrag={x:e.clientX,y:e.clientY,left:r.left,top:r.top};panel.style.right='auto';panel.style.bottom='auto';const move=ev=>{const maxX=innerWidth-panel.offsetWidth,maxY=innerHeight-panel.offsetHeight;panel.style.left=Math.max(0,Math.min(maxX,state.panelDrag.left+ev.clientX-state.panelDrag.x))+'px';panel.style.top=Math.max(0,Math.min(maxY,state.panelDrag.top+ev.clientY-state.panelDrag.y))+'px'};const up=()=>{removeEventListener('pointermove',move);removeEventListener('pointerup',up)};addEventListener('pointermove',move);addEventListener('pointerup',up)});
-const gridOverlay=$('#beGridOverlay');
-$('#beGridToggle').onclick=()=>{state.grid=!state.grid;gridOverlay.classList.toggle('on',state.grid);$('#beGridToggle').classList.toggle('on',state.grid)};
-$$('[data-cols]').forEach(b=>b.onclick=()=>{state.columns=+b.dataset.cols;gridOverlay.style.setProperty('--be-cols',state.columns);$$('[data-cols]').forEach(x=>x.classList.toggle('on',x===b));toast(state.columns+' column grid')});"""
-          assert s.count(insert_after)==1
-          s=s.replace(insert_after,panel_code)
-
-          p.write_text(s)
-
-          p=Path('context.md');c=p.read_text()
-          old='It previews direct drag, resize, spacing, text, duplicate, hide, delete, and section reorder changes immediately and stores drafts in browser `localStorage`.'
-          new='It previews direct drag, resize, spacing, text, duplicate, hide, delete, and section reorder changes immediately and stores drafts in browser `localStorage`. The panel can be dragged or resized, Minimize always leaves the Edit layout launcher available, and an 8px baseline plus selectable 8/12/16-column overlay provides visual precision.'
-          assert c.count(old)==1
-          p.write_text(c.replace(old,new))
-          PY
-      - name: Commit upgrade
-        run: |
+      - run: python3 tools/install_layout_editor.py
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/birc-layout-editor.js context.md
-          git commit -m "Make editor movable and add precision grids"
+          git add desktop*.html context.md
+          git commit -m "Install movable editor and precision grids"
           git push

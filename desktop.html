@@ -405,7 +405,7 @@ button.textlink{appearance:none;width:max-content;padding:0;border:0;background:
 .nav-search,.utility-link{height:44px;flex:none;border:0;background:transparent;color:var(--dm);transition:background .18s var(--e),color .18s var(--e)}
 .nav-search{width:46px;display:grid;place-items:center;border-right:1px solid var(--dl);cursor:pointer}
 .nav-search svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
-.utility-link{padding:0 14px;display:inline-flex;align-items:center;gap:9px;border-right:1px solid var(--dl);font:600 9px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.utility-link{padding:0 14px;display:inline-flex;align-items:center;gap:9px;border-right:1px solid var(--dl);font:600 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 .utility-link:last-child{border-right:0}
 .utility-link:hover,.nav-search:hover{background:var(--grey);color:var(--linen)}
 .utility-link svg{width:16px;height:16px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -457,6 +457,19 @@ button.textlink{appearance:none;width:max-content;padding:0;border:0;background:
   .nav-countdown{min-width:136px}
   .tools .solid{padding-inline:14px}
 }
+
+/* simple single-column desktop menu */
+.desktop-menu{width:min(430px,38vw);padding:30px 36px 36px}
+.desktop-menu-head{padding-bottom:24px}
+.desktop-menu-head img{width:150px;height:48px}
+.desktop-menu-grid{display:block;margin-top:18px}
+.desktop-menu .menu-col{display:block}
+.desktop-menu .menu-col>a,.desktop-menu .menu-group>span{min-height:48px;justify-content:flex-start;font:600 16px Poppins,sans-serif;letter-spacing:-.02em}
+.desktop-menu .menu-group>span{color:var(--linen)}
+.desktop-menu .menu-sub{padding:4px 0 12px 18px}
+.desktop-menu .menu-sub a{padding:7px 0;font:500 12px Poppins,sans-serif}
+.desktop-menu .menu-sub i{margin-left:auto}
+.desktop-menu-foot{margin-top:24px;padding-top:20px}
 </style></head>
 <body>
 <div class="topline"><i id="progress"></i></div>
@@ -467,7 +480,7 @@ button.textlink{appearance:none;width:max-content;padding:0;border:0;background:
     <div class="nav-utilities"><button class="nav-search" type="button" aria-label="Search BIRC"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button><a class="utility-link" href="https://api.birc.in/uploads/birc-1781162197449-632024568.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM15 3v4h4M9 11h6M9 15h6"/></svg><span>EY report</span></a><a class="utility-link" href="https://api.birc.in/uploads/birc-1784615646887-946540455.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4zM8 7V5h8v2M4 12h16M10 15h4"/></svg><span>Buyer facilitation</span></a><a class="utility-link" href="https://api.birc.in/uploads/birc-agenda-2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M13 14h3"/></svg><span>2026 agenda</span></a></div>
     <div class="tools"><div class="nav-countdown"><small>Opens in</small><strong id="navClock">00d 00h 00m</strong></div><a class="ghost" href="https://birc.in/login">Login</a><button class="solid" type="button" data-register>Register <span aria-hidden="true">&#8599;</span></button><button class="menu-toggle" id="desktopMenuToggle" type="button" aria-label="Open site menu" aria-expanded="false"><i></i><i></i></button></div></div></header>
 
-<div class="desktop-menu-shade" id="desktopMenuShade"></div><aside class="desktop-menu" id="desktopMenu" aria-label="Site menu"><header class="desktop-menu-head"><img src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"><button class="desktop-menu-close" id="desktopMenuClose" type="button" aria-label="Close site menu">×</button></header><div class="desktop-menu-grid"><nav class="menu-col"><a href="desktop.html">Home <span>01</span></a><a href="desktop-about.html">About <span>02</span></a><a href="desktop-conference.html">Conference <span>03</span></a><div class="menu-group"><span>Exhibition</span><div class="menu-sub"><a href="desktop-exhibition.html">Why exhibit <i>01</i></a><a href="desktop-exhibitor-profile.html">Exhibitor profile <i>02</i></a><a href="desktop-space-rental.html">Space rental <i>03</i></a></div></div><a href="desktop-experience.html">Experience <span>04</span></a></nav><nav class="menu-col"><div class="menu-group"><span>Influencers</span><div class="menu-sub"><a href="desktop-creators.html">Content Creators <i>01</i></a><a href="desktop-rice-masterchef.html">Rice Masterchef <i>02</i></a><a href="desktop-artists.html">Artists <i>03</i></a></div></div><a href="desktop-partnership.html">Partnership <span>05</span></a><a href="desktop-plan-visit.html">Plan Visit <span>06</span></a><a href="desktop-contact.html">Contact <span>07</span></a></nav></div><footer class="desktop-menu-foot"><a href="index.html?view=mobile">Mobile view</a><a href="https://birc.in/login">Login</a></footer></aside><main>
+<div class="desktop-menu-shade" id="desktopMenuShade"></div><aside class="desktop-menu" id="desktopMenu" aria-label="Site menu"><header class="desktop-menu-head"><img src="https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png" alt="BIRC"><button class="desktop-menu-close" id="desktopMenuClose" type="button" aria-label="Close site menu">×</button></header><div class="desktop-menu-grid"><nav class="menu-col"><a href="desktop.html">Home</a><a href="desktop-about.html">About</a><a href="desktop-conference.html">Conference</a><div class="menu-group"><span>Exhibition</span><div class="menu-sub"><a href="desktop-exhibition.html">Why exhibit <i>01</i></a><a href="desktop-exhibitor-profile.html">Exhibitor profile <i>02</i></a><a href="desktop-space-rental.html">Space rental <i>03</i></a></div></div><a href="desktop-experience.html">Experience</a><div class="menu-group"><span>Influencers</span><div class="menu-sub"><a href="desktop-creators.html">Content Creators <i>01</i></a><a href="desktop-rice-masterchef.html">Rice Masterchef <i>02</i></a><a href="desktop-artists.html">Artists <i>03</i></a></div></div><a href="desktop-partnership.html">Partnership</a><a href="desktop-plan-visit.html">Plan Visit</a><a href="desktop-contact.html">Contact</a></nav></div><footer class="desktop-menu-foot"><a href="index.html?view=mobile">Mobile view</a><a href="https://birc.in/login">Login</a></footer></aside><main>
   <section class="hero" id="top">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="shell">

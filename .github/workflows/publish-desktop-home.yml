@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-12 after centering dates and aligning Experience to the square's 01 edge.
+# Re-triggered 2026-08-12 after applying the shared system to all 14 desktop pages.

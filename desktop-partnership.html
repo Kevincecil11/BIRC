@@ -145,4 +145,4 @@
 var rail=document.querySelectorAll('.rail button'),panels=document.querySelectorAll('.panel');
 rail.forEach(function(b){b.addEventListener('click',function(){rail.forEach(function(x){x.setAttribute('aria-selected','false')});b.setAttribute('aria-selected','true');panels.forEach(function(p){p.classList.toggle('on',p.id===b.dataset.t)})})});
 </script>
-<script src="assets/birc-layout-editor.js" defer></script></body></html>
+<script src="assets/birc-layout-editor.js" defer></script><script src="assets/birc-layout-editor-upgrade.js" defer></script></body></html>

@@ -122,4 +122,4 @@
 <script>
 document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var d=new FormData(e.target),topic=String(d.get('subject')||''),to=topic.indexOf('Visiting')>-1?'visit@birc.in':'booking@birc.in';var subject=encodeURIComponent('BIRC 2026: '+topic),body=encodeURIComponent('Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nPhone: '+d.get('phone')+'\n\n'+d.get('message'));document.getElementById('formStatus').textContent='Opening your email app...';location.href='mailto:'+to+'?subject='+subject+'&body='+body});
 </script>
-<script src="assets/birc-layout-editor.js" defer></script></body></html>
+<script src="assets/birc-layout-editor.js" defer></script><script src="assets/birc-layout-editor-upgrade.js" defer></script></body></html>

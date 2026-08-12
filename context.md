@@ -159,11 +159,12 @@ Side-stripe accent borders (`border-left` as decoration) are banned. The Masterc
 
 - `index.html` mobile, `desktop.html` desktop. Content must stay synchronized.
 - Desktop homepage was rebuilt from scratch on one editorial grid. Voices is an interactive quote stage with a four-button selector. Why BIRC is a 2x2 with large background words.
-- Desktop floating controls: visible `Mobile view` header control, floating countdown/Register bar, expandable four-action quick dock.
+- Desktop floating controls: visible `Mobile view` header control plus one full-width bottom bar containing the live countdown and four always-visible actions: Book your stand, Register to visit, Login, and WhatsApp. The separate Register button and expandable `+` dock were removed. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
 - Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.
 - Header holds logo and menu only. No Register button in the mobile fixed header.
+- Public opening time is 10:00 AM daily. Homepage countdowns target 10:00 AM on 23 October 2026.
 
 ### Registration
 

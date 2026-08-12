@@ -1,38 +1,24 @@
-name: Install shared desktop layout editor
+name: Install shared desktop editor
+
 on:
   push:
-    paths: ['.github/workflows/add-desktop-controls-final.yml']
+    paths:
+      - '.github/workflows/add-desktop-controls-final.yml'
+
 permissions:
   contents: write
+
 jobs:
-  apply:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          tag='<script src="assets/birc-layout-editor.js" defer></script>'
-          pages=[p for p in Path('.').glob('desktop*.html') if p.is_file()]
-          for p in pages:
-              h=p.read_text()
-              if tag not in h:
-                  h=h.replace('</body>',tag+'</body>',1)
-                  p.write_text(h)
-          p=Path('context.md');c=p.read_text()
-          if '### Private desktop layout editor' not in c:
-              marker='### Left alignment is a standing rule'
-              note='''### Private desktop layout editor
-
-All desktop pages load `assets/birc-layout-editor.js`. The editor stays dormant unless `?editor=1` is added to a desktop URL; activation is remembered only in that browser. It previews direct drag, resize, spacing, text, duplicate, hide, delete, and section reorder changes immediately and stores drafts in browser `localStorage`. It never commits to GitHub. `Export changes` downloads a page-specific JSON manifest for review and permanent implementation. Use `?editor=0` or Hide editor to disable it. Mobile files never load it.
-
-'''
-              c=c.replace(marker,note+marker,1)
-              p.write_text(c)
-          PY
-      - run: |
+      - name: Install editor
+        run: python3 tools/install_layout_editor.py
+      - name: Commit files
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add desktop*.html context.md
-          git diff --cached --quiet || git commit -m "Install shared local layout editor on desktop pages"
+          git commit -m "Install shared local layout editor on desktop pages"
           git push

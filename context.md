@@ -60,15 +60,15 @@ The site maintains a mobile experience and a separate desktop experience as dist
 - Every desktop page has a `Mobile view` control in the masthead pointing at its own mobile file.
 - **The mobile pages are approved and considered finished. Do not modify a mobile file while working on desktop unless the user explicitly asks for that mobile file to change.**
 
-### Mobile pages (12)
+### Mobile pages (13)
 
-`index.html`, `about.html`, `conference.html`, `exhibition.html`, `experience.html`, `creators.html`, `rice-masterchef.html`, `artists.html`, `partnership.html`, `plan-visit.html`, `contact.html`, `register.html`
+`index.html`, `about.html`, `conference.html`, `exhibition.html`, `experience.html`, `creators.html`, `rice-masterchef.html`, `artists.html`, `partnership.html`, `plan-visit.html`, `contact.html`, `register.html`, `media-coverage.html`
 
 Mobile canvas is capped at `520px` with a centred `.page` wrapper.
 
-### Desktop pages (13)
+### Desktop pages (14)
 
-`desktop.html`, `desktop-about.html`, `desktop-conference.html`, `desktop-exhibition.html`, `desktop-exhibitor-profile.html`, `desktop-space-rental.html`, `desktop-experience.html`, `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html`, `desktop-partnership.html`, `desktop-plan-visit.html`, `desktop-contact.html`
+`desktop.html`, `desktop-about.html`, `desktop-conference.html`, `desktop-exhibition.html`, `desktop-exhibitor-profile.html`, `desktop-space-rental.html`, `desktop-experience.html`, `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html`, `desktop-partnership.html`, `desktop-plan-visit.html`, `desktop-contact.html`, `desktop-media-coverage.html`
 
 ## 5. The most important desktop lesson
 
@@ -163,7 +163,7 @@ Side-stripe accent borders (`border-left` as decoration) are banned. The Masterc
 - Desktop homepage controls: countdown lives in the masthead; Book your stand and the green WhatsApp action with its official mark are stacked at the bottom-right. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
 - Desktop and mobile homepages share a native search dialog with live client-side results and popular queries. Desktop opens it from the navbar search control. Mobile adds Search and Documents icons beside the menu; Documents reveals the same EY report, Buyer facilitation, and 2026 agenda PDFs used on desktop.
-- The previous rotating facts ticker below the hero is replaced on desktop and mobile by a media coverage rail titled `Published across / 80`. It shows clickable publisher marks and ends with a `See the coverage` action; mobile uses horizontal scroll snapping.
+- The previous rotating facts ticker below the hero is replaced on desktop and mobile by a continuously moving media coverage rail titled `Published across / 80`. Every publisher mark is clickable, motion pauses on hover and respects reduced motion. `See the coverage` opens the dedicated local coverage page (`desktop-media-coverage.html` or `media-coverage.html`).
 - Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.
 - Header holds logo and menu only. No Register button in the mobile fixed header.

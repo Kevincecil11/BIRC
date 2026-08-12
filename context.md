@@ -162,6 +162,7 @@ Side-stripe accent borders (`border-left` as decoration) are banned. The Masterc
 - Desktop homepage was rebuilt from scratch on one editorial grid. Voices is an interactive quote stage with a four-button selector. Why BIRC is a 2x2 with large background words.
 - Desktop homepage controls: countdown lives in the masthead; Book your stand and the green WhatsApp action with its official mark are stacked at the bottom-right. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
+- Desktop and mobile homepages share a native search dialog with live client-side results and popular queries. Desktop opens it from the navbar search control. Mobile adds Search and Documents icons beside the menu; Documents reveals the same EY report, Buyer facilitation, and 2026 agenda PDFs used on desktop.
 - Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.
 - Header holds logo and menu only. No Register button in the mobile fixed header.

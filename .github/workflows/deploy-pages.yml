@@ -36,4 +36,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Published desktop navigation and bottom-bar refinement, 2026-08-12.
+# Published desktop width and symmetry refinement, 2026-08-12.

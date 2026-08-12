@@ -13,12 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 tools/finalize_coverage.py
+      - run: python3 tools/scale_desktop_eyebrows.py
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add desktop.html index.html context.md
-          git commit -m "Animate coverage rail and link dedicated pages"
+          git add desktop.html context.md
+          git commit -m "Scale desktop eyebrow titles and compose purpose in two lines"
           git push
-
-# Corrected mobile rail matching and re-run.

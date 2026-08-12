@@ -1,4 +1,4 @@
-name: Apply desktop width and symmetry refinement
+name: Install shared desktop layout editor
 on:
   push:
     paths: ['.github/workflows/add-desktop-controls-final.yml']
@@ -9,61 +9,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
+      - name: Connect the editor to every desktop page
+        run: |
           python3 - <<'PY'
           from pathlib import Path
-          p=Path('desktop.html'); h=p.read_text()
-          css='''
-          /* wide desktop composition */
-          :root{--shell:min(1680px,calc(100% - 64px))}
-          .hero{padding-top:calc(var(--nav) + 58px);padding-bottom:58px}
-          .hero .shell{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
-          .hero-copy{padding-right:24px}
-          .hero h1{max-width:11.5ch;font-size:clamp(64px,5.15vw,100px);line-height:.93}
-          .hero .lede{max-width:54ch}
-          .dossier{width:100%;max-width:680px;justify-self:end}
-          .dossier-head{padding:18px 26px}
-          .spec{grid-template-columns:160px minmax(0,1fr);row-gap:0;padding:0}
-          .spec dt,.spec dd{min-height:58px;display:flex;align-items:center;border-bottom:1px solid var(--dl)}
-          .spec dt{padding-left:26px}
-          .spec dd{justify-content:flex-end;padding-right:26px}
-          .spec dt:nth-last-of-type(1),.spec dd:nth-last-of-type(1){border-bottom:0}
-          .countdown div{padding:24px 8px}
-          .purpose .shell,.sechead,.datelead{grid-template-columns:minmax(220px,20%) minmax(0,1fr);gap:64px}
-          .figures .shell,.difference .shell{grid-template-columns:minmax(340px,25%) minmax(0,1fr);gap:64px}
-          .zones .shell{grid-template-columns:minmax(320px,23%) minmax(0,1fr);gap:64px}
-          .voices .voices-layout,.why-head{grid-template-columns:minmax(280px,22%) minmax(0,1fr);gap:64px}
-          .paths{gap:1px;background:var(--dl);border:1px solid var(--dl)}
-          .path{border:0;min-height:500px}
-          .days{gap:0 64px}
-          .day-col+.day-col{padding-left:64px}
-          .visitgrid{gap:1px;background:var(--ll);border:1px solid var(--ll)}
-          .visit-item,.visit-item+.visit-item{border:0;background:var(--linen)}
-          .programme{gap:1px;background:var(--dl);border:1px solid var(--dl)}
-          .pday,.pday+.pday{border:0;background:var(--ink)}
-          .reasons{gap:1px;background:var(--dl);border:1px solid var(--dl)}
-          .why-section .reason,.why-section .reason:nth-child(odd){border:0;background:var(--ink-2)}
-          .float-time{padding-inline:max(32px,calc((100vw - 1680px)/2))}
-          @media(max-width:1400px){:root{--shell:calc(100% - 64px)}.hero .shell{grid-template-columns:minmax(0,1.08fr) minmax(480px,.92fr);gap:48px}.hero h1{font-size:clamp(60px,5.6vw,84px)}.dossier{max-width:none}}
-          '''
-          assert h.count('</style>')==1
-          h=h.replace('</style>',css+'</style>',1)
-          p.write_text(h)
+          pages=sorted(Path('.').glob('desktop*.html'))
+          assert len(pages)==13, f'Expected 13 desktop pages, found {len(pages)}'
+          tag='<script src="assets/birc-layout-editor.js" defer></script>'
+          changed=[]
+          for p in pages:
+              h=p.read_text()
+              if tag not in h:
+                  assert '</body>' in h, f'{p}: missing body close'
+                  h=h.replace('</body>',tag+'</body>',1)
+                  p.write_text(h)
+                  changed.append(p.name)
+          assert len(changed)==13, f'Expected 13 injections, changed {len(changed)}'
 
-          p=Path('context.md'); c=p.read_text()
-          old='--sh: min(1320px, calc(100% - 112px))   /* content shell */'
-          new='--sh: min(1680px, calc(100% - 64px))    /* homepage wide content shell */'
-          assert c.count(old)==1
-          c=c.replace(old,new)
-          marker='- Section rhythm: `132px` vertical padding on standard sections, `104px + nav` on heroes.'
-          addition=marker+'\n- Desktop homepage uses a wide 1680px shell with 32px minimum side gutters. Its hero is a balanced 1:1 composition: headline and summit dossier align vertically, while the dossier uses a fixed label column, equal row heights, and four equal countdown cells.'
+          p=Path('context.md');c=p.read_text()
+          marker='### Left alignment is a standing rule'
+          addition='''### Private desktop layout editor
+
+All 13 desktop pages load `assets/birc-layout-editor.js`. The editor is dormant unless `?editor=1` is added to a desktop page URL; activation is remembered only in that browser. It edits the current page directly, previews every drag, resize, spacing, text, duplication, hide, delete, and section reorder immediately, and stores the draft in browser `localStorage`. It never commits to GitHub. `Export changes` downloads a page-specific JSON change manifest for review and permanent implementation. Use `?editor=0` or the editor's Hide editor control to disable it. Mobile files do not load the editor.
+
+'''+marker
           assert c.count(marker)==1
-          c=c.replace(marker,addition)
+          c=c.replace(marker,addition,1)
           p.write_text(c)
           PY
-      - run: |
+      - name: Commit the shared editor installation
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add desktop.html context.md
-          git commit -m "Widen desktop layout and balance hero geometry"
+          git add desktop*.html context.md
+          git commit -m "Install shared local layout editor on desktop pages"
           git push

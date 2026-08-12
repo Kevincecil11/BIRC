@@ -36,4 +36,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Published complete editor removal, 2026-08-12.
+# Published desktop header and hero refinement, 2026-08-12.

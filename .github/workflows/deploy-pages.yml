@@ -36,4 +36,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-# Published rebuilt shared editor, 2026-08-12.
+# Published complete editor removal, 2026-08-12.

@@ -99,7 +99,7 @@ body { min-width: 1100px }
 ```
 
 - Section rhythm: `132px` vertical padding on standard sections, `104px + nav` on heroes.
-- Desktop Experience Zones heading sits directly above and aligns with the large visual stage. The three-day statement sits directly above the October/date composition in the same right-hand column and remains three separate lines. Voices uses an automatic four-quote rotation with a right-aligned portrait placeholder, name, and designation. The bottom four-name selector is removed.
+- Desktop Experience Zones heading sits directly above the large visual stage and aligns to the square’s inner content edge near its 01 marker. The complete three-day statement and October/date composition are centered across the page, while the `Three days` eyebrow remains on the left editorial rail. Voices uses an automatic four-quote rotation with a right-aligned portrait placeholder, name, and designation. The bottom four-name selector is removed.
 - Desktop homepage uses a wide 1680px shell with 32px minimum side gutters. Its hero is a balanced 1:1 composition: the copy column and summit dossier have equal 620px height and matching top/bottom edges, while the dossier uses a fixed label column, five equal fact rows, and four equal countdown cells.
 - Breakpoint at `1180px` narrows the shell to `calc(100% - 64px)` and the gutter to `32px`.
 

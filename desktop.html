@@ -555,6 +555,15 @@ body.search-open{overflow:hidden}
 .dates .datelock{margin-left:372px;width:calc(100% - 372px);padding-top:56px}
 @media(max-width:1400px){.zones>.shell:first-child .sechead,.dates .datelead{grid-template-columns:320px minmax(0,1fr);gap:48px}.dates .datelock{margin-left:368px;width:calc(100% - 368px)}}
 @media(max-width:1180px){.zones>.shell:first-child .sechead,.dates .datelead{grid-template-columns:280px minmax(0,1fr);gap:48px}.dates .datelock{margin-left:328px;width:calc(100% - 328px)}.dates .datelead .date-statement{font-size:34px}}
+
+/* final stage-heading positions */
+.zones>.shell:first-child .sechead>div{padding-left:64px}
+.dates .datelead{position:relative;display:block;margin-bottom:36px;text-align:center}
+.dates .datelead .eyebrow{position:absolute;left:0;top:12px;text-align:left}
+.dates .datelead .date-statement{display:inline-block;width:auto;max-width:none;margin:0 auto;text-align:center;font-size:clamp(36px,3vw,48px);line-height:1.08}
+.dates .datelock{margin-left:0;width:100%;text-align:center}
+@media(max-width:1400px){.zones>.shell:first-child .sechead>div{padding-left:64px}}
+@media(max-width:1180px){.zones>.shell:first-child .sechead>div{padding-left:48px}.dates .datelead .date-statement{font-size:34px}}
 </style></head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

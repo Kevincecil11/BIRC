@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-12 after homepage timing and desktop action bar update.
+# Re-triggered 2026-08-12 after desktop navbar and bottom-right action polish.

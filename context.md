@@ -99,12 +99,12 @@ body { min-width: 1100px }
 ```
 
 - Section rhythm: `132px` vertical padding on standard sections, `104px + nav` on heroes.
-- Desktop homepage uses a wide 1680px shell with 32px minimum side gutters. Its hero is a balanced 1:1 composition: headline and summit dossier align vertically, while the dossier uses a fixed label column, equal row heights, and four equal countdown cells.
+- Desktop homepage uses a wide 1680px shell with 32px minimum side gutters. Its hero is a balanced 1:1 composition: the copy column and summit dossier have equal 620px height and matching top/bottom edges, while the dossier uses a fixed label column, five equal fact rows, and four equal countdown cells.
 - Breakpoint at `1180px` narrows the shell to `calc(100% - 64px)` and the gutter to `32px`.
 
 ### Masthead
 
-Desktop homepage masthead uses the logo, a sandwich-menu control, and three utility PDF links: Download EY report, Buyer facilitation, and BIRC 2026 agenda. The drawer contains every main menu plus Exhibition and Influencers submenus. Existing Mobile view, Login, and Register controls remain. Other desktop pages retain their current inline masthead until navigation is intentionally synchronized.
+Desktop homepage masthead uses the official logo, a search icon, three icon-labelled PDF utilities (EY report, Buyer facilitation, 2026 agenda), the live countdown, Login, Register, and a sandwich menu at the extreme right. The Mobile view control is removed from this homepage masthead. The previous full-width bottom action bar is removed; Book your stand and WhatsApp are stacked as floating actions at the right edge. Other desktop pages retain their current inline mastheads until navigation is intentionally synchronized.
 
 ### Left alignment is a standing rule
 
@@ -160,7 +160,7 @@ Side-stripe accent borders (`border-left` as decoration) are banned. The Masterc
 
 - `index.html` mobile, `desktop.html` desktop. Content must stay synchronized.
 - Desktop homepage was rebuilt from scratch on one editorial grid. Voices is an interactive quote stage with a four-button selector. Why BIRC is a 2x2 with large background words.
-- Desktop floating controls: visible `Mobile view` header control plus one full-width bottom bar containing the live countdown and four always-visible actions: Book your stand, Register to visit, Login, and WhatsApp. The separate Register button and expandable `+` dock were removed. Mobile controls remain unchanged.
+- Desktop homepage controls: countdown lives in the masthead; Book your stand and WhatsApp are stacked on the right edge. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
 - Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.

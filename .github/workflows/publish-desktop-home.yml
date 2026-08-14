@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '**.html'
+      - 'assets/**'
       - '.github/workflows/publish-desktop-home.yml'
 
 permissions:
@@ -13,8 +14,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: github-pages-production
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -22,13 +23,21 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+          retention-days: 1
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 600000
+          error_count: 15
+          reporting_interval: 5000
 
-# Re-triggered 2026-08-14 for the Exhibitor value-chain hero artwork and Experience-matched card image geometry.
+# Canonical production deploy. Queue releases instead of cancelling an active Pages deployment.

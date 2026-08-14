@@ -763,6 +763,55 @@ body.search-open{overflow:hidden}
   .zone-atlas .zone-atlas-title p{font-size:13px!important}
 }
 </style>
+<style id="home-zone-title-physical-center">
+/* Keep type left-aligned, place the whole title block at the true page center */
+.zone-atlas .zone-atlas-head{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:220px minmax(0,1fr) 300px!important;
+  gap:48px!important;
+  min-height:190px!important;
+  align-items:end!important;
+}
+.zone-atlas .zone-atlas-head>.eyebrow{
+  grid-column:1!important;
+  align-self:start!important;
+}
+.zone-atlas .zone-atlas-title{
+  grid-column:2 / 4!important;
+  display:contents!important;
+}
+.zone-atlas .zone-atlas-title h2{
+  position:absolute!important;
+  left:50%!important;
+  bottom:0!important;
+  transform:translateX(-50%)!important;
+  width:430px!important;
+  max-width:430px!important;
+  margin:0!important;
+  text-align:left!important;
+  text-wrap:balance!important;
+}
+.zone-atlas .zone-atlas-title p{
+  grid-column:3!important;
+  justify-self:end!important;
+  align-self:end!important;
+  width:100%!important;
+  max-width:30ch!important;
+  margin:0!important;
+  padding:0 0 5px 24px!important;
+  border-left:1px solid var(--ll)!important;
+  text-align:left!important;
+}
+@media(max-width:1400px){
+  .zone-atlas .zone-atlas-head{grid-template-columns:180px minmax(0,1fr) 260px!important;gap:36px!important;min-height:175px!important}
+  .zone-atlas .zone-atlas-title h2{width:390px!important;max-width:390px!important}
+}
+@media(max-width:1180px){
+  .zone-atlas .zone-atlas-head{grid-template-columns:150px minmax(0,1fr) 220px!important;gap:28px!important;min-height:160px!important}
+  .zone-atlas .zone-atlas-title h2{width:350px!important;max-width:350px!important}
+}
+</style>
 </head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

@@ -564,6 +564,18 @@ body.search-open{overflow:hidden}
 .dates .datelock{margin-left:0;width:100%;text-align:center}
 @media(max-width:1400px){.zones>.shell:first-child .sechead>div{padding-left:64px}}
 @media(max-width:1180px){.zones>.shell:first-child .sechead>div{padding-left:48px}.dates .datelead .date-statement{font-size:34px}}
+
+/* desktop-only compact floats and full-page gallery */
+.side-actions{right:14px;bottom:14px;gap:7px}
+.side-action{width:158px;height:46px;padding:0 13px;gap:9px;font-size:8.5px;box-shadow:0 9px 24px #0007}
+.side-action svg{width:18px;height:18px}.side-action.whatsapp svg{width:20px;height:20px}
+.section-tight{min-height:100vh;padding:112px 0 96px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.section-tight .sechead{margin-bottom:48px!important}
+.section-tight .gallery{margin-top:0;overflow:visible}
+.section-tight .gallery-run{gap:10px;align-items:stretch}
+.section-tight .tile,.section-tight .tile:nth-child(even){width:min(72vw,1120px);height:min(68vh,720px);flex:none}
+.section-tight .tile:after{left:22px;bottom:20px;font-size:11px}
+@media(max-width:1400px){.side-actions{right:10px;bottom:10px}.side-action{width:148px;height:44px}.section-tight .tile,.section-tight .tile:nth-child(even){width:78vw;height:66vh}}
 </style></head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

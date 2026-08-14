@@ -1,0 +1,68 @@
+name: Fix Exhibitor card geometry and hero position
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fix-exhibitor-card-geometry-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply exact Experience Zone dimensions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('desktop-exhibitor-profile.html')
+          s=p.read_text(encoding='utf-8')
+          css=r'''<style id="exhibitor-card-geometry-hero-fix">
+          /* Match homepage Experience card geometry exactly */
+          .exhibitor-card,.exhibitor-card-inner{min-height:650px!important}
+          .exhibitor-card-front,.exhibitor-card-back{padding:20px 20px 26px!important}
+          .exhibitor-card .exhibitor-symbol{
+            position:relative!important;
+            width:100%!important;
+            height:auto!important;
+            aspect-ratio:4/3!important;
+            margin:0 0 22px!important;
+            overflow:hidden!important;
+            background:var(--j2)!important;
+            border:1px solid var(--dl)!important;
+          }
+          .exhibitor-card-top{margin-bottom:16px!important}
+          .exhibitor-card-front h3{margin:0!important}
+          .exhibitor-card-front>p{margin-top:11px!important}
+          .exhibitor-flip-hint{bottom:22px!important}
+          /* Temporary hero composition: title anchored to the lower-left */
+          main>.hero{justify-content:flex-end!important;padding-bottom:82px!important}
+          main>.hero>.shell{display:block!important;width:min(1680px,100%)!important}
+          main>.hero>.shell>div{max-width:900px!important;align-self:end!important}
+          main>.hero .eye{margin-bottom:24px!important}
+          main>.hero h1.display{margin:0!important;max-width:none!important;font-size:clamp(66px,6vw,108px)!important}
+          main>.hero .lead{margin-top:24px!important}
+          @media(max-width:1400px){
+            .exhibitor-card,.exhibitor-card-inner{min-height:590px!important}
+            .exhibitor-card-front,.exhibitor-card-back{padding:16px 16px 22px!important}
+            .exhibitor-card-top{margin-bottom:14px!important}
+            .exhibitor-card .exhibitor-symbol{margin-bottom:18px!important}
+            .exhibitor-flip-hint{left:16px!important;right:16px!important;bottom:18px!important}
+            main>.hero{padding-bottom:64px!important}
+          }
+          </style>'''
+          if 'id="exhibitor-card-geometry-hero-fix"' in s:s=re.sub(r'<style id="exhibitor-card-geometry-hero-fix">.*?</style>',css,s,flags=re.S)
+          else:s=s.replace('</head>',css+'\n</head>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop-exhibitor-profile.html
+          git diff --cached --quiet || git commit -m "Match Exhibitor card image geometry and move hero title bottom-left"
+          git push

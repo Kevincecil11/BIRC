@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-14 for the reference-led desktop Experience Zones visual atlas.
+# Re-triggered 2026-08-14 after isolating the Experience Zones atlas from legacy grid rules.

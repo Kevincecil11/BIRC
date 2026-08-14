@@ -1,0 +1,24 @@
+name: Revert mobile and refine desktop homepage
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refine-desktop-home-only.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore mobile homepage before accidental mobile edit
+        run: git checkout c132a31f906658b9b8d55ea53fc91b2df4e0824d -- index.html context.md
+      - run: python3 tools/refine_desktop_floats_gallery.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html desktop.html context.md
+          git commit -m "Revert mobile and refine desktop floating actions and gallery"
+          git push

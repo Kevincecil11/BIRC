@@ -1,0 +1,52 @@
+name: Apply Exhibitor value-chain hero
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/apply-exhibitor-value-chain-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add value-chain hero artwork
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('desktop-exhibitor-profile.html')
+          s=p.read_text(encoding='utf-8')
+          old=r'<section class="hero"><div class="shell"><div><span class="eye">Exhibition · 02</span><h1 class="display">Exhibitor profile</h1><p class="lead">BIRC 2026 at Bharat Mandapam, New Delhi\.</p></div></div></section>'
+          new='''<section class="hero exhibitor-value-hero"><div class="shell"><div class="value-hero-copy"><span class="eye">Exhibition</span><h1 class="display">Exhibitor profile</h1><p class="lead">Eleven industries. One connected global rice value chain.</p></div><div class="value-chain-art" aria-hidden="true"><div class="value-chain-grid">'''+''.join(f'<i style="--n:\'{n:02d}\'"></i>' for n in range(1,21))+'''</div><span class="value-route"></span><b class="value-node n1"></b><b class="value-node n2"></b><b class="value-node n3"></b></div></div></section>'''
+          s,n=re.subn(old,new,s)
+          if n!=1: raise SystemExit(f'hero replacement count {n}')
+          css=r'''<style id="exhibitor-value-chain-hero">
+          .exhibitor-value-hero>.shell{display:grid!important;grid-template-columns:minmax(0,.85fr) minmax(620px,1.15fr)!important;gap:76px!important;align-items:stretch!important;height:100%!important}
+          .value-hero-copy{align-self:end!important;padding-bottom:8px!important;max-width:760px!important}
+          .exhibitor-value-hero h1.display{font-size:clamp(68px,6vw,108px)!important;max-width:none!important}
+          .value-chain-art{position:relative;min-height:610px;align-self:stretch;overflow:hidden;border:1px solid var(--dl);background:var(--j2)}
+          .value-chain-grid{position:absolute;inset:32px;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,1fr);gap:8px;transform:perspective(1100px) rotateY(-8deg);transform-origin:right center}
+          .value-chain-grid i{position:relative;border:1px solid var(--dl);overflow:hidden;background:var(--j)}
+          .value-chain-grid i:before{content:var(--n);position:absolute;left:10px;bottom:7px;color:var(--m);font:600 26px Poppins;letter-spacing:-.05em}
+          .value-chain-grid i:after{content:"";position:absolute;left:10%;right:10%;top:50%;height:1px;background:var(--g);transform:rotate(-12deg)}
+          .value-chain-grid i:nth-child(3n){border-color:var(--g2)}.value-chain-grid i:nth-child(3n):before{color:var(--g)}
+          .value-route{position:absolute;left:5%;right:3%;top:48%;height:2px;background:var(--g);transform:rotate(-8deg);box-shadow:0 0 32px #ebb34155}
+          .value-node{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--g);box-shadow:0 0 0 7px #ebb34122}.value-node.n1{left:14%;top:55%}.value-node.n2{left:53%;top:48%}.value-node.n3{right:10%;top:39%}
+          @media(max-width:1400px){.exhibitor-value-hero>.shell{grid-template-columns:minmax(0,.78fr) minmax(540px,1.22fr)!important;gap:52px!important}.value-chain-art{min-height:560px}.value-chain-grid{inset:24px}}
+          @media(max-width:1180px){.exhibitor-value-hero>.shell{grid-template-columns:minmax(0,.7fr) minmax(500px,1.3fr)!important;gap:38px!important}.value-chain-art{min-height:520px}.value-chain-grid{inset:18px}}
+          </style>'''
+          s=s.replace('</head>',css+'\n</head>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop-exhibitor-profile.html
+          git diff --cached --quiet || git commit -m "Apply Exhibitor value-chain hero artwork"
+          git push

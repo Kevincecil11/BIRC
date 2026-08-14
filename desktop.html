@@ -661,6 +661,51 @@ body.search-open{overflow:hidden}
 @media(max-width:1180px){.zone-atlas-head{grid-template-columns:220px 1fr;gap:40px}.zone-atlas-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.zone-atlas-title p{display:none}.zone-card h3{font-size:22px}.zone-card p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.zone-card,.zone-card-art{transition:none}}
 </style>
+<style id="home-zone-atlas-alignment-fix">
+/* Isolate the new atlas from the legacy rail/stage grid */
+.zones.zone-atlas>.shell{
+  display:block!important;
+  width:var(--shell)!important;
+  margin-inline:auto!important;
+}
+.zone-atlas .zone-atlas-head{
+  display:grid!important;
+  grid-template-columns:320px minmax(0,1fr)!important;
+  gap:64px!important;
+  align-items:end!important;
+  margin:0 0 52px!important;
+  padding:0!important;
+}
+.zone-atlas .zone-atlas-head>.eyebrow{
+  grid-column:1!important;
+  align-self:start!important;
+  padding:12px 0 0!important;
+}
+.zone-atlas .zone-atlas-title{
+  grid-column:2!important;
+  min-width:0!important;
+  padding:0!important;
+}
+.zone-atlas .zone-atlas-title h2{
+  margin:0!important;
+  max-width:12ch!important;
+}
+.zone-atlas .zone-atlas-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  width:100%!important;
+  margin:0!important;
+  clear:both!important;
+}
+.zone-atlas .zone-card{width:auto!important;min-width:0!important;margin:0!important}
+.zone-atlas .zone-atlas-foot{width:100%!important}
+@media(max-width:1400px){
+  .zone-atlas .zone-atlas-head{grid-template-columns:260px minmax(0,1fr)!important;gap:48px!important}
+}
+@media(max-width:1180px){
+  .zone-atlas .zone-atlas-head{grid-template-columns:200px minmax(0,1fr)!important;gap:40px!important}
+}
+</style>
 </head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

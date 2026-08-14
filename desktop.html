@@ -706,6 +706,63 @@ body.search-open{overflow:hidden}
   .zone-atlas .zone-atlas-head{grid-template-columns:200px minmax(0,1fr)!important;gap:40px!important}
 }
 </style>
+<style id="home-zone-heading-center-fix">
+.zone-atlas .zone-atlas-head{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:220px minmax(420px,1fr) 300px!important;
+  gap:48px!important;
+  align-items:end!important;
+  margin-bottom:56px!important;
+}
+.zone-atlas .zone-atlas-head>.eyebrow{
+  grid-column:1!important;
+  grid-row:1!important;
+  align-self:start!important;
+  padding-top:13px!important;
+}
+.zone-atlas .zone-atlas-title{
+  grid-column:2 / 4!important;
+  grid-row:1!important;
+  display:grid!important;
+  grid-template-columns:minmax(420px,1fr) 300px!important;
+  gap:48px!important;
+  align-items:end!important;
+  padding:0!important;
+}
+.zone-atlas .zone-atlas-title h2{
+  justify-self:center!important;
+  width:max-content!important;
+  max-width:none!important;
+  margin:0!important;
+  text-align:center!important;
+  text-wrap:balance!important;
+}
+.zone-atlas .zone-atlas-title p{
+  justify-self:end!important;
+  align-self:end!important;
+  width:100%!important;
+  max-width:30ch!important;
+  margin:0!important;
+  padding:0 0 5px 24px!important;
+  border-left:1px solid var(--ll)!important;
+  color:var(--lm)!important;
+  font-size:15px!important;
+  line-height:1.6!important;
+  text-align:left!important;
+  text-wrap:pretty!important;
+}
+@media(max-width:1400px){
+  .zone-atlas .zone-atlas-head{grid-template-columns:180px minmax(360px,1fr) 260px!important;gap:36px!important}
+  .zone-atlas .zone-atlas-title{grid-template-columns:minmax(360px,1fr) 260px!important;gap:36px!important}
+  .zone-atlas .zone-atlas-title p{font-size:14px!important;padding-left:18px!important}
+}
+@media(max-width:1180px){
+  .zone-atlas .zone-atlas-head{grid-template-columns:150px minmax(330px,1fr) 220px!important;gap:28px!important}
+  .zone-atlas .zone-atlas-title{grid-template-columns:minmax(330px,1fr) 220px!important;gap:28px!important}
+  .zone-atlas .zone-atlas-title p{font-size:13px!important}
+}
+</style>
 </head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>

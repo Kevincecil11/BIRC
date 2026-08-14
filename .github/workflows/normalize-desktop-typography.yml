@@ -1,0 +1,50 @@
+name: Normalize desktop typography
+
+on:
+  push:
+    paths:
+      - 'assets/desktop-typography.css'
+      - '.github/workflows/normalize-desktop-typography.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Link homepage typography system across desktop pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          link = '<link rel="stylesheet" href="assets/desktop-typography.css">'
+          changed = []
+          for path in sorted(Path('.').glob('desktop*.html')):
+              text = path.read_text(encoding='utf-8')
+              if link in text:
+                  continue
+              if '</head>' not in text:
+                  raise RuntimeError(f'Missing </head> in {path}')
+              text = text.replace('</head>', link + '</head>', 1)
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+          print(f'Linked typography system to {len(changed)} desktop pages')
+          for path in changed:
+              print(path)
+          PY
+      - name: Commit normalized pages
+        run: |
+          if git diff --quiet; then
+            echo 'All desktop pages already normalized'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop*.html
+          git commit -m 'Apply homepage typography across desktop pages'
+          git push origin main

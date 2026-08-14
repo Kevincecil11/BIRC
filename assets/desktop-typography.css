@@ -1,0 +1,91 @@
+/* BIRC desktop typography source: desktop homepage */
+:root{
+  --desktop-hero-title:clamp(62px,5vw,96px);
+  --desktop-section-title:clamp(40px,3.4vw,60px);
+  --desktop-subtitle:19px;
+  --desktop-eyebrow:13.2px;
+}
+
+/* Eyebrows: same size, weight, tracking and line height everywhere */
+body .eyebrow,
+body .eye,
+body .ey,
+body .label{
+  font-family:Poppins,sans-serif!important;
+  font-size:var(--desktop-eyebrow)!important;
+  font-weight:600!important;
+  line-height:1!important;
+  letter-spacing:.16em!important;
+  text-transform:uppercase!important;
+}
+
+/* Every desktop landing hero follows the homepage title treatment */
+body main>section:first-child h1,
+body main>section:first-child .display,
+body main>section:first-child .title{
+  font-family:Poppins,sans-serif!important;
+  font-size:var(--desktop-hero-title)!important;
+  font-weight:600!important;
+  line-height:.93!important;
+  letter-spacing:-.06em!important;
+  text-wrap:balance!important;
+}
+
+/* Hero subtitles and supporting leads use the homepage measure */
+body main>section:first-child .lead,
+body main>section:first-child .lede,
+body main>section:first-child .hero-copy>p:not(.tagline),
+body main>section:first-child>div>div>p:not(.tagline){
+  max-width:58ch!important;
+  font-family:Inter,sans-serif!important;
+  font-size:var(--desktop-subtitle)!important;
+  font-weight:300!important;
+  line-height:1.6!important;
+  letter-spacing:0!important;
+}
+
+/* Knowledge topic taglines retain emphasis, but use the same subtitle size */
+body main>section:first-child .tagline{
+  max-width:58ch!important;
+  font-family:Inter,sans-serif!important;
+  font-size:var(--desktop-subtitle)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+  letter-spacing:0!important;
+}
+
+/* Standard section-title scale copied from homepage .d2 */
+body:not(.desktop-search-context) .head h2,
+body:not(.desktop-search-context) .sechead h2,
+body:not(.desktop-search-context) .heading,
+body:not(.desktop-search-context) .stitle,
+body:not(.desktop-search-context) .sessions-head h2,
+body:not(.desktop-search-context) .editorial>div>h2,
+body:not(.desktop-search-context) .scope-head h2,
+body:not(.desktop-search-context) .takeaways h2,
+body:not(.desktop-search-context) .people h2,
+body:not(.desktop-search-context) .faq h2,
+body:not(.desktop-search-context) .related h2{
+  font-family:Poppins,sans-serif!important;
+  font-size:var(--desktop-section-title)!important;
+  font-weight:600!important;
+  line-height:1.02!important;
+  letter-spacing:-.045em!important;
+  text-wrap:balance!important;
+}
+
+body .head .lead,
+body .head .lede,
+body .sechead .lead,
+body .sechead .lede,
+body .sessions-head p{
+  max-width:58ch!important;
+  font-family:Inter,sans-serif!important;
+  font-size:var(--desktop-subtitle)!important;
+  font-weight:300!important;
+  line-height:1.6!important;
+}
+
+@media(max-width:1400px){
+  :root{--desktop-hero-title:clamp(58px,5.4vw,82px)}
+}

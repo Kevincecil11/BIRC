@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-12 after applying the shared system to all 14 desktop pages.
+# Re-triggered 2026-08-14 after mobile dock collision and full-page gallery fixes.

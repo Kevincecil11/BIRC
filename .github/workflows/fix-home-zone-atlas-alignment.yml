@@ -1,0 +1,81 @@
+name: Fix desktop Experience Zones atlas alignment
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fix-home-zone-atlas-alignment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Isolate atlas layout from legacy zone rules
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('desktop.html')
+          s=p.read_text(encoding='utf-8')
+          fix=r'''<style id="home-zone-atlas-alignment-fix">
+          /* Isolate the new atlas from the legacy rail/stage grid */
+          .zones.zone-atlas>.shell{
+            display:block!important;
+            width:var(--shell)!important;
+            margin-inline:auto!important;
+          }
+          .zone-atlas .zone-atlas-head{
+            display:grid!important;
+            grid-template-columns:320px minmax(0,1fr)!important;
+            gap:64px!important;
+            align-items:end!important;
+            margin:0 0 52px!important;
+            padding:0!important;
+          }
+          .zone-atlas .zone-atlas-head>.eyebrow{
+            grid-column:1!important;
+            align-self:start!important;
+            padding:12px 0 0!important;
+          }
+          .zone-atlas .zone-atlas-title{
+            grid-column:2!important;
+            min-width:0!important;
+            padding:0!important;
+          }
+          .zone-atlas .zone-atlas-title h2{
+            margin:0!important;
+            max-width:12ch!important;
+          }
+          .zone-atlas .zone-atlas-grid{
+            display:grid!important;
+            grid-template-columns:repeat(3,minmax(0,1fr))!important;
+            width:100%!important;
+            margin:0!important;
+            clear:both!important;
+          }
+          .zone-atlas .zone-card{width:auto!important;min-width:0!important;margin:0!important}
+          .zone-atlas .zone-atlas-foot{width:100%!important}
+          @media(max-width:1400px){
+            .zone-atlas .zone-atlas-head{grid-template-columns:260px minmax(0,1fr)!important;gap:48px!important}
+          }
+          @media(max-width:1180px){
+            .zone-atlas .zone-atlas-head{grid-template-columns:200px minmax(0,1fr)!important;gap:40px!important}
+          }
+          </style>'''
+          if 'id="home-zone-atlas-alignment-fix"' in s:
+              s=re.sub(r'<style id="home-zone-atlas-alignment-fix">.*?</style>',fix,s,flags=re.S)
+          else:
+              s=s.replace('</head>',fix+'\n</head>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html
+          git diff --cached --quiet || git commit -m "Fix Experience Zones atlas overlap and alignment"
+          git push

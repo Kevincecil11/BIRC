@@ -1,0 +1,116 @@
+name: Add Experience Zone read more
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/add-zone-read-more.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add shared inline detail reader
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, json, html
+
+          p=Path('desktop.html')
+          s=p.read_text(encoding='utf-8')
+
+          content={
+          'The Rice Route Map':{
+            'kicker':'From Indian Fields to the World',
+            'paras':["Rice begins its journey in India’s fields, but its story does not end there. This giant world map traces the movement of Indian rice across continents, following the routes that connect farms to kitchens, markets and communities around the world.","Every line represents a journey. Every destination reflects a growing global connection with Indian rice. From the heartlands where rice is cultivated to the ports from where it travels across oceans, the map brings India’s export story to life.","One grain. Many routes. A world connected by rice."]},
+          'Seed Cloud':{
+            'kicker':'Innovation & Data',
+            'paras':['A cloud of capsules. A network of intelligence.']},
+          'The Rice Archive':{
+            'kicker':'200 Varieties. One Cultural Landscape.',
+            'paras':["Every grain has a story. Each miniature jute sack holds a distinct variety, shaped by its soil, climate, water and generations of hands. Some are fragrant, some resilient, some ancient and some rare.","Suspended above, traditional tarazus recall the markets where harvests were weighed, exchanged and celebrated. Here, they become symbols of a legacy extending far beyond commerce.","The archive presents rice as a living expression of biodiversity, culture and memory. Every variety reflects a landscape, a way of life and a chapter in the shared story of food.","In these grains, diversity is not an exception. It is the heritage we continue to grow."]},
+          'Rice Through Time':{
+            'kicker':'One Grain. 10,000 Years.',
+            'paras':["From a wild grass to one of the world’s most important crops, rice has evolved alongside human civilisation. This journey traces 10,000 years, from early domestication and the birth of farming to the cultures and trade networks rice helped shape.","Walk through changing varieties, the move from traditional farming to mechanised agriculture and the breakthroughs of the Green Revolution. Then follow rice beyond the field, across borders and continents.","Emerging technologies, new varieties and smarter cultivation point towards a future where rice must feed a growing world while responding to a changing planet.","From wild grain to global staple. From ancient fields to future farms. The story of rice is still evolving."]},
+          'How the World Eats Rice':{
+            'kicker':'Different Tables. One Connecting Grain.',
+            'paras':["A single grain can feed billions, yet around the world it is welcomed to the table in countless ways. This shared table journeys across cultures, with every place setting telling a story.","In Japan, rice is served with quiet precision. In India, it is often enjoyed with the hands. Across the Middle East, generous platters bring families together. In Italy, rice arrives in carefully composed courses, while in Mexico communal bowls turn meals into celebration.","From the cutlery we hold to the bowls, plates and platters carrying each dish, every tradition reflects culture, history and identity. Rice is universal, but no two cultures experience it in quite the same way."]},
+          'Hands of Rice':{
+            'kicker':'The Human Story of Every Grain',
+            'paras':["Every grain passes through countless hands before reaching the plate. Between seed and meal lies a choreography of human gestures, repeated across generations and essential to everyday life.","Each sculpted hand captures a moment in the journey: preparing soil, sowing seed, touching water, nurturing growth, harvesting, milling, carrying, cooking and finally serving.","In India, hands symbolise labour, craftsmanship, generosity and cultural memory. They carry knowledge forward, preserve traditions and bring communities together.","This installation honours the people behind every grain and reminds us that rice is not merely a crop, but a living story of resilience, care and human connection."]},
+          'The World Within':{
+            'kicker':'A Universe Hidden in a Single Grain',
+            'paras':["What surrounds you has always existed, hidden within a single grain of rice. Invisible to the naked eye, every grain holds intricate cellular structures, crystalline formations and natural geometries.","Here, the invisible is brought to human scale. Scientific imagery becomes an immersive landscape, allowing the hidden architecture of rice to unfold around you as the boundary between science and art dissolves.","Sometimes, the smallest grain holds the greatest universe."]},
+          'Rice Mirror':{
+            'kicker':'See Yourself. See Rice Differently.',
+            'paras':["Stand in front of the screen. AI scans your silhouette and reconstructs you, not with pixels, but with thousands of floating rice grains.","As you move, the grains respond. They fall away, gather, grow and flow. Your silhouette transforms into rice fields, rivers, maps and landscapes, showing how one grain connects people, places and the planet.","For a moment, you become rice. One grain, infinite stories."]},
+          'Beyond the Bowl':{
+            'kicker':'One Grain, Infinitely More Than Food',
+            'paras':["Every grain begins as food, yet few continue to ask what else it can become. Beyond the fields and the plate lies a story of remarkable transformation.","Rice becomes skincare, textiles, design, sustainable materials and everyday objects made with purpose and imagination. Borrowing the visual language of luxury retail, the installation elevates the familiar into the extraordinary.","The journey does not end at harvest. It continues through science, craftsmanship and creativity, revealing possibilities hidden in what we thought we already knew.","Look beyond the bowl and discover a world where one grain becomes infinitely more than food."]}
+          }
+
+          section_match=re.search(r'(<section class="zones zone-atlas light" id="zones">.*?</section>)(\s*<section class="dates section">)',s,re.S)
+          if not section_match: raise SystemExit('Zone atlas section not found')
+          section=section_match.group(1)
+
+          def card_repl(m):
+              title=html.unescape(m.group(1))
+              inner=m.group(2)
+              key=title
+              if key not in content: raise SystemExit('Missing content for '+key)
+              inner=re.sub(r'<span class="zone-card-arrow" aria-hidden="true">↗</span>',f'<button class="zone-read" type="button" data-zone="{html.escape(key)}" aria-expanded="false">Read more <span aria-hidden="true">+</span></button>',inner)
+              return f'<article class="zone-card" data-zone-card="{html.escape(key)}">{inner}</article>'
+
+          section,n=re.subn(r'<a class="zone-card" href="desktop-experience\.html" aria-label="Explore ([^"]+)">(.*?)</a>',card_repl,section,flags=re.S)
+          if n!=9: raise SystemExit(f'Expected 9 cards, changed {n}')
+
+          reader='''<section class="zone-reader" id="zoneReader" hidden aria-live="polite"><header class="zone-reader-head"><div><span id="zoneReaderIndex">Experience Zone</span><h3 id="zoneReaderTitle"></h3><p id="zoneReaderKicker"></p></div><button type="button" id="zoneReaderClose" aria-label="Close zone details">×</button></header><div class="zone-reader-body" id="zoneReaderBody"></div><footer><a href="desktop-experience.html">Explore the full Experience Zones page ↗</a></footer></section>'''
+          section=section.replace('</div><footer class="zone-atlas-foot">','</div>'+reader+'<footer class="zone-atlas-foot">',1)
+          s=s[:section_match.start(1)]+section+s[section_match.end(1):]
+
+          css=r'''<style id="zone-read-more-system">
+          .zone-card{display:block!important}
+          .zone-card-copy{grid-template-columns:minmax(0,1fr) auto!important}
+          .zone-read{min-height:38px;padding:0 12px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ll);background:transparent;color:var(--gold-deep);font:600 9px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .18s var(--e),color .18s var(--e),border-color .18s var(--e)}
+          .zone-read span{font-size:16px;line-height:1;transition:transform .25s var(--e)}
+          .zone-read:hover,.zone-read:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+          .zone-read[aria-expanded="true"] span{transform:rotate(45deg)}
+          .zone-card:hover .zone-read{border-color:var(--dl);color:var(--gold)}
+          .zone-reader{margin:1px 0 0;padding:40px 44px 38px;background:var(--ink);color:var(--linen);border:1px solid var(--dl)}
+          .zone-reader[hidden]{display:none!important}
+          .zone-reader-head{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:32px;align-items:start;padding-bottom:28px;border-bottom:1px solid var(--dl)}
+          .zone-reader-head>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:12px 42px;align-items:start}
+          .zone-reader-head>div>span{grid-column:1;color:var(--gold);font:600 9px Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;padding-top:10px}
+          .zone-reader-head h3{grid-column:2;font:600 clamp(38px,3vw,54px)/.96 Poppins,sans-serif;letter-spacing:-.05em}
+          .zone-reader-head p{grid-column:2;margin-top:4px;color:var(--gold);font:600 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+          .zone-reader-head button{width:46px;height:46px;border:1px solid var(--dl);background:transparent;color:var(--linen);font-size:23px;cursor:pointer}
+          .zone-reader-head button:hover{border-color:var(--gold);color:var(--gold)}
+          .zone-reader-body{padding:32px 0 10px 222px;columns:2;column-gap:56px;column-rule:1px solid var(--dl)}
+          .zone-reader-body p{break-inside:avoid;margin:0 0 20px;color:var(--dm);font-size:15px;line-height:1.7;max-width:65ch}
+          .zone-reader footer{margin:22px 0 0 222px;padding-top:22px;border-top:1px solid var(--dl)}
+          .zone-reader footer a{color:var(--gold);font:600 10px Poppins,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+          @media(max-width:1280px){.zone-reader{padding:32px}.zone-reader-head>div{grid-template-columns:140px 1fr;gap:12px 30px}.zone-reader-body{padding-left:170px;column-gap:38px}.zone-reader footer{margin-left:170px}}
+          @media(prefers-reduced-motion:reduce){.zone-read span{transition:none}}
+          </style>'''
+          if 'id="zone-read-more-system"' in s:s=re.sub(r'<style id="zone-read-more-system">.*?</style>',css,s,flags=re.S)
+          else:s=s.replace('</head>',css+'\n</head>',1)
+
+          data=json.dumps(content,ensure_ascii=False).replace('</','<\\/')
+          js=f'''<script id="zone-read-more-script">(function(){{var data={data},reader=document.getElementById('zoneReader'),title=document.getElementById('zoneReaderTitle'),kicker=document.getElementById('zoneReaderKicker'),body=document.getElementById('zoneReaderBody'),index=document.getElementById('zoneReaderIndex'),close=document.getElementById('zoneReaderClose'),buttons=[].slice.call(document.querySelectorAll('.zone-read'));function esc(v){{var d=document.createElement('div');d.textContent=v;return d.innerHTML}}function shut(){{reader.hidden=true;buttons.forEach(function(b){{b.setAttribute('aria-expanded','false')}})}}buttons.forEach(function(b,i){{b.addEventListener('click',function(){{var key=b.dataset.zone,item=data[key],already=b.getAttribute('aria-expanded')==='true';if(already){{shut();return}}buttons.forEach(function(x){{x.setAttribute('aria-expanded','false')}});b.setAttribute('aria-expanded','true');index.textContent='Experience Zone '+String(i+1).padStart(2,'0')+' / 09';title.textContent=key;kicker.textContent=item.kicker;body.innerHTML=item.paras.map(function(p){{return '<p>'+esc(p)+'</p>'}}).join('');reader.hidden=false;requestAnimationFrame(function(){{reader.scrollIntoView({{behavior:'smooth',block:'center'}})}})}})}});close.addEventListener('click',shut);document.addEventListener('keydown',function(e){{if(e.key==='Escape'&&!reader.hidden)shut()}})}})();</script>'''
+          if 'id="zone-read-more-script"' in s:s=re.sub(r'<script id="zone-read-more-script">.*?</script>',js,s,flags=re.S)
+          else:s=s.replace('</body>',js+'\n</body>',1)
+
+          p.write_text(s,encoding='utf-8')
+          print('Added read-more controls and full inline reader for all 9 zones.')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop.html
+          git diff --cached --quiet || git commit -m "Add full read-more content for all nine Experience Zones"
+          git push

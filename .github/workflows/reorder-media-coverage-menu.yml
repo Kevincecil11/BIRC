@@ -1,0 +1,106 @@
+name: Reorder Media Coverage menu link
+
+on:
+  push:
+    paths:
+      - '.github/workflows/reorder-media-coverage-menu.yml'
+      - 'assets/knowledge-render.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reorder:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Place Media Coverage after Influencers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          mobile_files = {
+            'index.html','about.html','conference.html','exhibition.html','experience.html',
+            'creators.html','rice-masterchef.html','artists.html','partnership.html',
+            'plan-visit.html','contact.html','register.html','media-coverage.html'
+          }
+
+          changed=[]
+          inspected=[]
+          for path in sorted(Path('.').glob('desktop*.html')) + [Path(x) for x in sorted(mobile_files) if Path(x).exists()]:
+              text=path.read_text(encoding='utf-8')
+              original=text
+              desktop=path.name.startswith('desktop')
+              href='desktop-media-coverage.html' if desktop else 'media-coverage.html'
+              label='Media Coverage'
+
+              # Only edit sandwich/drawer navigation, never footer or content links.
+              nav_patterns=[
+                r'(<nav class="(?:shared-nav|menu-col|canonical-nav)".*?</nav>)',
+                r'(<nav>.*?</nav>)'
+              ]
+              def fix_nav(nav):
+                  # Remove an existing Media Coverage item wherever it currently sits.
+                  nav=re.sub(r'<a href="(?:desktop-)?media-coverage\.html">Media [Cc]overage</a>','',nav)
+                  media=f'<a href="{href}">{label}</a>'
+                  # Preferred target: after complete Influencers group.
+                  patterns=[
+                    r'(Influencers</span><div class="(?:menu-sub|shared-sub)">.*?</div></div>)',
+                    r'(Influencers <small>⌄</small></button><div class="influencer-sub">.*?</div></div>)',
+                    r'(Influencers</span></div>)',
+                    r'(<a href="(?:desktop-)?creators\.html">Influencers</a>)'
+                  ]
+                  for pattern in patterns:
+                      nav,n=re.subn(pattern,lambda m:m.group(1)+media,nav,count=1,flags=re.S)
+                      if n:
+                          return nav,True
+                  return nav,False
+
+              done=False
+              for pattern in nav_patterns:
+                  def repl(m):
+                      nonlocal_box[0],ok=fix_nav(m.group(1))
+                      nonlocal_box[1]=nonlocal_box[1] or ok
+                      return nonlocal_box[0]
+                  nonlocal_box=['',False]
+                  text,n=re.subn(pattern,repl,text,count=1,flags=re.S)
+                  if n and nonlocal_box[1]:
+                      done=True
+                      break
+
+              if not done:
+                  # Pages with a plain drawer nav but no class.
+                  m=re.search(r'(<aside class="drawer".*?<nav>)(.*?)(</nav>)',text,re.S)
+                  if m:
+                      body,ok=fix_nav(m.group(2))
+                      if ok:
+                          text=text[:m.start()]+m.group(1)+body+m.group(3)+text[m.end():]
+                          done=True
+
+              inspected.append((path.name,done))
+              if done and text!=original:
+                  path.write_text(text,encoding='utf-8')
+                  changed.append(path.name)
+
+          print('Changed:',len(changed))
+          for p in changed: print(' ',p)
+          missed=[p for p,ok in inspected if not ok]
+          print('No Influencers target found:',len(missed))
+          for p in missed: print(' ',p)
+          PY
+      - name: Commit menu order
+        run: |
+          if git diff --quiet; then
+            echo 'Menu order already correct'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop*.html index.html about.html conference.html exhibition.html experience.html creators.html rice-masterchef.html artists.html partnership.html plan-visit.html contact.html register.html media-coverage.html
+          git commit -m 'Place Media Coverage after Influencers in desktop and mobile menus'
+          git push origin main

@@ -169,7 +169,8 @@ Side-stripe accent borders (`border-left` as decoration) are banned. The Masterc
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
 - Desktop and mobile homepages share a native search dialog with live client-side results and popular queries. Desktop opens it from the navbar search control. Mobile adds Search and Documents icons beside the menu; Documents reveals the same EY report, Buyer facilitation, and 2026 agenda PDFs used on desktop.
 - The previous rotating facts ticker below the hero is replaced on desktop and mobile by a continuously moving media coverage rail titled `Published across / 80`. Every publisher mark is clickable, motion pauses on hover and respects reduced motion. `See the coverage` opens the dedicated local coverage page (`desktop-media-coverage.html` or `media-coverage.html`).
-- Gallery placeholders are intentionally 20% larger than the original gallery. Preserve.
+- Mobile homepage floating controls use a compact 46px toggle and 40px actions, raised above the sticky countdown bar with reserved right-side space so controls never overlap.
+- Mobile `BIRC in pictures` is a full-viewport chapter with near-canvas-width, tall image placeholders (62svh, capped at 620px) rather than a short strip.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.
 - Header holds logo and menu only. No Register button in the mobile fixed header.
 - Public opening time is 10:00 AM daily. Homepage countdowns target 10:00 AM on 23 October 2026.

@@ -617,6 +617,50 @@ body.search-open{overflow:hidden}
 .footer .exhibition-menu a:hover{color:var(--gold)!important}
 .footer .exhibition-menu span{color:var(--gold-deep)!important;font-size:10px!important}
 </style>
+<style id="home-zone-grid-reference">
+/* Reference-led 3x3 zone atlas, translated into BIRC's ink, linen and gold system */
+.zones.zone-atlas{padding:124px 0 136px;background:var(--linen);color:var(--ink)}
+.zone-atlas-head{display:grid;grid-template-columns:320px minmax(0,1fr);gap:64px;align-items:end;margin-bottom:52px}
+.zone-atlas-head .eyebrow{align-self:start;padding-top:12px;color:var(--gold-deep)}
+.zone-atlas-title{display:flex;align-items:end;justify-content:space-between;gap:40px}
+.zone-atlas-title h2{font:600 clamp(48px,4.1vw,72px)/.94 Poppins,sans-serif;letter-spacing:-.06em;max-width:12ch}
+.zone-atlas-title p{max-width:31ch;color:var(--lm);font-size:16px;line-height:1.55;text-align:right}
+.zone-atlas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--ll);border:1px solid var(--ll)}
+.zone-card{position:relative;min-width:0;padding:20px 20px 26px;background:var(--linen);color:var(--ink);overflow:hidden;transition:background .28s var(--e),color .28s var(--e)}
+.zone-card:hover,.zone-card:focus-visible{background:var(--ink);color:var(--linen);outline:none}
+.zone-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--lm)}
+.zone-card:hover .zone-card-top,.zone-card:focus-visible .zone-card-top{color:var(--gold)}
+.zone-card-art{position:relative;width:100%;aspect-ratio:4/3;margin-bottom:22px;overflow:hidden;background:var(--ink-3);border:1px solid var(--dl);transition:transform .55s var(--e)}
+.zone-card:hover .zone-card-art,.zone-card:focus-visible .zone-card-art{transform:scale(1.025)}
+.zone-card-art:after{content:"";position:absolute;inset:14px;border:1px solid #faf0e612;pointer-events:none}
+.zone-card h3{font:600 clamp(22px,1.7vw,30px)/1.05 Poppins,sans-serif;letter-spacing:-.045em}
+.zone-card-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end;margin-top:11px}
+.zone-card p{color:var(--lm);font-size:13px;line-height:1.5;max-width:31ch;transition:color .28s var(--e)}
+.zone-card:hover p,.zone-card:focus-visible p{color:var(--dm)}
+.zone-card-arrow{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--ll);color:var(--gold-deep);font-size:16px;transition:background .2s var(--e),color .2s var(--e),border-color .2s var(--e)}
+.zone-card:hover .zone-card-arrow,.zone-card:focus-visible .zone-card-arrow{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.za-route .globe{position:absolute;width:58%;aspect-ratio:1;border:1px solid var(--dl);border-radius:50%;left:50%;top:47%;transform:translate(-50%,-50%)}
+.za-route .globe:before,.za-route .globe:after{content:"";position:absolute;inset:17% 0;border-block:1px solid var(--dl);border-radius:50%}
+.za-route .globe:after{inset:0 31%;border:0;border-inline:1px solid var(--dl)}
+.za-route .trail{position:absolute;left:11%;right:9%;top:47%;height:1px;background:var(--gold);transform:rotate(-15deg)}
+.za-route .trail:after{content:"";position:absolute;right:0;top:-5px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.za-cloud i{position:absolute;width:18px;height:52px;border:1px solid var(--gold);border-radius:100% 0 100% 0;left:var(--x);top:var(--y);transform:rotate(var(--r))}
+.za-archive{display:grid;grid-template-columns:repeat(7,1fr);gap:11px;padding:54px 48px}
+.za-archive i{position:relative;aspect-ratio:1;border:1px solid var(--dl);border-radius:50%}.za-archive i:nth-child(4n){border-color:var(--gold)}
+.za-time:before{content:"";position:absolute;left:10%;right:10%;top:50%;height:1px;background:var(--dl)}
+.za-time i{position:absolute;top:calc(50% - 7px);left:var(--x);width:14px;height:14px;background:var(--gold);border-radius:50%}
+.za-table i{position:absolute;width:62px;height:62px;border:1px solid var(--gold);border-radius:50%;left:var(--x);top:var(--y)}
+.za-hands i{position:absolute;width:96px;height:190px;border:1px solid var(--gold);border-radius:50% 50% 12px 12px;top:23%}.za-hands i:first-child{left:27%;transform:rotate(30deg)}.za-hands i:last-child{right:27%;transform:rotate(-30deg)}
+.za-within i{position:absolute;width:46%;height:72%;border:1px solid var(--gold);border-radius:100% 0 100% 0;left:50%;top:48%;transform:translate(-50%,-50%) rotate(34deg)}
+.za-within i:before,.za-within i:after{content:"";position:absolute;inset:20%;border:1px solid var(--dl);border-radius:inherit}.za-within i:after{inset:39%}
+.za-mirror i{position:absolute;inset:17%;border:1px solid var(--dl);background:repeating-radial-gradient(circle at center,transparent 0 13px,#ebb3412e 14px 15px)}
+.za-window i{position:absolute;inset:19%;border:1px solid var(--gold)}.za-window i:before,.za-window i:after{content:"";position:absolute;background:var(--gold)}.za-window i:before{width:1px;inset:0 auto 0 50%}.za-window i:after{height:1px;inset:50% 0 auto}
+.zone-atlas-foot{margin-top:36px;padding-top:24px;border-top:1px solid var(--ll);display:flex;align-items:center;justify-content:space-between;color:var(--lm);font-size:14px}
+.zone-atlas-foot a{font:600 11px Poppins,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep)}
+@media(max-width:1400px){.zone-atlas-head{grid-template-columns:280px 1fr;gap:48px}.zone-card{padding:16px 16px 22px}.zone-card-art{margin-bottom:18px}}
+@media(max-width:1180px){.zone-atlas-head{grid-template-columns:220px 1fr;gap:40px}.zone-atlas-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.zone-atlas-title p{display:none}.zone-card h3{font-size:22px}.zone-card p{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.zone-card,.zone-card-art{transition:none}}
+</style>
 </head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>
@@ -807,38 +851,9 @@ body.search-open{overflow:hidden}
     </div>
   </section>
 
-  <section class="zones light section" id="zones">
-    <div class="shell" style="display:block">
-      <header class="sechead" style="margin-bottom:56px">
-        <span class="eyebrow">Inside the summit</span>
-        <div>
-          <h2 class="d2">Experience Zones</h2>
-          <p class="lede">Nine immersive worlds tracing rice from field to future, built to be walked, touched, and remembered.</p>
-        </div>
-      </header>
-    </div>
-    <div class="shell">
-      <div class="zonerail" id="zonerail" role="tablist" aria-label="Experience zones"></div>
-      <div>
-        <div class="zonestage" id="zonestage">
-          <div class="zonestage-meta"><span id="zoneIndex">01 / 09</span><span id="zoneKind">Trade &amp; logistics</span></div>
-          <div class="art route" id="zoneArt"><i class="globe"></i><i class="trail"></i></div>
-          <div class="zonestage-copy">
-            <h3 id="zoneTitle">The Rice Route Map</h3>
-            <p id="zoneCopy">A giant illuminated map traces India's rice exports from fields to plates across the world.</p>
-          </div>
-        </div>
-        <div class="zonebar">
-          <div class="track"><i id="zoneTrack" style="width:11.1%"></i></div>
-          <small id="zoneCount">01 / 09</small>
-          <button type="button" id="zonePrev" aria-label="Previous zone">&larr;</button>
-          <button type="button" id="zoneNext" aria-label="Next zone">&rarr;</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="zones zone-atlas light" id="zones"><div class="shell"><header class="zone-atlas-head"><span class="eyebrow">Inside the summit</span><div class="zone-atlas-title"><h2>9 Zones.<br>Endless possibilities.</h2><p>Nine immersive worlds tracing rice from field to future, designed to be walked, touched, and remembered.</p></div></header><div class="zone-atlas-grid"><a class="zone-card" href="desktop-experience.html" aria-label="Explore The Rice Route Map"><div class="zone-card-top"><span>01 / 09</span><span>Trade & logistics</span></div><div class="zone-card-art za-route" aria-hidden="true"><i class="globe"></i><i class="trail"></i></div><h3>The Rice Route Map</h3><div class="zone-card-copy"><p>From Indian fields to the world's plates.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore Seed Cloud"><div class="zone-card-top"><span>02 / 09</span><span>Innovation & data</span></div><div class="zone-card-art za-cloud" aria-hidden="true"><i style="--x:18%;--y:18%;--r:30deg"></i><i style="--x:43%;--y:31%;--r:78deg"></i><i style="--x:72%;--y:14%;--r:120deg"></i><i style="--x:28%;--y:56%;--r:165deg"></i><i style="--x:68%;--y:51%;--r:210deg"></i></div><h3>Seed Cloud</h3><div class="zone-card-copy"><p>A cloud of capsules. A network of intelligence.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore The Rice Archive"><div class="zone-card-top"><span>03 / 09</span><span>Heritage & knowledge</span></div><div class="zone-card-art za-archive" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><h3>The Rice Archive</h3><div class="zone-card-copy"><p>200+ varieties. One living archive.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore Rice Through Time"><div class="zone-card-top"><span>04 / 09</span><span>Heritage & knowledge</span></div><div class="zone-card-art za-time" aria-hidden="true"><i style="--x:14%"></i><i style="--x:39%"></i><i style="--x:64%"></i><i style="--x:84%"></i></div><h3>Rice Through Time</h3><div class="zone-card-copy"><p>Ancient grain. Future harvest.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore How the World Eats Rice"><div class="zone-card-top"><span>05 / 09</span><span>Culture & culinary</span></div><div class="zone-card-art za-table" aria-hidden="true"><i style="--x:17%;--y:27%"></i><i style="--x:43%;--y:41%"></i><i style="--x:70%;--y:22%"></i></div><h3>How the World Eats Rice</h3><div class="zone-card-copy"><p>One grain. Forty metres of tables.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore Hands of Rice"><div class="zone-card-top"><span>06 / 09</span><span>Culture & culinary</span></div><div class="zone-card-art za-hands" aria-hidden="true"><i></i><i></i></div><h3>Hands of Rice</h3><div class="zone-card-copy"><p>From a single seed to the hands that serve.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore The World Within"><div class="zone-card-top"><span>07 / 09</span><span>Innovation & data</span></div><div class="zone-card-art za-within" aria-hidden="true"><i></i></div><h3>The World Within</h3><div class="zone-card-copy"><p>Look closer. A grain becomes a universe.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore Rice Mirror"><div class="zone-card-top"><span>08 / 09</span><span>Immersive installation</span></div><div class="zone-card-art za-mirror" aria-hidden="true"><i></i></div><h3>Rice Mirror</h3><div class="zone-card-copy"><p>Look up. The grains know your face.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a><a class="zone-card" href="desktop-experience.html" aria-label="Explore Beyond the Bowl"><div class="zone-card-top"><span>09 / 09</span><span>Industry & product</span></div><div class="zone-card-art za-window" aria-hidden="true"><i></i></div><h3>Beyond the Bowl</h3><div class="zone-card-copy"><p>Rice, reimagined. A window you can't pass.</p><span class="zone-card-arrow" aria-hidden="true">↗</span></div></a></div><footer class="zone-atlas-foot"><span>Trade, culture, memory, material and the future of rice.</span><a href="desktop-experience.html">Explore every zone ↗</a></footer></div></section>
 
-  <section class="dates section">
+<section class="dates section">
     <div class="shell">
       <div class="datelead">
         <span class="eyebrow">Three days</span>

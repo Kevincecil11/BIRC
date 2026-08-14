@@ -13,12 +13,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Restore mobile homepage before accidental mobile edit
+      - name: Restore mobile homepage
         run: git checkout c132a31f906658b9b8d55ea53fc91b2df4e0824d -- index.html
-      - run: python3 tools/refine_desktop_floats_gallery.py
+      - name: Apply desktop-only CSS
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('desktop.html'); h=p.read_text()
+          css='''
+          /* desktop-only compact floats and full-page gallery */
+          .side-actions{right:14px;bottom:14px;gap:7px}
+          .side-action{width:158px;height:46px;padding:0 13px;gap:9px;font-size:8.5px;box-shadow:0 9px 24px #0007}
+          .side-action svg{width:18px;height:18px}.side-action.whatsapp svg{width:20px;height:20px}
+          .section-tight{min-height:100vh;padding:112px 0 96px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+          .section-tight .sechead{margin-bottom:48px!important}
+          .section-tight .gallery{margin-top:0;overflow:visible}
+          .section-tight .gallery-run{gap:10px;align-items:stretch}
+          .section-tight .tile,.section-tight .tile:nth-child(even){width:min(72vw,1120px);height:min(68vh,720px);flex:none}
+          .section-tight .tile:after{left:22px;bottom:20px;font-size:11px}
+          @media(max-width:1400px){.side-actions{right:10px;bottom:10px}.side-action{width:148px;height:44px}.section-tight .tile,.section-tight .tile:nth-child(even){width:78vw;height:66vh}}
+          '''
+          if 'desktop-only compact floats and full-page gallery' not in h:
+              h=h.replace('</style>',css+'</style>',1)
+          p.write_text(h)
+          p=Path('context.md'); t=p.read_text()
+          t=t.replace('- Mobile homepage floating controls use a compact 46px toggle and 40px actions, raised above the sticky countdown bar with reserved right-side space so controls never overlap.\n','').replace('- Mobile `BIRC in pictures` is a full-viewport chapter with near-canvas-width, tall image placeholders (62svh, capped at 620px) rather than a short strip.\n','')
+          if 'Desktop `BIRC in pictures` is a full-viewport chapter' not in t:
+              t=t.replace('- Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.','- Desktop `BIRC in pictures` is a full-viewport chapter with 72vw by 68vh image panels; mobile keeps the approved compact gallery.\n- Desktop floating actions use compact 158 x 46px controls to reduce overlap.\n- Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.')
+          p.write_text(t)
+          PY
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html desktop.html context.md
-          git commit -m "Revert mobile and apply desktop-only floating actions and gallery"
+          git commit -m "Revert mobile and apply desktop-only gallery and float fixes"
           git push

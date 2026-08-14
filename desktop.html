@@ -576,7 +576,48 @@ body.search-open{overflow:hidden}
 .section-tight .tile,.section-tight .tile:nth-child(even){width:min(72vw,1120px);height:min(68vh,720px);flex:none}
 .section-tight .tile:after{left:22px;bottom:20px;font-size:11px}
 @media(max-width:1400px){.side-actions{right:10px;bottom:10px}.side-action{width:148px;height:44px}.section-tight .tile,.section-tight .tile:nth-child(even){width:78vw;height:66vh}}
-</style></head>
+</style><style id="desktop-footer-control-fix">
+/* Footer exhibition control: dark, typographically consistent, never browser-white */
+.footer .nav-exhibition{position:relative;display:block!important;margin:0!important}
+.footer .nav-exhibition>button{
+  appearance:none!important;
+  width:auto!important;
+  height:auto!important;
+  margin:0!important;
+  padding:7px 0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--dm)!important;
+  font:400 15px/1.65 Inter,sans-serif!important;
+  text-align:left!important;
+  cursor:pointer!important;
+}
+.footer .nav-exhibition>button:hover{color:var(--gold)!important;background:transparent!important}
+.footer .exhibition-menu{
+  position:static!important;
+  width:auto!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+.footer .exhibition-menu a{
+  display:flex!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  padding:5px 0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--dm)!important;
+  font:400 15px/1.65 Inter,sans-serif!important;
+}
+.footer .exhibition-menu a:hover{color:var(--gold)!important}
+.footer .exhibition-menu span{color:var(--gold-deep)!important;font-size:10px!important}
+</style>
+</head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>
 

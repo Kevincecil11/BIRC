@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-14 after mobile dock collision and full-page gallery fixes.
+# Re-triggered 2026-08-14 after the desktop-only gallery and floating-action correction.

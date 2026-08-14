@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-14 for desktop-native visitor, exhibitor and buyer registration plus one-line participation heading.
+# Re-triggered 2026-08-14 for yellow in-place Experience Zone flips and the 11-card Exhibitor Profile atlas.

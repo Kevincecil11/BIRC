@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-14 for yellow in-place Experience Zone flips and the 11-card Exhibitor Profile atlas.
+# Re-triggered 2026-08-14 for the Exhibitor atlas matched exactly to the homepage Experience Zone colors, whole-card flips and scrollable details.

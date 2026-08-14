@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Restore mobile homepage
         run: git checkout c132a31f906658b9b8d55ea53fc91b2df4e0824d -- index.html
       - name: Apply desktop-only CSS

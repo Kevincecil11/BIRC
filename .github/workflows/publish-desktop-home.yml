@@ -31,4 +31,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-# Re-triggered 2026-08-14 for true physical page-center positioning of the Experience Zones title.
+# Re-triggered 2026-08-14 for the full inline Experience Zone reader sourced from the supplied PDF.

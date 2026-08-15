@@ -1,36 +1,34 @@
-/* Desktop homepage: moving, clickable four-column Voices grid */
+/* Desktop homepage: stable moving and clickable Voices grid */
 .voices-grid-section{padding:124px 0 136px;background:#faf0e6;color:#0d0d0b;overflow:hidden}
 .voices-grid-head{display:grid;grid-template-columns:240px minmax(0,1fr);gap:88px;align-items:start;margin-bottom:56px}
 .voices-grid-head .eyebrow{padding-top:12px;color:#c98e25}
 .voices-grid-head h2{font:600 clamp(40px,3.4vw,60px)/1.02 Poppins,sans-serif;letter-spacing:-.045em;max-width:13ch}
 .voices-grid-head p{margin-top:20px;max-width:58ch;color:#6d6862;font:300 19px/1.6 Inter,sans-serif}
 .voices-viewport{width:100%;overflow:hidden}
-.voices-track{display:flex;width:max-content;will-change:transform;animation:voicesRightToLeft 40s linear infinite}
-.voices-set{width:var(--shell);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;padding-right:1px;background:#d8cec3;border-block:1px solid #d8cec3}
-.voice-grid-card{min-width:0;min-height:520px;padding:0;background:#faf0e6;perspective:1400px;cursor:pointer;outline-offset:-4px}
-.voice-grid-inner{position:relative;width:100%;min-height:520px;transform-style:preserve-3d;transition:transform .62s cubic-bezier(.16,1,.3,1)}
+.voices-track{display:flex;width:max-content;min-width:200%;will-change:transform;animation:voicesRightToLeft 40s linear infinite}
+.voices-track.is-reading{animation-play-state:paused}
+.voices-set{flex:0 0 100vw;width:100vw;min-width:100vw;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#d8cec3;border-block:1px solid #d8cec3}
+.voice-grid-card{position:relative;min-width:0;height:520px;background:#faf0e6;perspective:1400px;cursor:pointer;overflow:hidden}
+.voice-grid-card:focus-visible{outline:3px solid #c98e25;outline-offset:-4px}
+.voice-grid-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .62s cubic-bezier(.16,1,.3,1)}
 .voice-grid-card.is-flipped .voice-grid-inner{transform:rotateY(180deg)}
-.voice-grid-front,.voice-grid-back{position:absolute;inset:0;padding:18px 18px 26px;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.voice-grid-front,.voice-grid-back{position:absolute;inset:0;width:100%;height:100%;padding:18px 18px 26px;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .voice-grid-front{background:#faf0e6;color:#0d0d0b}
 .voice-grid-back{transform:rotateY(180deg);background:#ebb341;color:#0d0d0b}
-.voice-grid-image{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:repeating-linear-gradient(125deg,transparent 0 22px,#faf0e608 22px 23px),#191916;border:1px solid #35332e}
+.voice-grid-image{position:relative;width:100%;aspect-ratio:4/3;flex:none;overflow:hidden;background:repeating-linear-gradient(125deg,transparent 0 22px,#faf0e608 22px 23px),#191916;border:1px solid #35332e}
 .voice-grid-image:before{content:'PORTRAIT';position:absolute;left:14px;bottom:12px;color:#aba49c;font:600 8px Poppins,sans-serif;letter-spacing:.14em}
 .voice-grid-image:after{content:'';position:absolute;inset:14px;border:1px solid #faf0e612}
 .voice-grid-front .voice-grid-person{margin-top:auto}
-.voice-grid-hint{margin-top:18px;color:#c98e25;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.voice-grid-hint{margin-top:16px;color:#c98e25;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase}
 .voice-grid-back:before{content:'VOICE OF THE INDUSTRY';color:#5a4008;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase}
 .voice-grid-back blockquote{margin:auto 0 32px;color:#0d0d0b;font:500 clamp(24px,1.8vw,34px)/1.23 Poppins,sans-serif;letter-spacing:-.04em}
 .voice-grid-back blockquote:before{content:'“';display:block;margin-bottom:22px;color:#0d0d0b;font:600 64px/.55 Poppins,sans-serif}
-.voice-grid-back .voice-grid-person{border-color:#9e711b}
-.voice-grid-copy{flex:1;display:flex;flex-direction:column;padding-top:24px}
-.voice-grid-copy blockquote{margin:0;color:#0d0d0b;font:500 clamp(19px,1.35vw,24px)/1.35 Poppins,sans-serif;letter-spacing:-.03em}
-.voice-grid-copy blockquote:before{content:'“';display:block;margin-bottom:14px;color:#ebb341;font:600 48px/.55 Poppins,sans-serif}
-.voice-grid-person{margin-top:auto;padding-top:24px;border-top:1px solid #d8cec3}
+.voice-grid-person{padding-top:22px;border-top:1px solid #d8cec3}
 .voice-grid-person b{display:block;font:600 15px Poppins,sans-serif}
 .voice-grid-person span{display:block;margin-top:5px;color:#6d6862;font:400 12px/1.45 Inter,sans-serif}
-.voice-grid-back .voice-grid-person span{color:#5a4008}
-.voices-grid-note{display:none!important}
-@keyframes voicesRightToLeft{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--shell)))}}
-@media(max-width:1400px){.voices-grid-head{grid-template-columns:190px 1fr;gap:56px}.voice-grid-card,.voice-grid-inner{min-height:480px}.voice-grid-back blockquote{font-size:25px}}
-@media(max-width:1180px){.voices-grid-head{grid-template-columns:160px 1fr;gap:40px}.voice-grid-card,.voice-grid-inner{min-height:450px}.voice-grid-front,.voice-grid-back{padding:14px 14px 22px}.voice-grid-back blockquote{font-size:22px}}
-@media(prefers-reduced-motion:reduce){.voices-track{animation:none;transform:translateX(0)}.voices-set[aria-hidden='true']{display:none}.voice-grid-inner{transition:none}}
+.voice-grid-back .voice-grid-person{border-color:#9e711b}.voice-grid-back .voice-grid-person span{color:#5a4008}
+.voice-grid-copy{display:none!important}.voices-grid-note{display:none!important}
+@keyframes voicesRightToLeft{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100vw,0,0)}}
+@media(max-width:1400px){.voices-grid-head{grid-template-columns:190px 1fr;gap:56px}.voice-grid-card{height:480px}.voice-grid-back blockquote{font-size:25px}}
+@media(max-width:1180px){.voices-grid-head{grid-template-columns:160px 1fr;gap:40px}.voice-grid-card{height:450px}.voice-grid-front,.voice-grid-back{padding:14px 14px 22px}.voice-grid-back blockquote{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.voices-track{animation:none;transform:none}.voices-set[aria-hidden='true']{display:none}.voice-grid-inner{transition:none}}

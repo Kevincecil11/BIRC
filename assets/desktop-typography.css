@@ -5,150 +5,59 @@
   --desktop-subtitle:19px;
   --desktop-eyebrow:13.2px;
 }
-
-/* Eyebrows: same size, weight, tracking and line height everywhere */
-body .eyebrow,
-body .eye,
-body .ey,
-body .label{
-  font-family:Poppins,sans-serif!important;
-  font-size:var(--desktop-eyebrow)!important;
-  font-weight:600!important;
-  line-height:1!important;
-  letter-spacing:.16em!important;
-  text-transform:uppercase!important;
-}
-
-/* Every desktop landing hero follows the homepage title treatment */
-body main>section:first-child h1,
-body main>section:first-child .display,
-body main>section:first-child .title{
-  font-family:Poppins,sans-serif!important;
-  font-size:var(--desktop-hero-title)!important;
-  font-weight:600!important;
-  line-height:.93!important;
-  letter-spacing:-.06em!important;
-  text-wrap:balance!important;
-}
-
-/* Hero subtitles and supporting leads use the homepage measure */
-body main>section:first-child .lead,
-body main>section:first-child .lede,
-body main>section:first-child .hero-copy>p:not(.tagline),
-body main>section:first-child>div>div>p:not(.tagline){
-  max-width:58ch!important;
-  font-family:Inter,sans-serif!important;
-  font-size:var(--desktop-subtitle)!important;
-  font-weight:300!important;
-  line-height:1.6!important;
-  letter-spacing:0!important;
-}
-
-/* Knowledge topic taglines retain emphasis, but use the same subtitle size */
-body main>section:first-child .tagline{
-  max-width:58ch!important;
-  font-family:Inter,sans-serif!important;
-  font-size:var(--desktop-subtitle)!important;
-  font-weight:400!important;
-  line-height:1.6!important;
-  letter-spacing:0!important;
-}
-
-/* Standard section-title scale copied from homepage .d2 */
-body:not(.desktop-search-context) .head h2,
-body:not(.desktop-search-context) .sechead h2,
-body:not(.desktop-search-context) .heading,
-body:not(.desktop-search-context) .stitle,
-body:not(.desktop-search-context) .sessions-head h2,
-body:not(.desktop-search-context) .editorial>div>h2,
-body:not(.desktop-search-context) .scope-head h2,
-body:not(.desktop-search-context) .takeaways h2,
-body:not(.desktop-search-context) .people h2,
-body:not(.desktop-search-context) .faq h2,
-body:not(.desktop-search-context) .related h2{
-  font-family:Poppins,sans-serif!important;
-  font-size:var(--desktop-section-title)!important;
-  font-weight:600!important;
-  line-height:1.02!important;
-  letter-spacing:-.045em!important;
-  text-wrap:balance!important;
-}
-
-body .head .lead,
-body .head .lede,
-body .sechead .lead,
-body .sechead .lede,
-body .sessions-head p{
-  max-width:58ch!important;
-  font-family:Inter,sans-serif!important;
-  font-size:var(--desktop-subtitle)!important;
-  font-weight:300!important;
-  line-height:1.6!important;
-}
+body .eyebrow,body .eye,body .ey,body .label{font-family:Poppins,sans-serif!important;font-size:var(--desktop-eyebrow)!important;font-weight:600!important;line-height:1!important;letter-spacing:.16em!important;text-transform:uppercase!important}
+body main>section:first-child h1,body main>section:first-child .display,body main>section:first-child .title{font-family:Poppins,sans-serif!important;font-size:var(--desktop-hero-title)!important;font-weight:600!important;line-height:.93!important;letter-spacing:-.06em!important;text-wrap:balance!important}
+body main>section:first-child .lead,body main>section:first-child .lede,body main>section:first-child .hero-copy>p:not(.tagline),body main>section:first-child>div>div>p:not(.tagline){max-width:58ch!important;font-family:Inter,sans-serif!important;font-size:var(--desktop-subtitle)!important;font-weight:300!important;line-height:1.6!important;letter-spacing:0!important}
+body main>section:first-child .tagline{max-width:58ch!important;font-family:Inter,sans-serif!important;font-size:var(--desktop-subtitle)!important;font-weight:400!important;line-height:1.6!important;letter-spacing:0!important}
+body:not(.desktop-search-context) .head h2,body:not(.desktop-search-context) .sechead h2,body:not(.desktop-search-context) .heading,body:not(.desktop-search-context) .stitle,body:not(.desktop-search-context) .sessions-head h2,body:not(.desktop-search-context) .editorial>div>h2,body:not(.desktop-search-context) .scope-head h2,body:not(.desktop-search-context) .takeaways h2,body:not(.desktop-search-context) .people h2,body:not(.desktop-search-context) .faq h2,body:not(.desktop-search-context) .related h2{font-family:Poppins,sans-serif!important;font-size:var(--desktop-section-title)!important;font-weight:600!important;line-height:1.02!important;letter-spacing:-.045em!important;text-wrap:balance!important}
+body .head .lead,body .head .lede,body .sechead .lead,body .sechead .lede,body .sessions-head p{max-width:58ch!important;font-family:Inter,sans-serif!important;font-size:var(--desktop-subtitle)!important;font-weight:300!important;line-height:1.6!important}
 
 /* Creator access: 01, 02 and 03 share one connected desktop row */
-body[data-mobile="creators.html"] .access-list{
-  display:grid!important;
-  grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  gap:1px!important;
-  background:#d8cec3!important;
-  border:1px solid #d8cec3!important;
-}
-body[data-mobile="creators.html"] .access-row{
-  min-height:220px!important;
-  padding:30px!important;
-  border:0!important;
-  background:#faf0e6!important;
-  display:flex!important;
-  flex-direction:column!important;
-}
+body[data-mobile="creators.html"] .access-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1px!important;background:#d8cec3!important;border:1px solid #d8cec3!important}
+body[data-mobile="creators.html"] .access-row{min-height:220px!important;padding:30px!important;border:0!important;background:#faf0e6!important;display:flex!important;flex-direction:column!important}
 body[data-mobile="creators.html"] .access-row p{margin-top:auto!important;padding-top:26px!important}
+body[data-mobile="creators.html"] .criterion{position:relative!important;grid-template-columns:20px minmax(0,1fr)!important;gap:14px!important}
+body[data-mobile="creators.html"] .criterion>span{position:relative!important;width:16px!important;height:14px!important;overflow:hidden!important;color:transparent!important;font-size:0!important}
+body[data-mobile="creators.html"] .criterion>span:before{content:""!important;position:absolute!important;left:1px!important;top:5px!important;width:13px!important;height:6px!important;background:#ebb341!important;transform:rotate(-18deg) skewX(-10deg)!important}
 
-/* Creator criteria: angled gold pointers, never decorative checkmarks */
-body[data-mobile="creators.html"] .criterion{
-  position:relative!important;
-  grid-template-columns:20px minmax(0,1fr)!important;
-  gap:14px!important;
-}
-body[data-mobile="creators.html"] .criterion>span{
-  position:relative!important;
-  width:16px!important;
-  height:14px!important;
-  overflow:hidden!important;
-  color:transparent!important;
-  font-size:0!important;
-}
-body[data-mobile="creators.html"] .criterion>span:before{
-  content:""!important;
-  position:absolute!important;
-  left:1px!important;
-  top:5px!important;
-  width:13px!important;
-  height:6px!important;
-  background:#ebb341!important;
-  transform:rotate(-18deg) skewX(-10deg)!important;
-}
+/* Exhibitor atlas: final pair left-aligned on ivory */
+body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;background:#faf0e6!important;border-color:#d8cec3!important;justify-content:start!important}
+body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card,body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:nth-last-child(2),body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important;justify-self:stretch!important}
 
-/* Exhibitor atlas: three-column rhythm, final pair left-aligned on ivory */
-body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{
-  grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  background:#faf0e6!important;
-  border-color:#d8cec3!important;
-  justify-content:start!important;
-}
-body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card,
-body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:nth-last-child(2),
-body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{
-  grid-column:auto!important;
-  width:auto!important;
-  justify-self:stretch!important;
-}
+/* Artists: Rice Material Observatory becomes a dense specimen library */
+body[data-mobile="artists.html"] .materials{position:relative!important;overflow:hidden!important;background:#191916!important}
+body[data-mobile="artists.html"] .materials:before{content:"MATERIAL / 06";position:absolute!important;right:max(32px,calc((100vw - 1680px)/2))!important;top:124px!important;color:#2b2b27!important;font:700 clamp(72px,8vw,144px)/.8 Poppins,sans-serif!important;letter-spacing:-.08em!important;pointer-events:none!important}
+body[data-mobile="artists.html"] .materials>.eye,body[data-mobile="artists.html"] .materials>.section-title,body[data-mobile="artists.html"] .materials>.lead{position:relative!important;z-index:2!important}
+body[data-mobile="artists.html"] .materials>.section-title{max-width:13ch!important}
+body[data-mobile="artists.html"] .materials>.lead{max-width:62ch!important}
+body[data-mobile="artists.html"] .material-list{position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1px!important;margin-top:58px!important;border:1px solid #35332e!important;background:#35332e!important}
+body[data-mobile="artists.html"] .material{position:relative!important;isolation:isolate!important;min-height:270px!important;padding:24px!important;border:0!important;background:#0d0d0b!important;color:#faf0e6!important;display:flex!important;align-items:flex-end!important;overflow:hidden!important;font:600 17px/1.2 Poppins,sans-serif!important;letter-spacing:-.025em!important;text-transform:none!important;transition:background .25s cubic-bezier(.16,1,.3,1)!important}
+body[data-mobile="artists.html"] .material:before{position:absolute!important;z-index:-1!important;inset:22px!important;border:1px solid #35332e!important;display:grid!important;place-items:center!important;color:#2b2b27!important;font:700 92px/.8 Poppins,sans-serif!important;letter-spacing:-.08em!important;transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .25s!important}
+body[data-mobile="artists.html"] .material:after{content:""!important;position:absolute!important;z-index:-1!important;left:10%!important;right:10%!important;top:48%!important;height:1px!important;background:#ebb341!important;transform:rotate(-12deg)!important;transition:transform .55s cubic-bezier(.16,1,.3,1)!important}
+body[data-mobile="artists.html"] .material:nth-child(1):before{content:"01"!important}
+body[data-mobile="artists.html"] .material:nth-child(2):before{content:"02"!important;border-radius:50%!important;inset:38px 25%!important}
+body[data-mobile="artists.html"] .material:nth-child(3):before{content:"03"!important;clip-path:polygon(50% 0,100% 100%,0 100%)!important}
+body[data-mobile="artists.html"] .material:nth-child(4):before{content:"04"!important;border-radius:100% 0 100% 0!important;inset:30px 27%!important;transform:rotate(28deg)!important}
+body[data-mobile="artists.html"] .material:nth-child(5):before{content:"05"!important;inset:34px!important;background:repeating-radial-gradient(circle at center,transparent 0 16px,#ebb3411f 17px 18px)!important}
+body[data-mobile="artists.html"] .material:nth-child(6):before{content:"06"!important;border-radius:50%!important;box-shadow:0 0 0 24px #191916,0 0 0 25px #35332e!important;inset:54px 29%!important}
+body[data-mobile="artists.html"] .material:hover{background:#ebb341!important;color:#0d0d0b!important}
+body[data-mobile="artists.html"] .material:hover:before{border-color:#9e711b!important;color:#9e711b!important;transform:scale(.94)!important}
+body[data-mobile="artists.html"] .material:nth-child(4):hover:before{transform:rotate(34deg) scale(.94)!important}
+body[data-mobile="artists.html"] .material:hover:after{background:#0d0d0b!important;transform:rotate(-5deg) scaleX(.9)!important}
 
-@media(max-width:1400px){
-  :root{--desktop-hero-title:clamp(58px,5.4vw,82px)}
-  body[data-mobile="creators.html"] .access-row{padding:24px!important}
-}
-@media(max-width:1180px){
-  body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important}
-}
+/* Artists: audience pathways become a visual, numbered doorway */
+body[data-mobile="artists.html"] .audience{position:relative!important;overflow:hidden!important;background:#faf0e6!important}
+body[data-mobile="artists.html"] .audience:before{content:"YOU BELONG HERE";position:absolute!important;right:-.04em!important;top:118px!important;color:#f0e4d7!important;font:700 clamp(76px,9vw,156px)/.8 Poppins,sans-serif!important;letter-spacing:-.09em!important;white-space:nowrap!important;pointer-events:none!important}
+body[data-mobile="artists.html"] .audience>.eye,body[data-mobile="artists.html"] .audience>.section-title,body[data-mobile="artists.html"] .audience>p,body[data-mobile="artists.html"] .pathways{position:relative!important;z-index:2!important}
+body[data-mobile="artists.html"] .audience>.section-title{max-width:16ch!important}
+body[data-mobile="artists.html"] .pathways{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:1px!important;margin-top:58px!important;border:1px solid #d8cec3!important;background:#d8cec3!important}
+body[data-mobile="artists.html"] .pathway{position:relative!important;min-height:220px!important;padding:28px!important;border:0!important;background:#faf0e6!important;color:#0d0d0b!important;display:flex!important;align-items:flex-end!important;overflow:hidden!important;font:600 18px/1.25 Poppins,sans-serif!important;letter-spacing:-.03em!important;text-transform:none!important;transition:background .25s cubic-bezier(.16,1,.3,1),color .25s!important}
+body[data-mobile="artists.html"] .pathway:before{position:absolute!important;right:18px!important;top:14px!important;color:#e1d5c8!important;font:700 74px/.8 Poppins,sans-serif!important;letter-spacing:-.08em!important;transition:transform .45s cubic-bezier(.16,1,.3,1),color .25s!important}
+body[data-mobile="artists.html"] .pathway:after{content:""!important;position:absolute!important;left:28px!important;top:30px!important;width:13px!important;height:6px!important;background:#c98e25!important;transform:rotate(-18deg) skewX(-10deg)!important}
+body[data-mobile="artists.html"] .pathway:nth-child(1):before{content:"01"!important}body[data-mobile="artists.html"] .pathway:nth-child(2):before{content:"02"!important}body[data-mobile="artists.html"] .pathway:nth-child(3):before{content:"03"!important}body[data-mobile="artists.html"] .pathway:nth-child(4):before{content:"04"!important}body[data-mobile="artists.html"] .pathway:nth-child(5):before{content:"05"!important}body[data-mobile="artists.html"] .pathway:nth-child(6):before{content:"06"!important}body[data-mobile="artists.html"] .pathway:nth-child(7):before{content:"07"!important}body[data-mobile="artists.html"] .pathway:nth-child(8):before{content:"08"!important}
+body[data-mobile="artists.html"] .pathway:hover{background:#0d0d0b!important;color:#faf0e6!important}
+body[data-mobile="artists.html"] .pathway:hover:before{color:#2b2b27!important;transform:translateY(8px)!important}
+body[data-mobile="artists.html"] .pathway:hover:after{background:#ebb341!important}
+
+@media(max-width:1400px){:root{--desktop-hero-title:clamp(58px,5.4vw,82px)}body[data-mobile="creators.html"] .access-row{padding:24px!important}body[data-mobile="artists.html"] .material{min-height:240px!important}body[data-mobile="artists.html"] .pathway{min-height:190px!important;padding:22px!important}}
+@media(max-width:1180px){body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important}body[data-mobile="artists.html"] .material-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-mobile="artists.html"] .pathways{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

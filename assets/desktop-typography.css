@@ -38,7 +38,7 @@ body[data-mobile="artists.html"] .pathway:before{position:absolute!important;lef
 body[data-mobile="artists.html"] .pathway:after{content:none!important;display:none!important}
 body[data-mobile="artists.html"] .pathway:nth-child(1):before{content:"01"!important}body[data-mobile="artists.html"] .pathway:nth-child(2):before{content:"02"!important}body[data-mobile="artists.html"] .pathway:nth-child(3):before{content:"03"!important}body[data-mobile="artists.html"] .pathway:nth-child(4):before{content:"04"!important}body[data-mobile="artists.html"] .pathway:nth-child(5):before{content:"05"!important}body[data-mobile="artists.html"] .pathway:nth-child(6):before{content:"06"!important}body[data-mobile="artists.html"] .pathway:nth-child(7):before{content:"07"!important}body[data-mobile="artists.html"] .pathway:nth-child(8):before{content:"08"!important}
 
-/* All desktop Influencer pages use the homepage's 1680px shell and 32px minimum gutters. */
+/* Influencer pages: homepage gutters only. Content remains left-aligned inside the shell. */
 body[data-mobile="creators.html"] main.page>section,
 body[data-mobile="rice-masterchef.html"] main.page>section,
 body[data-mobile="artists.html"] main.page>section{
@@ -48,14 +48,19 @@ body[data-mobile="artists.html"] main.page>section{
 body[data-mobile="creators.html"] main.page>section>*:not(.rice-current),
 body[data-mobile="rice-masterchef.html"] main.page>section>*:not(.rice-current),
 body[data-mobile="artists.html"] main.page>section>*:not(.rice-current){
-  max-width:1680px;
-  margin-left:auto;
-  margin-right:auto;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
 }
-body[data-mobile="creators.html"] main.page>section>.head,
-body[data-mobile="rice-masterchef.html"] main.page>section>.head,
-body[data-mobile="artists.html"] main.page>section>.head{
-  width:100%!important;
+
+/* Application forms alone are centered in their sections. */
+body[data-mobile="creators.html"] section.apply form.form,
+body[data-mobile="rice-masterchef.html"] section.master-apply form.master-form,
+body[data-mobile="artists.html"] section#apply form.form{
+  width:min(940px,100%)!important;
+  max-width:940px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
 }
 
 @media(max-width:1400px){:root{--desktop-hero-title:clamp(58px,5.4vw,82px)}body[data-mobile="creators.html"] .access-row{padding:24px!important}}

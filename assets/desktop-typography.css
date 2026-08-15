@@ -25,7 +25,6 @@ body[data-mobile="artists.html"] .material{position:relative!important;min-heigh
 body[data-mobile="artists.html"] .material:before{position:absolute!important;left:26px!important;top:26px!important;color:#ebb341!important;font:600 10px Poppins,sans-serif!important;letter-spacing:.12em!important}
 body[data-mobile="artists.html"] .material:after{content:none!important;display:none!important}
 body[data-mobile="artists.html"] .material:nth-child(1):before{content:"01"!important}body[data-mobile="artists.html"] .material:nth-child(2):before{content:"02"!important}body[data-mobile="artists.html"] .material:nth-child(3):before{content:"03"!important}body[data-mobile="artists.html"] .material:nth-child(4):before{content:"04"!important}body[data-mobile="artists.html"] .material:nth-child(5):before{content:"05"!important}body[data-mobile="artists.html"] .material:nth-child(6):before{content:"06"!important}
-
 body[data-mobile="artists.html"] .audience{background:#faf0e6!important;color:#0d0d0b!important}
 body[data-mobile="artists.html"] .audience>.section-title{max-width:17ch!important}
 body[data-mobile="artists.html"] .pathways{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 52px!important;margin-top:52px!important;border:0!important;border-top:1px solid #d8cec3!important;background:transparent!important}
@@ -34,39 +33,49 @@ body[data-mobile="artists.html"] .pathway:before{position:absolute!important;lef
 body[data-mobile="artists.html"] .pathway:after{content:none!important;display:none!important}
 body[data-mobile="artists.html"] .pathway:nth-child(1):before{content:"01"!important}body[data-mobile="artists.html"] .pathway:nth-child(2):before{content:"02"!important}body[data-mobile="artists.html"] .pathway:nth-child(3):before{content:"03"!important}body[data-mobile="artists.html"] .pathway:nth-child(4):before{content:"04"!important}body[data-mobile="artists.html"] .pathway:nth-child(5):before{content:"05"!important}body[data-mobile="artists.html"] .pathway:nth-child(6):before{content:"06"!important}body[data-mobile="artists.html"] .pathway:nth-child(7):before{content:"07"!important}body[data-mobile="artists.html"] .pathway:nth-child(8):before{content:"08"!important}
 
-/* Artists: both three-part sequences run 01, 02, 03 in one row. */
-body[data-mobile="artists.html"] .recognition-list,
-body[data-mobile="artists.html"] .momentum .content-list{
-  display:grid!important;
-  grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  gap:1px!important;
-  border:1px solid #35332e!important;
-  background:#35332e!important;
-}
-body[data-mobile="artists.html"] .recognition-row{
-  min-height:230px!important;
-  padding:30px!important;
-  border:0!important;
-  background:#0d0d0b!important;
-  display:flex!important;
-  flex-direction:column!important;
-}
+body[data-mobile="artists.html"] .recognition-list,body[data-mobile="artists.html"] .momentum .content-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1px!important;border:1px solid #35332e!important;background:#35332e!important}
+body[data-mobile="artists.html"] .recognition-row{min-height:230px!important;padding:30px!important;border:0!important;background:#0d0d0b!important;display:flex!important;flex-direction:column!important}
 body[data-mobile="artists.html"] .recognition-row p{margin-top:auto!important;padding-top:24px!important}
 body[data-mobile="artists.html"] .momentum .content-list{border-color:#d8cec3!important;background:#d8cec3!important}
-body[data-mobile="artists.html"] .momentum .content-row{
-  min-height:230px!important;
-  padding:30px!important;
-  border:0!important;
-  background:#faf0e6!important;
-  display:flex!important;
-  flex-direction:column!important;
-}
+body[data-mobile="artists.html"] .momentum .content-row{min-height:230px!important;padding:30px!important;border:0!important;background:#faf0e6!important;display:flex!important;flex-direction:column!important}
 body[data-mobile="artists.html"] .momentum .content-row p{margin-top:auto!important;padding-top:24px!important}
 
 /* Influencer pages: homepage gutters only. */
 body[data-mobile="creators.html"] main.page>section,body[data-mobile="rice-masterchef.html"] main.page>section,body[data-mobile="artists.html"] main.page>section{padding-left:max(32px,calc((100vw - 1680px)/2))!important;padding-right:max(32px,calc((100vw - 1680px)/2))!important}
 body[data-mobile="creators.html"] main.page>section>*:not(.rice-current),body[data-mobile="rice-masterchef.html"] main.page>section>*:not(.rice-current),body[data-mobile="artists.html"] main.page>section>*:not(.rice-current){max-width:none!important;margin-left:0!important;margin-right:0!important}
 body[data-mobile="creators.html"] section.apply form.form,body[data-mobile="rice-masterchef.html"] section.master-apply form.master-form,body[data-mobile="artists.html"] section#apply form.form{width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important}
+
+/* Content Creators only: eyebrow, title, lead, and content share one left edge. */
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head{
+  display:block!important;
+  width:100%!important;
+  margin:0 0 48px!important;
+  text-align:left!important;
+}
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.eye{
+  display:block!important;
+  padding:0!important;
+  margin:0 0 18px!important;
+}
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.section-title{
+  display:block!important;
+  margin:0!important;
+  max-width:24ch!important;
+}
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head>p{
+  margin:20px 0 0!important;
+  max-width:62ch!important;
+}
+body[data-mobile="creators.html"] .criteria>.eye,
+body[data-mobile="creators.html"] .apply>.eye,
+body[data-mobile="creators.html"] .apply>.section-title,
+body[data-mobile="creators.html"] .apply>p{
+  margin-left:0!important;
+  margin-right:0!important;
+  text-align:left!important;
+}
+body[data-mobile="creators.html"] .criteria>.eye{margin-bottom:18px!important}
+body[data-mobile="creators.html"] .criteria>.section-title{margin-left:0!important;max-width:24ch!important}
 
 @media(max-width:1400px){:root{--desktop-hero-title:clamp(58px,5.4vw,82px)}body[data-mobile="creators.html"] .access-row{padding:24px!important}}
 @media(max-width:1180px){body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important}body[data-mobile="artists.html"] .material-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

@@ -40,42 +40,31 @@ body[data-mobile="artists.html"] .momentum .content-list{border-color:#d8cec3!im
 body[data-mobile="artists.html"] .momentum .content-row{min-height:230px!important;padding:30px!important;border:0!important;background:#faf0e6!important;display:flex!important;flex-direction:column!important}
 body[data-mobile="artists.html"] .momentum .content-row p{margin-top:auto!important;padding-top:24px!important}
 
-/* Influencer pages: homepage gutters only. */
+/* Influencer gutters and centered forms */
 body[data-mobile="creators.html"] main.page>section,body[data-mobile="rice-masterchef.html"] main.page>section,body[data-mobile="artists.html"] main.page>section{padding-left:max(32px,calc((100vw - 1680px)/2))!important;padding-right:max(32px,calc((100vw - 1680px)/2))!important}
 body[data-mobile="creators.html"] main.page>section>*:not(.rice-current),body[data-mobile="rice-masterchef.html"] main.page>section>*:not(.rice-current),body[data-mobile="artists.html"] main.page>section>*:not(.rice-current){max-width:none!important;margin-left:0!important;margin-right:0!important}
 body[data-mobile="creators.html"] section.apply form.form,body[data-mobile="rice-masterchef.html"] section.master-apply form.master-form,body[data-mobile="artists.html"] section#apply form.form{width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important}
 
-/* Content Creators only: eyebrow, title, lead, and content share one left edge. */
-body[data-mobile="creators.html"] main.page section:not(.hero)>.head{
-  display:block!important;
-  width:100%!important;
-  margin:0 0 48px!important;
-  text-align:left!important;
-}
-body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.eye{
-  display:block!important;
-  padding:0!important;
-  margin:0 0 18px!important;
-}
-body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.section-title{
-  display:block!important;
-  margin:0!important;
-  max-width:24ch!important;
-}
-body[data-mobile="creators.html"] main.page section:not(.hero)>.head>p{
-  margin:20px 0 0!important;
-  max-width:62ch!important;
-}
-body[data-mobile="creators.html"] .criteria>.eye,
-body[data-mobile="creators.html"] .apply>.eye,
-body[data-mobile="creators.html"] .apply>.section-title,
-body[data-mobile="creators.html"] .apply>p{
-  margin-left:0!important;
-  margin-right:0!important;
-  text-align:left!important;
-}
+/* Content Creators: section headings share one left edge, FAQ stack centered. */
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head{display:block!important;width:100%!important;margin:0 0 48px!important;text-align:left!important}
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.eye{display:block!important;padding:0!important;margin:0 0 18px!important}
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.section-title{display:block!important;margin:0!important;max-width:24ch!important}
+body[data-mobile="creators.html"] main.page section:not(.hero)>.head>p{margin:20px 0 0!important;max-width:62ch!important}
+body[data-mobile="creators.html"] .criteria>.eye,body[data-mobile="creators.html"] .apply>.eye,body[data-mobile="creators.html"] .apply>.section-title,body[data-mobile="creators.html"] .apply>p{margin-left:0!important;margin-right:0!important;text-align:left!important}
 body[data-mobile="creators.html"] .criteria>.eye{margin-bottom:18px!important}
 body[data-mobile="creators.html"] .criteria>.section-title{margin-left:0!important;max-width:24ch!important}
+body[data-mobile="creators.html"] .faq-section>.head,body[data-mobile="creators.html"] .faq-section>.faq-items{width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}
+body[data-mobile="creators.html"] .faq-section>.head{margin-bottom:42px!important}
+
+/* Artists: remove supplied image, keep FAQ ivory contiguous and centered. */
+body[data-mobile="artists.html"] .source-visual{display:none!important}
+body[data-mobile="artists.html"] section#apply{background:#ebb341!important}
+body[data-mobile="artists.html"] section#apply>.artist-faq{width:min(1180px,100%)!important;max-width:1180px!important;margin:64px auto 0!important;padding:88px 96px!important;background:#faf0e6!important;color:#0d0d0b!important}
+body[data-mobile="artists.html"] section#apply>.artist-faq .faq-items{width:min(860px,100%)!important;max-width:860px!important;margin:38px auto 0!important}
+body[data-mobile="artists.html"] section#apply>.artist-faq .eye,body[data-mobile="artists.html"] section#apply>.artist-faq .section-title{text-align:left!important;margin-left:0!important}
+body[data-mobile="artists.html"] section#apply>.artist-faq .faq-item{border-color:#d8cec3!important}
+body[data-mobile="artists.html"] section#apply>.artist-faq .faq-q{color:#0d0d0b!important}
+body[data-mobile="artists.html"] section#apply>.artist-faq .faq-a p{color:#6d6862!important}
 
 @media(max-width:1400px){:root{--desktop-hero-title:clamp(58px,5.4vw,82px)}body[data-mobile="creators.html"] .access-row{padding:24px!important}}
-@media(max-width:1180px){body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important}body[data-mobile="artists.html"] .material-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:1180px){body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important}body[data-mobile="artists.html"] .material-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-mobile="artists.html"] section#apply>.artist-faq{padding:64px!important}}

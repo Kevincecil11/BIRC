@@ -40,12 +40,12 @@ body[data-mobile="artists.html"] .momentum .content-list{border-color:#d8cec3!im
 body[data-mobile="artists.html"] .momentum .content-row{min-height:230px!important;padding:30px!important;border:0!important;background:#faf0e6!important;display:flex!important;flex-direction:column!important}
 body[data-mobile="artists.html"] .momentum .content-row p{margin-top:auto!important;padding-top:24px!important}
 
-/* Influencer gutters and centered forms */
+/* Shared Influencer gutters and centered forms */
 body[data-mobile="creators.html"] main.page>section,body[data-mobile="rice-masterchef.html"] main.page>section,body[data-mobile="artists.html"] main.page>section{padding-left:max(32px,calc((100vw - 1680px)/2))!important;padding-right:max(32px,calc((100vw - 1680px)/2))!important}
 body[data-mobile="creators.html"] main.page>section>*:not(.rice-current),body[data-mobile="rice-masterchef.html"] main.page>section>*:not(.rice-current),body[data-mobile="artists.html"] main.page>section>*:not(.rice-current){max-width:none!important;margin-left:0!important;margin-right:0!important}
 body[data-mobile="creators.html"] section.apply form.form,body[data-mobile="rice-masterchef.html"] section.master-apply form.master-form,body[data-mobile="artists.html"] section#apply form.form{width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important}
 
-/* Content Creators: section headings share one left edge. */
+/* Content Creators headings: one left edge */
 body[data-mobile="creators.html"] main.page section:not(.hero)>.head{display:block!important;width:100%!important;margin:0 0 48px!important;text-align:left!important}
 body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.eye{display:block!important;padding:0!important;margin:0 0 18px!important}
 body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.section-title{display:block!important;margin:0!important;max-width:24ch!important}
@@ -54,43 +54,38 @@ body[data-mobile="creators.html"] .criteria>.eye,body[data-mobile="creators.html
 body[data-mobile="creators.html"] .criteria>.eye{margin-bottom:18px!important}
 body[data-mobile="creators.html"] .criteria>.section-title{margin-left:0!important;max-width:24ch!important}
 
-/* Creator Q&A: full ivory section, one truly centered 1040px stack. */
+/* Creator Q&A reference: eyebrow, title and first question use exactly one x-axis. */
 body[data-mobile="creators.html"] main.page section.faq-section{background:#faf0e6!important;color:#0d0d0b!important}
-body[data-mobile="creators.html"] main.page section.faq-section>.head,
-body[data-mobile="creators.html"] main.page section.faq-section>.faq-items{
-  width:min(1040px,100%)!important;
-  max-width:1040px!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-body[data-mobile="creators.html"] main.page section.faq-section>.head{margin-top:0!important;margin-bottom:42px!important}
+body[data-mobile="creators.html"] main.page section.faq-section>.head,body[data-mobile="creators.html"] main.page section.faq-section>.faq-items{width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}
+body[data-mobile="creators.html"] main.page section.faq-section>.head{margin-top:0!important;margin-bottom:42px!important;padding:0!important}
+body[data-mobile="creators.html"] main.page section.faq-section>.head>.eye{margin:0 0 18px!important;padding:0!important}
+body[data-mobile="creators.html"] main.page section.faq-section>.head>.section-title{margin:0!important;padding:0!important}
 body[data-mobile="creators.html"] main.page section.faq-section>.faq-items .faq-item{border-color:#d8cec3!important}
 
-/* Artists: remove image; Q&A breaks out of gold parent into full-width ivory. */
+/* Artist image removed and Q&A full ivory */
 body[data-mobile="artists.html"] .source-visual{display:none!important}
-body[data-mobile="artists.html"] main.page section#apply>section.artist-faq{
-  position:relative!important;
-  left:50%!important;
-  width:100vw!important;
-  max-width:none!important;
-  margin:88px 0 -130px -50vw!important;
-  padding:120px max(32px,calc((100vw - 1680px)/2))!important;
-  background:#faf0e6!important;
-  color:#0d0d0b!important;
-}
-body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.eye,
-body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.section-title,
-body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.faq-items{
-  width:min(1040px,100%)!important;
-  max-width:1040px!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
+body[data-mobile="artists.html"] main.page section#apply>section.artist-faq{position:relative!important;left:50%!important;width:100vw!important;max-width:none!important;margin:88px 0 -130px -50vw!important;padding:120px max(32px,calc((100vw - 1680px)/2))!important;background:#faf0e6!important;color:#0d0d0b!important}
+body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.eye,body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.section-title,body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.faq-items{width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}
 body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.section-title{margin-top:22px!important}
 body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.faq-items{margin-top:42px!important}
 body[data-mobile="artists.html"] main.page section#apply>section.artist-faq .faq-item{border-color:#d8cec3!important}
 body[data-mobile="artists.html"] main.page section#apply>section.artist-faq .faq-q{color:#0d0d0b!important}
 body[data-mobile="artists.html"] main.page section#apply>section.artist-faq .faq-a p{color:#6d6862!important}
+
+/* Rice Masterchef: exact Creator alignment, applied in CSS rather than cached JS. */
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section{padding-left:max(32px,calc((100vw - 1680px)/2))!important;padding-right:max(32px,calc((100vw - 1680px)/2))!important}
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>.eye{display:block!important;margin:0 0 18px!important;padding:0!important;text-align:left!important}
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>.section-title,body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>h2{display:block!important;margin:0!important;max-width:24ch!important;text-align:left!important}
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>p{margin:20px 0 0!important;max-width:62ch!important;text-align:left!important}
+body[data-mobile="rice-masterchef.html"] .master-apply form.master-form{width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section{background:#faf0e6!important;color:#0d0d0b!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head,body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.faq-items{width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head{display:block!important;margin-top:0!important;margin-bottom:42px!important;padding:0!important;text-align:left!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.eye{display:block!important;margin:0 0 18px!important;padding:0!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.section-title{display:block!important;margin:0!important;max-width:24ch!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-item{border-color:#d8cec3!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-q{color:#0d0d0b!important}
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-a p{color:#6d6862!important}
 
 @media(max-width:1400px){:root{--desktop-hero-title:clamp(58px,5.4vw,82px)}body[data-mobile="creators.html"] .access-row{padding:24px!important}}
 @media(max-width:1180px){body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body[data-exhibition-page="exhibitor-profile"] .exhibitor-grid>.exhibitor-card:last-child{grid-column:auto!important;width:auto!important}body[data-mobile="artists.html"] .material-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

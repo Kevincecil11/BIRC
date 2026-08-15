@@ -1,0 +1,39 @@
+name: Apply Experience Zone document order
+
+on:
+  push:
+    paths:
+      - 'assets/experience-order.js'
+      - '.github/workflows/apply-experience-order.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Link document-order controller
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          link='<script src="assets/experience-order.js"></script>'
+          for name in ['desktop.html','desktop-experience.html','experience.html']:
+              p=Path(name);s=p.read_text(encoding='utf-8')
+              if link not in s:
+                  if '</body>' not in s:raise RuntimeError(f'Missing body in {name}')
+                  s=s.replace('</body>',link+'</body>',1)
+                  p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit aligned order
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop.html desktop-experience.html experience.html
+          git commit -m 'Follow supplied Experience Zone order across desktop and mobile'
+          git push origin main

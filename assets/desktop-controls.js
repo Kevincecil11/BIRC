@@ -1,5 +1,27 @@
 (function(){
   'use strict';
+
+  /* Rice Masterchef uses the exact Content Creators alignment vocabulary. */
+  if(document.body.dataset.mobile==='rice-masterchef.html'){
+    var alignment=document.createElement('style');
+    alignment.id='masterchef-creator-alignment';
+    alignment.textContent='\
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section{padding-left:max(32px,calc((100vw - 1680px)/2))!important;padding-right:max(32px,calc((100vw - 1680px)/2))!important}\
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>.eye{display:block!important;margin:0 0 18px!important;padding:0!important;text-align:left!important}\
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>.section-title,body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>h2{display:block!important;margin:0!important;max-width:24ch!important;text-align:left!important}\
+body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>p{margin:20px 0 0!important;max-width:62ch!important;text-align:left!important}\
+body[data-mobile="rice-masterchef.html"] .master-apply form.master-form{width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section{background:#faf0e6!important;color:#0d0d0b!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head{display:block!important;width:min(1040px,100%)!important;max-width:1040px!important;margin:0 auto 42px!important;text-align:left!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.eye{display:block!important;margin:0 0 18px!important;padding:0!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.section-title{display:block!important;margin:0!important;max-width:24ch!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.faq-items{width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-item{border-color:#d8cec3!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-q{color:#0d0d0b!important}\
+body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-a p{color:#6d6862!important}';
+    document.head.appendChild(alignment);
+  }
+
   var target=Date.parse('2026-10-23T10:00:00+05:30');
   function pad(n){return String(Math.max(0,n)).padStart(2,'0')}
   function updateCountdown(){

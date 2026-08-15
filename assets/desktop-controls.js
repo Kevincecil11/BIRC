@@ -10,9 +10,14 @@
     document.querySelectorAll('#ch').forEach(function(el){el.textContent=pad(hours)});
     document.querySelectorAll('#cm').forEach(function(el){el.textContent=pad(minutes)});
     document.querySelectorAll('#cs').forEach(function(el){el.textContent=pad(seconds)});
+    document.querySelectorAll('.final .clockrow,.final .clock').forEach(function(clock){
+      var values=[pad(days),pad(hours),pad(minutes),pad(seconds)];
+      clock.querySelectorAll('strong').forEach(function(el,index){if(index<4)el.textContent=values[index]});
+    });
   }
   updateCountdown();
   setInterval(updateCountdown,1000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)updateCountdown()});
   var dialog=document.getElementById('desktopRegistrationChooser');
   if(!dialog){
     dialog=document.createElement('dialog');dialog.id='desktopRegistrationChooser';dialog.className='desktop-reg-dialog';dialog.setAttribute('aria-labelledby','desktopRegTitle');

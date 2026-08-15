@@ -1,35 +1,25 @@
 (function(){
 var zones=[
-['The Rice Route Map','From Indian fields to the world','An illuminated journey tracing Indian rice from origin to markets, kitchens and communities across the globe.'],
-['Seed Cloud','A network of intelligence','A suspended field of seed forms, carrying the knowledge, diversity and potential held inside every variety.'],
-['The Rice Archive','200+ varieties, one archive','A living collection preserving colour, form, origin and the generations of hands behind India’s rice diversity.'],
-['Rice Through Time','Ancient grain, future harvest','A walk through ten thousand years of cultivation, exchange, innovation and human memory.'],
-['How the World Eats Rice','Forty metres of tables','One continuous table reveals how rice changes across countries while remaining a shared human language.'],
-['Hands of Rice','From seed to serving hands','A sculptural tribute to every hand that grows, carries, cooks and serves the grain.'],
-['The World Within','A grain becomes a universe','Macro projection opens the grain into landscapes, structures and unseen systems.'],
-['Rice Mirror','The grains know your face','A responsive installation turns every visitor into part of the field.'],
-['Beyond the Bowl','A window you cannot pass','A final frame looking beyond food toward material, climate, design and possibility.']
-
-var images=[
-'https://ik.imagekit.io/18ab23oqaj/zone1.png',
-'https://ik.imagekit.io/18ab23oqaj/zone2.png',
-'https://ik.imagekit.io/18ab23oqaj/zone3.png',
-'https://ik.imagekit.io/18ab23oqaj/zone4.png',
-'https://ik.imagekit.io/18ab23oqaj/zone5.png',
-'https://ik.imagekit.io/18ab23oqaj/zone6.png',
-'https://ik.imagekit.io/18ab23oqaj/zone7.png',
-'https://ik.imagekit.io/18ab23oqaj/zone8.png',
-'https://ik.imagekit.io/18ab23oqaj/zone9.png'
+['The Rice Route Map','Illuminated export route map','Rice begins in India’s fields, then travels across continents to kitchens, markets and communities around the world.'],
+['Seed Cloud','Suspended capsules','A suspended field of seed forms carrying the knowledge, diversity and potential held inside every variety.'],
+['The Rice Archive','Living archive','More than 200 varieties preserve colour, form, origin and generations of hands.'],
+['Rice Through Time','Timeline corridor','A walk through ten thousand years of cultivation, exchange, innovation and human memory.'],
+['How the World Eats Rice','Forty metre table','One continuous table reveals how rice changes across countries while remaining a shared human language.'],
+['Hands of Rice','Sculptural hands','A tribute to every hand that grows, carries, cooks and serves the grain.'],
+['The World Within','Macro grain projection','Macro projection opens a grain into landscapes, structures and unseen systems.'],
+['Rice Mirror','Responsive installation','A responsive installation turns every visitor into part of the field.'],
+['Beyond the Bowl','Window installation','A final frame looking beyond food toward material, climate, design and possibility.']
 ];
+var images=['https://ik.imagekit.io/18ab23oqaj/zone1.png','https://ik.imagekit.io/18ab23oqaj/zone2.png','https://ik.imagekit.io/18ab23oqaj/zone3.png','https://ik.imagekit.io/18ab23oqaj/zone4.png','https://ik.imagekit.io/18ab23oqaj/zone5.png','https://ik.imagekit.io/18ab23oqaj/zone6.png','https://ik.imagekit.io/18ab23oqaj/zone7.png','https://ik.imagekit.io/18ab23oqaj/zone8.png','https://ik.imagekit.io/18ab23oqaj/zone9.png'];
 var main=document.querySelector('main');if(!main)return;main.className='gf-main';
-main.innerHTML='<section class="gf-field"><canvas class="gf-canvas" aria-hidden="true"></canvas><div class="gf-top"><span class="gf-eye">Experience Zones · BIRC 2026</span><p>Move the cursor through the field. The grains part, then settle back into formation.</p></div><div class="gf-copy"><small class="gf-count">01 / 09 · '+zones[0][1]+'</small><h1>'+zones[0][0]+'</h1><p>'+zones[0][2]+'</p></div><div><nav class="gf-picker" aria-label="Choose an Experience Zone"></nav><div class="gf-hint">Nine worlds · one grain field</div></div></section>';
-var picker=main.querySelector('.gf-picker'),copy=main.querySelector('.gf-copy');
+main.innerHTML='<section class="gf-field"><img class="gf-active-image" src="'+images[0]+'" alt="The Rice Route Map Experience Zone"><canvas class="gf-canvas" aria-hidden="true"></canvas><div class="gf-top"><span class="gf-eye">Live grain field</span><p>Move the cursor through the field. The grains part, then settle back into formation.</p></div><div class="gf-copy"><small class="gf-count">'+zones[0][1]+'</small><h1>'+zones[0][0]+'</h1><p>'+zones[0][2]+'</p></div><div class="gf-bottom"><nav class="gf-picker" aria-label="Choose an Experience Zone"></nav><div class="gf-hint">Nine worlds · one grain field</div></div></section>';
+var picker=main.querySelector('.gf-picker'),copy=main.querySelector('.gf-copy'),image=main.querySelector('.gf-active-image');
 zones.forEach(function(z,i){var b=document.createElement('button');b.className='gf-pick';b.type='button';b.setAttribute('aria-selected',i===0?'true':'false');b.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b><span>'+z[0]+'</span>';b.onclick=function(){select(i)};picker.appendChild(b)});
 var canvas=main.querySelector('.gf-canvas'),ctx=canvas.getContext('2d'),dpr=1,w=0,h=0,pts=[],target=[],active=0,mouse={x:-9999,y:-9999},gold='#ebb341',muted='#7f765f';
 function resize(){dpr=Math.min(devicePixelRatio||1,2);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);if(!pts.length)seed();shape(active)}
 function seed(){var n=Math.min(1750,Math.max(900,Math.floor(w*h/850)));for(var i=0;i<n;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:0,vy:0,a:.18+Math.random()*.55,s:1+Math.random()*2.2,r:Math.random()*6.28})}
-function shape(num){var off=document.createElement('canvas'),ow=Math.max(420,Math.floor(w*.46)),oh=Math.max(420,Math.floor(h*.66));off.width=ow;off.height=oh;var o=off.getContext('2d');o.fillStyle='#fff';o.textAlign='center';o.textBaseline='middle';o.font='700 '+Math.floor(oh*.82)+'px Poppins, sans-serif';o.fillText(String(num+1).padStart(2,'0'),ow/2,oh*.52);var data=o.getImageData(0,0,ow,oh).data,samples=[];for(var y=0;y<oh;y+=4)for(var x=0;x<ow;x+=4)if(data[(y*ow+x)*4+3]>90)samples.push([x+w*.50,y+(h-oh)/2]);for(var i=samples.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),q=samples[i];samples[i]=samples[j];samples[j]=q}target=samples}
-function select(i){active=i;picker.querySelectorAll('button').forEach(function(b,k){b.setAttribute('aria-selected',k===i?'true':'false')});copy.innerHTML='<small class="gf-count">'+String(i+1).padStart(2,'0')+' / 09 · '+zones[i][1]+'</small><h1>'+zones[i][0]+'</h1><p>'+zones[i][2]+'</p>';shape(i)}
+function shape(num){var off=document.createElement('canvas'),ow=Math.max(420,Math.floor(w*.46)),oh=Math.max(420,Math.floor(h*.64));off.width=ow;off.height=oh;var o=off.getContext('2d');o.fillStyle='#fff';o.textAlign='center';o.textBaseline='middle';o.font='700 '+Math.floor(oh*.82)+'px Poppins, sans-serif';o.fillText(String(num+1).padStart(2,'0'),ow/2,oh*.52);var data=o.getImageData(0,0,ow,oh).data,samples=[];for(var y=0;y<oh;y+=4)for(var x=0;x<ow;x+=4)if(data[(y*ow+x)*4+3]>90)samples.push([x+w*.50,y+(h-oh)/2]);for(var i=samples.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),q=samples[i];samples[i]=samples[j];samples[j]=q}target=samples}
+function select(i){active=i;picker.querySelectorAll('button').forEach(function(b,k){b.setAttribute('aria-selected',k===i?'true':'false')});copy.innerHTML='<small class="gf-count">'+zones[i][1]+'</small><h1>'+zones[i][0]+'</h1><p>'+zones[i][2]+'</p>';image.classList.add('changing');setTimeout(function(){image.src=images[i];image.alt=zones[i][0]+' Experience Zone';image.classList.remove('changing')},180);shape(i)}
 function frame(){ctx.clearRect(0,0,w,h);var t=performance.now()*.00025;for(var i=0;i<pts.length;i++){var p=pts[i],q=target[i%Math.max(1,target.length)]||[w*.72,h*.5],dx=q[0]-p.x,dy=q[1]-p.y,mdx=p.x-mouse.x,mdy=p.y-mouse.y,dist=Math.sqrt(mdx*mdx+mdy*mdy);if(dist<120){var f=(120-dist)/120;p.vx+=mdx/(dist||1)*f*.65;p.vy+=mdy/(dist||1)*f*.65}p.vx+=dx*.00085;p.vy+=dy*.00085;p.vx*=.91;p.vy*=.91;p.x+=p.vx+Math.cos(t+i)*.04;p.y+=p.vy+Math.sin(t*1.3+i)*.04;p.r+=.012;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.globalAlpha=p.a;ctx.fillStyle=i%12===0?gold:muted;ctx.beginPath();ctx.ellipse(0,0,p.s*.55,p.s*2.2,0,0,6.283);ctx.fill();ctx.restore()}requestAnimationFrame(frame)}
 canvas.parentElement.addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY});canvas.parentElement.addEventListener('pointerleave',function(){mouse.x=-9999;mouse.y=-9999});addEventListener('resize',resize);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){resize();frame()});else{resize();frame()}
 })();

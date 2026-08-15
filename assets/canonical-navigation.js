@@ -1,0 +1,31 @@
+(function(){
+  'use strict';
+  var file=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  var desktop=file==='desktop.html'||file.indexOf('desktop-')===0;
+  var p=desktop?'desktop-':'';
+  function link(name,path){return '<a href="'+path+'">'+name+'</a>'}
+  var exhibition=(desktop?'<div class="canon-group"><span>Exhibition</span><div class="canon-sub">':'<div class="canon-group"><button type="button" aria-expanded="false">Exhibition <small>⌄</small></button><div class="canon-sub"><div>')+
+    '<a href="'+p+'exhibition.html'+(desktop?'':'#why-exhibit')+'">Why exhibit <i>01</i></a>'+
+    '<a href="'+p+'exhibitor-profile.html'+(desktop?'':'#exhibitor-profile')+'">Exhibitor profile <i>02</i></a>'+
+    '<a href="'+p+'space-rental.html'+(desktop?'':'#space-rental')+'">Space rental <i>03</i></a>'+
+    (desktop?'</div></div>':'</div></div></div>');
+  if(!desktop){
+    exhibition='<div class="canon-group"><button type="button" aria-expanded="false">Exhibition <small>⌄</small></button><div class="canon-sub"><div><a href="exhibition.html#why-exhibit">Why exhibit <i>01</i></a><a href="exhibition.html#exhibitor-profile">Exhibitor profile <i>02</i></a><a href="exhibition.html#space-rental">Space rental <i>03</i></a></div></div></div>';
+  }
+  var influencers=desktop?
+    '<div class="canon-group"><span>Influencers</span><div class="canon-sub"><a href="desktop-creators.html">Content Creators <i>01</i></a><a href="desktop-rice-masterchef.html">Rice Masterchef <i>02</i></a><a href="desktop-artists.html">Artists <i>03</i></a></div></div>':
+    '<div class="canon-group"><button type="button" aria-expanded="false">Influencers <small>⌄</small></button><div class="canon-sub"><div><a href="creators.html">Content Creators <i>01</i></a><a href="rice-masterchef.html">Rice Masterchef <i>02</i></a><a href="artists.html">Artists <i>03</i></a></div></div></div>';
+  var html=link('Home',desktop?'desktop.html':'index.html')+link('About',p+'about.html')+link('Conference',p+'conference.html')+exhibition+link('Experience',p+'experience.html')+influencers+link('Media Coverage',p+'media-coverage.html')+link('Partnership',p+'partnership.html')+link('Plan Visit',p+'plan-visit.html')+link('Contact',p+'contact.html');
+
+  var style=document.createElement('style');
+  style.id='canonical-navigation-style';
+  style.textContent='.canon-nav{margin:18px 0 0}.canon-nav>a,.canon-group>span,.canon-group>button{width:100%;min-height:48px;padding:0;border:0;border-bottom:1px solid #35332e;background:transparent;color:#faf0e6;display:flex;align-items:center;justify-content:space-between;text-align:left;font:600 16px Poppins,sans-serif;letter-spacing:-.02em}.canon-nav>a:hover{color:#ebb341}.canon-sub{padding:4px 0 12px 18px;border-bottom:1px solid #35332e}.canon-sub a{padding:7px 0;display:flex;justify-content:space-between;color:#aba49c;font:500 12px Poppins,sans-serif}.canon-sub a:hover{color:#ebb341}.canon-sub i{font-style:normal;color:#c98e25;font-size:10px}@media(max-width:899px){.canon-nav{margin:auto 0}.canon-nav>a,.canon-group>button{min-height:52px;font-size:27px;letter-spacing:-.05em}.canon-group>button small{color:#aba49c;transition:transform .3s cubic-bezier(.16,1,.3,1)}.canon-sub{display:grid;grid-template-rows:0fr;opacity:0;padding:0 0 0 18px;border:0;transition:grid-template-rows .42s cubic-bezier(.16,1,.3,1),opacity .25s}.canon-sub>div{overflow:hidden}.canon-group.open>.canon-sub{grid-template-rows:1fr;opacity:1;border-bottom:1px solid #35332e;padding-bottom:10px}.canon-group.open>button small{transform:rotate(180deg)}.canon-sub a{min-height:40px;padding:8px 0;font-size:12px}}';
+  document.head.appendChild(style);
+
+  function install(nav){if(!nav)return;nav.className='canon-nav';nav.innerHTML=html;nav.addEventListener('click',function(e){var btn=e.target.closest('.canon-group>button');if(btn){var g=btn.parentElement,o=!g.classList.contains('open');g.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o));return}var a=e.target.closest('a');if(a){var drawer=nav.closest('.drawer,.shared-drawer,.desktop-menu');if(drawer)drawer.classList.remove('open');document.body.classList.remove('lock','shared-lock')}})}
+  if(desktop){
+    document.querySelectorAll('.shared-drawer .shared-nav,.desktop-menu .menu-col,aside.drawer nav').forEach(install);
+  }else{
+    var nav=document.querySelector('.drawer nav,.drawer-nav');install(nav);
+  }
+})();

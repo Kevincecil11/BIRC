@@ -1,0 +1,39 @@
+name: Sync canonical navigation
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-canonical-navigation.yml'
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add canonical menu loader
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = ['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html','media-coverage.html']
+          tag='<script src="assets/canonical-navigation.js?v=20260816" defer></script>'
+          for name in files:
+              p=Path(name)
+              s=p.read_text()
+              if 'canonical-navigation.js' not in s:
+                  assert '</head>' in s, name
+                  s=s.replace('</head>',tag+'</head>',1)
+                  p.write_text(s)
+          p=Path('assets/desktop-controls.js')
+          s=p.read_text()
+          loader="\n;(function(){if(!document.querySelector('script[data-canonical-nav]')){var s=document.createElement('script');s.src='assets/canonical-navigation.js?v=20260816';s.dataset.canonicalNav='1';document.head.appendChild(s)}})();\n"
+          if 'data-canonical-nav' not in s:
+              p.write_text(s+loader)
+          PY
+      - name: Remove one-shot workflow and commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/sync-canonical-navigation.yml
+          git add assets/canonical-navigation.js assets/desktop-controls.js *.html
+          git commit -m "Standardize sandwich menus across mobile and desktop"
+          git push

@@ -150,3 +150,5 @@
   document.addEventListener('click',function(event){var trigger=event.target.closest('[data-register],.shared-register,.solid,.navbtn.gold,a[href="register.html?type=visitor"]');if(!trigger||dialog.contains(trigger))return;openChooser(event)},true);
   var close=dialog.querySelector('.desktop-reg-close');if(close)close.addEventListener('click',closeChooser);dialog.addEventListener('cancel',function(event){event.preventDefault();closeChooser()});dialog.addEventListener('close',function(){document.body.classList.remove('desktop-reg-open')});dialog.addEventListener('click',function(event){if(event.target!==dialog)return;var box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)closeChooser()});
 })();
+
+;(function(){if(!document.querySelector('script[data-canonical-nav]')){var s=document.createElement('script');s.src='assets/canonical-navigation.js?v=20260816';s.dataset.canonicalNav='1';document.head.appendChild(s)}})();

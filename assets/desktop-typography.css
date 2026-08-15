@@ -86,6 +86,25 @@ body .sessions-head p{
   line-height:1.6!important;
 }
 
+/* Creator access: 01, 02 and 03 share one connected desktop row */
+body[data-mobile="creators.html"] .access-list{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:1px!important;
+  background:#d8cec3!important;
+  border:1px solid #d8cec3!important;
+}
+body[data-mobile="creators.html"] .access-row{
+  min-height:220px!important;
+  padding:30px!important;
+  border:0!important;
+  background:#faf0e6!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+body[data-mobile="creators.html"] .access-row p{margin-top:auto!important;padding-top:26px!important}
+
 @media(max-width:1400px){
   :root{--desktop-hero-title:clamp(58px,5.4vw,82px)}
+  body[data-mobile="creators.html"] .access-row{padding:24px!important}
 }

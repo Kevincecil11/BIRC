@@ -1,0 +1,46 @@
+name: Add Experience Zone images
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/add-experience-zone-images.yml]
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Add all nine images
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/experience-grain-field.js')
+          s=p.read_text()
+          marker="];\nvar main=document.querySelector('main')"
+          images="""\nvar images=[\n'https://ik.imagekit.io/18ab23oqaj/zone1.png',\n'https://ik.imagekit.io/18ab23oqaj/zone2.png',\n'https://ik.imagekit.io/18ab23oqaj/zone3.png',\n'https://ik.imagekit.io/18ab23oqaj/zone4.png',\n'https://ik.imagekit.io/18ab23oqaj/zone5.png',\n'https://ik.imagekit.io/18ab23oqaj/zone6.png',\n'https://ik.imagekit.io/18ab23oqaj/zone7.png',\n'https://ik.imagekit.io/18ab23oqaj/zone8.png',\n'https://ik.imagekit.io/18ab23oqaj/zone9.png'\n];\nvar main=document.querySelector('main')"""
+          if marker not in s: raise SystemExit('zones marker missing')
+          s=s.replace(marker,images,1)
+          old="'<div class=\"gf-media\" data-no=\"'+String(i+1).padStart(2,'0')+'\"></div><div class=\"gf-zone-copy\">"
+          new="'<figure class=\"gf-media\" data-no=\"'+String(i+1).padStart(2,'0')+'\"><img src=\"'+images[i]+'\" alt=\"'+z[0]+' Experience Zone\" loading=\"lazy\" decoding=\"async\"></figure><div class=\"gf-zone-copy\">"
+          if old not in s: raise SystemExit('media marker missing')
+          s=s.replace(old,new,1)
+          p.write_text(s)
+
+          p=Path('assets/experience-grain-field.css')
+          s=p.read_text()
+          old='.gf-media{position:relative;min-height:500px;background:#191916;overflow:hidden}.gf-media:before{content:"IMAGE COMING";position:absolute;inset:18px;border:1px solid #35332e;display:grid;place-items:center;color:#6d6862;font:600 10px Poppins,sans-serif;letter-spacing:.18em}.gf-media:after'
+          new='.gf-media{position:relative;min-height:500px;margin:0;background:#191916;overflow:hidden}.gf-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.002);transition:transform .8s var(--gf-ease),filter .5s var(--gf-ease)}.gf-zone:hover .gf-media img{transform:scale(1.035)}.gf-media:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 62%,#0d0d0b9c)}.gf-media:after'
+          if old not in s: raise SystemExit('css marker missing')
+          s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          rm .github/workflows/add-experience-zone-images.yml
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/experience-grain-field.js assets/experience-grain-field.css .github/workflows/add-experience-zone-images.yml
+          git commit -m "Add all nine Experience Zone images"
+          git push origin main

@@ -1,6 +1,6 @@
 # BIRC Project Context
 
-Last updated: 2026-08-12. Consolidated rewrite. Previous versions stacked chronological "desktop polish" notes at the bottom until the top sections contradicted the repository. That history has been removed and folded into the sections below. Per section 12, remove stale instructions rather than stacking them.
+Last updated: 2026-08-15. Consolidated rewrite. Previous versions stacked chronological "desktop polish" notes at the bottom until the top sections contradicted the repository. That history has been removed and folded into the sections below. Per section 12, remove stale instructions rather than stacking them.
 
 This is the living handoff file for the BIRC website. Read it first whenever the repository is opened in a new chat, coding session, or by a new contributor.
 
@@ -28,11 +28,15 @@ Visual direction: cinematic, editorial, premium, precise. Approved content must 
 - Live site: `https://kevincecil11.github.io/BIRC/`
 - Public repo, required for Pages on the current plan.
 - Logo asset (every page): `https://ik.imagekit.io/18ab23oqaj/BIRC%20Ivory%20logo%20dates.png`
+- Registration logo, desktop only: `https://ik.imagekit.io/18ab23oqaj/birc.png?updatedAt=1786729307998`. Supplied by Kevin on 2026-08-15 and swapped in by script at 900px and above. Mobile `register.html` keeps the dated ivory logo.
 - Rice world map asset: `assets/rice-world-map.png`
+- `publish-refresh.html` at the repository root is a deployment marker only. It exists to retrigger Pages and carries no content.
 
 ### Publishing
 
 `.github/workflows/publish-desktop-home.yml` is the active publish workflow. It watches `**.html` and deploys the repository root with `actions/upload-pages-artifact` and `actions/deploy-pages`. Concurrency group `pages`, `cancel-in-progress: true`.
+
+**CSS and JS commits do not trigger publishing on their own.** The workflow only watches HTML, so a change limited to `assets/*.css` or `assets/*.js` needs an accompanying HTML commit (touch `publish-refresh.html`) or it will never reach the live site.
 
 If an update does not appear live:
 
@@ -57,7 +61,7 @@ Notes on writing patch workflows, learned the hard way:
 The site maintains a mobile experience and a separate desktop experience as distinct files.
 
 - Every `desktop-*.html` page begins with a redirect script: below 900px it replaces location with its mobile counterpart.
-- Every desktop page has a `Mobile view` control in the masthead pointing at its own mobile file.
+- Every desktop page has a `Mobile view` control in the masthead or menu pointing at its own mobile file.
 - **The mobile pages are approved and considered finished. Do not modify a mobile file while working on desktop unless the user explicitly asks for that mobile file to change.**
 
 ### Mobile pages (13)
@@ -80,11 +84,11 @@ This was attempted repeatedly and rejected every time. The homepage took five at
 
 ### Clean, single-stylesheet pages
 
-`desktop-partnership.html`, `desktop-plan-visit.html`, `desktop-contact.html`. Use these three as the reference implementation for any new or rebuilt desktop page.
+`desktop-partnership.html`, `desktop-plan-visit.html`, `desktop-contact.html`, `desktop-conference.html`. Use these four as the reference implementation for any new or rebuilt desktop page.
 
 ### Pages still carrying layered stylesheets
 
-`desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html`, and the About / Conference / Exhibition / Experience set. They render correctly today but are fragile. Rebuild them as standalone documents when they next need substantive work rather than patching them again.
+`desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html`, and the About / Exhibition / Experience set. They render correctly today but are fragile. Rebuild them as standalone documents when they next need substantive work rather than patching them again.
 
 ## 6. Desktop design system
 
@@ -99,15 +103,21 @@ body { min-width: 1100px }
 ```
 
 - Section rhythm: `132px` vertical padding on standard sections, `104px + nav` on heroes.
-- Desktop Experience Zones heading sits directly above the large visual stage and aligns to the square’s inner content edge near its 01 marker. The complete three-day statement and October/date composition are centered across the page, while the `Three days` eyebrow remains on the left editorial rail. Voices uses an automatic four-quote rotation with a right-aligned portrait placeholder, name, and designation. The bottom four-name selector is removed.
+- Desktop Experience Zones heading sits directly above the large visual stage and aligns to the square's inner content edge near its 01 marker. The complete three-day statement and October/date composition are centered across the page, while the `Three days` eyebrow remains on the left editorial rail. Voices is a continuously moving four-column grid that travels **right to left**; the `04 voices in view` and `Pause on hover` labels were removed.
 - Desktop homepage uses a wide 1680px shell with 32px minimum side gutters. Its hero is a balanced 1:1 composition: the copy column and summit dossier have equal 620px height and matching top/bottom edges, while the dossier uses a fixed label column, five equal fact rows, and four equal countdown cells.
 - Breakpoint at `1180px` narrows the shell to `calc(100% - 64px)` and the gutter to `32px`.
 
+### Shared desktop controls
+
+`assets/desktop-controls.js` owns the desktop countdown and the registration role chooser. The countdown writes to `[data-shared-clock]`, `[data-clock]`, `#navClock`, `#cd/#ch/#cm/#cs`, and every `.countdown`, `.clockrow` or `.final .clock` block by ordered `strong` elements, so masthead and footer clocks stay in sync. It refreshes on `visibilitychange` and `pageshow`.
+
+Close controls are square, thin-bordered and top-right. No circular close buttons anywhere on desktop.
+
 ### Masthead
 
-Desktop homepage masthead is 88px high and uses the official logo at 170 x 55px, a 20% increase from the previous 142 x 46px treatment. The navigation is organized into three deliberate groups: the enlarged brand, a shared utility rail containing Search plus the EY report, Buyer facilitation, and 2026 agenda links, then the countdown, Login, Register, and sandwich menu at the extreme right. The three document labels use the same 11px Poppins weight and tracking as Login and Register; at narrower desktop widths they retain their icons while their labels collapse to keep the header breathable. The sandwich drawer is a single, left-aligned vertical stack: primary links have no numbers, while submenu items retain their small sequence numbers. The Mobile view control is removed from this homepage masthead. The previous full-width bottom action bar is removed; Book your stand and green WhatsApp actions are stacked at the bottom-right. All 14 desktop pages now use the same homepage-derived 88px navigation, 170px logo, Search and three document utilities, countdown, Login, Register, and single-column menu drawer.
+Desktop homepage masthead is 88px high and uses the official logo at 170 x 55px. The navigation is organized into three deliberate groups: the enlarged brand, a shared utility rail containing Search plus the EY report, Buyer facilitation, and 2026 agenda links, then the countdown, Login, Register, and sandwich menu at the extreme right. The three document labels use the same 11px Poppins weight and tracking as Login and Register; at narrower desktop widths they retain their icons while their labels collapse to keep the header breathable. The sandwich drawer is a single, left-aligned vertical stack: primary links have no numbers, while submenu items retain their small sequence numbers. The Mobile view control is removed from this homepage masthead. Book your stand and green WhatsApp actions are stacked at the bottom-right as compact 158 x 46px controls. All 14 desktop pages use the same homepage-derived navigation.
 
-Desktop homepage eyebrow titles use 13.2px Poppins, a 20% increase from the previous 11px shared size. The Purpose section uses a compact editorial rhythm with balanced 3-line copy, 52-66px on wide desktop, reduced section padding, and aligned label/content columns.
+Desktop homepage eyebrow titles use 13.2px Poppins. The Purpose section uses a compact editorial rhythm with balanced 3-line copy, 52-66px on wide desktop, reduced section padding, and aligned label/content columns.
 
 ### Left alignment is a standing rule
 
@@ -159,18 +169,20 @@ Fonts: **Poppins** for display and UI, **Inter** for body. No other families.
 
 Side-stripe accent borders (`border-left` as decoration) are banned. The Masterchef prize block was converted from a gold left stripe to a full gold border panel for this reason.
 
+Decorative checkmarks are replaced by the angled gold pointer motif used in the Creator score bullets. Native form checkboxes keep their default behaviour and checked state.
+
 ## 8. Page-specific rules
 
 ### Homepage
 
 - `index.html` mobile, `desktop.html` desktop. Content must stay synchronized.
-- Desktop homepage was rebuilt from scratch on one editorial grid. Voices is an interactive quote stage with a four-button selector. Why BIRC is a 2x2 with large background words.
+- Desktop homepage was rebuilt from scratch on one editorial grid. Why BIRC is a 2x2 with large background words.
 - Desktop homepage controls: countdown lives in the masthead; Book your stand and the green WhatsApp action with its official mark are stacked at the bottom-right. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
 - Desktop and mobile homepages share a native search dialog with live client-side results and popular queries. Desktop opens it from the navbar search control. Mobile adds Search and Documents icons beside the menu; Documents reveals the same EY report, Buyer facilitation, and 2026 agenda PDFs used on desktop.
-- The previous rotating facts ticker below the hero is replaced on desktop and mobile by a continuously moving media coverage rail titled `Published across / 80`. Every publisher mark is clickable, motion pauses on hover and respects reduced motion. `See the coverage` opens the dedicated local coverage page (`desktop-media-coverage.html` or `media-coverage.html`).
+- A continuously moving media coverage rail titled `Published across / 80` sits below the hero on desktop and mobile. Every publisher mark is clickable, motion pauses on hover and respects reduced motion. `See the coverage` opens the dedicated local coverage page.
 - Desktop `BIRC in pictures` is a full-viewport chapter with 72vw by 68vh image panels; mobile keeps the approved compact gallery.
-- Desktop floating actions use compact 158 x 46px controls to reduce overlap.
+- Experience cards on the desktop homepage flip in place with yellow backs. **The whole card is clickable**, not only the Read more control.
 - Final CTA uses `assets/rice-world-map.png` full-bleed with a dark readability overlay.
 - Header holds logo and menu only. No Register button in the mobile fixed header.
 - Public opening time is 10:00 AM daily. Homepage countdowns target 10:00 AM on 23 October 2026.
@@ -183,7 +195,14 @@ Every Register CTA opens an accessible native `<dialog>` chooser with three choi
 - Exhibitor → `register.html?type=exhibitor`
 - Buyer → `register.html?type=buyer`
 
-The dialog also links existing users to `https://birc.in/login`. `register.html` is a two-step form: step 1 is name, company, mobile with country code, WhatsApp match, country, email, remember me; step 2 is multi-select Industry Type plus declaration. Only the title and routing differ by role. Do not send a generic Register button straight to one role.
+The dialog also links existing users to `https://birc.in/login`. `register.html` is a two-step form: step 1 is name, company, mobile with country code, WhatsApp match, country, email, remember me; step 2 is multi-select Industry Type plus declaration. Only the title, logo and routing differ by role. Do not send a generic Register button straight to one role, and do not merge the three routes into one screen with role tabs.
+
+Locked registration decisions:
+
+- Preserve the current registration colours.
+- The dark left panel is editorial and balanced: dated logo, statement, and When/Where metadata. It must not read as an empty logo block.
+- `WhatsApp number is the same as mobile` sits beneath the field grid, not beside the phone field.
+- On desktop the close control is **square** and pinned to the **top-right of the form panel**, not the dark panel. It follows the view, so it moves onto the success panel after submit.
 
 ### Exhibition
 
@@ -197,8 +216,9 @@ All three views use the dark ink background system. Do not switch Exhibitor Prof
 
 Three separate pages, never a combined one: Content Creators, Rice Masterchef, Artists. Sits directly above Partnership in the nav.
 
-**The Creators page is the approved structural pattern.** Its flow is: hero (eyebrow, large title, lead, gold CTA, three-stat row) → light access section with numbered rows → score section with five bullet rows plus VIP and Day-3 pass cards → dark criteria section with checkmark rows → light process section with numbered step cards → gold apply section containing the linen form panel → light FAQ accordions. When a sibling influencer page needs a redesign, match this.
+**The Creators page is the approved structural pattern.** Its flow is: hero (eyebrow, large title, lead, gold CTA, three-stat row) → light access section with numbered rows → score section with five bullet rows plus VIP and Day-3 pass cards → dark criteria section with pointer rows → light process section with numbered step cards → gold apply section containing the linen form panel → light FAQ accordions. When a sibling influencer page needs a redesign, match this.
 
+- Creator access rows 01, 02 and 03 sit in **one connected desktop row**, not a 2x2 with an orphan.
 - Scoring factors are five bullet rows, not a matrix.
 - VIP Creator Pass must use high-contrast linen headings on raised ink.
 - In Artists, the four "Tiny Material. Infinite Expression." tiles are an equal 2x2 with identical dimensions.
@@ -240,11 +260,32 @@ Nine approved zones in this order: The Rice Route Map, Seed Cloud, The Rice Arch
 
 One direct nav link. **Never** add the nine zones as a submenu and never restore the numbered 1–9 rail. On mobile, zone visuals are full-bleed to both canvas edges with zero horizontal gutter; text keeps 22px padding above or below. Keep the immersive abstract CSS visuals. Do not invent longer zone claims.
 
-### About and Conference
+The Experience page is treated as the site's main selling point. Concept explorations for an interactive redesign were produced on 2026-08-15 and none is committed yet; `desktop-experience.html` still carries the approved alternating zone list.
+
+### About
 
 About flow: hero, mission, three values (Collaboration, Innovation, Leadership), Our Story, results, organisers, Advisory Board, industry overview, industry pillars. On desktop the "Who we are" and "Our Story" headings stay at the top; only body copy is bottom-aligned with the visual.
 
-Conference flow is fixed: Speakers, Agenda and Schedule, Workshops, Learning Academy. Speakers are implemented and were moved off the homepage. The other three are honest styled placeholders awaiting supplied content. Speaker portraits are symmetrical 3:4 rectangles with no staggered offsets. Speakers and programme headings are left-aligned on desktop.
+### Conference / Knowledge Sessions
+
+`conference.html` mobile, `desktop-conference.html` desktop. The nav label is Conference; the page title is Knowledge Sessions.
+
+Desktop was rebuilt from scratch on 2026-08-15 as a **standalone single-stylesheet document**. Its order is fixed:
+
+1. Full-viewport hero: breadcrumb, `BIRC 2026 programme` eyebrow, `Knowledge Sessions` title, the nine-decision lead, the delegate-pass note, `Get your BIRC 2026 pass` and `Speak at BIRC`, and a programme dossier on the right holding four fact rows plus three session plates.
+2. Gold datebar: `BIRC 2026 | 23-24-25 October 2026 | Bharat Mandapam, New Delhi`.
+3. All nine sessions as connected linen rows grouped under `Day 1` (4 sessions) and `Day 2` (5 sessions), each row carrying its number, topic label, full session title, a permanent 16:10 visual, and an Open control linking to its dedicated page.
+4. Speakers as a connected four-column grid on raised ink, with symmetrical 3:4 portrait placeholders and a note that photography follows.
+5. Closing statement `The data is public. The interpretation is not.` with the pass CTA.
+
+Rules for this page:
+
+- Session images are **permanent row plates**. The old hover-only floating previews and the "Hover to preview the visual" line were removed; do not reintroduce them.
+- The `Agenda and Schedule`, `Workshops` and `Learning Academy` placeholder blocks were **removed from desktop at Kevin's request on 2026-08-15**. Mobile `conference.html` still carries all three. Do not add them back to desktop without an explicit instruction.
+- Speaker portraits stay symmetrical 3:4 rectangles with no staggered offsets.
+- The page no longer loads `assets/knowledge-sessions.css` or `assets/knowledge-sessions.js`. Those files remain in the repository for the nine dedicated session pages.
+
+The nine dedicated desktop session pages (`desktop-knowledge-*.html`) are unchanged and still carry the full scope, outcomes, audience and FAQ content for each topic.
 
 ## 9. Approved facts, do not change without new source content
 
@@ -253,6 +294,7 @@ Conference flow is fixed: Speakers, Agenda and Schedule, Workshops, Learning Aca
 - 30,000+ participants, 120+ countries, 250+ speakers, 300+ exhibitors, 3,000+ buyers
 - ₹30,435 Cr in MoUs
 - Nine Experience Zones
+- Nine Knowledge Sessions, four on Day 1 and five on Day 2
 - Venue infrastructure: 5 halls, 50,000+ sqm, 940+ exhibition halls metric, 30+ conference rooms, 900+ parking, 15+ food courts
 
 ## 10. Outstanding placeholders
@@ -262,9 +304,9 @@ Do not present these as verified facts and do not invent replacements:
 - Speaker portraits
 - About organiser logos
 - About Advisory Board names, titles, portraits
-- Conference Agenda and Schedule, Workshops, Learning Academy content
+- Conference Agenda and Schedule, Workshops, Learning Academy content (mobile only; the desktop blocks were removed)
 - Instagram and LinkedIn URLs
-- Homepage WhatsApp destination URL
+- Homepage WhatsApp destination URL, currently `https://wa.me/`
 - Partner logos on Partnership (placeholder marquee)
 - Hotel names on Plan Visit (currently Hotel A / Hotel B)
 
@@ -278,7 +320,7 @@ Every material edit must:
 4. Preserve approved content.
 5. Leave mobile untouched during desktop work unless explicitly asked.
 6. Update `context.md` in the same change.
-7. Commit to `main` and trigger publishing.
+7. Commit to `main` and trigger publishing. Remember that CSS-only and JS-only commits do not trigger the workflow.
 8. Verify the live URL, not the commit.
 
 ## 12. How to update this file
@@ -292,9 +334,10 @@ Keep it factual and scannable. **Rewrite stale sections rather than appending co
 1. Receive and add Conference Agenda and Schedule content.
 2. Receive and add Conference Workshops content.
 3. Receive and add Conference Learning Academy content.
-4. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
-5. Optional cleanup: delete the ~68 spent one-shot workflow files.
-6. Optional hardening: rebuild `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html` and the About / Conference / Exhibition / Experience set as standalone single-stylesheet documents.
+4. Decide on an Experience page direction and implement it in `desktop-experience.html`.
+5. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
+6. Optional cleanup: delete the ~68 spent one-shot workflow files.
+7. Optional hardening: rebuild `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html` and the About / Exhibition / Experience set as standalone single-stylesheet documents.
 
 ## 14. New-chat instruction
 

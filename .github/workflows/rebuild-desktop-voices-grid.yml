@@ -1,0 +1,52 @@
+name: Rebuild desktop Voices grid
+
+on:
+  push:
+    paths:
+      - 'assets/voices-grid.css'
+      - 'assets/voices-grid.js'
+      - '.github/workflows/rebuild-desktop-voices-grid.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Replace Voices stage with four-card moving grid
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('desktop.html')
+          s=p.read_text(encoding='utf-8')
+          css='<link rel="stylesheet" href="assets/voices-grid.css">'
+          js='<script src="assets/voices-grid.js"></script>'
+          if css not in s:s=s.replace('</head>',css+'</head>',1)
+          if js not in s:s=s.replace('</body>',js+'</body>',1)
+          cards='''<article class="voice-grid-card"><div class="voice-grid-image" role="img" aria-label="Portrait placeholder for Priya Nair"></div><div class="voice-grid-copy"><blockquote>BIRC redefined how we see global rice trade.</blockquote><footer class="voice-grid-person"><b>Priya Nair</b><span>Director, Global Grain Council</span></footer></div></article><article class="voice-grid-card"><div class="voice-grid-image" role="img" aria-label="Portrait placeholder for Marco van der Belt"></div><div class="voice-grid-copy"><blockquote>The ecosystem here moves faster than any fair.</blockquote><footer class="voice-grid-person"><b>Marco van der Belt</b><span>CEO, EuroRice Partners</span></footer></div></article><article class="voice-grid-card"><div class="voice-grid-image" role="img" aria-label="Portrait placeholder for Chen Wei"></div><div class="voice-grid-copy"><blockquote>Every session sharpened our market view.</blockquote><footer class="voice-grid-person"><b>Chen Wei</b><span>Head of Trade, Asia Foods</span></footer></div></article><article class="voice-grid-card"><div class="voice-grid-image" role="img" aria-label="Portrait placeholder for James Sterling"></div><div class="voice-grid-copy"><blockquote>A platform built for the industry's future.</blockquote><footer class="voice-grid-person"><b>James Sterling</b><span>Founder, Sterling Commodities</span></footer></div></article>'''
+          replacement='''<section class="voices-grid-section" id="voices"><div class="shell"><header class="voices-grid-head"><span class="eyebrow">Voices of the industry</span><div><h2>What leaders say.</h2><p>Four perspectives on the trade, intelligence and partnerships that move faster inside BIRC.</p></div></header></div><div class="voices-viewport" aria-label="Industry testimonials"><div class="voices-track"><div class="voices-set">'''+cards+'''</div><div class="voices-set" aria-hidden="true">'''+cards+'''</div></div></div><div class="shell voices-grid-note"><span>04 voices in view</span><span>Pause on hover</span></div></section>'''
+          patterns=[
+            r'<section class="voices\b.*?</section>\s*(?=<section class="why-section\b)',
+            r'<section[^>]+id="voices"[^>]*>.*?</section>\s*(?=<section[^>]+(?:class="why|id="why))'
+          ]
+          done=False
+          for pattern in patterns:
+            s,n=re.subn(pattern,replacement,s,count=1,flags=re.S)
+            if n:done=True;break
+          if not done:raise RuntimeError('Voices section boundary not found')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit Voices grid
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop.html
+          git commit -m 'Replace Voices stage with moving four-column testimonial grid'
+          git push origin main

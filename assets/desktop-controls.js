@@ -1,25 +1,97 @@
 (function(){
   'use strict';
 
-  /* Rice Masterchef uses the exact Content Creators alignment vocabulary. */
-  if(document.body.dataset.mobile==='rice-masterchef.html'){
-    var alignment=document.createElement('style');
-    alignment.id='masterchef-creator-alignment';
-    alignment.textContent='\
-body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section{padding-left:max(32px,calc((100vw - 1680px)/2))!important;padding-right:max(32px,calc((100vw - 1680px)/2))!important}\
-body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>.eye{display:block!important;margin:0 0 18px!important;padding:0!important;text-align:left!important}\
-body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>.section-title,body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>h2{display:block!important;margin:0!important;max-width:24ch!important;text-align:left!important}\
-body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section:not(.master-hero)>p{margin:20px 0 0!important;max-width:62ch!important;text-align:left!important}\
-body[data-mobile="rice-masterchef.html"] .master-apply form.master-form{width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section{background:#faf0e6!important;color:#0d0d0b!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head{display:block!important;width:min(1040px,100%)!important;max-width:1040px!important;margin:0 auto 42px!important;text-align:left!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.eye{display:block!important;margin:0 0 18px!important;padding:0!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.section-title{display:block!important;margin:0!important;max-width:24ch!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.faq-items{width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-item{border-color:#d8cec3!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-q{color:#0d0d0b!important}\
-body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-a p{color:#6d6862!important}';
-    document.head.appendChild(alignment);
+  /* Final Influencer alignment layer. Inserted last so legacy page CSS cannot split it. */
+  var role=document.body.dataset.mobile;
+  if(role==='creators.html'||role==='rice-masterchef.html'||role==='artists.html'){
+    var finalStyle=document.createElement('style');
+    finalStyle.id='final-influencer-alignment';
+    finalStyle.textContent=`
+      body[data-mobile="creators.html"] main.page>section,
+      body[data-mobile="artists.html"] main.page>section,
+      body[data-mobile="rice-masterchef.html"] main.page>section.masterchef>section{
+        padding-left:max(32px,calc((100vw - 1680px)/2))!important;
+        padding-right:max(32px,calc((100vw - 1680px)/2))!important;
+      }
+
+      body[data-mobile="creators.html"] main.page section:not(.hero)>.head,
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>.head{
+        display:block!important;width:100%!important;margin:0 0 48px!important;padding:0!important;text-align:left!important;
+      }
+      body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.eye,
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>.head>.eye{
+        display:block!important;margin:0 0 18px!important;padding:0!important;text-align:left!important;
+      }
+      body[data-mobile="creators.html"] main.page section:not(.hero)>.head>.section-title,
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>.head>.section-title{
+        display:block!important;margin:0!important;padding:0!important;max-width:24ch!important;text-align:left!important;
+      }
+      body[data-mobile="creators.html"] main.page section:not(.hero)>.head>p,
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>.head>p{
+        margin:20px 0 0!important;max-width:62ch!important;text-align:left!important;
+      }
+
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>.eye{
+        display:block!important;margin:0 0 18px!important;padding:0!important;text-align:left!important;
+      }
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>.section-title,
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>h2{
+        display:block!important;margin:0!important;max-width:24ch!important;text-align:left!important;
+      }
+      body[data-mobile="rice-masterchef.html"] main.page section.masterchef>section:not(.master-hero)>p{
+        margin:20px 0 0!important;max-width:62ch!important;text-align:left!important;
+      }
+      body[data-mobile="rice-masterchef.html"] .winner{display:block!important;}
+      body[data-mobile="rice-masterchef.html"] .winner .winner-list{margin-top:46px!important;}
+
+      body[data-mobile="creators.html"] section.apply form.form,
+      body[data-mobile="rice-masterchef.html"] section.master-apply form.master-form,
+      body[data-mobile="artists.html"] section#apply form.form{
+        width:min(940px,100%)!important;max-width:940px!important;margin-left:auto!important;margin-right:auto!important;
+      }
+
+      body[data-mobile="creators.html"] main.page section.faq-section,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section{
+        background:#faf0e6!important;color:#0d0d0b!important;
+      }
+      body[data-mobile="creators.html"] main.page section.faq-section>.head,
+      body[data-mobile="creators.html"] main.page section.faq-section>.faq-items,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.faq-items{
+        display:block!important;width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important;text-align:left!important;
+      }
+      body[data-mobile="creators.html"] main.page section.faq-section>.head,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head{margin-top:0!important;margin-bottom:42px!important;}
+      body[data-mobile="creators.html"] main.page section.faq-section>.head>.eye,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.eye{
+        display:block!important;color:#c98e25!important;margin:0 0 18px!important;padding:0!important;text-align:left!important;
+      }
+      body[data-mobile="creators.html"] main.page section.faq-section>.head>.section-title,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section>.head>.section-title{
+        display:block!important;color:#0d0d0b!important;margin:0!important;padding:0!important;max-width:24ch!important;text-align:left!important;
+      }
+      body[data-mobile="creators.html"] main.page section.faq-section .faq-item,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-item{border-color:#d8cec3!important;}
+      body[data-mobile="creators.html"] main.page section.faq-section .faq-q,
+      body[data-mobile="rice-masterchef.html"] main.page section.faq-section .faq-q{color:#0d0d0b!important;}
+
+      body[data-mobile="artists.html"] .source-visual{display:none!important;}
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq{
+        position:relative!important;left:50%!important;width:100vw!important;max-width:none!important;margin:88px 0 -130px -50vw!important;
+        padding:120px max(32px,calc((100vw - 1680px)/2))!important;background:#faf0e6!important;color:#0d0d0b!important;
+      }
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.eye,
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.section-title,
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.faq-items{
+        display:block!important;width:min(1040px,100%)!important;max-width:1040px!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important;text-align:left!important;
+      }
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.eye{color:#c98e25!important;margin-top:0!important;margin-bottom:18px!important;}
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.section-title{color:#0d0d0b!important;margin-top:0!important;max-width:24ch!important;}
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq>.faq-items{margin-top:42px!important;}
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq .faq-item{border-color:#d8cec3!important;}
+      body[data-mobile="artists.html"] main.page section#apply>section.artist-faq .faq-q{color:#0d0d0b!important;}
+    `;
+    document.head.appendChild(finalStyle);
   }
 
   var target=Date.parse('2026-10-23T10:00:00+05:30');

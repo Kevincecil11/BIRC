@@ -9,11 +9,22 @@ var zones=[
 ['The World Within','A grain becomes a universe','Macro projection opens the grain into landscapes, structures and unseen systems.'],
 ['Rice Mirror','The grains know your face','A responsive installation turns every visitor into part of the field.'],
 ['Beyond the Bowl','A window you cannot pass','A final frame looking beyond food toward material, climate, design and possibility.']
+
+var images=[
+'https://ik.imagekit.io/18ab23oqaj/zone1.png',
+'https://ik.imagekit.io/18ab23oqaj/zone2.png',
+'https://ik.imagekit.io/18ab23oqaj/zone3.png',
+'https://ik.imagekit.io/18ab23oqaj/zone4.png',
+'https://ik.imagekit.io/18ab23oqaj/zone5.png',
+'https://ik.imagekit.io/18ab23oqaj/zone6.png',
+'https://ik.imagekit.io/18ab23oqaj/zone7.png',
+'https://ik.imagekit.io/18ab23oqaj/zone8.png',
+'https://ik.imagekit.io/18ab23oqaj/zone9.png'
 ];
 var main=document.querySelector('main');if(!main)return;main.className='gf-main';
 main.innerHTML='<section class="gf-field"><canvas class="gf-canvas" aria-hidden="true"></canvas><div class="gf-top"><span class="gf-eye">Experience Zones · BIRC 2026</span><p>Nine immersive worlds tracing rice from field to future.</p></div><div class="gf-copy"><small class="gf-count">01 / 09 · '+zones[0][1]+'</small><h1>'+zones[0][0]+'</h1><p>'+zones[0][2]+'</p></div><div><nav class="gf-picker" aria-label="Choose an Experience Zone"></nav><div class="gf-hint">Move across the field · click a world · the grain reforms</div></div></section><section class="gf-intro"><div class="gf-intro-in"><span class="gf-eye">The field opens</span><div><h2>Nine worlds inside one grain.</h2><p>The field is the navigation, not decoration. Each selection gathers thousands of moving grain points into its number, then opens the story below. Your supplied images will replace the marked frames without changing this structure.</p></div></div></section><section class="gf-zones"></section><section class="gf-close"><div class="gf-close-in"><div><span class="gf-eye" style="color:#5a4008">23-24-25 October 2026</span><h2>Walk all nine worlds.</h2></div><a href="register.html?type=visitor">Register now ↗</a></div></section>';
 var picker=main.querySelector('.gf-picker'),list=main.querySelector('.gf-zones'),copy=main.querySelector('.gf-copy');
-zones.forEach(function(z,i){var b=document.createElement('button');b.className='gf-pick';b.type='button';b.setAttribute('aria-selected',i===0?'true':'false');b.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b><span>'+z[0]+'</span>';b.onclick=function(){select(i,true)};picker.appendChild(b);var a=document.createElement('article');a.className='gf-zone';a.id='gf-zone-'+(i+1);a.innerHTML='<div class="gf-media" data-no="'+String(i+1).padStart(2,'0')+'"></div><div class="gf-zone-copy"><small>'+String(i+1).padStart(2,'0')+' / 09 · '+z[1]+'</small><h3>'+z[0]+'</h3><p>'+z[2]+'</p><button type="button">See this world in the field ↑</button></div>';a.querySelector('button').onclick=function(){select(i,false);scrollTo({top:0,behavior:'smooth'})};list.appendChild(a)});
+zones.forEach(function(z,i){var b=document.createElement('button');b.className='gf-pick';b.type='button';b.setAttribute('aria-selected',i===0?'true':'false');b.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b><span>'+z[0]+'</span>';b.onclick=function(){select(i,true)};picker.appendChild(b);var a=document.createElement('article');a.className='gf-zone';a.id='gf-zone-'+(i+1);a.innerHTML='<figure class="gf-media" data-no="'+String(i+1).padStart(2,'0')+'"><img src="'+images[i]+'" alt="'+z[0]+' Experience Zone" loading="lazy" decoding="async"></figure><div class="gf-zone-copy"><small>'+String(i+1).padStart(2,'0')+' / 09 · '+z[1]+'</small><h3>'+z[0]+'</h3><p>'+z[2]+'</p><button type="button">See this world in the field ↑</button></div>';a.querySelector('button').onclick=function(){select(i,false);scrollTo({top:0,behavior:'smooth'})};list.appendChild(a)});
 var canvas=main.querySelector('.gf-canvas'),ctx=canvas.getContext('2d'),dpr=1,w=0,h=0,pts=[],target=[],active=0,mouse={x:-9999,y:-9999},gold='#ebb341',muted='#7f765f';
 function resize(){dpr=Math.min(devicePixelRatio||1,2);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);if(!pts.length)seed();shape(active)}
 function seed(){var n=Math.min(1750,Math.max(900,Math.floor(w*h/850)));for(var i=0;i<n;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:0,vy:0,a:.18+Math.random()*.55,s:1+Math.random()*2.2,r:Math.random()*6.28})}

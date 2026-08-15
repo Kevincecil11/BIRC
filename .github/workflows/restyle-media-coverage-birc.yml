@@ -1,0 +1,43 @@
+name: Restyle Media Coverage to BIRC system
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/restyle-media-coverage-birc.yml]
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Connect house-style assets and mobile logo section
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p=Path('desktop-media-coverage.html')
+          s=p.read_text()
+          s=s.replace('&family=Instrument+Serif:ital@1','')
+          link='<link rel="stylesheet" href="assets/media-coverage-birc.css?v=20260816">'
+          if link not in s: s=s.replace('</head>',link+'</head>')
+          p.write_text(s)
+
+          p=Path('media-coverage.html')
+          s=p.read_text()
+          link='<link rel="stylesheet" href="assets/media-coverage-mobile-birc.css?v=20260816">'
+          if link not in s: s=s.replace('</head>',link+'</head>')
+          marker='<section class="section"><header class="head"><span class="ey">Lead coverage</span>'
+          reported='''<section class="section reported"><header class="head"><span class="ey">Reported by</span><h2>Newsrooms carrying BIRC.</h2></header><div class="media-logos"><a class="media-logo" href="https://ricenewstoday.com/bharat-international-rice-conference-to-drive-global-rice-trade-dialogue-in-october/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=ricenewstoday.com&amp;sz=64" alt=""><span>Rice News Today</span></a><a class="media-logo" href="https://ndtv.in/business-news/india-international-rice-conference-2026-to-host-over-30000-delegates-from-120-countries-in-delhi-11865438" target="_blank"><img src="https://www.google.com/s2/favicons?domain=ndtv.in&amp;sz=64" alt=""><span>NDTV India</span></a><a class="media-logo" href="https://agrospectrumindia.com/news/24/34555/birc-2026-registrations-cross-19000-as-global-buyer-participation-surges-ahead-of-october-event.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=agrospectrumindia.com&amp;sz=64" alt=""><span>AgroSpectrum India</span></a><a class="media-logo" href="https://economictimes.indiatimes.com/news/economy/agriculture/bharat-international-rice-conference-global-crop-survey-future-pricing-insights/articleshow/132835894.cms" target="_blank"><img src="https://www.google.com/s2/favicons?domain=economictimes.indiatimes.com&amp;sz=64" alt=""><span>The Economic Times</span></a><a class="media-logo" href="https://www.business-standard.com/industry/agriculture/india-s-rice-exports-to-rise-over-10-in-fy26-on-robust-global-demand-125103000899_1.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=business-standard.com&amp;sz=64" alt=""><span>Business Standard</span></a><a class="media-logo" href="https://newsable.asianetnews.com/business/birc-2025-worlds-largest-rice-conference-generates-302bn-deals-articleshow-31od0qa" target="_blank"><img src="https://www.google.com/s2/favicons?domain=asianetnews.com&amp;sz=64" alt=""><span>Asianet Newsable</span></a></div></section>'''
+          if 'class="section reported"' not in s and marker in s: s=s.replace(marker,reported+marker,1)
+          p.write_text(s)
+          PY
+          rm .github/workflows/restyle-media-coverage-birc.yml
+      - name: Commit restyle
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add desktop-media-coverage.html media-coverage.html assets/media-coverage-birc.css assets/media-coverage-mobile-birc.css .github/workflows/restyle-media-coverage-birc.yml
+          git commit -m "Align Media Coverage desktop and mobile with BIRC design system"
+          git push origin main

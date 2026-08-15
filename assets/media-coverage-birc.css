@@ -1,0 +1,49 @@
+/* BIRC Media Coverage house-style corrections, loaded last */
+:root{--mc-ink:#0d0d0b;--mc-raised:#191916;--mc-linen:#faf0e6;--mc-linen-alt:#f3e8db;--mc-gold:#ebb341;--mc-deep:#c98e25;--mc-dark-muted:#aba49c;--mc-light-muted:#6d6862;--mc-dark-line:#35332e;--mc-light-line:#d8cec3}
+
+/* Typography: Poppins and Inter only, same scale as every BIRC desktop page */
+.serif{font-family:Poppins,sans-serif!important;font-style:normal!important;font-weight:600!important;color:var(--mc-gold)!important;letter-spacing:-.055em!important}
+.light .serif{color:var(--mc-deep)!important}
+.hero h1{font:600 clamp(62px,5vw,96px)/.93 Poppins,sans-serif!important;letter-spacing:-.06em!important;max-width:12ch!important}
+.hero h1 em{margin-top:10px!important;font-size:1em!important;line-height:.93!important}
+.head h2{font:600 clamp(44px,3.7vw,66px)/.98 Poppins,sans-serif!important;letter-spacing:-.05em!important;max-width:16ch!important}
+.head h2 em{margin-top:8px!important;font-size:1em!important;line-height:.98!important}
+.panel h2{font:600 clamp(25px,2vw,33px)/1.13 Poppins,sans-serif!important}
+.pick h3,.item h3,.dispatch h3,.gov h3,.method h3{font-family:Poppins,sans-serif!important;font-weight:600!important}
+.hero .lede,.head p,.pick p,.item p,.dispatch-body>p,.gov p,.method p,.closing p{font-family:Inter,sans-serif!important;font-weight:400!important}
+
+/* Section-owned surfaces: cells never introduce a stray grey/raised fill */
+.light{background:var(--mc-linen)!important}.light.alt{background:var(--mc-linen-alt)!important}
+.dark{background:var(--mc-ink)!important}.dark.raised{background:var(--mc-raised)!important}
+.light .logos,.light .picks,.light .index,.light .filters{border-color:var(--mc-light-line)!important}
+.light .logo,.light .pick,.light .item,.light .filters{background:var(--mc-linen)!important}
+.light.alt .logo,.light.alt .pick,.light.alt .item,.light.alt .filters,.light.alt .empty{background:var(--mc-linen-alt)!important}
+.light .logo:hover,.light .pick:hover,.light .item:hover{background:inherit!important}
+.light .logo:hover,.light .pick:hover,.light .item:hover{color:var(--mc-deep)!important}
+.dark .official,.dark .carriers{background:var(--mc-dark-line)!important;border-color:var(--mc-dark-line)!important}
+.dark .gov,.dark .carrier{background:var(--mc-ink)!important}
+.dark.raised .gov,.dark.raised .carrier{background:var(--mc-raised)!important}
+.dark .gov:hover,.dark .carrier:hover,.dark .dispatch summary:hover{background:inherit!important}
+.dark.raised .dispatch[open] summary{background:var(--mc-raised)!important}
+.panel,.panel-grid div{background:var(--mc-ink)!important}
+.empty{border-color:var(--mc-light-line)!important}
+
+/* Keep gold rare and structural */
+.rule{font:600 13.2px/1 Poppins,sans-serif!important;letter-spacing:.16em!important}
+.pick-meta,.item-meta,.dispatch .who,.gov small{font-size:10px!important}
+.btn{min-height:56px!important;font-size:12px!important}
+.logo{min-height:104px!important}
+.logo span{font-size:13px!important}
+
+/* Cleaner grid rhythm, no imitation styling */
+.picks{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.pick,.pick:first-child,.pick:nth-child(2){grid-column:span 1!important;min-height:318px!important}
+.pick:first-child{grid-column:span 2!important}
+.pick:first-child h3{font-size:clamp(24px,2vw,32px)!important}
+.pick:nth-child(2) h3{font-size:clamp(20px,1.7vw,27px)!important}
+.index{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.official{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.method{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+
+@media(max-width:1400px){.hero h1{font-size:clamp(58px,5.4vw,82px)!important}.head h2{font-size:clamp(42px,3.7vw,60px)!important}.picks{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pick:first-child{grid-column:span 2!important}.official{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:1180px){.index,.official{grid-template-columns:repeat(2,minmax(0,1fr))!important}.method{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

@@ -1,0 +1,35 @@
+name: Refresh home fix assets
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/refresh-home-fix-assets.yml'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Bump connected asset versions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text().replace('mobile-home-fixes.css?v=20260817','mobile-home-fixes.css?v=20260817b').replace('mobile-home-fixes.js?v=20260817','mobile-home-fixes.js?v=20260817b')
+          p.write_text(s)
+          p=Path('assets/canonical-navigation.js')
+          s=p.read_text().replace('global-desktop-controls.js?v=20260817','global-desktop-controls.js?v=20260817b')
+          p.write_text(s)
+          PY
+          rm .github/workflows/refresh-home-fix-assets.yml
+      - name: Commit refresh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/canonical-navigation.js .github/workflows/refresh-home-fix-assets.yml
+          git commit -m "Refresh mobile repair and desktop divider assets"
+          git push origin main

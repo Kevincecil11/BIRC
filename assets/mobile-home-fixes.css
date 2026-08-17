@@ -8,8 +8,56 @@
   html,body{overflow-x:hidden}
   body.lock{overflow:hidden!important;touch-action:none}
   .bar{z-index:90!important}
-  #drawer .canon-nav>a,#drawer .canon-group>button,#drawer .canonical-nav>a,#drawer .exhibition-parent,#drawer .influencer-parent{min-height:52px!important;padding:10px 0!important;font:600 24px/1.08 Poppins,sans-serif!important;letter-spacing:-.045em!important}
-  #drawer .canon-sub a,#drawer .exhibition-sub a,#drawer .influencer-sub a{min-height:42px!important;padding:9px 0 9px 16px!important;font-size:12px!important}
+  /* One typography system for every primary link and expandable group. */
+  #drawer .canon-nav>a,
+  #drawer .canon-group>button,
+  #drawer .canonical-nav>a,
+  #drawer .exhibition-parent,
+  #drawer .influencer-parent,
+  #drawer .experience-menu-parent,
+  #drawer .plan-menu-parent,
+  #drawer .nav-parent,
+  #drawer .menu-parent{
+    width:100%!important;
+    min-height:56px!important;
+    padding:12px 0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    border:0!important;
+    border-bottom:1px solid #35332e!important;
+    background:transparent!important;
+    color:#faf0e6!important;
+    font:600 24px/1.15 Poppins,sans-serif!important;
+    letter-spacing:-.045em!important;
+    text-align:left!important;
+  }
+  #drawer .canon-group>button small,
+  #drawer .exhibition-parent small,
+  #drawer .influencer-parent small,
+  #drawer .experience-menu-parent small,
+  #drawer .plan-menu-parent small,
+  #drawer .nav-parent small,
+  #drawer .menu-parent small{font:500 11px/1 Poppins,sans-serif!important;color:#aba49c!important;letter-spacing:0!important}
+  /* Submenu entries are deliberately smaller, but identical to each other. */
+  #drawer .canon-sub a,
+  #drawer .exhibition-sub a,
+  #drawer .influencer-sub a,
+  #drawer .experience-submenu a,
+  #drawer .plan-submenu a,
+  #drawer .nav-sub a,
+  #drawer .submenu a{
+    min-height:46px!important;
+    padding:10px 0 10px 16px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    border-bottom:1px solid #35332e!important;
+    color:#aba49c!important;
+    font:500 16px/1.25 Poppins,sans-serif!important;
+    letter-spacing:-.025em!important;
+  }
+  #drawer .canon-sub i,#drawer .canon-sub span,#drawer .exhibition-sub span,#drawer .influencer-sub span,#drawer .experience-submenu span,#drawer .plan-submenu span,#drawer .nav-sub span,#drawer .submenu span{font:600 9px/1 Poppins,sans-serif!important;color:#ebb341!important;letter-spacing:.08em!important}
   .action-dock{z-index:88!important;position:fixed!important;right:max(10px,calc((100vw - 520px)/2 + 10px))!important;bottom:max(10px,env(safe-area-inset-bottom))!important;display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:8px!important}
   .action-toggle{position:relative!important;inset:auto!important;order:2!important;margin:0!important;flex:none!important}
   .action-dock.open .action-toggle{transform:rotate(45deg)!important}

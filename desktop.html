@@ -862,7 +862,16 @@ body.search-open{overflow:hidden}
 @media(max-width:1400px){.zone-card,.zone-card-inner{min-height:530px!important}.zone-card-front,.zone-card-back{padding:16px 16px 22px}.zone-card-back h3{font-size:27px}.zone-back-copy p{font-size:13px!important}}
 @media(prefers-reduced-motion:reduce){.zone-card-inner{transition:none}}
 </style>
-<link rel="stylesheet" href="assets/desktop-typography.css"><link rel="stylesheet" href="assets/desktop-controls.css"><link rel="stylesheet" href="assets/voices-grid.css"></head>
+<link rel="stylesheet" href="assets/desktop-typography.css"><link rel="stylesheet" href="assets/desktop-controls.css"><link rel="stylesheet" href="assets/voices-grid.css"><style id="visit-hover-final">
+/* Final Plan Visit state: ivory at rest, black only while hovered/focused. */
+.visitgrid .visit-item,.visitgrid .visit-item.open{background:#faf0e6!important;color:#0d0d0b!important}
+.visitgrid .visit-item:before,.visitgrid .visit-item.open:before{transform:translateY(101%)!important}
+.visitgrid .visit-item:hover:before,.visitgrid .visit-item:focus-visible:before{transform:translateY(0)!important}
+.visitgrid .visit-item:hover,.visitgrid .visit-item:focus-visible{color:#faf0e6!important;outline:none!important}
+.visitgrid .visit-item:hover .label,.visitgrid .visit-item:focus-visible .label{color:#ebb341!important}
+.visitgrid .visit-item:hover .act,.visitgrid .visit-item:focus-visible .act{color:#faf0e6!important}
+.visitgrid .visit-item:hover .act i,.visitgrid .visit-item:focus-visible .act i{color:#ebb341!important}
+</style></head>
 <body class="desktop-search-context">
 <div class="topline"><i id="progress"></i></div>
 
@@ -1097,7 +1106,7 @@ body.search-open{overflow:hidden}
         <div><h2 class="d2">Plan your visit</h2></div>
       </header>
       <div class="visitgrid">
-        <button class="visit-item open" type="button" aria-expanded="true"><span class="label">Venue</span><h3>Bharat Mandapam</h3><span class="visit-detail"><span><p>Pragati Maidan, New Delhi. Halls 4 and 5, gates open at 10:00 AM.</p></span></span><span class="act">Directions <i>&rarr;</i></span></button>
+        <button class="visit-item" type="button" aria-expanded="true"><span class="label">Venue</span><h3>Bharat Mandapam</h3><span class="visit-detail"><span><p>Pragati Maidan, New Delhi. Halls 4 and 5, gates open at 10:00 AM.</p></span></span><span class="act">Directions <i>&rarr;</i></span></button>
         <button class="visit-item" type="button" aria-expanded="false"><span class="label">Stay</span><h3>Partner hotels</h3><span class="visit-detail"><span><p>Five partner hotels across every price range, minutes from the venue.</p></span></span><span class="act">View hotels <i>&rarr;</i></span></button>
         <button class="visit-item" type="button" aria-expanded="false"><span class="label">Travel</span><h3>Getting here</h3><span class="visit-detail"><span><p>Flight, train or metro. Blue Line to Supreme Court, six minutes on foot.</p></span></span><span class="act">Travel guide <i>&rarr;</i></span></button>
         <button class="visit-item" type="button" aria-expanded="false"><span class="label">Support</span><h3>Visas &amp; FAQs</h3><span class="visit-detail"><span><p>Invitation letters, accreditation, accessibility and delegate support.</p></span></span><span class="act">All FAQs <i>&rarr;</i></span></button>

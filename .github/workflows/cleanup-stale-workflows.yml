@@ -1,0 +1,32 @@
+name: Clean stale workflows
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/cleanup-stale-workflows.yml'
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Keep only active deployment workflows
+        run: |
+          find .github/workflows -maxdepth 1 -type f \
+            ! -name 'deploy-pages.yml' \
+            ! -name 'publish-desktop-home.yml' \
+            -delete
+      - name: Verify keepers and commit
+        run: |
+          test -f .github/workflows/deploy-pages.yml
+          test -f .github/workflows/publish-desktop-home.yml
+          test "$(find .github/workflows -maxdepth 1 -type f | wc -l)" -eq 2
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .github/workflows
+          git commit -m "Remove stale workflows and retain active deploy automation"
+          git push origin main

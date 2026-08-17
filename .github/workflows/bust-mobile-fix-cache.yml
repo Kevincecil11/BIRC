@@ -1,0 +1,36 @@
+name: Bust mobile fix cache
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/bust-mobile-fix-cache.yml'
+permissions:
+  contents: write
+jobs:
+  bust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Point index at the repaired assets
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          s = re.sub(r'mobile-home-fixes\.css\?v=[0-9a-z]+', 'mobile-home-fixes.css?v=20260817c', s)
+          s = re.sub(r'mobile-home-fixes\.js\?v=[0-9a-z]+', 'mobile-home-fixes.js?v=20260817c', s)
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile drawer overlap fix, 2026-08-17 13:31 IST -->')
+          PY
+          rm .github/workflows/bust-mobile-fix-cache.yml
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html publish-refresh.html .github/workflows/bust-mobile-fix-cache.yml
+          git commit -m "Load repaired mobile drawer assets"
+          git push origin main

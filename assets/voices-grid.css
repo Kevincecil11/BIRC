@@ -22,3 +22,30 @@
 @media(max-width:1400px){.voices-grid-head{grid-template-columns:190px 1fr;gap:56px}.voice-grid-card{min-height:480px}.voice-grid-copy blockquote{font-size:19px}}
 @media(max-width:1180px){.voices-grid-head{grid-template-columns:160px 1fr;gap:40px}.voice-grid-card{min-height:450px;padding:14px 14px 22px}.voice-grid-copy blockquote{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.voices-track{animation:none;transform:none}.voices-set[aria-hidden='true']{display:none}}
+
+/* Desktop homepage Plan Visit: all four columns stay ivory in every state. */
+.visitgrid .visit-item,
+.visitgrid .visit-item:hover,
+.visitgrid .visit-item:focus-visible,
+.visitgrid .visit-item.open{
+  background:#faf0e6!important;
+  color:#0d0d0b!important;
+  outline-offset:3px;
+}
+.visitgrid .visit-item:before,
+.visitgrid .visit-item:hover:before,
+.visitgrid .visit-item:focus-visible:before,
+.visitgrid .visit-item.open:before{
+  content:none!important;
+  display:none!important;
+  transform:none!important;
+}
+.visitgrid .visit-item .label,
+.visitgrid .visit-item:hover .label,
+.visitgrid .visit-item:focus-visible .label{color:#c98e25!important}
+.visitgrid .visit-item .act,
+.visitgrid .visit-item:hover .act,
+.visitgrid .visit-item:focus-visible .act{color:#0d0d0b!important}
+.visitgrid .visit-item .act i,
+.visitgrid .visit-item:hover .act i,
+.visitgrid .visit-item:focus-visible .act i{color:#c98e25!important}

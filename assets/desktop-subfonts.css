@@ -1,0 +1,52 @@
+/* BIRC desktop font roles: two families only.
+   Poppins = display, headings, navigation, actions, primary figures.
+   Inter = body, subtitles, descriptions, labels, captions, metadata and table support text. */
+@media(min-width:900px){
+  body{font-family:Inter,sans-serif!important;font-optical-sizing:auto}
+  body p,body li,body dd,body address,body figcaption,body td,body input,body select,body textarea,
+  body .lead,body .lede,body .hero-note,body .note,body .doc-note,body .status,
+  body .description,body .caption,body .meta,body .who,body .tag,body .addr,
+  body .hero-fact-cell small,body .hero-fact-cell dt,
+  body .panel-grid span,body .fact span,body .spec dt,
+  body .dossier-top,body .dossier-top span,body .panel-top,body .panel-top span,
+  body .plate span,body .row-topic,body .item-meta,body .pick-meta,
+  body small:not(.eye):not(.eyebrow){font-family:Inter,sans-serif!important}
+
+  body h1,body h2,body h3,body h4,body h5,body h6,
+  body .display,body .title,body .heading,body .stitle,body .d1,body .d2,body .d3,
+  body button,body nav,body .button,body .btn,body .cta,
+  body .hero-fact-cell strong,body .hero-fact-cell dd,
+  body .panel-grid strong,body .fact strong,body .spec strong,
+  body .num,body .price{font-family:Poppins,sans-serif!important}
+
+  body .eye,body .eyebrow,body .ey,body .rule,body .label{
+    font-family:Poppins,sans-serif!important;
+    font-style:normal!important;
+    font-weight:600!important;
+  }
+
+  /* Remove one-off serif styling so no desktop page introduces a third family. */
+  body .serif{
+    font-family:Poppins,sans-serif!important;
+    font-style:normal!important;
+    font-weight:600!important;
+    letter-spacing:-.045em!important;
+  }
+
+  /* Supporting copy uses one steady rhythm across every desktop hero and table. */
+  body main>section:first-child .lead,body main>section:first-child .lede{
+    font-family:Inter,sans-serif!important;
+    font-size:19px!important;
+    font-weight:300!important;
+    line-height:1.6!important;
+    letter-spacing:0!important;
+  }
+  body .hero-fact-cell small,body .hero-fact-cell dt,
+  body .panel-grid span,body .fact span,body .spec dt{
+    font-size:12px!important;
+    font-weight:400!important;
+    line-height:1.4!important;
+    letter-spacing:.02em!important;
+    text-transform:none!important;
+  }
+}

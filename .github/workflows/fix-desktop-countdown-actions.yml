@@ -1,0 +1,107 @@
+name: Fix desktop countdown and quick actions
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/fix-desktop-countdown-actions.yml]
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Patch canonical desktop controls
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/canonical-navigation.js')
+          s=p.read_text()
+          marker='/* global-desktop-quick-actions */'
+          if marker not in s:
+              block=r'''
+
+  /* global-desktop-quick-actions */
+  if(desktop){
+    var quickStyle=document.createElement('style');
+    quickStyle.id='global-desktop-quick-actions-style';
+    quickStyle.textContent=`
+      /* Header countdown: one optical centre across every desktop header variant */
+      .nav-countdown,.shared-count,.count{
+        height:46px!important;min-height:46px!important;padding:0 14px!important;
+        display:grid!important;grid-template-rows:auto auto!important;align-content:center!important;
+        justify-items:start!important;gap:2px!important;line-height:1!important;
+      }
+      .nav-countdown small,.shared-count small,.count small{
+        display:block!important;margin:0!important;line-height:1!important;
+      }
+      .nav-countdown strong,.shared-count strong,.count strong{
+        display:block!important;margin:0!important;line-height:1.15!important;
+        font-variant-numeric:tabular-nums!important;
+      }
+      /* Homepage dossier: clean top rule, clipped separators, equal timing cells */
+      .dossier{overflow:hidden!important}
+      .dossier .countdown{
+        position:relative!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+        min-height:96px!important;margin:0!important;padding:0!important;
+        border-top:1px solid var(--dl,#35332e)!important;overflow:hidden!important;
+      }
+      .dossier .countdown>div{
+        min-width:0!important;height:96px!important;margin:0!important;padding:0 8px!important;
+        display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+        border-top:0!important;
+      }
+      .dossier .countdown>div+div{border-left:1px solid var(--dl,#35332e)!important}
+      .dossier .countdown strong{margin:0!important;line-height:1!important}
+      .dossier .countdown small{margin:8px 0 0!important;line-height:1!important}
+      /* Same two compact actions on every desktop page */
+      .desktop-global-actions{
+        position:fixed!important;z-index:1100!important;right:14px!important;bottom:14px!important;
+        display:grid!important;gap:7px!important;margin:0!important;padding:0!important;
+      }
+      .desktop-global-action{
+        width:158px!important;height:46px!important;padding:0 13px!important;
+        display:flex!important;align-items:center!important;gap:9px!important;
+        border:1px solid transparent!important;box-shadow:0 9px 24px #0007!important;
+        font:600 8.5px/1 Poppins,sans-serif!important;letter-spacing:.09em!important;
+        text-transform:uppercase!important;text-decoration:none!important;
+        transition:transform .18s cubic-bezier(.16,1,.3,1),filter .18s cubic-bezier(.16,1,.3,1)!important;
+      }
+      .desktop-global-action:hover{transform:translateY(-2px)!important;filter:brightness(1.04)!important}
+      .desktop-global-action svg{width:18px!important;height:18px!important;flex:none!important;fill:none!important;stroke:currentColor!important;stroke-width:1.6!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+      .desktop-global-action.stand{background:#ebb341!important;border-color:#ebb341!important;color:#0d0d0b!important}
+      .desktop-global-action.whatsapp{background:#25d366!important;border-color:#25d366!important;color:#0d2b18!important}
+      .desktop-global-action.whatsapp svg{width:20px!important;height:20px!important;fill:currentColor!important;stroke:none!important}
+      @media(max-width:1180px){.desktop-global-actions{right:10px!important;bottom:10px!important}.desktop-global-action{width:148px!important;height:44px!important}}
+      @media(prefers-reduced-motion:reduce){.desktop-global-action{transition:none!important}}
+    `;
+    document.head.appendChild(quickStyle);
+
+    var existing=document.querySelector('.side-actions,.desktop-global-actions');
+    if(existing){
+      existing.classList.add('desktop-global-actions');
+      existing.querySelectorAll('a').forEach(function(a){a.classList.add('desktop-global-action');if(a.classList.contains('side-action'))a.classList.remove('side-action')});
+    }else{
+      var actions=document.createElement('aside');
+      actions.className='desktop-global-actions';
+      actions.setAttribute('aria-label','Quick actions');
+      actions.innerHTML='<a class="desktop-global-action stand" href="desktop-space-rental.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16v10H4zM3 10l2-5h14l2 5M8 20v-5h8v5"/></svg><span>Book your stand</span></a><a class="desktop-global-action whatsapp" href="https://wa.me/917303093821?text=Hello%20BIRC%202026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.4l1.3-4.7A8.5 8.5 0 1 1 20.5 11.7Zm-11-4.2c-.2-.5-.4-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.2 2.5 1 3 .8 3.5.8.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.7-.4l-2-.9c-.3-.1-.6-.2-.8.2l-.8 1c-.2.3-.4.3-.7.1-1-.5-1.8-1.1-2.5-2-.2-.3 0-.5.1-.7l.6-.7c.2-.2.2-.4.3-.6 0-.2 0-.4-.1-.6l-.9-2.2Z"/></svg><span>WhatsApp</span></a>';
+      document.body.appendChild(actions);
+    }
+  }
+'''
+              s=s.replace('\n})();\n',block+'\n})();\n',1)
+              p.write_text(s)
+
+          r=Path('publish-refresh.html')
+          r.write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- deploy aligned countdown and global desktop quick actions, 2026-08-17 13:08 IST -->')
+          PY
+          rm .github/workflows/fix-desktop-countdown-actions.yml
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/canonical-navigation.js publish-refresh.html .github/workflows/fix-desktop-countdown-actions.yml
+          git commit -m "Align desktop countdown and standardize quick actions"
+          git push origin main

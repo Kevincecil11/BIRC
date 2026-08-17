@@ -1,0 +1,43 @@
+name: Fix mobile home and dossier
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/fix-mobile-home-and-dossier.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Connect mobile repair and tune dossier
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          css='<link rel="stylesheet" href="assets/mobile-home-fixes.css?v=20260817">'
+          js='<script src="assets/mobile-home-fixes.js?v=20260817"></script>'
+          if css not in s: s=s.replace('</head>',css+'</head>')
+          if js not in s: s=s.replace('</body>',js+'</body>')
+          p.write_text(s)
+
+          p=Path('assets/global-desktop-controls.js')
+          s=p.read_text()
+          s=s.replace(".dossier .spec dt:nth-last-of-type(1),.dossier .spec dd:nth-last-of-type(1){border-bottom:0!important}.dossier .countdown", ".dossier .spec dt{font-size:12px!important}.dossier .spec dt:nth-last-of-type(1),.dossier .spec dd:nth-last-of-type(1){border-bottom:1px solid var(--dl,#35332e)!important}.dossier .countdown")
+          s=s.replace("border-top:1px solid var(--dl,#35332e)!important;overflow:hidden!important}.dossier .countdown>div", "border-top:0!important;overflow:hidden!important}.dossier .countdown>div")
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile drawer, bottom plus and dossier repair 2026-08-17 -->')
+          PY
+          rm .github/workflows/fix-mobile-home-and-dossier.yml
+      - name: Commit repairs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/global-desktop-controls.js assets/mobile-home-fixes.css assets/mobile-home-fixes.js publish-refresh.html .github/workflows/fix-mobile-home-and-dossier.yml
+          git commit -m "Fix mobile menu, bottom quick action and dossier labels"
+          git push origin main

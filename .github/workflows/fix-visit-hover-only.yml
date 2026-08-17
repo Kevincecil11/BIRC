@@ -1,0 +1,39 @@
+name: Fix Plan Visit hover only
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/fix-visit-hover-only.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Make visit panels ivory until hover
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/global-desktop-controls.js')
+          s=p.read_text()
+          old="/* Plan your visit: hover and keyboard focus reveal the same black state as click */\n.visit-item:hover:before,.visit-item:focus-visible:before{transform:translateY(0)!important}.visit-item:hover,.visit-item:focus-visible{color:var(--linen,#faf0e6)!important;outline:none!important}.visit-item:hover .label,.visit-item:focus-visible .label{color:var(--gold,#ebb341)!important}.visit-item:hover .act,.visit-item:focus-visible .act{color:var(--linen,#faf0e6)!important}.visit-item:hover .act i,.visit-item:focus-visible .act i{color:var(--gold,#ebb341)!important}"
+          new="/* Plan your visit: all four stay ivory; only hover/focus turns black */\n.visit-item,.visit-item.open{background:var(--linen,#faf0e6)!important;color:var(--ink,#0d0d0b)!important}.visit-item.open:before{transform:translateY(101%)!important}.visit-item:hover:before,.visit-item:focus-visible:before{transform:translateY(0)!important}.visit-item:hover,.visit-item:focus-visible{color:var(--linen,#faf0e6)!important;outline:none!important}.visit-item:hover .label,.visit-item:focus-visible .label{color:var(--gold,#ebb341)!important}.visit-item:hover .act,.visit-item:focus-visible .act{color:var(--linen,#faf0e6)!important}.visit-item:hover .act i,.visit-item:focus-visible .act i{color:var(--gold,#ebb341)!important}"
+          if old not in s: raise SystemExit('visit hover marker missing')
+          p.write_text(s.replace(old,new,1))
+          p=Path('assets/canonical-navigation.js')
+          s=p.read_text().replace('global-desktop-controls.js?v=20260817b','global-desktop-controls.js?v=20260817c')
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- Plan Visit ivory default, black hover only, 2026-08-17 13:51 IST -->')
+          PY
+          rm .github/workflows/fix-visit-hover-only.yml
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/global-desktop-controls.js assets/canonical-navigation.js publish-refresh.html .github/workflows/fix-visit-hover-only.yml
+          git commit -m "Keep Plan Visit panels ivory until hover"
+          git push origin main

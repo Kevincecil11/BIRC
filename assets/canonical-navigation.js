@@ -28,6 +28,6 @@
   }else{
     var nav=document.querySelector('.drawer nav,.drawer-nav');install(nav);
   }
-  if(desktop&&!document.querySelector('script[data-global-desktop-controls]')){var g=document.createElement('script');g.src='assets/global-desktop-controls.js?v=20260817b';g.dataset.globalDesktopControls='1';document.head.appendChild(g)}
+  if(desktop&&!document.querySelector('script[data-global-desktop-controls]')){var g=document.createElement('script');g.src='assets/global-desktop-controls.js?v=20260817c';g.dataset.globalDesktopControls='1';document.head.appendChild(g)}
 
 })();

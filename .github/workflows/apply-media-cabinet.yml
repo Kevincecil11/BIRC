@@ -1,0 +1,29 @@
+name: Apply Media Cabinet
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-media-cabinet.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump asset version and remove one-shot workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('desktop-media-coverage.html')
+          s=p.read_text()
+          old='assets/media-coverage-birc.css?v=20260816'
+          new='assets/media-coverage-birc.css?v=20260820-cabinet'
+          assert old in s, 'media stylesheet reference not found'
+          p.write_text(s.replace(old,new,1))
+          Path('.github/workflows/apply-media-cabinet.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-media-coverage.html .github/workflows/apply-media-cabinet.yml
+          git commit -m 'Publish premium Media Coverage cabinet' || exit 0
+          git push

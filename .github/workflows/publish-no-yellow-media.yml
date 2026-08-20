@@ -1,0 +1,30 @@
+name: Publish No Yellow Media Headings
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-no-yellow-media.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach uncached override and remove workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('desktop-media-coverage.html')
+          s=p.read_text()
+          needle='<link rel="stylesheet" href="assets/media-coverage-final-2318.css">'
+          add=needle+'<link rel="stylesheet" href="assets/media-coverage-no-yellow-2321.css">'
+          assert needle in s
+          if 'media-coverage-no-yellow-2321.css' not in s: s=s.replace(needle,add,1)
+          p.write_text(s)
+          Path('.github/workflows/publish-no-yellow-media.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-media-coverage.html .github/workflows/publish-no-yellow-media.yml
+          git commit -m 'Publish no-yellow Media Coverage headings'
+          git push

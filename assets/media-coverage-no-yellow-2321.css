@@ -1,0 +1,8 @@
+/* Final no-yellow section-heading override. Gold remains only for small accents and the closing CTA. */
+body .light .wrap>.head,body .light.alt .wrap>.head,body .dark .wrap>.head,body .dark.raised .wrap>.head{position:static!important;display:block!important;min-height:0!important;margin:0 0 52px!important;padding:0!important;background:transparent!important;background-color:transparent!important;border:0!important;box-shadow:none!important;color:inherit!important}
+body .light .wrap>.head .rule,body .light.alt .wrap>.head .rule{color:#c98e25!important}
+body .dark .wrap>.head .rule,body .dark.raised .wrap>.head .rule{color:#ebb341!important}
+body .light .wrap>.head h2,body .light.alt .wrap>.head h2,body .dark .wrap>.head h2,body .dark.raised .wrap>.head h2,body .wrap>.head h2 em{color:inherit!important;background:transparent!important}
+body .light .wrap>.head>p,body .light.alt .wrap>.head>p{color:#6d6862!important}
+body .dark .wrap>.head>p,body .dark.raised .wrap>.head>p{color:#aba49c!important}
+body .closing{background:#ebb341!important}

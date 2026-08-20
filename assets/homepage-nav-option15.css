@@ -1,0 +1,36 @@
+/* Homepage-only Option 15 masthead */
+.masthead{height:78px!important;background:#0d0d0b!important;border-bottom:1px solid #35332e!important;box-shadow:inset 0 0 0 7px #131311,0 16px 46px #0007!important}
+.masthead .shell{width:min(1760px,calc(100% - 48px))!important;grid-template-columns:170px minmax(0,1fr) auto!important;gap:18px!important}
+.masthead .brand{height:62px!important;padding:0 18px 0 6px!important;border-right:1px solid #35332e!important}
+.masthead .brand img{width:144px!important;height:49px!important}
+.masthead .nav-utilities{height:38px!important;justify-self:center!important;border:0!important;background:transparent!important}
+.masthead .nav-search,.masthead .utility-link{height:38px!important;border:0!important;background:transparent!important}
+.masthead .nav-search{width:42px!important}
+.masthead .utility-link{padding:0 14px!important;font-size:11px!important;letter-spacing:.105em!important}
+.masthead .utility-link+.utility-link:before{content:"/";margin-right:12px;color:#c98e25;font:500 11px Inter,sans-serif}
+.masthead .nav-search:hover,.masthead .utility-link:hover{background:transparent!important;color:#ebb341!important}
+.masthead .tools{position:relative!important;height:52px!important;gap:0!important;border:1px solid #35332e!important;background:#191916!important}
+.masthead .tools:before{content:none!important;display:none!important}
+.masthead .nav-countdown{height:50px!important;min-width:150px!important;padding:6px 14px!important;border:0!important;border-right:1px solid #35332e!important;background:transparent!important}
+.masthead .nav-countdown small{font-size:0!important}
+.masthead .nav-countdown small:after{content:"Starts in";font:600 8.8px/1 Poppins,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#ebb341}
+.masthead .nav-countdown strong{font-size:13.2px!important}
+.masthead .tools .ghost,.masthead .tools .solid,.masthead .menu-toggle{height:50px!important;border:0!important;border-right:1px solid #35332e!important;background:transparent!important}
+.masthead .tools .ghost{padding-inline:16px!important;color:#aba49c!important;font-size:12.1px!important}
+.masthead .tools .solid{padding-inline:20px!important;background:#ebb341!important;color:#0d0d0b!important;font-size:12.1px!important}
+.masthead .menu-toggle{width:48px!important;border-right:0!important}
+.masthead .tools .ghost:hover,.masthead .menu-toggle:hover{background:#2b2b27!important;color:#faf0e6!important}
+.home-language{position:relative;height:50px;border-right:1px solid #35332e}
+.home-language-toggle{height:50px;min-width:68px;padding:0 12px;display:flex;align-items:center;justify-content:center;gap:8px;border:0;background:transparent;color:#faf0e6;font:600 11px Poppins,sans-serif;letter-spacing:.1em;cursor:pointer}
+.home-language-toggle:hover,.home-language.open .home-language-toggle{background:#2b2b27;color:#ebb341}
+.home-language-toggle svg{width:18px;height:18px;fill:none;stroke:#ebb341;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.home-language-toggle i{width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s cubic-bezier(.16,1,.3,1)}
+.home-language.open .home-language-toggle i{transform:rotate(225deg) translate(-2px,-1px)}
+.home-language-menu{position:absolute;right:-49px;top:calc(100% + 8px);width:210px;padding:8px;background:#191916;border:1px solid #35332e;box-shadow:0 22px 58px #000b;opacity:0;visibility:hidden;transform:translateY(-7px);transition:opacity .18s,transform .25s cubic-bezier(.16,1,.3,1),visibility .25s}
+.home-language.open .home-language-menu{opacity:1;visibility:visible;transform:none}
+.home-language-menu button{width:100%;min-height:44px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;border:0;border-bottom:1px solid #35332e;background:transparent;color:#aba49c;text-align:left;font:500 12px Inter,sans-serif;cursor:pointer}
+.home-language-menu button:last-child{border-bottom:0}
+.home-language-menu button:hover,.home-language-menu button[aria-current="true"]{background:#242420;color:#faf0e6}
+.home-language-menu button span{color:#c98e25;font:600 9px Poppins,sans-serif;letter-spacing:.1em}
+.hero{padding-top:calc(78px + 48px)!important}
+@media(max-width:1450px){.masthead .shell{width:calc(100% - 32px)!important;grid-template-columns:160px minmax(0,1fr) auto!important;gap:12px!important}.masthead .brand img{width:138px!important}.masthead .utility-link{width:42px!important;padding:0!important;justify-content:center!important}.masthead .utility-link span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important}.masthead .utility-link+.utility-link:before{content:none!important}.masthead .tools .ghost{display:none!important}.masthead .nav-countdown{min-width:138px!important}.home-language-toggle{min-width:58px!important}}

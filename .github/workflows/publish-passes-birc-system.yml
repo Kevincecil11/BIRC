@@ -1,0 +1,27 @@
+name: Publish Passes BIRC System
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-passes-birc-system.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach design-system layer and remove workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('passes.html');s=p.read_text()
+          css='<link rel="stylesheet" href="assets/passes-birc-system-2350.css">'
+          if 'passes-birc-system-2350.css' not in s:s=s.replace('</head>',css+'</head>',1)
+          p.write_text(s)
+          Path('.github/workflows/publish-passes-birc-system.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add passes.html .github/workflows/publish-passes-birc-system.yml
+          git commit -m 'Publish BIRC-aligned Passes page'
+          git push

@@ -1,0 +1,29 @@
+name: Publish Partnership Inline Benefits
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-partnership-inline.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach inline benefit system
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('desktop-partnership.html');s=p.read_text()
+          css='<link rel="stylesheet" href="assets/partnership-inline-benefits-0009.css">'
+          js='<script src="assets/partnership-inline-benefits-0009.js"></script>'
+          if 'partnership-inline-benefits-0009.css' not in s:s=s.replace('</head>',css+'</head>',1)
+          if 'partnership-inline-benefits-0009.js' not in s:s=s.replace('</body>',js+'</body>',1)
+          p.write_text(s)
+          Path('.github/workflows/publish-partnership-inline.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-partnership.html .github/workflows/publish-partnership-inline.yml
+          git commit -m 'Publish Partnership benefits inside tier rows'
+          git push

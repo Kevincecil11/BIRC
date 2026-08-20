@@ -1,0 +1,4 @@
+/* Remove the three small hero thumbnails from the Knowledge Sessions dossier. */
+.hero .dossier .plates{display:none!important}
+.hero .dossier{overflow:hidden}
+.hero .facts dt:nth-last-of-type(1),.hero .facts dd:nth-last-of-type(1){border-bottom:0!important}

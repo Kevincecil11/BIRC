@@ -1,0 +1,29 @@
+name: Publish Partnership Refine
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-partnership-refine.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach Partnership refinement
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('desktop-partnership.html');s=p.read_text()
+          css='<link rel="stylesheet" href="assets/partnership-refine-0005.css">'
+          js='<script src="assets/partnership-refine-0005.js"></script>'
+          if 'partnership-refine-0005.css' not in s:s=s.replace('</head>',css+'</head>',1)
+          if 'partnership-refine-0005.js' not in s:s=s.replace('</body>',js+'</body>',1)
+          p.write_text(s)
+          Path('.github/workflows/publish-partnership-refine.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-partnership.html .github/workflows/publish-partnership-refine.yml
+          git commit -m 'Publish refined Partnership tiers and specials'
+          git push

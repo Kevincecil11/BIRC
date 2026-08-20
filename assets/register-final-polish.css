@@ -1,0 +1,4 @@
+/* Registration polish shared by desktop and mobile. */
+.industry{border-bottom:0!important;padding-bottom:8px!important}.declaration{border-top:0!important;padding-top:8px!important}.industries{gap:8px 28px!important}.phone{grid-template-columns:150px minmax(0,1fr)!important}.phone select{padding-left:10px!important;font-size:14px!important}.field select[name="country"]{font-size:14px!important}
+@media(max-width:899px){.phone{grid-template-columns:145px minmax(0,1fr)!important}.phone select,.field select[name="country"]{font-size:13px!important}.industries{gap:8px!important}.industry{padding:6px 0!important}.declaration{margin-top:18px!important}}
+@media(min-width:900px){body.option15-registration{overflow:auto!important}.page{min-height:calc(100vh - 126px)!important}.bar{min-height:100%!important}}

@@ -1,0 +1,35 @@
+name: Connect Global Nav And Form Polish
+on:
+  push:
+    paths:
+      - '.github/workflows/connect-global-nav-form.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Connect shared assets and remove workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/canonical-navigation.js');s=p.read_text()
+          needle="if(desktop&&!document.querySelector('link[data-desktop-subfonts]'))"
+          inject="if(desktop&&file!=='desktop.html'&&!document.querySelector('script[data-option15-global]')){var c=document.createElement('link');c.rel='stylesheet';c.href='assets/desktop-nav-option15-global.css?v=20260820-2331';document.head.appendChild(c);var n=document.createElement('script');n.src='assets/desktop-nav-option15-global.js?v=20260820-2331';n.dataset.option15Global='1';document.head.appendChild(n)}\n  "
+          assert needle in s
+          if 'data-option15-global' not in s:s=s.replace(needle,inject+needle,1)
+          p.write_text(s)
+          p=Path('register.html');s=p.read_text()
+          css='<link rel="stylesheet" href="assets/desktop-nav-option15-global.css?v=20260820-2331"><link rel="stylesheet" href="assets/register-final-polish.css?v=20260820-2331">'
+          js='<script src="assets/register-country-data.js?v=20260820-2331"></script><script src="assets/register-final-polish.js?v=20260820-2331"></script><script src="assets/desktop-nav-option15-global.js?v=20260820-2331"></script>'
+          if 'register-final-polish.css' not in s:s=s.replace('</head>',css+'</head>',1)
+          if 'register-country-data.js' not in s:s=s.replace('</body>',js+'</body>',1)
+          p.write_text(s)
+          Path('.github/workflows/connect-global-nav-form.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/canonical-navigation.js register.html .github/workflows/connect-global-nav-form.yml
+          git commit -m 'Publish homepage navbar everywhere and registration polish'
+          git push

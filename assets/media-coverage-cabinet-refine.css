@@ -1,0 +1,26 @@
+/* Archive Cabinet refinement: fixed left index, compact content start, gold reserved for accents and closing CTA. */
+.hero .panel{background:#191916!important;color:#faf0e6!important;border:1px solid #35332e!important}
+.hero .panel-top{color:#ebb341!important}
+.hero .panel h2,.hero .panel h2 b{color:#faf0e6!important}
+.hero .panel-grid{background:#35332e!important;border-color:#35332e!important}
+.hero .panel-grid div{background:#0d0d0b!important}
+.hero .panel-grid strong{color:#ebb341!important}
+.hero .panel-grid span{color:#aba49c!important}
+.wrap{position:relative!important;grid-auto-rows:auto!important}
+.wrap>.head{grid-row:1 / span 30!important;align-self:start!important;min-height:390px!important;background:#191916!important;color:#faf0e6!important;border:1px solid #35332e!important}
+.wrap>.head .rule{color:#ebb341!important}
+.wrap>.head h2,.wrap>.head h2 em{color:#faf0e6!important}
+.wrap>.head>p{color:#aba49c!important}
+.wrap>.head+*{grid-column:2!important;grid-row:1!important}
+#idx .head{grid-row:1 / span 30!important}
+#index .filters{grid-column:2!important;grid-row:1!important}
+#index .tally{grid-column:2!important;grid-row:2!important;margin:18px 0!important}
+#index .index{grid-column:2!important;grid-row:3!important}
+#index .empty{grid-column:2!important;grid-row:4!important}
+.wrap>.rule{grid-row:1!important;align-self:stretch!important;background:#191916!important;color:#ebb341!important;border:1px solid #35332e!important}
+.wrap>.rule+.logos{grid-row:1!important}
+.closing{background:#ebb341!important;color:#0d0d0b!important}
+.closing .rule{color:#5a4008!important}
+.closing .rule:before{background:#5a4008!important}
+.closing p{color:#4a3507!important}
+@media(max-width:1450px){.wrap>.head{min-height:360px!important}}

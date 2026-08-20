@@ -1,0 +1,31 @@
+name: Publish Media Refine
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-media-refine.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load refinement last and remove workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('desktop-media-coverage.html')
+          s=p.read_text()
+          needle='<link rel="stylesheet" href="assets/media-coverage-birc.css?v=20260820-cabinet">'
+          add=needle+'<link rel="stylesheet" href="assets/media-coverage-cabinet-refine.css?v=20260820-2306">'
+          assert needle in s, 'cabinet stylesheet not found'
+          if 'media-coverage-cabinet-refine.css' not in s:
+              s=s.replace(needle,add,1)
+          p.write_text(s)
+          Path('.github/workflows/publish-media-refine.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-media-coverage.html .github/workflows/publish-media-refine.yml
+          git commit -m 'Publish Media Coverage spacing and color refinement' || exit 0
+          git push

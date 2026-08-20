@@ -1,0 +1,30 @@
+name: Publish Flag Selector Fix
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-flag-selector-fix.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace native text flags with real icons
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('register.html');s=p.read_text()
+          s=s.replace('<script src="assets/register-country-data.js?v=20260820-2331"></script>','')
+          anchor='<link rel="stylesheet" href="assets/register-final-polish.css?v=20260820-2331">'
+          if 'register-country-selects-2335.css' not in s:s=s.replace(anchor,anchor+'<link rel="stylesheet" href="assets/register-country-selects-2335.css">')
+          anchor='<script src="assets/register-final-polish.js?v=20260820-2331"></script>'
+          if 'register-country-selects-2335.js' not in s:s=s.replace(anchor,'<script src="assets/register-country-selects-2335.js"></script>'+anchor)
+          p.write_text(s)
+          Path('.github/workflows/publish-flag-selector-fix.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add register.html .github/workflows/publish-flag-selector-fix.yml
+          git commit -m 'Publish real flag selectors on registration'
+          git push

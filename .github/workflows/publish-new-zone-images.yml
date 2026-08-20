@@ -1,0 +1,32 @@
+name: Publish New Zone Images
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-new-zone-images.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bust all Experience image caches and remove workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=['desktop.html','index.html','desktop-experience.html','experience.html']
+          for name in files:
+              p=Path(name); s=p.read_text()
+              import re
+              s=re.sub(r'assets/experience-order\.js(?:\?v=[^"\']+)?','assets/experience-order.js?v=20260820-newzones',s)
+              if name=='desktop.html':
+                  s=s.replace('assets/voices-grid.js','assets/voices-grid.js?v=20260820-newzones') if 'assets/voices-grid.js?' not in s else re.sub(r'assets/voices-grid\.js\?v=[^"\']+','assets/voices-grid.js?v=20260820-newzones',s)
+              p.write_text(s)
+          vg=Path('assets/voices-grid.js'); s=vg.read_text().replace("loadHomeFeature('home-experience-stage-rail','20260820b')","loadHomeFeature('home-experience-stage-rail','20260820-newzones')"); vg.write_text(s)
+          Path('.github/workflows/publish-new-zone-images.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop.html index.html desktop-experience.html experience.html assets/voices-grid.js .github/workflows/publish-new-zone-images.yml
+          git commit -m 'Publish new Experience Zone artwork everywhere'
+          git push

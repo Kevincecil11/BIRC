@@ -1,0 +1,30 @@
+name: Connect Home Passes
+on:
+  push:
+    paths:
+      - '.github/workflows/connect-home-passes.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Passes to both homepages and remove workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ('desktop.html','index.html'):
+              p=Path(name);s=p.read_text()
+              css='<link rel="stylesheet" href="assets/home-passes.css?v=20260820-2344">'
+              js='<script src="assets/home-passes.js?v=20260820-2344"></script>'
+              if 'home-passes.css' not in s:s=s.replace('</head>',css+'</head>',1)
+              if 'home-passes.js' not in s:s=s.replace('</body>',js+'</body>',1)
+              p.write_text(s)
+          Path('.github/workflows/connect-home-passes.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop.html index.html .github/workflows/connect-home-passes.yml
+          git commit -m 'Publish Passes section on desktop and mobile homepages'
+          git push

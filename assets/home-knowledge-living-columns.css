@@ -1,0 +1,27 @@
+/* Homepage-only Knowledge 08: Living Columns. Delete its loader call in voices-grid.js to revert. */
+#knowledge-sessions.home-k08{padding:124px 0 136px;background:#0d0d0b;color:#faf0e6;overflow:hidden}
+#knowledge-sessions.home-k08 .home-k08-head{display:grid;grid-template-columns:240px minmax(0,1fr) 300px;gap:48px;align-items:end;margin-bottom:52px}
+#knowledge-sessions.home-k08 .home-k08-head .eyebrow{align-self:start;padding-top:12px}
+#knowledge-sessions.home-k08 .home-k08-head h2{font:600 clamp(48px,4.1vw,72px)/.94 Poppins,sans-serif;letter-spacing:-.06em;max-width:13ch}
+#knowledge-sessions.home-k08 .home-k08-head p{padding-left:24px;border-left:1px solid #35332e;color:#aba49c;font:400 15px/1.65 Inter,sans-serif;max-width:34ch}
+#knowledge-sessions.home-k08 .home-k08-cols{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;height:560px;overflow:hidden;background:#35332e;border:1px solid #35332e}
+#knowledge-sessions.home-k08 .home-k08-col{position:relative;overflow:hidden;background:#0d0d0b}
+#knowledge-sessions.home-k08 .home-k08-track{display:grid;will-change:transform;animation:homeK08Up 36s linear infinite}
+#knowledge-sessions.home-k08 .home-k08-col:nth-child(2) .home-k08-track{animation-duration:44s;animation-direction:reverse}
+#knowledge-sessions.home-k08 .home-k08-col:hover .home-k08-track,#knowledge-sessions.home-k08 .home-k08-col:focus-within .home-k08-track{animation-play-state:paused}
+#knowledge-sessions.home-k08 .home-k08-session{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:22px;align-items:center;min-height:142px;padding:24px 28px;border-bottom:1px solid #35332e;background:#0d0d0b;transition:background .22s cubic-bezier(.16,1,.3,1)}
+#knowledge-sessions.home-k08 .home-k08-session:hover,#knowledge-sessions.home-k08 .home-k08-session:focus-visible{background:#191916}
+#knowledge-sessions.home-k08 .home-k08-num{color:#2b2b27;font:600 14px Poppins,sans-serif;font-variant-numeric:tabular-nums;transition:color .22s cubic-bezier(.16,1,.3,1)}
+#knowledge-sessions.home-k08 .home-k08-session:hover .home-k08-num,#knowledge-sessions.home-k08 .home-k08-session:focus-visible .home-k08-num{color:#ebb341}
+#knowledge-sessions.home-k08 .home-k08-topic{display:block;color:#c98e25;font:600 9px Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+#knowledge-sessions.home-k08 .home-k08-title{display:block;margin-top:10px;color:#faf0e6;font:600 clamp(16px,1.25vw,20px)/1.32 Poppins,sans-serif;letter-spacing:-.025em;max-width:38ch}
+#knowledge-sessions.home-k08 .home-k08-read{color:#ebb341;font:600 9px Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+#knowledge-sessions.home-k08 .home-k08-read i{display:inline-block;margin-left:7px;font-style:normal;transition:transform .24s cubic-bezier(.16,1,.3,1)}
+#knowledge-sessions.home-k08 .home-k08-session:hover .home-k08-read i{transform:translate(4px,-4px)}
+#knowledge-sessions.home-k08 .home-k08-fade{position:absolute;z-index:3;left:0;right:0;height:92px;pointer-events:none}
+#knowledge-sessions.home-k08 .home-k08-fade.top{top:0;background:linear-gradient(180deg,#0d0d0b,transparent)}
+#knowledge-sessions.home-k08 .home-k08-fade.bottom{bottom:0;background:linear-gradient(0deg,#0d0d0b,transparent)}
+@keyframes homeK08Up{to{transform:translateY(-50%)}}
+@media(max-width:1400px){#knowledge-sessions.home-k08 .home-k08-head{grid-template-columns:190px 1fr 260px;gap:36px}#knowledge-sessions.home-k08 .home-k08-session{grid-template-columns:42px 1fr auto;gap:17px;padding-inline:22px}}
+@media(max-width:1180px){#knowledge-sessions.home-k08 .home-k08-head{grid-template-columns:160px 1fr;gap:40px}#knowledge-sessions.home-k08 .home-k08-head p{grid-column:2;padding-left:0;border-left:0}#knowledge-sessions.home-k08 .home-k08-read{font-size:0}#knowledge-sessions.home-k08 .home-k08-read i{font-size:16px}}
+@media(prefers-reduced-motion:reduce){#knowledge-sessions.home-k08 .home-k08-cols{height:auto;overflow:visible}#knowledge-sessions.home-k08 .home-k08-track{animation:none}#knowledge-sessions.home-k08 .home-k08-session.is-clone{display:none}}

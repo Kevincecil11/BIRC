@@ -26,5 +26,14 @@
       document.addEventListener('click',function(event){if(!event.target.closest('.home-language'))setOpen(false)});
       document.addEventListener('keydown',function(event){if(event.key==='Escape')setOpen(false)});
     }
+
+    function loadHomeFeature(name,version){
+      var css=document.createElement('link');css.rel='stylesheet';css.href='assets/'+name+'.css?v='+version;css.dataset.homeFeature=name;document.head.appendChild(css);
+      var script=document.createElement('script');script.src='assets/'+name+'.js?v='+version;script.dataset.homeFeature=name;document.body.appendChild(script);
+    }
+    /* HOMEPAGE KNOWLEDGE 08: remove this one call to restore the previous Knowledge Sessions design. */
+    loadHomeFeature('home-knowledge-living-columns','20260820a');
+    /* HOMEPAGE EXPERIENCE C: remove this one call to restore the previous Experience Zones design. */
+    loadHomeFeature('home-experience-stage-rail','20260820a');
   }
 })();

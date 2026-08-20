@@ -40,4 +40,4 @@ jobs:
           error_count: 15
           reporting_interval: 5000
 
-# Canonical production deploy. Forced Partnership refinement 2026-08-21 00:06 IST.
+# Canonical production deploy. Final Partnership CSS and JS are inline. Forced 2026-08-21 00:11 IST.

@@ -34,6 +34,6 @@
     /* HOMEPAGE KNOWLEDGE 08: remove this one call to restore the previous Knowledge Sessions design. */
     loadHomeFeature('home-knowledge-living-columns','20260820a');
     /* HOMEPAGE EXPERIENCE C: remove this one call to restore the previous Experience Zones design. */
-    loadHomeFeature('home-experience-stage-rail','20260820b');
+    loadHomeFeature('home-experience-stage-rail','20260820-newzones');
   }
 })();

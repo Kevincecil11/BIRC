@@ -1,0 +1,28 @@
+name: Publish Header Stack
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-header-stack.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach final header stack
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          css='<link rel="stylesheet" href="assets/passes-header-stack-2356.css">'
+          for name in ('passes.html','checkout.html'):
+              p=Path(name);s=p.read_text()
+              if 'passes-header-stack-2356.css' not in s:s=s.replace('</head>',css+'</head>',1)
+              p.write_text(s)
+          Path('.github/workflows/publish-header-stack.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add passes.html checkout.html .github/workflows/publish-header-stack.yml
+          git commit -m 'Publish clean left-aligned Passes headers'
+          git push

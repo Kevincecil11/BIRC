@@ -1,0 +1,40 @@
+name: Homepage typography across mobile
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/mobile-typography-home.css'
+      - '.github/workflows/mobile-typography-home.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Apply homepage type system to mobile pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pages=['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html','media-coverage.html']
+          tag='<link rel="stylesheet" href="assets/mobile-typography-home.css?v=20260826-1">'
+          for name in pages:
+              p=Path(name); s=p.read_text()
+              if tag not in s: s=s.replace('</head>',tag+'</head>')
+              p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          needle='Fonts: **Poppins** for display and UI, **Inter** for body. No other families.'
+          add=needle+' On mobile, the homepage typography is canonical everywhere: hero 43-68px Poppins 600 at .91 line-height, section headings 38-58px at .96, 10px tracked eyebrows, 16px Inter body and 17px card titles.'
+          if add not in s: s=s.replace(needle,add)
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- homepage typography mobile audit 2026-08-26 -->\n')
+          PY
+      - name: Commit typography system
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html conference.html exhibition.html experience.html creators.html rice-masterchef.html artists.html partnership.html plan-visit.html contact.html media-coverage.html context.md publish-refresh.html
+          git commit -m "Apply homepage typography across mobile site"
+          git push

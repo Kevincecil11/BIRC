@@ -216,7 +216,7 @@ All three views use the dark ink background system. Do not switch Exhibitor Prof
 
 Three separate pages, never a combined one: Content Creators, Rice Masterchef, Artists. Sits directly above Partnership in the nav.
 
-**The Creators page is the approved structural pattern.** Its flow is: hero (eyebrow, large title, lead, gold CTA, three-stat row) → light access section with numbered rows → score section with five bullet rows plus VIP and Day-3 pass cards → dark criteria section with pointer rows → light process section with numbered step cards → gold apply section containing the linen form panel → light FAQ accordions. When a sibling influencer page needs a redesign, match this.
+**The Creators page is the approved structural pattern.** Its flow is: hero (eyebrow, large title, lead, gold CTA, three-stat row) → light access section with numbered rows → score section with five bullet rows plus VIP, Standard and Day-3 pass cards → dark criteria section with pointer rows → light process section with numbered step cards → gold apply section containing the linen form panel → light FAQ accordions. When a sibling influencer page needs a redesign, match this.
 
 - Creator access rows 01, 02 and 03 sit in **one connected desktop row**, not a 2x2 with an orphan.
 - Scoring factors are five bullet rows, not a matrix.
@@ -304,7 +304,6 @@ Do not present these as verified facts and do not invent replacements:
 - Speaker portraits
 - About organiser logos
 - About Advisory Board names, titles, portraits
-- Conference Agenda and Schedule, Workshops, Learning Academy content (mobile only; the desktop blocks were removed)
 - Instagram and LinkedIn URLs
 - Homepage WhatsApp destination URL, currently `https://wa.me/`
 - Partner logos on Partnership (placeholder marquee)
@@ -334,9 +333,8 @@ Keep it factual and scannable. **Rewrite stale sections rather than appending co
 1. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
 2. Keep the 13 mobile pages content-synchronized with desktop while preserving their approved layouts.
 3. Decide on any future Experience page expansion only when new approved content is supplied.
-5. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
-6. Optional cleanup: delete the ~68 spent one-shot workflow files.
-7. Optional hardening: rebuild `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html` and the About / Exhibition / Experience set as standalone single-stylesheet documents.
+4. Optional cleanup: delete the ~68 spent one-shot workflow files.
+5. Optional hardening: rebuild `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html` and the About / Exhibition / Experience set as standalone single-stylesheet documents.
 
 ## 14. New-chat instruction
 

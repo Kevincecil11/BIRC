@@ -6,6 +6,7 @@ addStyle('.parity-sessions{padding:96px 22px;background:#faf0e6;color:#0d0d0b}.p
 if(page==='index.html'){
  var venue=document.querySelector('.hero .facts .fact:nth-child(2) b');if(venue)venue.textContent='Bharat Mandapam · Halls 4 & 5';
  txt('.knowledge-meta span','23-24 October');
+ document.querySelectorAll('.visit-detail p,.visit-note p').forEach(function(el){el.innerHTML=el.innerHTML.replace(/08:30/g,'10:00 AM')});
 }
 if(page==='conference.html'){
  var hero=document.querySelector('.hero');if(hero){txt('.hero .eye','BIRC 2026 programme');txt('.hero .title','Knowledge Sessions');txt('.hero .lead','Nine working sessions across three days, built around the decisions the rice trade actually has to make: supply and price, market entry, payment security, shipping, quality, policy, sustainability, milling and value addition.');}

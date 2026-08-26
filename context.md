@@ -165,7 +165,7 @@ Exact tokens from `design.md`:
 
 **Zero blue, ever.** Source-site navy values `#17354c`, `#18334b`, `#0f253a` are forbidden. The retired moss green `#566746` must not return; editorial grey replaced it in large background words and programme numbers.
 
-Fonts: **Poppins** for display and UI, **Inter** for body. No other families.
+Fonts: **Poppins** for display and UI, **Inter** for body. No other families. On mobile, the homepage typography is canonical everywhere: hero 43-68px Poppins 600 at .91 line-height, section headings 38-58px at .96, 10px tracked eyebrows, 16px Inter body and 17px card titles.
 
 Side-stripe accent borders (`border-left` as decoration) are banned. The Masterchef prize block was converted from a gold left stripe to a full gold border panel for this reason.
 

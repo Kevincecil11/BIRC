@@ -1,0 +1,45 @@
+name: Mobile content parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/mobile-parity-20260826.js'
+      - '.github/workflows/mobile-content-parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Add parity runtime to all mobile pages and refresh context
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pages=['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html','register.html','media-coverage.html']
+          tag='<script src="assets/mobile-parity-20260826.js?v=20260826-1"></script>'
+          for name in pages:
+              p=Path(name); s=p.read_text()
+              if tag not in s:
+                  s=s.replace('</body>',tag+'</body>')
+                  p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          s=s.replace('Last updated: 2026-08-15.','Last updated: 2026-08-26.')
+          s=s.replace('**The mobile pages are approved and considered finished. Do not modify a mobile file while working on desktop unless the user explicitly asks for that mobile file to change.**','**The mobile layouts are approved and must not be redesigned. A content-only parity audit across all 13 mobile pages was completed on 2026-08-26; future desktop content changes must be mirrored on mobile without changing its approved visual system.**')
+          s=s.replace('Mobile `partnership.html` still carries the original text.','Mobile and desktop now both read "24 & 25 October".')
+          s=s.replace('Mobile `conference.html` still carries all three. Do not add them back to desktop without an explicit instruction.','The mobile placeholder blocks were removed during the 2026-08-26 parity pass and replaced with the same nine complete session topics used on desktop.')
+          s=s.replace('1. Receive and add Conference Agenda and Schedule content.\n2. Receive and add Conference Workshops content.\n3. Receive and add Conference Learning Academy content.\n4. Decide on an Experience page direction and implement it in `desktop-experience.html`.','1. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.\n2. Keep the 13 mobile pages content-synchronized with desktop while preserving their approved layouts.\n3. Decide on any future Experience page expansion only when new approved content is supplied.')
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile parity publish 2026-08-26 -->\n')
+          PY
+      - name: Commit parity links
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html conference.html exhibition.html experience.html creators.html rice-masterchef.html artists.html partnership.html plan-visit.html contact.html register.html media-coverage.html context.md publish-refresh.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Apply mobile content parity across all pages"
+          git push

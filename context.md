@@ -68,7 +68,7 @@ The site maintains a mobile experience and a separate desktop experience as dist
 
 `index.html`, `about.html`, `conference.html`, `exhibition.html`, `experience.html`, `creators.html`, `rice-masterchef.html`, `artists.html`, `partnership.html`, `plan-visit.html`, `contact.html`, `register.html`, `media-coverage.html`
 
-Mobile canvas is capped at `520px` with a centred `.page` wrapper. The mobile navbar and sandwich menu are locked to the same centered 520px canvas on every mobile page. The drawer uses an explicit canvas left edge, never a translateX animation, opens vertically from the top, scrolls internally, and keeps 20px primary links plus 14px submenu links in 54px/46px rows.
+Mobile canvas is capped at `520px` with a centred `.page` wrapper. Every public mobile page, including Media Coverage, uses the same navbar with Search, Documents and sandwich controls. `media-coverage.html?view=mobile` never redirects to desktop. The mobile navbar and sandwich menu are locked to the same centered 520px canvas on every mobile page. The drawer uses an explicit canvas left edge, never a translateX animation, opens vertically from the top, scrolls internally, and keeps 20px primary links plus 14px submenu links in 54px/46px rows.
 
 ### Desktop pages (14)
 

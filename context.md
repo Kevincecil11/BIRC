@@ -179,6 +179,7 @@ Decorative checkmarks are replaced by the angled gold pointer motif used in the 
 - Desktop homepage was rebuilt from scratch on one editorial grid. Why BIRC is a 2x2 with large background words.
 - Desktop homepage controls: countdown lives in the masthead; Book your stand and the green WhatsApp action with its official mark are stacked at the bottom-right. There is no full-width bottom bar and no desktop Mobile view control. Mobile controls remain unchanged.
 - Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.
+- The homepage Passes section and Published Across rail use explicit mobile overrides even when Mobile view is forced on a wide desktop browser; do not let desktop media queries compress or offset them.
 - Desktop and mobile homepages share a native search dialog with live client-side results and popular queries. Desktop opens it from the navbar search control. Mobile adds Search and Documents icons beside the menu; Documents reveals the same EY report, Buyer facilitation, and 2026 agenda PDFs used on desktop.
 - A continuously moving media coverage rail titled `Published across / 80` sits below the hero on desktop and mobile. Every publisher mark is clickable, motion pauses on hover and respects reduced motion. `See the coverage` opens the dedicated local coverage page.
 - Desktop `BIRC in pictures` is a full-viewport chapter with 72vw by 68vh image panels; mobile keeps the approved compact gallery.

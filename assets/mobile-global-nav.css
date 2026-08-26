@@ -7,3 +7,25 @@
 body.mobile-global-media .page{padding-top:72px}body.mobile-global-media .top{display:none!important}
 @media(max-width:520px){.mobile-global-bar{left:0!important;width:100%!important;transform:none!important}.mobile-global-drawer{left:0;width:100%;max-width:none}}
 @media(max-width:360px){.mobile-global-bar{padding-inline:18px}.mobile-global-drawer{padding-inline:18px}.mobile-global-nav>a,.mobile-global-parent{min-height:50px;font-size:18px}.mobile-global-sub a{min-height:43px;font-size:13px}}
+
+/* 2026-08-26 mobile visual audit: editorial rows, not boxes. */
+body:not(.mobile-global-media) .page article{border-radius:0!important;box-shadow:none!important}
+body.mobile-global-media .cards{display:block!important;background:transparent!important;border:0!important;border-top:1px solid #d8cec3!important}
+body.mobile-global-media .card{min-height:0!important;padding:26px 2px!important;background:transparent!important;border:0!important;border-bottom:1px solid #d8cec3!important;box-shadow:none!important}
+body.mobile-global-media .card h3{margin-top:14px!important}
+body.mobile-global-media .card b{margin-top:22px!important;padding-top:0!important}
+body.mobile-global-media .groups{gap:0!important;border-top:1px solid #d8cec3!important}
+body.mobile-global-media .group{padding:24px 2px!important;border:0!important;border-bottom:1px solid #d8cec3!important;background:transparent!important}
+body.mobile-global-media .official{display:block!important;background:transparent!important;border:0!important;border-top:1px solid #35332e!important}
+body.mobile-global-media .official a{min-height:64px!important;padding:16px 2px!important;background:transparent!important;border-bottom:1px solid #35332e!important}
+body.mobile-global-media .method{gap:0!important}.method article{padding:22px 2px!important;border-top:1px solid #d8cec3!important}
+/* Repeated information elsewhere follows the same divider-led language. Partnership packages and forms stay intentionally contained. */
+.page .path-list,.page .steps,.page .passes,.page .master-passes{gap:0!important;border-top:1px solid var(--dl,#35332e)!important}
+.page .path-list>.path,.page .steps>.step,.page .passes>.pass:not(.home-pass),.page .master-passes>.master-pass{margin:0!important;border:0!important;border-bottom:1px solid var(--dl,#35332e)!important;box-shadow:none!important}
+.page .access-list,.page .moment-list,.page .content-list,.page .recognition-list{border-top:1px solid currentColor!important;border-color:var(--ll,#d8cec3)!important}
+.page .stats,.page .master-stats{gap:1px!important;background:var(--dl,#35332e)!important;border:1px solid var(--dl,#35332e)!important}
+.page .stats>.stat,.page .master-stats>.master-stat{border:0!important;box-shadow:none!important}
+.page .art-grid{gap:1px!important;background:var(--dl,#35332e)!important;border:1px solid var(--dl,#35332e)!important}
+.page .art-grid>.art-tile{border:0!important;box-shadow:none!important}
+.page .contact-stack{gap:1px!important;background:var(--dl,#35332e)!important;border:1px solid var(--dl,#35332e)!important}
+.page .contact-stack>.contact-row{border:0!important;box-shadow:none!important}

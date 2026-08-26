@@ -1,6 +1,6 @@
 # BIRC Project Context
 
-Last updated: 2026-08-15. Consolidated rewrite. Previous versions stacked chronological "desktop polish" notes at the bottom until the top sections contradicted the repository. That history has been removed and folded into the sections below. Per section 12, remove stale instructions rather than stacking them.
+Last updated: 2026-08-26. Consolidated rewrite. Previous versions stacked chronological "desktop polish" notes at the bottom until the top sections contradicted the repository. That history has been removed and folded into the sections below. Per section 12, remove stale instructions rather than stacking them.
 
 This is the living handoff file for the BIRC website. Read it first whenever the repository is opened in a new chat, coding session, or by a new contributor.
 
@@ -62,7 +62,7 @@ The site maintains a mobile experience and a separate desktop experience as dist
 
 - Every `desktop-*.html` page begins with a redirect script: below 900px it replaces location with its mobile counterpart.
 - Every desktop page has a `Mobile view` control in the masthead or menu pointing at its own mobile file.
-- **The mobile pages are approved and considered finished. Do not modify a mobile file while working on desktop unless the user explicitly asks for that mobile file to change.**
+- **The mobile layouts are approved and must not be redesigned. A content-only parity audit across all 13 mobile pages was completed on 2026-08-26; future desktop content changes must be mirrored on mobile without changing its approved visual system.**
 
 ### Mobile pages (13)
 
@@ -230,7 +230,7 @@ One direct nav link, no submenu. Desktop was rebuilt from scratch: hero with a s
 
 All supplied tiers, prices, GST notes, package benefits, promotional visibility, and special opportunities are preserved verbatim. Tiers: Platinum ₹50,00,000 / $57,480, Diamond ₹30,00,000 / $34,490, Gold ₹20,00,000 / $23,000, Silver ₹10,00,000 / $11,500, Bronze ₹5,00,000 / $5,750. Six special opportunities: Gala Dinner ₹20,00,000, Transport ₹15,00,000, Lunch ₹10,00,000 per day, Exhibition Entry Gates ₹10,00,000, Exhibitors'/Buyer Kit ₹10,00,000, Registration Counter ₹8,00,000.
 
-**Content correction:** the supplied Lunch Sponsor line read "October 30 & 31", which contradicts the event dates. Desktop now reads "24 & 25 October". Mobile `partnership.html` still carries the original text.
+**Content correction:** the supplied Lunch Sponsor line read "October 30 & 31", which contradicts the event dates. Desktop now reads "24 & 25 October". Mobile and desktop now both read "24 & 25 October".
 
 On mobile, Sponsorship Package and Special Opportunity cards share one treatment: linen background, one-pixel ink border, no shadow, black action bar. No card is highlighted by default; the gold outer outline appears only while a card is open. Do not make the Sponsorship Packages section black.
 
@@ -281,7 +281,7 @@ Desktop was rebuilt from scratch on 2026-08-15 as a **standalone single-styleshe
 Rules for this page:
 
 - Session images are **permanent row plates**. The old hover-only floating previews and the "Hover to preview the visual" line were removed; do not reintroduce them.
-- The `Agenda and Schedule`, `Workshops` and `Learning Academy` placeholder blocks were **removed from desktop at Kevin's request on 2026-08-15**. Mobile `conference.html` still carries all three. Do not add them back to desktop without an explicit instruction.
+- The `Agenda and Schedule`, `Workshops` and `Learning Academy` placeholder blocks were **removed from desktop at Kevin's request on 2026-08-15**. The mobile placeholder blocks were removed during the 2026-08-26 parity pass and replaced with the same nine complete session topics used on desktop.
 - Speaker portraits stay symmetrical 3:4 rectangles with no staggered offsets.
 - The page no longer loads `assets/knowledge-sessions.css` or `assets/knowledge-sessions.js`. Those files remain in the repository for the nine dedicated session pages.
 
@@ -331,10 +331,9 @@ Keep it factual and scannable. **Rewrite stale sections rather than appending co
 
 ## 13. Immediate next work
 
-1. Receive and add Conference Agenda and Schedule content.
-2. Receive and add Conference Workshops content.
-3. Receive and add Conference Learning Academy content.
-4. Decide on an Experience page direction and implement it in `desktop-experience.html`.
+1. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
+2. Keep the 13 mobile pages content-synchronized with desktop while preserving their approved layouts.
+3. Decide on any future Experience page expansion only when new approved content is supplied.
 5. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.
 6. Optional cleanup: delete the ~68 spent one-shot workflow files.
 7. Optional hardening: rebuild `desktop-creators.html`, `desktop-rice-masterchef.html`, `desktop-artists.html` and the About / Exhibition / Experience set as standalone single-stylesheet documents.

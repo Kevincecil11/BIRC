@@ -1,0 +1,59 @@
+/* Canonical mobile sandwich menu, independent of browser viewport width. */
+body:not([data-mobile]) #drawer.drawer{padding:18px 22px 28px!important;overflow-y:auto!important;overflow-x:hidden!important}
+body:not([data-mobile]) #drawer .drawer-top{height:72px!important;margin:0!important;padding:0 0 14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border-bottom:1px solid #35332e!important;background:#0d0d0b!important}
+body:not([data-mobile]) #drawer .drawer-top .logo,
+body:not([data-mobile]) #drawer .drawer-top .site-logo{width:150px!important;height:48px!important;object-fit:contain!important;object-position:left center!important}
+body:not([data-mobile]) #drawer .x,
+body:not([data-mobile]) #drawer .drawer-close{width:44px!important;height:44px!important;display:grid!important;place-items:center!important;padding:0!important;border:1px solid #35332e!important;background:transparent!important;color:#faf0e6!important;font:400 19px/1 Inter,sans-serif!important}
+body:not([data-mobile]) #drawer nav,
+body:not([data-mobile]) #drawer .canon-nav{width:100%!important;margin:18px 0 28px!important;padding:0!important}
+body:not([data-mobile]) #drawer .canon-nav>a,
+body:not([data-mobile]) #drawer .canon-group>button,
+body:not([data-mobile]) #drawer .canon-group>span,
+body:not([data-mobile]) #drawer nav>a,
+body:not([data-mobile]) #drawer .menu-parent,
+body:not([data-mobile]) #drawer .nav-parent,
+body:not([data-mobile]) #drawer .exhibition-parent,
+body:not([data-mobile]) #drawer .influencer-parent,
+body:not([data-mobile]) #drawer .plan-menu-parent{
+  width:100%!important;min-height:54px!important;margin:0!important;padding:0!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  border:0!important;border-bottom:1px solid #35332e!important;background:transparent!important;
+  color:#faf0e6!important;font:600 20px/1.15 Poppins,sans-serif!important;
+  letter-spacing:-.035em!important;text-align:left!important;text-transform:none!important;
+}
+body:not([data-mobile]) #drawer .canon-nav>a:first-child{color:#ebb341!important}
+body:not([data-mobile]) #drawer .canon-group>button small,
+body:not([data-mobile]) #drawer .menu-parent small,
+body:not([data-mobile]) #drawer .nav-parent small,
+body:not([data-mobile]) #drawer .exhibition-parent small,
+body:not([data-mobile]) #drawer .influencer-parent small,
+body:not([data-mobile]) #drawer .plan-menu-parent small{margin-left:auto!important;color:#ebb341!important;font:600 10px/1 Poppins,sans-serif!important;letter-spacing:0!important}
+body:not([data-mobile]) #drawer .canon-sub,
+body:not([data-mobile]) #drawer .submenu,
+body:not([data-mobile]) #drawer .nav-sub,
+body:not([data-mobile]) #drawer .exhibition-sub,
+body:not([data-mobile]) #drawer .influencer-sub,
+body:not([data-mobile]) #drawer .plan-submenu{width:100%!important;margin:0!important;padding:0 0 0 18px!important;border:0!important}
+body:not([data-mobile]) #drawer .canon-sub a,
+body:not([data-mobile]) #drawer .submenu a,
+body:not([data-mobile]) #drawer .nav-sub a,
+body:not([data-mobile]) #drawer .exhibition-sub a,
+body:not([data-mobile]) #drawer .influencer-sub a,
+body:not([data-mobile]) #drawer .plan-submenu a{
+  width:100%!important;min-height:46px!important;margin:0!important;padding:0!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  border:0!important;border-bottom:1px solid #35332e!important;background:transparent!important;
+  color:#aba49c!important;font:500 14px/1.25 Poppins,sans-serif!important;
+  letter-spacing:-.02em!important;text-align:left!important;text-transform:none!important;
+}
+body:not([data-mobile]) #drawer .canon-sub i,
+body:not([data-mobile]) #drawer .canon-sub span,
+body:not([data-mobile]) #drawer .submenu span,
+body:not([data-mobile]) #drawer .nav-sub span,
+body:not([data-mobile]) #drawer .exhibition-sub span,
+body:not([data-mobile]) #drawer .influencer-sub span,
+body:not([data-mobile]) #drawer .plan-submenu span{margin-left:14px!important;color:#ebb341!important;font:600 9px/1 Poppins,sans-serif!important;letter-spacing:.08em!important}
+body:not([data-mobile]) #drawer .drawer-social{margin:8px 0 0!important;padding:18px 0 0!important;border-top:1px solid #35332e!important}
+body:not([data-mobile]) #drawer>p{margin:18px 0 0!important;color:#aba49c!important;font-size:12px!important;line-height:1.55!important}
+@media(max-width:360px){body:not([data-mobile]) #drawer .canon-nav>a,body:not([data-mobile]) #drawer .canon-group>button{font-size:18px!important;min-height:50px!important}body:not([data-mobile]) #drawer .canon-sub a{font-size:13px!important;min-height:43px!important}}

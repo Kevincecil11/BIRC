@@ -1,0 +1,40 @@
+name: Mobile menu final
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/mobile-menu-final.css'
+      - '.github/workflows/mobile-menu-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Apply menu system to all mobile pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pages=['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html','media-coverage.html']
+          tag='<link rel="stylesheet" href="assets/mobile-menu-final.css?v=20260826-1">'
+          for name in pages:
+              p=Path(name); s=p.read_text()
+              if tag not in s: s=s.replace('</head>',tag+'</head>')
+              p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          needle='Mobile canvas is capped at `520px` with a centred `.page` wrapper.'
+          note=needle+' The sandwich menu uses 20px primary links and 14px indented submenu links with consistent 54px/46px rows, even when Mobile view is forced in a wide desktop browser.'
+          if note not in s: s=s.replace(needle,note)
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile menu typography fix 2026-08-26 -->\n')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html conference.html exhibition.html experience.html creators.html rice-masterchef.html artists.html partnership.html plan-visit.html contact.html media-coverage.html context.md publish-refresh.html
+          git commit -m "Apply consistent mobile menu typography"
+          git push

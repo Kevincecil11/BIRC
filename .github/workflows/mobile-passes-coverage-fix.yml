@@ -1,0 +1,39 @@
+name: Fix mobile passes and coverage rail
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/mobile-passes-coverage-fix.css'
+      - '.github/workflows/mobile-passes-coverage-fix.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Link the mobile correction layer
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html'); s=p.read_text()
+          old='<link rel="stylesheet" href="assets/mobile-passes-coverage-fix.css?v=20260826-1">'
+          if old not in s:
+              s=s.replace('</head>',old+'</head>')
+          p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          needle='- Mobile has one floating `+` dock revealing Book your stand, Register to visit, Login, WhatsApp. Login and WhatsApp URLs are still pending; do not invent them.'
+          note=needle+'\n- The homepage Passes section and Published Across rail use explicit mobile overrides even when Mobile view is forced on a wide desktop browser; do not let desktop media queries compress or offset them.'
+          if note not in s: s=s.replace(needle,note)
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile passes and coverage fix 2026-08-26 -->\n')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html context.md publish-refresh.html
+          git commit -m "Apply mobile passes and coverage layout fix"
+          git push

@@ -1,0 +1,45 @@
+name: Mobile global navbar and media page
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/mobile-global-nav.css'
+      - 'assets/mobile-global-nav.js'
+      - '.github/workflows/mobile-global-nav-media.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Install universal navbar and preserve mobile media route
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pages=['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html','media-coverage.html']
+          css='<link rel="stylesheet" href="assets/mobile-global-nav.css?v=20260826-1">'
+          js='<script src="assets/mobile-global-nav.js?v=20260826-1"></script>'
+          for name in pages:
+              p=Path(name); s=p.read_text()
+              if css not in s: s=s.replace('</head>',css+'</head>')
+              if js not in s: s=s.replace('</body>',js+'</body>')
+              if name=='media-coverage.html':
+                  s=s.replace("<script>(function(){if(matchMedia('(min-width:900px) and (pointer:fine)').matches)location.replace('desktop-media-coverage.html')})();</script>","<script>(function(){var q=new URLSearchParams(location.search);if(q.get('view')!=='mobile'&&matchMedia('(min-width:900px) and (pointer:fine)').matches)location.replace('desktop-media-coverage.html')})();</script>")
+              p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          needle='Mobile canvas is capped at `520px` with a centred `.page` wrapper.'
+          add=needle+' Every public mobile page, including Media Coverage, uses the same navbar with Search, Documents and sandwich controls. `media-coverage.html?view=mobile` never redirects to desktop.'
+          if add not in s: s=s.replace(needle,add)
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile global nav and media 2026-08-26 -->\n')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html conference.html exhibition.html experience.html creators.html rice-masterchef.html artists.html partnership.html plan-visit.html contact.html media-coverage.html context.md publish-refresh.html
+          git commit -m "Add mobile media page and universal search docs navbar"
+          git push

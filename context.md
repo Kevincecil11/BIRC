@@ -68,7 +68,7 @@ The site maintains a mobile experience and a separate desktop experience as dist
 
 `index.html`, `about.html`, `conference.html`, `exhibition.html`, `experience.html`, `creators.html`, `rice-masterchef.html`, `artists.html`, `partnership.html`, `plan-visit.html`, `contact.html`, `register.html`, `media-coverage.html`
 
-Mobile canvas is capped at `520px` with a centred `.page` wrapper. The sandwich menu uses 20px primary links and 14px indented submenu links with consistent 54px/46px rows, even when Mobile view is forced in a wide desktop browser.
+Mobile canvas is capped at `520px` with a centred `.page` wrapper. The sandwich menu is a fixed, centered, full-height 520px drawer with internal scrolling, 20px primary links and 14px indented submenu links in consistent 54px/46px rows on every mobile page. It never participates in page flow or overlaps the About hero.
 
 ### Desktop pages (14)
 

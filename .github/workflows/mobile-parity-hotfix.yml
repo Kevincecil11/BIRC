@@ -1,0 +1,41 @@
+name: Mobile parity fact hotfix
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/mobile-parity-hotfix.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Fix final stale facts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/mobile-parity-20260826.js'); s=p.read_text()
+          needle="txt('.knowledge-meta span','23-24 October');"
+          repl=needle+"\n document.querySelectorAll('.visit-detail p,.visit-note p').forEach(function(el){el.innerHTML=el.innerHTML.replace(/08:30/g,'10:00 AM')});"
+          if repl not in s: s=s.replace(needle,repl)
+          p.write_text(s)
+          pages=['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html','register.html','media-coverage.html']
+          for name in pages:
+              p=Path(name); s=p.read_text().replace('mobile-parity-20260826.js?v=20260826-1','mobile-parity-20260826.js?v=20260826-2'); p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          s=s.replace('five bullet rows plus VIP and Day-3 pass cards','five bullet rows plus VIP, Standard and Day-3 pass cards')
+          s=s.replace('- Conference Agenda and Schedule, Workshops, Learning Academy content (mobile only; the desktop blocks were removed)\n','')
+          s=s.replace('3. Decide on any future Experience page expansion only when new approved content is supplied.\n5. Replace remaining logos, portraits, names, hotel names, and social URLs when supplied.\n6. Optional cleanup:','3. Decide on any future Experience page expansion only when new approved content is supplied.\n4. Optional cleanup:')
+          s=s.replace('7. Optional hardening:','5. Optional hardening:')
+          p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile parity fact refresh 2026-08-26 -->\n')
+          PY
+      - name: Commit and publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/mobile-parity-20260826.js *.html context.md
+          git commit -m "Correct final mobile parity facts"
+          git push

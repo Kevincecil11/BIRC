@@ -1,0 +1,31 @@
+/* Universal mobile drawer: same geometry, typography and behavior on every mobile page. */
+html body #drawer.drawer{
+  position:fixed!important;z-index:500!important;top:0!important;left:50%!important;right:auto!important;bottom:auto!important;inset:auto!important;
+  width:min(100%,520px)!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:18px 22px 30px!important;
+  display:block!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  background:#0d0d0b!important;color:#faf0e6!important;
+  transform:translate(-50%,-105%)!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  transition:transform .42s cubic-bezier(.16,1,.3,1),opacity .24s ease,visibility .42s!important;
+}
+html body #drawer.drawer.open{transform:translate(-50%,0)!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+html body.lock{overflow:hidden!important;touch-action:none!important}
+html body #drawer .drawer-top{position:sticky!important;z-index:4!important;top:-18px!important;height:78px!important;margin:0!important;padding:14px 0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;background:#0d0d0b!important;border-bottom:1px solid #35332e!important}
+html body #drawer .drawer-top .logo,html body #drawer .drawer-top .site-logo{width:150px!important;height:48px!important;object-fit:contain!important;object-position:left center!important}
+html body #drawer .x,html body #drawer .drawer-close{width:44px!important;height:44px!important;display:grid!important;place-items:center!important;padding:0!important;border:1px solid #35332e!important;border-radius:0!important;background:#0d0d0b!important;color:#faf0e6!important;font:400 19px/1 Inter,sans-serif!important}
+html body #drawer nav,html body #drawer .canon-nav{width:100%!important;margin:18px 0 26px!important;padding:0!important;display:block!important}
+html body #drawer .canon-nav>a,html body #drawer .canon-group>button,html body #drawer .canon-group>span{
+ width:100%!important;min-height:54px!important;margin:0!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;
+ border:0!important;border-bottom:1px solid #35332e!important;background:transparent!important;color:#faf0e6!important;
+ font:600 20px/1.15 Poppins,sans-serif!important;letter-spacing:-.035em!important;text-align:left!important;text-transform:none!important;
+}
+html body #drawer .canon-nav>a:first-child{color:#ebb341!important}
+html body #drawer .canon-group>button small{margin-left:auto!important;color:#ebb341!important;font:600 10px/1 Poppins,sans-serif!important;letter-spacing:0!important}
+html body #drawer .canon-sub{width:100%!important;margin:0!important;padding:0 0 0 18px!important;border:0!important;display:grid!important;grid-template-rows:0fr!important;opacity:0!important;transition:grid-template-rows .38s cubic-bezier(.16,1,.3,1),opacity .2s!important}
+html body #drawer .canon-sub>div{min-height:0!important;overflow:hidden!important}
+html body #drawer .canon-group.open>.canon-sub{grid-template-rows:1fr!important;opacity:1!important}
+html body #drawer .canon-sub a{width:100%!important;min-height:46px!important;margin:0!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;border:0!important;border-bottom:1px solid #35332e!important;background:transparent!important;color:#aba49c!important;font:500 14px/1.25 Poppins,sans-serif!important;letter-spacing:-.02em!important;text-align:left!important;text-transform:none!important}
+html body #drawer .canon-sub i{margin-left:14px!important;color:#ebb341!important;font:600 9px/1 Poppins,sans-serif!important;letter-spacing:.08em!important;font-style:normal!important}
+html body #drawer .drawer-social{margin:4px 0 0!important;padding:18px 0 0!important;border-top:1px solid #35332e!important;color:#aba49c!important;font-size:12px!important}
+html body #drawer>p{margin:16px 0 0!important;color:#aba49c!important;font-size:12px!important;line-height:1.55!important}
+@media(max-width:360px){html body #drawer.drawer{padding-inline:18px!important}html body #drawer .canon-nav>a,html body #drawer .canon-group>button{min-height:50px!important;font-size:18px!important}html body #drawer .canon-sub a{min-height:43px!important;font-size:13px!important}}
+@media(prefers-reduced-motion:reduce){html body #drawer.drawer,html body #drawer .canon-sub{transition:none!important}}

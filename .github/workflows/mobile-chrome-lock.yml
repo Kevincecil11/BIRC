@@ -1,0 +1,39 @@
+name: Mobile chrome lock
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/mobile-chrome-lock.css'
+      - '.github/workflows/mobile-chrome-lock.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Lock mobile nav and drawer across pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pages=['index.html','about.html','conference.html','exhibition.html','experience.html','creators.html','rice-masterchef.html','artists.html','partnership.html','plan-visit.html','contact.html']
+          tag='<link rel="stylesheet" href="assets/mobile-chrome-lock.css?v=20260826-1">'
+          for name in pages:
+              p=Path(name); s=p.read_text()
+              if tag not in s: s=s.replace('</head>',tag+'</head>')
+              p.write_text(s)
+          p=Path('context.md'); s=p.read_text()
+          needle='The sandwich menu is a fixed, centered, full-height 520px drawer with internal scrolling, 20px primary links and 14px indented submenu links in consistent 54px/46px rows on every mobile page. It never participates in page flow or overlaps the About hero.'
+          repl='The mobile navbar and sandwich menu are locked to the same centered 520px canvas on every mobile page. The drawer uses an explicit canvas left edge, never a translateX animation, opens vertically from the top, scrolls internally, and keeps 20px primary links plus 14px submenu links in 54px/46px rows.'
+          s=s.replace(needle,repl); p.write_text(s)
+          Path('publish-refresh.html').write_text('<!doctype html><meta charset="utf-8"><title>BIRC publish marker</title><!-- mobile chrome lock 2026-08-26 -->\n')
+          PY
+      - name: Commit lock
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html conference.html exhibition.html experience.html creators.html rice-masterchef.html artists.html partnership.html plan-visit.html contact.html context.md publish-refresh.html
+          git commit -m "Lock mobile navbar and drawer to centered canvas"
+          git push
